@@ -32,10 +32,6 @@ class Email:
         return self.mail['X-Origin']
 
     @property
-    def body(self):
-        return self.mail.get_payload()
-
-    @property
     def subject(self):
         return self.mail['Subject']
 
@@ -70,6 +66,30 @@ class Email:
     @property
     def xbcc(self):
         return self.mail['X-bcc']
+
+    @property
+    def body(self):
+        return self.mail.get_payload()
+
+    @property
+    def clean_body(self):
+        s = self.body
+
+        # remove annotation (if present)
+        s = re.sub("^(H|S|B)>", "", s, flags=re.M)
+
+        # remove known common rubbish
+        s = s.replace('=\n', '').replace('=20', '').replace('=09', '').replace('=01\&', '') \
+            .replace('=01&', '').replace('=18', '').replace('=018', '')
+
+        # remove indentation
+        # s = re.sub(r"^(\s*>)+","", s)
+
+        # remove attachments
+        s = re.sub(r"\s*\[IMAGE\]\s*", "", s, flags=re.I)
+        s = re.sub(r"<<.{3,50}\.(xls|xlsx|png|gif|jpg|jpeg|doc|docx|ppt|pptx|pst)>>%?", "", s, flags=re.I)
+        s = re.sub(r"^\s*-.{3,50}\.(xls|xlsx|png|gif|jpg|jpeg|doc|docx|ppt|pptx|pst)%?", "", s, flags=re.I)
+        return s
 
 
 class EmailFiles:
