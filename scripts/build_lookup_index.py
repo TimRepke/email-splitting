@@ -106,6 +106,7 @@ if __name__ == "__main__":
                               to=mail['To'], xto=mail['X-To'],
                               bcc=mail['Cc'], xcc=mail['X-cc'],
                               cc=mail['Bcc'], xbcc=mail['X-bcc'],
+                              subject=mail['Subject'],
                               date=datetime.strptime(re.sub(r' *\([A-Z]+\)',
                                                             '',
                                                             mail['Date']),
