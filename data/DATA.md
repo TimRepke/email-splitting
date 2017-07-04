@@ -21,12 +21,13 @@ Set for training, development testing and final evaluation are first split by ma
 - **EVAL:**("gilbertsmith-d","weldon-v","semperger-c","pereira-s","forney-j","heard-m","presto-k","grigsby-m","davis-d","mcconnell-m","bass-e","farmer-d","taylor-m","kean-s")
 
 ```
-select split as ns, count(1) as cnt from enron_mail group by split order by cnt
+select exclude as ex, split as sp, count(1) as cnt from enron_mail group by sp, ex order by sp, ex
 ```
 
-| Split | Count    |
-|-------|----------|
-| "2"   | "76295"  |
-| "1"   | "83946"  |
-| "0"   | "165312" |
-| NULL  | 191448   |
+| Split     | Count  | Count (uniq) |
+|-----------|--------|--------------|
+| 2 - EVAL  | 76295  | 59396        |
+| 1 - TEST  | 83946  | 64509        |
+| 0 - TRAIN | 165312 | 116226       |
+| IGNORE    | 191448 | -            |
+
