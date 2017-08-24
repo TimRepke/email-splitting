@@ -184,7 +184,7 @@ if __name__ == "__main__":
         cnt = 0
         skip = 2000
         limit = 50
-        maildir = 'maildir/'
+        maildir = '../../../../enron/data/original/'
         for root, dirs, files in os.walk(maildir):
             if cnt > limit + skip:
                 break

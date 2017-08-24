@@ -7,6 +7,15 @@
 %
 \usepackage{makeidx}  % allows for indexgeneration
 %
+
+\newcommand{\dummyfig}[3]{
+	\centering
+	\fbox{
+		\begin{minipage}[c][#1\textheight][c]{#2\textwidth}
+			\centering{#3}
+		\end{minipage}
+	}
+}
 \begin{document}
 %
 \frontmatter          % for the preliminaries
@@ -15,9 +24,9 @@
 
 \mainmatter              % start of the contributions
 %
-\title{Untangling email conversations}
+\title{Untangling Email Conversations}
 %
-\titlerunning{Hamiltonian Mechanics}  % abbreviated title (for running head)
+\titlerunning{Untangling Email Conversations}  % abbreviated title (for running head)
 %                                     also used for the TOC unless
 %                                     \toctitle is used
 %
@@ -38,15 +47,88 @@ The abstract should summarize the contents of the paper
 using at least 70 and at most 150 words. It will be set in 9-point
 font size and be inset 1.0 cm from the right and left margins.
 There will be two blank lines before and after the Abstract. \dots
-\keywords{computational geometry, graph theory, Hamilton cycles}
+%\keywords{computational geometry, graph theory, Hamilton cycles}
 \end{abstract}
 %
-\section{Fixed-Period Problems: The Sublinear Case}
-%
-citing something \cite{headerless,signature,similarity,zones}
-%
-\subsubsection{The General Case: Nontriviality.}
-ads
+\section{Introduction}
+
+
+\section{Related Work}
+\cite{rfa} (detecting request for action) works better with zoning (see \cite{zones}), removes noise and focuses on text itself (excluding signature etc)
+
+\cite{zones} "Zebra" detects nine different zones, only last email in thread is considered, rest is quoted, classifies lines individually with features using SVM, three zones with 0.91 accuracy, 9 zones 0.87 accuracy; context features didn't add improve performance
+
+\cite{profiling} don't describe much, uses CRF inspired by \cite{signature}, five categories (author text, signature, advertisement, quoted text, reply lines), for eval using three zones with accuracy 0.88, F1 0.9, compared with \cite{signature} 0.64 and 0.75 on their data
+
+\cite{signature} "Jengada" detects signature and reply lines, only considers the last $n$ lines, using CRF with 0.97 accuracy, CPerceptron with 0.989 accuracy; extraction task only performed on mails known to contain signatures! used 20 newsgroup dataset \cite{20news}
+
+\cite{headerless} look for overlaps in enron dataset to split mails into parts of the conversation; closest to our task; we don't consider full dataset though (looking at each mail individually); their goal is to then reassemble the conversation threads, tested on 20 threads (leading to 465 mails), claim accuracy approaching 100\%
+
+\cite{similarity} similar to \cite{headerless}
+
+[citation needed] previous social network analysis wrong, because not considering full picture
+
+\cite{workhard} overview of recent technologies applied to enron and avocado (personal business classification + SNA)
+
+\cite{replying} also recent, on avocado, reply behaviour, only "main header"
+
+\cite{enron} enron corpus
+
+\cite{avocado} avocado corpus
+
+\section{Dataset and Task Description}
+describe task: split mails in different parts of the thread; parse meta information in intermediate headers
+
+describe how data is selected from enron corpus (800: 500 train, 200 test, 100 eval)
+
+annotated very detailed, even with some entity linking and signature parts, considered level of detail: header, body, signature, intro/outro; one annotator
+
+\section{Approach}
+learn char or line embedding
+
+continue training for classification into header/body
+
+continue training for further classification of body and header parts individually
+
+\section{Experiments}
+reimplement zebra\footnote{\url{http://zebra.thoughtlets.org/zoning.php}} and jangada\footnote{\url{http://www.cs.cmu.edu/~vitor/software/jangada/}}
+
+describe differences, what needs to be changed to make it fair
+
+show which task is more or less comparable between all
+
+Approaches: Regex + Rules, RNN with features, embedding
+
+\section{Results}
+evaluate different complexities: full task (get all information), split head+body, additionally split body parts (sig, intro, outro)
+
+\begin{table}
+	\centering
+	\begin{tabular}{|c|cc|}
+		\hline
+		Approach & Dataset& result\\ \hline
+		We 1& a & 0.98\\
+		We 2& a & 0.98\\
+		We 3& a & 0.98\\
+		Zebra & d & 0.78\\
+		Jangada & d & 0.8\\
+		\hline	
+	\end{tabular}
+\caption{Experimental Results}
+\end{table}
+
+
+\section{Conclusion}
+
+
+
+\begin{figure*}[h]
+	\dummyfig{0.1}{0.6}{Dummy Figure Label} 
+	\caption{Dummy figure caption}
+	\label{fig:dummy}
+\end{figure*}
+
+
 
 \bibliographystyle{splncs03}
 \bibliography{biblio} 
