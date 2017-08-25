@@ -6,6 +6,10 @@
 \documentclass{llncs}
 %
 \usepackage{makeidx}  % allows for indexgeneration
+\usepackage{fancyref}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
 %
 
 \newcommand{\dummyfig}[3]{
@@ -51,7 +55,18 @@ There will be two blank lines before and after the Abstract. \dots
 \end{abstract}
 %
 \section{Introduction}
+früher: emails strukturiert, eingerückt, etc; heute: sehr frei/divers, geht nicht mehr mit regeln; Ansatz: deep learning
 
+ALTERNATIV:
+
+emails used for SNA, classification, behaviour, profiling, and more
+
+most based on full mails, but conversations contain quoted messaged including additional metadata; distracts downstream tasks
+
+our goal: clean up emails properly, don't assume full corpus, therefore keep all information
+
+\subsection{Problem statement}
+describe task: split mails in different parts of the thread; parse meta information in intermediate headers
 
 \section{Related Work}
 \cite{rfa} (detecting request for action) works better with zoning (see \cite{zones}), removes noise and focuses on text itself (excluding signature etc)
@@ -60,7 +75,7 @@ There will be two blank lines before and after the Abstract. \dots
 
 \cite{profiling} don't describe much, uses CRF inspired by \cite{signature}, five categories (author text, signature, advertisement, quoted text, reply lines), for eval using three zones with accuracy 0.88, F1 0.9, compared with \cite{signature} 0.64 and 0.75 on their data
 
-\cite{signature} "Jengada" detects signature and reply lines, only considers the last $n$ lines, using CRF with 0.97 accuracy, CPerceptron with 0.989 accuracy; extraction task only performed on mails known to contain signatures! used 20 newsgroup dataset \cite{20news}
+\cite{signature} "Jangada" detects signature and reply lines, only considers the last $n$ lines, using CRF with 0.97 accuracy, CPerceptron with 0.989 accuracy; extraction task only performed on mails known to contain signatures! used 20 newsgroup dataset \cite{20news}
 
 \cite{headerless} look for overlaps in enron dataset to split mails into parts of the conversation; closest to our task; we don't consider full dataset though (looking at each mail individually); their goal is to then reassemble the conversation threads, tested on 20 threads (leading to 465 mails), claim accuracy approaching 100\%
 
@@ -76,57 +91,143 @@ There will be two blank lines before and after the Abstract. \dots
 
 \cite{avocado} avocado corpus
 
-\section{Dataset and Task Description}
-describe task: split mails in different parts of the thread; parse meta information in intermediate headers
+[citation needed] shneiderman corpus
 
+\cite{20news} 20 newsgroups
+
+\section{Segmentation of Emails}
+describe an overview
+
+\subsection{Representation of Email Data}
+learn char or line embedding
+
+\subsection{Classification of Email Lines}
+continue training for classification into header/body
+
+how to split thread based on that
+
+\subsection{Extraction of Email Meta-Data}
+continue training for further classification of body and header parts individually
+
+\section{Experimental Setup}
+
+\subsection{Dataset}
 describe how data is selected from enron corpus (800: 500 train, 200 test, 100 eval)
 
 annotated very detailed, even with some entity linking and signature parts, considered level of detail: header, body, signature, intro/outro; one annotator
 
-\section{Approach}
-learn char or line embedding
+some numbers comparing raw data and contained information in \Fref{tab:dataset}
 
-continue training for classification into header/body
+\begin{table}
+	\centering
+	\caption{Experimental Results}
+	\label{tab:dataset}
+	\begin{tabular}{|c|ccc|}
+		\hline
+		Approach & Train & Test & Eval\\ \hline
+		Raw Mails& 500 & 200 & 100\\
+		Actual num mails & ? & ? & ? \\
+		Avg Threadlen & ? & ? & ?\\
+		signatures & ? & ? & ? \\
+		people extracted (raw) & ?(?) & ?(?) & ?(?)\\
+		\hline	
+	\end{tabular}
+\end{table}
 
-continue training for further classification of body and header parts individually
+\subsection{Competing Approaches}
+baseline (regex+rules)
 
-\section{Experiments}
 reimplement zebra\footnote{\url{http://zebra.thoughtlets.org/zoning.php}} and jangada\footnote{\url{http://www.cs.cmu.edu/~vitor/software/jangada/}}
 
 describe differences, what needs to be changed to make it fair
 
+RNN with features
+
 show which task is more or less comparable between all
 
-Approaches: Regex + Rules, RNN with features, embedding
+\subsection{Learning Model Parameters}
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\dummyfig{0.17}{0.9}{xaxis=perturbation, yaxis=accuracy, one line/boxplot} 
+		\caption{Obfuscating test samples}
+	\end{subfigure}%
+	~ 
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\dummyfig{0.17}{0.9}{xaxis=perturbation, yaxis=accuracy, three lines for different perturbation during eval} 
+		\caption{Training with perturbation}
+	\end{subfigure}
+	\caption{Tolerance of the trained model against perturbation of the input}
+\end{figure}
+
+size of model/dimensions
+
+size of training dataset (how much annotated data needed)
+
+cross corpus (?)
 
 \section{Results}
 evaluate different complexities: full task (get all information), split head+body, additionally split body parts (sig, intro, outro)
 
+results in \Fref{tab:results-comp} and \Fref{tab:results}
+
 \begin{table}
 	\centering
+	\caption{Results of Two-Zone Task}
+	\label{tab:results-comp}
 	\begin{tabular}{|c|cc|}
 		\hline
 		Approach & Dataset& result\\ \hline
 		We 1& a & 0.98\\
 		We 2& a & 0.98\\
 		We 3& a & 0.98\\
-		Zebra & d & 0.78\\
-		Jangada & d & 0.8\\
+		Zebra\cite{zones} & d & 0.78\\
+		Jangada\cite{signature} & d & 0.8\\
 		\hline	
 	\end{tabular}
-\caption{Experimental Results}
 \end{table}
 
+\begin{table}
+	\centering
+	\caption{Experimental Results}
+	\label{tab:results}
+	\begin{tabular}{|c|cc|}
+		\hline
+		task & prec/rec& f1\\ \hline
+		2zone& a & 0.98\\
+		5zone& a & 0.98\\
+		full& a & 0.98\\
+		\hline	
+	\end{tabular}
+\end{table}
 
-\section{Conclusion}
+\Fref{fig:mpd} shows influence of extracting information vs using raw data
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\dummyfig{0.17}{0.9}{xaxis=timebuckets, yaxis=freq} 
+		\caption{raw data}
+	\end{subfigure}%
+	~ 
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\dummyfig{0.17}{0.9}{xaxis=timebuckets, yaxis=freq} 
+		\caption{extracted data}
+	\end{subfigure}
+	\caption{Mail Frequency}
+	\label{fig:mpd}
+\end{figure}
 
 
+maybe: email classification with+without splitting (i.e. try to classify folders)
 
-\begin{figure*}[h]
-	\dummyfig{0.1}{0.6}{Dummy Figure Label} 
-	\caption{Dummy figure caption}
-	\label{fig:dummy}
-\end{figure*}
+\section{Conclusion and Future Work}
+nicht nur für mails, auch forenthreads und andere semi-strukturierte daten
 
 
 
