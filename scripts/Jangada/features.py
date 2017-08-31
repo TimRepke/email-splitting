@@ -2,8 +2,9 @@ import re
 
 """Module for generating a feature representation of each line in an email
 
-This code is a Python translation of the Jangada source code in scripts/Jangada/original/src/jangada/SigFilePredictor.java
-Structure and variable names are more or less kept to keep the code comparable.
+This code is a Python translation of the original Jangada source code 
+(see scripts/Jangada/original/src/jangada/SigFilePredictor.java)
+Structure and variable names are more or less kept for easier code comparison
 """
 
 # constants
@@ -78,8 +79,7 @@ def word_character_percentage(line):
 
 
 def mail2features(mail):
-    if type(mail) == str:
-        mail = mail.split('\n')
+    mail = mail.lines
 
     # findFromLine(s)
     from_lines = [i for i, line in enumerate(mail)

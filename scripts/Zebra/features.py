@@ -59,20 +59,17 @@ def names2regex(names):
     return '(?:' + ('|'.join(re.split(r"(?:\s+[,;]?\s*|\s*[,;]?\s+)", names))) + ')'
 
 
-def mail2features(mail, header):
-    if type(mail) == str:
-        maill = mail.split('\n')
-    else:
-        maill = mail
-        mail = '\n'.join(maill)
+def mail2features(m):
+    mail = m.body
+    maill = m.lines
 
     unigrams = tokenise(mail, 1)
     bigrams = tokenise(mail, 2)
     c_unigrams = Counter(unigrams)
     c_bigrams = Counter(bigrams)
 
-    subject_reply_marker = re.search(r"^\s*re:", header['Subject'], flags=re.IGNORECASE)
-    subject_forward_marker = re.search(r"^\s*fw:", header['Subject'], flags=re.IGNORECASE)
+    subject_reply_marker = re.search(r"^\s*re:", m.subject, flags=re.IGNORECASE)
+    subject_forward_marker = re.search(r"^\s*fw:", m.subject, flags=re.IGNORECASE)
 
     mail_features = []
     for i, line in enumerate(maill):
@@ -129,7 +126,7 @@ def mail2features(mail, header):
             features['repeated_punct_begin'] = 1
 
         # whether a prior text fragment in the message contains a quoted header
-        if i > 0 and re.search(r"^\s*(?:from|to|sent|cc|bcc|date|subject):", mail[i - 1], flags=re.IGNORECASE):
+        if i > 0 and re.search(r"^\s*(?:from|to|sent|cc|bcc|date|subject):", maill[i - 1], flags=re.IGNORECASE):
             features['contains_quoted_header_prev'] = 1
 
         # whether a prior text fragment in the message contains repeated punctuation characters
@@ -158,7 +155,7 @@ def mail2features(mail, header):
         # the number of non-alpha-numeric characters in the text fragment
         features['num_non_alphanumeric_chars'] = num_non_alpha
         # the percentage of non-alpha-numeric characters in the text fragment
-        features['perc_non_alphanumeric_chars'] = percentage(num_non_alpha / len(line))
+        features['perc_non_alphanumeric_chars'] = percentage(num_non_alpha, len(line))
 
         num_numeric_chars = len(re.findall(r"\d", line))
         # the number of numeric characters in the text fragment
@@ -167,45 +164,48 @@ def mail2features(mail, header):
         features['perc_numeric_chars'] = percentage(num_numeric_chars, len(line))
 
         # whether the message subject line contains a reply syntax marker such as Re:
-        features['subject_reply_marker'] = subject_reply_marker
+        if subject_reply_marker:
+            features['subject_reply_marker'] = 1
 
         # whether te message subject line contains a forward syntax marker such as Fw:
-        features['subject_forward_marker'] = subject_forward_marker
+        if subject_forward_marker:
+            features['subject_forward_marker'] = 1
 
         # == LEXICAL FEATURES (section 4.3.3) ==
 
         # each word unigram, calculated with a min freq threshold of 3, represented as a separate bin feature
         for t in tokenised:
-            if c_unigrams[t] >= 3:
+            if c_unigrams[t] > 3:
                 features['unigram=' + t] = 1
 
         # each word bigram, calculated with a min freq threshold of 3, represented as a separate bin feature
         for t in tokenise(line, 2):
-            if c_bigrams[t] >= 3:
+            if c_bigrams[t] > 3:
                 features['bigram=' + t.replace(' ', '_')] = 1
 
         # whether the text fragment contains the sender's name
-        if re.search(names2regex(header['X-From']), line):
+        if re.search(names2regex(m.xsender), line):
             features['contains_senders_name'] = 1
 
         # whether a prior text fragment contains the sender's name
-        if re.search(names2regex(header['X-From']), line):
+        if re.search(names2regex(m.xsender), line):
             features['contains_senders_name_prev'] = 1
 
         # whether the text fragment contains the sender's initials
-        initials = list(map(lambda p: p[0], re.split(r"(?:\s+[,;]?\s*|\s*[,;]?\s+)", header['X-From'])))
-        initials_regex = "(?:" + (''.join(initials)) + '|' + ('.'.join(initials) + '.') + '|' + (
-        '. '.join(initials) + '.')
+        initials = [re.sub(r"\|\(\)\+\^\$\*", '', p[0]) for p in re.split(r"(?:\s+[,;]?\s*|\s*[,;]?\s+)", m.xsender)][
+                   0:2]
+        initials_regex = "(?:" + (''.join(initials)) + '|' + ('.'.join(initials) + '.') + '|' + \
+                         ('. '.join(initials) + '.')
         if len(initials) > 1:
             initials = [initials[0]] + [initials[-1]]
-            initials_regex += '|' + (''.join(initials)) + '|' + ('.'.join(initials) + '.') + '|' + (
-            '. '.join(initials) + '.')
+            initials_regex += '|' + (''.join(initials)) + '|' + ('.'.join(initials) + '.') + '|' + \
+                              ('. '.join(initials) + '.')
         initials_regex += ')'
         if re.search(initials_regex, line):
             features['contains_senders_initials'] = 1
 
         # whether the text fragment contains a recipient's name
-        if re.search(names2regex(header['X-To']), line):
+        if re.search(names2regex(m.xto), line):
             features['contains_recipients_name'] = 1
 
         mail_features.append(features)
