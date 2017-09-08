@@ -80,12 +80,13 @@ def word_character_percentage(line):
 
 def mail2features(mail):
     mail = mail.lines
-
     # findFromLine(s)
-    from_lines = [i for i, line in enumerate(mail)
-                  if re.search("^\s?\s?[!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]?[F|f][R|r][O|o][M|m]:", line)]
-    size = len(mail)
+    from_lines = []
+    for i, line in enumerate(mail):
+        if re.search("^\s*[!\"#$%&'()*+,-./:;<=>?@\[\]^_`{|}~]?\s*[F|f][R|r][O|o][M|m]:", line):
+            from_lines.append(i)
 
+    size = len(mail)
     mail_features = []
     for i, line in enumerate(mail):
         features = {}
@@ -105,8 +106,8 @@ def mail2features(mail):
             features['lastbutbutoneL'] = 1
 
         # header feature
-        if re.search("^\s?\s?(\w|-)+:", line):
-            if re.search("^\s?\s?(http|HTTP|Phone|PHONE|phone|email|EMAIL|Internet|INTERNET|internet)+:", line):
+        if re.search("^\s?\s?(?:\w|-)+:", line):
+            if re.search("^\s?\s?(?:http|HTTP|Phone|PHONE|phone|email|EMAIL|Internet|INTERNET|internet)+:", line):
                 features['header'] = 1
             if (size - i) < tail_lines:
                 features['closeheader'] = 1
@@ -234,7 +235,7 @@ def mail2features(mail):
                     features['closenextspecWords'] = 1
 
         # email feature
-        regex_email = r"[^<>](?:\w|\+|\.|_|-]+@(?:\w|-|_|\.)+\.[a-zA-z]{2,5}[^<>]"
+        regex_email = r"(?:\w|\+|\.|-)+@(?:\w|\+|\.|-)+\.[a-zA-z]{2,5}"
         if i > 0:
             if re.search(regex_email, mail[i - 1]):
                 features['prevemail'] = 1
@@ -249,13 +250,13 @@ def mail2features(mail):
                 features['nextemail'] = 1
                 if (size - i) < tail_lines:
                     features['closenextemail'] = 1
-        if re.search(r"[^<>](?:\w|\+|_|-)+@(?:\w|-|_)+\.[a-zA-z]{2,5}", mail[i]):
+        if re.search(r"[^<>](?:\w|\+|-)+@(?:\w|-)+\.[a-zA-z]{2,5}", mail[i]):
             features['emailB'] = 1
             if (size - i) < tail_lines:
                 features['closeemailB'] = 1
 
         # URL feature
-        regex_url = r"\s?(?:http://)*(?:www|web|w3)*\w(?:\w|-)+\.\w(?:\w|-)+\.\w(?:\w|-)+*\w+"
+        regex_url = r"\s?(?:http://)*(?:www|web|w3)*\w(?:\w|-)+\.\w(?:\w|-)+\.\w(?:\w|-)*\w+"
         if i > 0:
             if re.search(regex_url, mail[i - 1]):
                 features['preveurl'] = 1
