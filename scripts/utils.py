@@ -263,8 +263,24 @@ class AnnotatedEmail(Email):
         return self._line_labels(zones=2)
 
     @property
+    def three_zones_labels(self):
+        return self._line_labels(zones=3)
+
+    @property
+    def five_zones_labels(self):
+        return self._line_labels(zones=5)
+
+    @property
     def two_zones_labels_numeric(self):
         return _labels_to_numeric(self.two_zones_labels)
+
+    @property
+    def three_zones_labels_numeric(self):
+        return _labels_to_numeric(self.three_zones_labels)
+
+    @property
+    def five_zones_labels_numeric(self):
+        return _labels_to_numeric(self.five_zones_labels)
 
     def _denotation_overlaps(self, limit=None):
         lines = self.lines_with_boundaries
@@ -284,18 +300,21 @@ class AnnotatedEmail(Email):
             ret.append(sorted(l.items(), key=lambda i: i[1], reverse=True))
         return ret
 
-    def _line_labels(self, zones=2):
+    @staticmethod
+    def zone_labels(zones=2):
         limit = None
         if zones == 2:
             limit = ['Body', 'Header']
+        elif zones == 3:
+            limit = ['Body', 'Header', 'Body/Signature']
+        elif zones == 5:
+            limit = ['Body', 'Header', 'Body/Signature', 'Body/Intro', 'Body/Outro']
+        return limit
 
+    def _line_labels(self, zones=2):
+        limit = self.zone_labels(zones)
         overlaps = self._denotation_overlaps(limit)
-
-        ret = []
-        for overlap in overlaps:
-            if zones == 2:
-                ret.append(overlap[0][0])
-        return ret
+        return [overlap[0][0] for overlap in overlaps]
 
 
 class AnnotatedEmails:
@@ -365,3 +384,43 @@ class AnnotatedEmails:
     @property
     def two_zones_labels_numeric_full(self):
         return [m.two_zones_labels_numeric for m in self.full_set]
+
+    @property
+    def three_zones_labels(self):
+        return ([m.three_zones_labels for m in self.train_set],
+                [m.three_zones_labels for m in self.test_set],
+                [m.three_zones_labels for m in self.eval_set])
+
+    @property
+    def three_zones_labels_full(self):
+        return [m.three_zones_labels for m in self.full_set]
+
+    @property
+    def three_zones_labels_numeric(self):
+        return ([m.three_zones_labels_numeric for m in self.train_set],
+                [m.three_zones_labels_numeric for m in self.test_set],
+                [m.three_zones_labels_numeric for m in self.eval_set])
+
+    @property
+    def three_zones_labels_numeric_full(self):
+        return [m.three_zones_labels_numeric for m in self.full_set]
+
+    @property
+    def five_zones_labels(self):
+        return ([m.five_zones_labels for m in self.train_set],
+                [m.five_zones_labels for m in self.test_set],
+                [m.five_zones_labels for m in self.eval_set])
+
+    @property
+    def five_zones_labels_full(self):
+        return [m.five_zones_labels for m in self.full_set]
+
+    @property
+    def five_zones_labels_numeric(self):
+        return ([m.five_zones_labels_numeric for m in self.train_set],
+                [m.five_zones_labels_numeric for m in self.test_set],
+                [m.five_zones_labels_numeric for m in self.eval_set])
+
+    @property
+    def five_zones_labels_numeric_full(self):
+        return [m.five_zones_labels_numeric for m in self.full_set]

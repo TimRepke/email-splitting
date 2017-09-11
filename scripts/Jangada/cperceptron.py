@@ -34,7 +34,7 @@ def _from_file():
     ret = []
     with open(FILE_OUT, 'r') as f:
         pattern = re.compile(
-            r'\[Class: (?P<label>\w+) (?P<confidence>-?\d+\.\d+)\].*\[compact instance/(?P<mail>\w+):')
+            r'^\[Class: (?P<label>[A-Za-z/]+) (?P<confidence>-?\d+\.[0-9E]+)\].*\[compact instance/(?P<mail>\w+):')
         for line in f.readlines():
             m = pattern.search(line)
             ret.append((m.group('mail'), m.group('label'), float(m.group('confidence'))))
