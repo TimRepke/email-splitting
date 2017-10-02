@@ -240,6 +240,9 @@ class AnnotatedEmail(Email):
         # return [l+'\n' for l in self.body.split('\n') if not (self.skip_blank and re.search(r"^\s*$", l))]
         return [l + '\n' for l in self.body.split('\n')]
 
+    def __len__(self):
+        return len(self.lines)
+
     @property
     def lines_with_boundaries(self):
         lines = self.lines

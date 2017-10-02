@@ -13,7 +13,7 @@ def flatten(lst):
 
 
 def to_array(lst, cols=None):
-    df = pd.DataFrame(lst)
+    df = pd.DataFrame(lst, columns=cols)
     df.fillna(0, inplace=True)
     if cols is not None:
         return np.nan_to_num(df.as_matrix(cols))
