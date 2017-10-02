@@ -6,9 +6,97 @@
 \documentclass{llncs}
 %
 \usepackage{makeidx}  % allows for indexgeneration
-\usepackage{fancyref}
 \usepackage{graphicx}
 \usepackage{subcaption}
+
+\usepackage{listings}
+\lstdefinestyle{mystyle}{
+	%backgroundcolor=\color{backcolour},   
+	%commentstyle=\color{codegreen},
+	%keywordstyle=\color{magenta},
+	%numberstyle=\tiny\color{codegray},
+	%stringstyle=\color{codepurple},
+	basicstyle=\scriptsize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	%numbers=left,                    
+	%numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+	%frame=single
+}
+
+\lstset{style=mystyle}
+
+% ----------------------
+% fancyref
+\usepackage[plain]{fancyref}
+
+\newcommand*{\fancyrefalglabelprefix}{alg}
+\newcommand*{\fancyreflstlabelprefix}{lst}
+\newcommand*{\fancyrefapplabelprefix}{app}
+
+\fancyrefaddcaptions{english}{%
+	\providecommand*{\frefalgname}{algorithm}%
+	\providecommand*{\Frefalgname}{Algorithm}%
+	%
+	\providecommand*{\freflstname}{listing}%
+	\providecommand*{\Freflstname}{Listing}%
+	%
+	\providecommand*{\frefappname}{appendix}%
+	\providecommand*{\Frefappname}{Appendix}%
+}%
+
+\frefformat{plain}{\fancyrefalglabelprefix}{%
+	\frefalgname\fancyrefdefaultspacing#1%
+}%
+\Frefformat{plain}{\fancyrefalglabelprefix}{%
+	\Frefalgname\fancyrefdefaultspacing#1%
+}
+\frefformat{vario}{\fancyrefalglabelprefix}{%
+	\frefalgname\fancyrefdefaultspacing#1#3%
+}%
+\Frefformat{vario}{\fancyrefalglabelprefix}{%
+	\Frefalgname\fancyrefdefaultspacing#1#3%
+}%
+
+\frefformat{plain}{\fancyreflstlabelprefix}{%
+	\freflstname\fancyrefdefaultspacing#1%
+}%
+\Frefformat{plain}{\fancyreflstlabelprefix}{%
+	\Freflstname\fancyrefdefaultspacing#1%
+}
+\frefformat{vario}{\fancyreflstlabelprefix}{%
+	\freflstname\fancyrefdefaultspacing#1#3%
+}%
+\Frefformat{vario}{\fancyreflstlabelprefix}{%
+	\Freflstname\fancyrefdefaultspacing#1#3%
+}%
+
+\frefformat{plain}{\fancyrefapplabelprefix}{%
+	\frefappname\fancyrefdefaultspacing#1%
+}%
+\Frefformat{plain}{\fancyrefapplabelprefix}{%
+	\Frefappname\fancyrefdefaultspacing#1%
+}
+\frefformat{vario}{\fancyrefapplabelprefix}{%
+	\frefappname\fancyrefdefaultspacing#1#3%
+}%
+\Frefformat{vario}{\fancyrefapplabelprefix}{%
+	\Frefappname\fancyrefdefaultspacing#1#3%
+}%
+
+
+% line breaks in table cells:
+
+\usepackage{makecell}
+\renewcommand\cellalign{lt}
+
+
 \captionsetup{compatibility=false}
 %
 
@@ -28,9 +116,9 @@
 
 \mainmatter              % start of the contributions
 %
-\title{Untangling Email Conversations}
+\title{Bringing Back Structure to Free Text Email Conversations with Recurrent Neural Networks}
 %
-\titlerunning{Untangling Email Conversations}  % abbreviated title (for running head)
+\titlerunning{Disentangling Email Conversations}  % abbreviated title (for running head)
 %                                     also used for the TOC unless
 %                                     \toctitle is used
 %
@@ -55,45 +143,151 @@ There will be two blank lines before and after the Abstract. \dots
 \end{abstract}
 %
 \section{Introduction}
-früher: emails strukturiert, eingerückt, etc; heute: sehr frei/divers, geht nicht mehr mit regeln; Ansatz: deep learning
+Emails are and important part of day to day business communication, hence their analysis inspired research from a variety of disciplines.
+Many of those solely use information contained in the well structured email protocol headers, such as in Social Network Analysis, User Profiling, or Behaviour Analysis.
 
-ALTERNATIV:
+However, a lot more information remains hidden in the free text body of an email, which contains additional meta-data about a discussion in the form of quoted messages that are forwarded or replied to.
+In the early days of email communication, users followed clear rules such as prefixing quoted text with angle brackets ($>$).
+Nowadays though, due to the diversity of email programs, formatting standards, and the freedom to edit quoted text, identifying the different parts of a message body is a surprisingly challenging task.
 
-emails used for SNA, classification, behaviour, profiling, and more
+We propose a neural network based approach and enable downstream tasks to utilise otherwise hidden or noisy information and overcome problems of error-prone rule-based approaches.
+Further we show improvements in flexibility and performance over earlier work on similar tasks.
 
-most based on full mails, but conversations contain quoted messaged including additional metadata; distracts downstream tasks
 
-our goal: clean up emails properly, don't assume full corpus, therefore keep all information
+
+
+
+%früher: emails strukturiert, eingerückt, etc; heute: sehr frei/divers, geht nicht mehr mit regeln; Ansatz: deep learning
+
+%ALTERNATIV:
+
+%emails used for SNA, classification, behaviour, profiling, and more
+%most based on full mails, but conversations contain quoted messaged including additional metadata; distracts downstream tasks
+
+%our goal: clean up emails properly, don't assume full corpus, therefore keep all information
 
 \subsection{Problem statement}
-describe task: split mails in different parts of the thread; parse meta information in intermediate headers
+In this paper we propose methods to identify the inherent structure of free text email messages.
+Components of an email are referred to as \textit{zones} similar to definition used by Lampert et al~\cite{zones}.
+We assume, that text of a single email containing a discussion is represented as a sequence of headers and bodies, which is consistent with messages in the Enron corpus.
+
+Hereby headers are blocks of meta-data automatically inserted by an email program, containing the sender, recipient, date, and subject.
+Usually the header indicates, whether the subsequent message body was forwarded or replied to by the text above.
+Bodies are the actual written messages, which on reply or forward are quoted below the newer message.
+
+Message bodies are further separated into a \textit{greeting} (such as a formal or informal address of the recipient at the beginning of the message), \textit{authored text} (the actual message), \textit{signoff} (closing words of the message), and a \textit{signature} (containing contact information, advertising, or legal disclaimers).
+
+Without loss of generality we consider exactly one zone type per line as exemplary shown in \Fref{fig:examplemail}.
+In case of conflicts, the predominant or detailed type is used.
+
+
+%describe task: split mails in different parts of the thread; parse meta information in intermediate headers
+%- use term: zone
+%- email as chain of header/body
+%- within body: greetings, signoff, signature, text
+%- header: contains metadata like from, to, when subject
+
+
+\begin{figure}
+\caption{Example Email}
+\label{fig:examplemail}
+% potential example listings:
+% presto-k/discussion_threads/23.
+% skilling-j/all_documents/1529.
+% skilling-j/discussion_threads/1092.
+\centering
+\begin{tabular}{|c|}
+	\hline 
+	\begin{tabular}{lr}
+		\makecell{
+			\textit{From:} Alice\\ 
+			\textit{To:} Bob, Brian\\
+			\textit{Subject:} RE: Telephone Call with Jerry Murdock} &
+		\textit{Sent:} Mon, 14 May 2001 07:15 AM
+	\end{tabular}
+	\\ 
+	\hline 
+	\begin{lstlisting}
+	Thank you for your help.
+	
+	
+	
+	
+	ISC Hotline
+	03/15/2001 10:32 AM
+	
+	Sent by: Randi Howard
+	To: Jeff Skilling/Corp/Enron@ENRON
+	cc:  
+	
+	Subject: Re: My "P" Number  
+	
+	Mr. Skilling:
+	
+	Your P number is P00500599.  For your convenience, you can also go to 
+	http://isc.enron.com/site/ under Site Highlights and reset your password or 
+	find your "P" number.
+	
+	
+	Thanks,
+	
+	Randi Howard
+	ISC HOTLINE
+	
+	
+	
+	
+	
+	From:  Jeff Skilling                           03/15/2001 10:01 AM
+	
+	
+	To: ISC Hotline/Corp/Enron@Enron
+	cc:  
+	
+	Subject: My "P" Number
+	
+	Could you please forward my "P" number.  I am unable to get into the XMS 
+	system and need this ASAP.
+	
+	Thanks for your help.
+	\end{lstlisting}
+	\\ 
+	\hline 
+\end{tabular} 
+\end{figure}
+
+
+
+
 
 \section{Related Work}
-\cite{rfa} (detecting request for action) works better with zoning (see \cite{zones}), removes noise and focuses on text itself (excluding signature etc)
 
-\cite{zones} "Zebra" detects nine different zones, only last email in thread is considered, rest is quoted, classifies lines individually with features using SVM, three zones with 0.91 accuracy, 9 zones 0.87 accuracy; context features didn't add improve performance
 
-\cite{profiling} don't describe much, uses CRF inspired by \cite{signature}, five categories (author text, signature, advertisement, quoted text, reply lines), for eval using three zones with accuracy 0.88, F1 0.9, compared with \cite{signature} 0.64 and 0.75 on their data
+%\cite{rfa} (detecting request for action) works better with zoning (see \cite{zones}), removes noise and focuses on text itself (excluding signature etc)
 
-\cite{signature} "Jangada" detects signature and reply lines, only considers the last $n$ lines, using CRF with 0.97 accuracy, CPerceptron with 0.989 accuracy; extraction task only performed on mails known to contain signatures! used 20 newsgroup dataset \cite{20news}
+%\cite{zones} "Zebra" detects nine different zones, only last email in thread is considered, rest is quoted, classifies lines individually with features using SVM, three zones with 0.91 accuracy, 9 zones 0.87 accuracy; context features didn't add improve performance
 
-\cite{headerless} look for overlaps in enron dataset to split mails into parts of the conversation; closest to our task; we don't consider full dataset though (looking at each mail individually); their goal is to then reassemble the conversation threads, tested on 20 threads (leading to 465 mails), claim accuracy approaching 100\%
+%\cite{profiling} don't describe much, uses CRF inspired by \cite{signature}, five categories (author text, signature, advertisement, quoted text, reply lines), for eval using three zones with accuracy 0.88, F1 0.9, compared with \cite{signature} 0.64 and 0.75 on their data
 
-\cite{similarity} similar to \cite{headerless}
+%\cite{signature} "Jangada" detects signature and reply lines, only considers the last $n$ lines, using CRF with 0.97 accuracy, CPerceptron with 0.989 accuracy; extraction task only performed on mails known to contain signatures! used 20 newsgroup dataset \cite{20news}
 
-[citation needed] previous social network analysis wrong, because not considering full picture
+%\cite{headerless} look for overlaps in enron dataset to split mails into parts of the conversation; closest to our task; we don't consider full dataset though (looking at each mail individually); their goal is to then reassemble the conversation threads, tested on 20 threads (leading to 465 mails), claim accuracy approaching 100\%
 
-\cite{workhard} overview of recent technologies applied to enron and avocado (personal business classification + SNA)
+%\cite{similarity} similar to \cite{headerless}
 
-\cite{replying} also recent, on avocado, reply behaviour, only "main header"
+%[citation needed] previous social network analysis wrong, because not considering full picture
 
-\cite{enron} enron corpus
+%\cite{workhard} overview of recent technologies applied to enron and avocado (personal business classification + SNA)
 
-\cite{avocado} avocado corpus
+%\cite{replying} also recent, on avocado, reply behaviour, only "main header"
 
-[citation needed] shneiderman corpus
+%\cite{enron} enron corpus
 
-\cite{20news} 20 newsgroups
+%\cite{avocado} avocado corpus
+
+%[citation needed] shneiderman corpus
+
+%\cite{20news} 20 newsgroups
 
 \section{Segmentation of Emails}
 describe an overview
