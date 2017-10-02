@@ -261,6 +261,49 @@ In case of conflicts, the predominant or detailed type is used.
 
 
 \section{Related Work}
+% structure outline
+% 1. show some tasks where authors found, that cleaning bodies is needed
+% 2. highlight previous tasks/approaches (aligning, extract first message, multi zone)
+% 2.1 jamison et al, yeh et al
+% 2.2 carvalho using cperceptron (collins)
+% 2.3 lampert et al zoning + request for action (highlight improvements through zoning first)
+%     similarly rauscher et al (knowledge zoning), estival et al (author profiling)
+
+Email corpora provide fascinating insights into human communication behaviour and therefore inspire research in many different areas.
+Datasets such as the Enron or Avocado corpus~\cite{avocado,enron} provide real world information about business communication and contain not only professional emails, but also personal emails as well as spam.
+A recent survey provides a detailed overview of the multitude email classification tasks alone~\cite{classification}.
+Similarly interesting is the analysis of communication networks based on meta-data such as senders, recipients, and time.
+
+Models based on the written content of emails may get confused by automatically inserted text blocks or quoted messages.
+Thus, working with real world data requires the need to normalise data prior to the problem at hand.
+Rauscher et al. developed an approach to detect zones inside work-related emails where relevant business knowledge may be found~\cite{rauscher2015context}.
+In their work towards detecting emails containing requests for action, Lampert et al. compare the performance of their model on full emails (which may contain quoted text) against the same emails after automatically removing quoted sections and managed to achieve a relative error reduction by 40\%~\cite{rfa}.
+Similar observations were made more recently predicting reply behaviour within the Avocado dataset~\cite{replying}.
+
+We identified two approaches in the literature on separating email zones.
+Assuming a complete email corpus, with the email archives of all users, a message in the outbox of one user is found in the inbox of another.
+Likewise, quoted messages exist within the corpus as an original message from preceding communication.
+By finding overlapping text passages across the corpus, Jamison et al. managed to resolve email threads of the Enron corpus almost perfectly~\cite{headerless}.
+It has to be noted, that the claimed accuracy of almost 100\% was only tested on 20 email threads.
+In order to reassemble email threads, Yeh et al. considered a similar approach with a more elaborate evaluation reaching an accuracy of ??\%~\cite{similarity}.
+
+In this paper, we don't assume a complete corpus to be able to extract all information from only a single email archive or even a single email.
+Carvalho and Cohn proposed Jangada, a system to remove quoted text and signature blocks from emails in the 20 newsgroup dataset~\cite{signature,20news}.
+They first classify emails to find those, that contain quoted text or signatures and then classify each line individually using Conditional Random Fields and Collin's Perceptrons~\cite{crf, cperceptron}.
+Reported accuracies range from 97\% to above 99\%.
+Those result could not be reproduced on our dataset and modified task.
+Similar findings are confirmed by Estival et al., who measured an accuracy of around 64\% using Jangada on a different dataset~\cite{profiling}.
+Using CRFs, they managed to extract five different zones (author text, signature, advertisement, quoted text and reply lines) with an average accuracy of up to88\%.
+
+Most similar to our problem statement is the Zebra system by Lampert et al., which was developed for their previously mentioned work on requests for action~\cite{zones,rfa}.
+The definition of zones is very similar to ours.
+Contrary to our objectives, Zebra only tries to identify the zones within the very last message within an email thread and reject the rest as quoted text, whereas we aim to detect the zones across the entire email.
+They describe graphic, orthographic, and lexical features to represent each line and classify line by line using an SVM reaching an average accuracy of 93\% on the two-zone task and 87\% on a nine-zone task.
+It was found, that adding contextual features didn't improve the performance.
+Comparing the performance by zone type, most problems are caused by signature lines (F-score around 60\%), signoffs (70\%) and attachements (69\%).
+
+In our work we aim to improve upon those results, while providing a system that is able to detect zones along the entire conversation thread contained in an email and not only the first part.
+This way even very small or incomplete datasets can be utilised for downstream tasks like social network analysis, speech acts and other classification tasks.
 
 
 %\cite{rfa} (detecting request for action) works better with zoning (see \cite{zones}), removes noise and focuses on text itself (excluding signature etc)
