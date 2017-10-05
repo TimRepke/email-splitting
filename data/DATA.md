@@ -1,3 +1,4 @@
+# Enron
 ## build index
 see script in scripts folder
 
@@ -49,3 +50,14 @@ cat email-splitting/data/enron/annotation_index.csv | grep  "^2" | cut -d, -f5 |
 ```
 
 
+# Apache Dataset
+http://mail-archives.apache.org/mod_mbox/
+
+EVAL: 50 mails from flink-user
+TEST: 100 mails from groovy-users
+TRAIN: 250 mails form hadoop-user
+
+Randomly select last mail of a thread within 2017.
+
+# Other Datasets
+https://news.ycombinator.com/item?id=2165497

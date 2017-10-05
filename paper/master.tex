@@ -8,7 +8,7 @@
 \usepackage{makeidx}  % allows for indexgeneration
 \usepackage{graphicx}
 \usepackage{subcaption}
-
+\usepackage{booktabs}
 \usepackage{listings}
 \lstdefinestyle{mystyle}{
 	%backgroundcolor=\color{backcolour},   
@@ -167,9 +167,10 @@ Further we show improvements in flexibility and performance over earlier work on
 %our goal: clean up emails properly, don't assume full corpus, therefore keep all information
 
 \subsection{Problem statement}
-In this paper we propose methods to identify the inherent structure of free text email messages.
+In this paper we propose approaches to extract the inherent structure of free text emails containing a conversation thread composed of consecutive quoted or forwarded messages.
 Components of an email are referred to as \textit{zones} similar to definition used by Lampert et al~\cite{zones}.
-We assume, that text of a single email containing a discussion is represented as a sequence of headers and bodies, which is consistent with messages in the Enron corpus.
+We assume that a conversation thread is represented as a sequence of \textit{header and body blocks}, which is consistent with emails in the Enron corpus.
+A pair of corresponding header and body is called \textit{conversational part} or \textit{message}.
 
 Hereby headers are blocks of meta-data automatically inserted by an email program, containing the sender, recipient, date, and subject.
 Usually the header indicates, whether the subsequent message body was forwarded or replied to by the text above.
@@ -177,7 +178,7 @@ Bodies are the actual written messages, which on reply or forward are quoted bel
 
 Message bodies are further separated into a \textit{greeting} (such as a formal or informal address of the recipient at the beginning of the message), \textit{authored text} (the actual message), \textit{signoff} (closing words of the message), and a \textit{signature} (containing contact information, advertising, or legal disclaimers).
 
-Without loss of generality we consider exactly one zone type per line as exemplary shown in \Fref{fig:examplemail}.
+Without loss of generality, we consider exactly one zone type per line as \Fref{fig:examplemail} exemplary shows.
 In case of conflicts, the predominant or detailed type is used.
 
 
@@ -349,27 +350,58 @@ continue training for further classification of body and header parts individual
 \section{Experimental Setup}
 
 \subsection{Dataset}
-describe how data is selected from enron corpus (800: 500 train, 200 test, 100 eval)
+We evaluate our proposed approach to email zoning on the Enron Corpus~\cite{enron} and emails gathered from public mail archives of the Apache Software Foundation (ASF)\footnote{\url{http://mail-archives.apache.org/mod\_mbox/}}. 
+Estival et al. and Lampert et al. discussed shortcomings in working with Usenet-style emails, so we refrain from using the 20 newsgroup dataset as was done for the Jangada system ~\cite{profiling,zones,20news}.
+We found that more recent email threads from the ASF archives, especially those on user oriented mailinglists, offer diverse formatting patterns.
 
-annotated very detailed, even with some entity linking and signature parts, considered level of detail: header, body, signature, intro/outro; one annotator
+Each dataset is divided into three subsets for training, testing, and final evaluation.
+Emails are sampled at random from their respective original dataset and put into one of those subsets.
+To ensure representative results that are not biased by author or domain, sampling per subset is restricted to distinct mailboxes (Enron) or mailing lists (ASF).
 
-some numbers comparing raw data and contained information in \Fref{tab:dataset}
-
+Prior to sampling from the Enron corpus, duplicates are removed based on sender, recipient(s), and time provided by structured email meta data.
+This reduces the corpus almost by 50\%, which confirms the assumption of a full dataset, where an email in one's sent folder is also found in someone else's archive.
 \begin{table}
 	\centering
-	\caption{Experimental Results}
+	\caption{Dataset Statistics}
 	\label{tab:dataset}
-	\begin{tabular}{|c|ccc|}
-		\hline
-		Approach & Train & Test & Eval\\ \hline
-		Raw Mails& 500 & 200 & 100\\
-		Actual num mails & ? & ? & ? \\
-		Avg Threadlen & ? & ? & ?\\
-		signatures & ? & ? & ? \\
-		people extracted (raw) & ?(?) & ?(?) & ?(?)\\
-		\hline	
+	
+	\begin{tabular}{ccccccc}
+		\toprule
+		& \multicolumn{3}{c}{Enron} &  \multicolumn{3}{c}{ASF} \\
+		\cmidrule(lr){2-4}
+		\cmidrule(lr){5-7}
+		& Train    & Test   & Eval   & Train   & Test   & Eval  \\
+		\midrule
+		Emails                    & 500      & 200    & 100    &   250   &  100   &   50  \\
+		Individual messages       & ?        & ?      & ?      &         &        &       \\
+		Average length of threads & ?        & ?      & ?      &         &        &       \\
+		Number of Signatures      & ?        & ?      & ?      &         &        &       \\
+		\bottomrule
 	\end{tabular}
 \end{table}
+\Fref{tab:dataset} shows an overview of the selected dataset and the expected number of messages to be extracted.
+These initial statistics are consistent with prior heuristic analysis of the dataset, where 60\% of emails are estimated to contain conversation threads~\cite{enron}.
+
+Our selected subsets of the Enron corpus are annotated with spans of characters nested by level of detail of their type.
+Hereby the most coarse span types are headers and bodies.
+Span types within a header are Subject, Person Name, Email Address, Date, and Time.
+Within a body the following span types are annotated: Greeting and Signoff, Person Name within those, and Signatures. Signatures are further broken down into Name, Organisation, Addresses, Phone Numbers, Attachments, and Disclaimers.
+
+Spans containing names are linked as alias if they refer to the same person.
+Other supplementary information such as organisations a person works for or contact details are also linked accordingly.
+Although this level of detail exceeds the requirements for the objective of this paper, it provides valuable data for downstream tasks in future work.
+
+
+%We hope to inspire future work in the area [knowledge graph]
+
+% describe how data is selected from enron corpus (800: 500 train, 200 test, 100 eval)
+% annotated very detailed, even with some entity linking and signature parts, considered level of detail: header, body, signature, intro/outro; one annotator
+% some numbers comparing raw data and contained information in \Fref{tab:dataset}
+% based on subject and sender/recipient around 60% threads\cite{enron}
+% we removed duplicates based users and time, about 50%
+% https://hpi.de//naumann/projects/web-science/business-communication-analysis/email-structure.html
+% https://github.com/TimRepke/email-splitting
+
 
 \subsection{Competing Approaches}
 baseline (regex+rules)
