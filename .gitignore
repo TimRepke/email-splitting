@@ -4,7 +4,7 @@ scripts/Jangada/mtwrap/
 !scripts/Jangada/mtwrap/src/edu/hpi/minorthird/wrapper/Main.java
 !scripts/Jangada/mtwrap/lib/minorthird-20070122.jar
 tools/
-
+*logs/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

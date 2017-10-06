@@ -360,6 +360,7 @@ To ensure representative results that are not biased by author or domain, sampli
 
 Prior to sampling from the Enron corpus, duplicates are removed based on sender, recipient(s), and time provided by structured email meta data.
 This reduces the corpus almost by 50\%, which confirms the assumption of a full dataset, where an email in one's sent folder is also found in someone else's archive.
+
 \begin{table}
 	\centering
 	\caption{Dataset Statistics}
@@ -379,8 +380,11 @@ This reduces the corpus almost by 50\%, which confirms the assumption of a full 
 		\bottomrule
 	\end{tabular}
 \end{table}
+
 \Fref{tab:dataset} shows an overview of the selected dataset and the expected number of messages to be extracted.
-These initial statistics are consistent with prior heuristic analysis of the dataset, where 60\% of emails are estimated to contain conversation threads~\cite{enron}.
+Prior heuristic analysis of the Enron corpus estimated 60\% of emails to contain conversation threads~\cite{enron}, which is close to our annotated data.
+On average an email has two parts with 20 lines per message.
+Only a few messages contain a signature, which on average are six lines long.
 
 Our selected subsets of the Enron corpus are annotated with spans of characters nested by level of detail of their type.
 Hereby the most coarse span types are headers and bodies.
@@ -404,15 +408,28 @@ Although this level of detail exceeds the requirements for the objective of this
 
 
 \subsection{Competing Approaches}
-baseline (regex+rules)
+We compare our proposed model for extracting zones from emails against several other approaches.
+Most notably, Jangada and Zebra~\cite{zones,signature} are reimplemented with slight modifications to fit the more refined problem statement.
+Both systems originally are intended to distinguish lines within an email, which are not part of the latest message of that thread.
+Clearly that deviates from our goal to extract all individual parts and detect zones with additional detail within them.
+Since the systems are supposed to detect zones within the first part of the email, their features and underlying models should in principle also work on our task.
 
-reimplement zebra\footnote{\url{http://zebra.thoughtlets.org/zoning.php}} and jangada\footnote{\url{http://www.cs.cmu.edu/~vitor/software/jangada/}}
+The source code for Jangada is freely available on the author's web page\footnote{\url{http://www.cs.cmu.edu/~vitor/software/jangada/}}.
+We used the source code as a basis for an implementation in Python, however continue to use the the same implementation of the Collins Perceptron for sequence labelling, which is part of the MinorThird Library~\cite{minorthird,cperceptron}.
+For the extraction of signatures, Jangada originally only considers the last ten lines of an email.
+In our implementation, the perceptron performs a multi-class classification along all lines of the email corresponding to zone types defined earlier.
 
-describe differences, what needs to be changed to make it fair
 
-RNN with features
 
-show which task is more or less comparable between all
+
+\footnote{\url{http://zebra.thoughtlets.org/zoning.php}}\footnote{\url{https://github.com/gerhardgossen/soZebra}}
+
+%baseline (regex+rules)
+%reimplement zebra\footnote{\url{http://zebra.thoughtlets.org/zoning.php}} https://github.com/gerhardgossen/soZebra
+%jangada\footnote{\url{http://www.cs.cmu.edu/~vitor/software/jangada/}}
+%describe differences, what needs to be changed to make it fair
+% RNN with features
+%show which task is more or less comparable between all
 
 \subsection{Learning Model Parameters}
 

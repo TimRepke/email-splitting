@@ -427,3 +427,28 @@ class AnnotatedEmails:
     @property
     def five_zones_labels_numeric_full(self):
         return [m.five_zones_labels_numeric for m in self.full_set]
+
+
+class AnnotatedEmailsIterator:
+    def __init__(self, folder):
+        self.folder = folder
+
+    def _iterator(self, split):
+        for root, _, files in os.walk(self.folder):
+            for file in files:
+                if file.endswith('.txt.ann'):
+                    fname = os.path.join(root, file)
+                    if split in fname:
+                        yield AnnotatedEmail(fname, False)
+
+    @property
+    def test(self):
+        return self._iterator('test')
+
+    @property
+    def eval(self):
+        return self._iterator('eval')
+
+    @property
+    def train(self):
+        return self._iterator('train')
