@@ -295,6 +295,7 @@ Reported accuracies range from 97\% to above 99\%.
 Those result could not be reproduced on our dataset and modified task.
 Similar findings are confirmed by Estival et al., who measured an accuracy of around 64\% using Jangada on a different dataset~\cite{profiling}.
 Using CRFs, they managed to extract five different zones (author text, signature, advertisement, quoted text and reply lines) with an average accuracy of up to88\%.
+%hotmail emails
 
 Most similar to our problem statement is the Zebra system by Lampert et al., which was developed for their previously mentioned work on requests for action~\cite{zones,rfa}.
 The definition of zones is very similar to ours.
@@ -357,6 +358,7 @@ We found that more recent email threads from the ASF archives, especially those 
 Each dataset is divided into three subsets for training, testing, and final evaluation.
 Emails are sampled at random from their respective original dataset and put into one of those subsets.
 To ensure representative results that are not biased by author or domain, sampling per subset is restricted to distinct mailboxes (Enron) or mailing lists (ASF).
+The ASF dataset was compiled by randomly selecting emails from the \textit{flink-user}, \textit{groovy-users}, and \textit{hadoop-user} mailing list archives.
 
 Prior to sampling from the Enron corpus, duplicates are removed based on sender, recipient(s), and time provided by structured email meta data.
 This reduces the corpus almost by 50\%, which confirms the assumption of a full dataset, where an email in one's sent folder is also found in someone else's archive.
@@ -395,7 +397,6 @@ Spans containing names are linked as alias if they refer to the same person.
 Other supplementary information such as organisations a person works for or contact details are also linked accordingly.
 Although this level of detail exceeds the requirements for the objective of this paper, it provides valuable data for downstream tasks in future work.
 
-
 %We hope to inspire future work in the area [knowledge graph]
 
 % describe how data is selected from enron corpus (800: 500 train, 200 test, 100 eval)
@@ -419,10 +420,12 @@ We used the source code as a basis for an implementation in Python, however cont
 For the extraction of signatures, Jangada originally only considers the last ten lines of an email.
 In our implementation, the perceptron performs a multi-class classification along all lines of the email corresponding to zone types defined earlier.
 
+The Zebra project web page\footnote{\url{http://zebra.thoughtlets.org/zoning.php}} does only provide annotated data, but not the system's source code. 
+Gossen et al. implemented\footnote{\url{https://github.com/gerhardgossen/soZebra}} it for their work on classification of action items in emails~\cite{sozebra}.
+Our Python implementation is derived from that and adapted to our specific task description.
 
 
 
-\footnote{\url{http://zebra.thoughtlets.org/zoning.php}}\footnote{\url{https://github.com/gerhardgossen/soZebra}}
 
 %baseline (regex+rules)
 %reimplement zebra\footnote{\url{http://zebra.thoughtlets.org/zoning.php}} https://github.com/gerhardgossen/soZebra
