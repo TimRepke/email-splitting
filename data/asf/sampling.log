@@ -1,0 +1,901 @@
+{'eval': {'cnt': 5210,
+          'depths': {'0': 1081,
+                     '1': 1377,
+                     '10': 31,
+                     '11': 21,
+                     '12': 18,
+                     '13': 14,
+                     '14': 11,
+                     '15': 5,
+                     '16': 4,
+                     '17': 3,
+                     '18': 2,
+                     '19': 1,
+                     '2': 916,
+                     '20': 1,
+                     '3': 605,
+                     '4': 413,
+                     '5': 278,
+                     '6': 189,
+                     '7': 119,
+                     '8': 75,
+                     '9': 46},
+          'months': {'1': 576,
+                     '10': 127,
+                     '2': 582,
+                     '3': 508,
+                     '4': 415,
+                     '5': 474,
+                     '6': 670,
+                     '7': 476,
+                     '8': 737,
+                     '9': 645}},
+ 'test': {'cnt': 5603,
+          'depths': {'0': 1690,
+                     '1': 1670,
+                     '10': 19,
+                     '11': 13,
+                     '12': 12,
+                     '13': 4,
+                     '14': 2,
+                     '15': 2,
+                     '16': 1,
+                     '17': 1,
+                     '2': 875,
+                     '3': 499,
+                     '4': 322,
+                     '5': 198,
+                     '6': 128,
+                     '7': 78,
+                     '8': 55,
+                     '9': 34},
+          'months': {'1': 889,
+                     '10': 94,
+                     '2': 744,
+                     '3': 621,
+                     '4': 564,
+                     '5': 549,
+                     '6': 645,
+                     '7': 520,
+                     '8': 525,
+                     '9': 452}},
+ 'train': {'cnt': 6613,
+           'depths': {'0': 1496,
+                      '1': 1853,
+                      '10': 28,
+                      '11': 17,
+                      '12': 15,
+                      '13': 12,
+                      '14': 9,
+                      '15': 5,
+                      '16': 4,
+                      '17': 3,
+                      '18': 1,
+                      '19': 1,
+                      '2': 1188,
+                      '20': 1,
+                      '3': 746,
+                      '4': 453,
+                      '5': 294,
+                      '6': 211,
+                      '7': 143,
+                      '8': 85,
+                      '9': 48},
+           'months': {'1': 591,
+                      '10': 185,
+                      '2': 671,
+                      '3': 932,
+                      '4': 773,
+                      '5': 803,
+                      '6': 707,
+                      '7': 669,
+                      '8': 662,
+                      '9': 620}}}
+========================= TRAIN =========================
+Selected 250 indices from 6613 mails:  [6496, 1838, 4260, 5242, 1005, 328, 5690, 156, 360, 6004, 2037, 3692, 4932, 298, 3983, 10, 1518, 3087, 4951, 6297, 2361, 5675, 787, 3910, 2748, 4719, 253, 690, 5707, 4849, 6338, 1491, 1829, 6538, 4019, 1919, 3567, 6343, 964, 3175, 1086, 5566, 861, 2861, 1649, 4357, 6048, 309, 6044, 1168, 3638, 3738, 4085, 2940, 2791, 3809, 3318, 2795, 1483, 5766, 2944, 5851, 275, 2222, 4879, 5745, 5509, 522, 5888, 947, 619, 3101, 3655, 5386, 5022, 2228, 2271, 2670, 4873, 2336, 3457, 6504, 3288, 4141, 5990, 5192, 5946, 4091, 5920, 3412, 4145, 182, 5685, 2752, 2303, 772, 4122, 1243, 4398, 356, 6326, 1125, 1437, 542, 5082, 4724, 894, 243, 232, 1830, 5270, 5763, 5158, 2251, 5743, 2884, 2369, 496, 3954, 1507, 2107, 712, 5460, 437, 6204, 47, 6147, 3808, 5479, 5891, 98, 3250, 2508, 5056, 1795, 3041, 5653, 3429, 4772, 5960, 3535, 2815, 1925, 4034, 3447, 4180, 975, 679, 6205, 4811, 3089, 3856, 1379, 769, 4333, 1691, 3176, 1587, 943, 2593, 5214, 4782, 902, 6358, 3763, 500, 1552, 1704, 1599, 609, 1155, 879, 4194, 2072, 2638, 4936, 2746, 2660, 6546, 2478, 6079, 1214, 1222, 3088, 1496, 1346, 4401, 4916, 3584, 5713, 3011, 6525, 2395, 2492, 372, 4475, 1889, 1786, 3151, 5028, 867, 1608, 5392, 1553, 4417, 1847, 6025, 429, 5152, 6468, 5334, 6280, 2244, 3462, 1257, 483, 2857, 6372, 1230, 2798, 4362, 521, 2309, 6212, 2993, 1815, 450, 5060, 693, 311, 2192, 2470, 391, 5662, 4804, 582, 6506, 359, 1523, 3389, 1645, 4975, 345, 4359, 2140, 4822, 3450, 153, 4677, 5151]
+> index: 6496 | id: <A4C8E8CD-339F-45F1-840C-9C11AE876CB1@sematext.com> | from: Emir Arnautović | date: Wed, 04 Oct, 11:27 | month: 10 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201710.mbox/raw/<A4C8E8CD-339F-45F1-840C-9C11AE876CB1@sematext.com>/
+> index: 1838 | id: <DE8E3E6A79114D4AAC6CC809703A1F234C7D6E9B@EUSDWSMAILM01.logistics.corp> | from: Liu, Daphne | date: Fri, 17 Mar, 17:16 | month: 03 | depth: 5
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<DE8E3E6A79114D4AAC6CC809703A1F234C7D6E9B@EUSDWSMAILM01.logistics.corp>/
+> index: 4260 | id: <CAJuqOK+0fvT8oMX=jLKKZ09gfB6HnsnTAgH+damUV0xJsLfzxA@mail.gmail.com> | from: Susheel Kumar | date: Wed, 21 Jun, 19:47 | month: 06 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CAJuqOK+0fvT8oMX=jLKKZ09gfB6HnsnTAgH+damUV0xJsLfzxA@mail.gmail.com>/
+> index: 5242 | id: <1502647336131-4350413.post@n3.nabble.com> | from: SOLR4189 | date: Sun, 13 Aug, 18:02 | month: 08 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<1502647336131-4350413.post@n3.nabble.com>/
+> index: 1005 | id: <1c648d64-a810-45f0-5e36-001de410d136@helsinki.fi> | from: Ere Maijala | date: Tue, 14 Feb, 11:13 | month: 02 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<1c648d64-a810-45f0-5e36-001de410d136@helsinki.fi>/
+> index: 328 | id: <f4727a0b-e5a2-daab-7f6e-c1c7473b7de8@gmail.com> | from: Joe Obernberger | date: Thu, 19 Jan, 18:24 | month: 01 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<f4727a0b-e5a2-daab-7f6e-c1c7473b7de8@gmail.com>/
+> index: 5690 | id: <CAN+whnJJYot9rXRPkeaRz+tdN+8KRSydrV8MpA+h-q8VVmX=4A@mail.gmail.com> | from: Nawab Zada Asad Iqbal | date: Fri, 25 Aug, 22:38 | month: 08 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<CAN+whnJJYot9rXRPkeaRz+tdN+8KRSydrV8MpA+h-q8VVmX=4A@mail.gmail.com>/
+> index: 156 | id: <CABTTd9gqQDWbgncSxtj6CGk+OQdDdusjyYrWH63vDCO0oLF3mg@mail.gmail.com> | from: Narsimha Reddy CHALLA | date: Mon, 09 Jan, 10:12 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<CABTTd9gqQDWbgncSxtj6CGk+OQdDdusjyYrWH63vDCO0oLF3mg@mail.gmail.com>/
+> index: 360 | id: <1484894472093-4314990.post@n3.nabble.com> | from: Keiichi MORITA | date: Fri, 20 Jan, 06:41 | month: 01 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<1484894472093-4314990.post@n3.nabble.com>/
+> index: 6004 | id: <D5DD87A1.3BB6B%frank.kelly@here.com> | from: Kelly, Frank | date: Tue, 12 Sep, 16:47 | month: 09 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<D5DD87A1.3BB6B%frank.kelly@here.com>/
+FAILED HTTP request!
+> index: 2037 | id: <1490544332726-4326865.post@n3.nabble.com> | from: marotosg | date: Sun, 26 Mar, 16:05 | month: 03 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<1490544332726-4326865.post@n3.nabble.com>/
+> index: 3692 | id: <1495783174472-4337403.post@n3.nabble.com> | from: Chien Nguyen | date: Fri, 26 May, 07:19 | month: 05 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<1495783174472-4337403.post@n3.nabble.com>/
+> index: 4932 | id: <006aaaa5-56f2-ea16-11b5-39deff6218b9@elyograg.org> | from: Shawn Heisey | date: Thu, 20 Jul, 11:10 | month: 07 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<006aaaa5-56f2-ea16-11b5-39deff6218b9@elyograg.org>/
+> index: 298 | id: <alpine.DEB.2.11.1701151719080.25873@tray> | from: Chris Hostetter | date: Mon, 16 Jan, 00:26 | month: 01 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<alpine.DEB.2.11.1701151719080.25873@tray>/
+> index: 3983 | id: <CAJuqOK+feDV1e8J+bEDCQc-M9HLGe2HxTWe+WsTZnWPmKh1U0Q@mail.gmail.com> | from: Susheel Kumar | date: Fri, 09 Jun, 12:32 | month: 06 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CAJuqOK+feDV1e8J+bEDCQc-M9HLGe2HxTWe+WsTZnWPmKh1U0Q@mail.gmail.com>/
+> index: 10 | id: <e329c2e6-4c34-2084-91c5-156117f9a264@gmx.net> | from: Hendrik Haddorp | date: Tue, 03 Jan, 09:59 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<e329c2e6-4c34-2084-91c5-156117f9a264@gmx.net>/
+> index: 1518 | id: <8ca8252c-421c-fe5e-2a93-4abac4b5589a@elyograg.org> | from: Shawn Heisey | date: Wed, 08 Mar, 16:24 | month: 03 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<8ca8252c-421c-fe5e-2a93-4abac4b5589a@elyograg.org>/
+> index: 3087 | id: <CAOOKt50J5fHX_B2MrgfBuDh17Tz2pB90iTC6oz4CGzSMKYfNuA@mail.gmail.com> | from: Shalin Shekhar Mangar | date: Thu, 04 May, 07:07 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<CAOOKt50J5fHX_B2MrgfBuDh17Tz2pB90iTC6oz4CGzSMKYfNuA@mail.gmail.com>/
+> index: 4951 | id: <CAF2DzVXzVC5ofWG=2dPJx9FuxqmYj0sENSP3cfQoSrWxyZ3Yyw@mail.gmail.com> | from: Zheng Lin Edwin Yeo | date: Thu, 20 Jul, 02:14 | month: 07 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<CAF2DzVXzVC5ofWG=2dPJx9FuxqmYj0sENSP3cfQoSrWxyZ3Yyw@mail.gmail.com>/
+> index: 6297 | id: <CAJ6zLTWQLgGHAa_H2fkFtKoHMJ77_0hea0dt2uhyUNRq_9t_Vw@mail.gmail.com> | from: Sundeep T | date: Mon, 25 Sep, 18:42 | month: 09 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<CAJ6zLTWQLgGHAa_H2fkFtKoHMJ77_0hea0dt2uhyUNRq_9t_Vw@mail.gmail.com>/
+> index: 2361 | id: <CAEttBSgngrKSwKoujvyr6ZQfxHD3a-6QNB62mQKZQSRGpgVQPA@mail.gmail.com> | from: kshitij tyagi | date: Sat, 08 Apr, 14:53 | month: 04 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CAEttBSgngrKSwKoujvyr6ZQfxHD3a-6QNB62mQKZQSRGpgVQPA@mail.gmail.com>/
+> index: 5675 | id: <CAN4YXvertkM-184PoL9i4grcfdOeSW4Uh-NAUmixYL=QRmbRCw@mail.gmail.com> | from: Erick Erickson | date: Fri, 25 Aug, 21:05 | month: 08 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<CAN4YXvertkM-184PoL9i4grcfdOeSW4Uh-NAUmixYL=QRmbRCw@mail.gmail.com>/
+> index: 787 | id: <CAF8TkC7Gik1OAECnPMuu60zObQLZxm4ZoM36aW8q155-4wodPg@mail.gmail.com> | from: Mikhail Khludnev | date: Mon, 06 Feb, 13:08 | month: 02 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<CAF8TkC7Gik1OAECnPMuu60zObQLZxm4ZoM36aW8q155-4wodPg@mail.gmail.com>/
+> index: 3910 | id: <1E467C96-E69F-4884-BED5-4E3DEC09A719@gmail.com> | from: Erik Hatcher | date: Tue, 06 Jun, 09:40 | month: 06 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<1E467C96-E69F-4884-BED5-4E3DEC09A719@gmail.com>/
+> index: 2748 | id: <CAKJSE7kmRA8jkm1i6vAN+oUjKE+kcMQBgAWSuCYfpOpVd+xhww@mail.gmail.com> | from: Pablo Anzorena | date: Fri, 21 Apr, 14:08 | month: 04 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CAKJSE7kmRA8jkm1i6vAN+oUjKE+kcMQBgAWSuCYfpOpVd+xhww@mail.gmail.com>/
+> index: 4719 | id: <CAF2DzVVTjdrcoxXHGdXY-BR2ASAuyJK3ajT0b-5g6AeDfR7vhQ@mail.gmail.com> | from: Zheng Lin Edwin Yeo | date: Thu, 13 Jul, 02:07 | month: 07 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<CAF2DzVVTjdrcoxXHGdXY-BR2ASAuyJK3ajT0b-5g6AeDfR7vhQ@mail.gmail.com>/
+> index: 253 | id: <1484243562710-4313743.post@n3.nabble.com> | from: Jeffery Yuan | date: Thu, 12 Jan, 17:52 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<1484243562710-4313743.post@n3.nabble.com>/
+> index: 690 | id: <312b4c0e-f55a-eb17-ded8-5545f9c0b750@gmx.net> | from: Hendrik Haddorp | date: Thu, 02 Feb, 12:58 | month: 02 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<312b4c0e-f55a-eb17-ded8-5545f9c0b750@gmx.net>/
+> index: 5707 | id: <CABS73CKT7HgvRiFsw=bsDRn5=1100ujYUke93QH5B2mVk1=S5Q@mail.gmail.com> | from: Renuka Srishti | date: Tue, 29 Aug, 06:48 | month: 08 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<CABS73CKT7HgvRiFsw=bsDRn5=1100ujYUke93QH5B2mVk1=S5Q@mail.gmail.com>/
+> index: 4849 | id: <1fadff2e33e8467e88ee40e110a04bae@mbx02.compass.user> | from: Florian Waltersdorfer | date: Mon, 17 Jul, 11:30 | month: 07 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<1fadff2e33e8467e88ee40e110a04bae@mbx02.compass.user>/
+> index: 6338 | id: <zarafa.59ca87e4.68a8.7e6ce7aa609a1279@mail1.ams.nl.openindex.io> | from: Markus Jelsma | date: Tue, 26 Sep, 17:01 | month: 09 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<zarafa.59ca87e4.68a8.7e6ce7aa609a1279@mail1.ams.nl.openindex.io>/
+> index: 1491 | id: <CAN4YXvcm=0KLTLfHJkYmvMERphFK0dod1T4A24YZ3N2wW_sJOQ@mail.gmail.com> | from: Erick Erickson | date: Tue, 14 Mar, 16:42 | month: 03 | depth: 6
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAN4YXvcm=0KLTLfHJkYmvMERphFK0dod1T4A24YZ3N2wW_sJOQ@mail.gmail.com>/
+> index: 1829 | id: <CALQXJ6M-HnohtSeAwPZpRQhG+vgPRQCQ+Xk4DpPK0C5+6VR+Fg@mail.gmail.com> | from: OTH | date: Fri, 17 Mar, 17:09 | month: 03 | depth: 5
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CALQXJ6M-HnohtSeAwPZpRQhG+vgPRQCQ+Xk4DpPK0C5+6VR+Fg@mail.gmail.com>/
+> index: 6538 | id: <CABEwPvF6eRicyKPVV_OuSEAVKkfxaj5XSkXoKLwWX+DET=VaSQ@mail.gmail.com> | from: David Smiley | date: Wed, 04 Oct, 20:26 | month: 10 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201710.mbox/raw/<CABEwPvF6eRicyKPVV_OuSEAVKkfxaj5XSkXoKLwWX+DET=VaSQ@mail.gmail.com>/
+> index: 4019 | id: <CAN4YXvd_EB857zi02ZTLESEdCygDRSqaqMFJ8biFOynY5M=dEw@mail.gmail.com> | from: Erick Erickson | date: Mon, 12 Jun, 16:57 | month: 06 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CAN4YXvd_EB857zi02ZTLESEdCygDRSqaqMFJ8biFOynY5M=dEw@mail.gmail.com>/
+> index: 1919 | id: <CANGA2_PMEq=3GpX2nwBi_RqfqZiyDgd1TjMCzb=qxfiXxb_bVg@mail.gmail.com> | from: David Hastings | date: Tue, 21 Mar, 18:51 | month: 03 | depth: 7
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CANGA2_PMEq=3GpX2nwBi_RqfqZiyDgd1TjMCzb=qxfiXxb_bVg@mail.gmail.com>/
+> index: 3567 | id: <CAC9-YrXjXyONTE-6dfk34A=HU5ATpuX67ok1rqaNagqBLYO9Yg@mail.gmail.com> | from: Damien Kamerman | date: Mon, 22 May, 23:17 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<CAC9-YrXjXyONTE-6dfk34A=HU5ATpuX67ok1rqaNagqBLYO9Yg@mail.gmail.com>/
+> index: 6343 | id: <1506504072711-0.post@n3.nabble.com> | from: sasarun | date: Wed, 27 Sep, 09:21 | month: 09 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<1506504072711-0.post@n3.nabble.com>/
+> index: 964 | id: <f79c4d52-0d3c-00b0-7c95-6a2e241d7e28@helsinki.fi> | from: Ere Maijala | date: Mon, 13 Feb, 12:46 | month: 02 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<f79c4d52-0d3c-00b0-7c95-6a2e241d7e28@helsinki.fi>/
+> index: 3175 | id: <ece5da43-a72d-4730-a055-b499d04b8f8c@default> | from: Mikhail Ibraheem | date: Fri, 05 May, 15:10 | month: 05 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<ece5da43-a72d-4730-a055-b499d04b8f8c@default>/
+> index: 1086 | id: <CAHOSFVgMSaXC2Uzr9zWifPdL9rsFBg-U+T7jFzuu9yFy27=3kg@mail.gmail.com> | from: Sadheera Vithanage | date: Tue, 21 Feb, 23:07 | month: 02 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<CAHOSFVgMSaXC2Uzr9zWifPdL9rsFBg-U+T7jFzuu9yFy27=3kg@mail.gmail.com>/
+> index: 5566 | id: <BN1PR04MB488946623C100CC3072E40F9F840@BN1PR04MB488.namprd04.prod.outlook.com> | from: Jagdish Vasani | date: Tue, 22 Aug, 06:05 | month: 08 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<BN1PR04MB488946623C100CC3072E40F9F840@BN1PR04MB488.namprd04.prod.outlook.com>/
+> index: 861 | id: <21935176-5149-45BE-8D7F-FC0ABDBCAB05@googlemail.com> | from: Florian Meier | date: Wed, 08 Feb, 20:54 | month: 02 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<21935176-5149-45BE-8D7F-FC0ABDBCAB05@googlemail.com>/
+> index: 2861 | id: <CANsFX051Gn_B8QZiBQxXp=o+QecRQ6UGDRZmf5E2n=m0pDg7gw@mail.gmail.com> | from: Dorian Hoxha | date: Wed, 26 Apr, 21:13 | month: 04 | depth: 5
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CANsFX051Gn_B8QZiBQxXp=o+QecRQ6UGDRZmf5E2n=m0pDg7gw@mail.gmail.com>/
+> index: 1649 | id: <CAHsXEHVsmjHCVLYfAVFYVc3hz7xMhRqboqMNhKRKnjk9Wc_e5Q@mail.gmail.com> | from: Furkan KAMACI | date: Mon, 13 Mar, 15:15 | month: 03 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAHsXEHVsmjHCVLYfAVFYVc3hz7xMhRqboqMNhKRKnjk9Wc_e5Q@mail.gmail.com>/
+> index: 4357 | id: <CAH8R_2bfo6MxfvxXqHxHNVV-JtRz3_6orrcmzvMo6mztathZRQ@mail.gmail.com> | from: Amrit Sarkar | date: Tue, 27 Jun, 12:11 | month: 06 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CAH8R_2bfo6MxfvxXqHxHNVV-JtRz3_6orrcmzvMo6mztathZRQ@mail.gmail.com>/
+> index: 6048 | id: <1505334376412-0.post@n3.nabble.com> | from: ruby | date: Wed, 13 Sep, 20:26 | month: 09 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<1505334376412-0.post@n3.nabble.com>/
+> index: 309 | id: <CAKiERN7VzZz2YMoVnwL++kaDXhWifBS3v67yYwdPqHi3B-BZgg@mail.gmail.com> | from: Anshum Gupta | date: Tue, 31 Jan, 00:36 | month: 01 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<CAKiERN7VzZz2YMoVnwL++kaDXhWifBS3v67yYwdPqHi3B-BZgg@mail.gmail.com>/
+> index: 6044 | id: <1505328973290-0.post@n3.nabble.com> | from: fabigol | date: Wed, 13 Sep, 18:56 | month: 09 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<1505328973290-0.post@n3.nabble.com>/
+> index: 1168 | id: <061e01d28d5e$c21abc60$46503520$@fr> | from: Bruno Mannina | date: Wed, 22 Feb, 22:55 | month: 02 | depth: 6
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<061e01d28d5e$c21abc60$46503520$@fr>/
+> index: 3638 | id: <1495781485.9553.147.camel@kb.dk> | from: Toke Eskildsen | date: Fri, 26 May, 06:51 | month: 05 | depth: 7
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<1495781485.9553.147.camel@kb.dk>/
+> index: 3738 | id: <CAMpSFXOm0CNY0t-EDhBV14epYOfwCdD+0g+rFZakxuCasvXNyg@mail.gmail.com> | from: Eirik Hungnes | date: Tue, 30 May, 16:17 | month: 05 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<CAMpSFXOm0CNY0t-EDhBV14epYOfwCdD+0g+rFZakxuCasvXNyg@mail.gmail.com>/
+> index: 4085 | id: <CAE4tqLPBE16SAzCysk-oY32rrO3aqqokckJZCNAiRRqQPAYZyQ@mail.gmail.com> | from: Joel Bernstein | date: Mon, 19 Jun, 00:15 | month: 06 | depth: 7
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CAE4tqLPBE16SAzCysk-oY32rrO3aqqokckJZCNAiRRqQPAYZyQ@mail.gmail.com>/
+> index: 2940 | id: <d3841133-6a16-3594-2b79-ec51bb3d33fe@elyograg.org> | from: Shawn Heisey | date: Fri, 28 Apr, 12:36 | month: 04 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<d3841133-6a16-3594-2b79-ec51bb3d33fe@elyograg.org>/
+> index: 2791 | id: <CAN4YXvd_bExkhO3Sr3fUzrddG0XnNjP+C5KLCCtk-q-KDr6DJg@mail.gmail.com> | from: Erick Erickson | date: Wed, 26 Apr, 15:30 | month: 04 | depth: 5
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CAN4YXvd_bExkhO3Sr3fUzrddG0XnNjP+C5KLCCtk-q-KDr6DJg@mail.gmail.com>/
+> index: 3809 | id: <1496338840677-4338503.post@n3.nabble.com> | from: SOLR4189 | date: Thu, 01 Jun, 17:40 | month: 06 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<1496338840677-4338503.post@n3.nabble.com>/
+> index: 3318 | id: <1494509346237-4334615.post@n3.nabble.com> | from: marotosg | date: Thu, 11 May, 13:29 | month: 05 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<1494509346237-4334615.post@n3.nabble.com>/
+> index: 2795 | id: <D5D9BFC3-6D40-4C6D-8C15-166DBA9DFEB6@smallbusinessconsultingexperts.com> | from: Sales | date: Tue, 25 Apr, 16:47 | month: 04 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<D5D9BFC3-6D40-4C6D-8C15-166DBA9DFEB6@smallbusinessconsultingexperts.com>/
+> index: 1483 | id: <58BEC74C.4010805@kelkoo.fr> | from: Elodie Sannier | date: Tue, 07 Mar, 14:44 | month: 03 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<58BEC74C.4010805@kelkoo.fr>/
+> index: 5766 | id: <CAJuqOKLU+i79QxvDF5NVWEfzwUNt5DMg4Z34gUhsENx2NzXOyA@mail.gmail.com> | from: Susheel Kumar | date: Wed, 30 Aug, 13:40 | month: 08 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<CAJuqOKLU+i79QxvDF5NVWEfzwUNt5DMg4Z34gUhsENx2NzXOyA@mail.gmail.com>/
+> index: 2944 | id: <CAL5zfJZOk9+VM1r+jNckSGZZ9jXL+ULVVYwpXu_co5X-j1x8Ew@mail.gmail.com> | from: Mahmoud Almokadem | date: Fri, 28 Apr, 15:01 | month: 04 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CAL5zfJZOk9+VM1r+jNckSGZZ9jXL+ULVVYwpXu_co5X-j1x8Ew@mail.gmail.com>/
+> index: 5851 | id: <zarafa.59a9d576.2e1a.0d7e16561bc7fa15@mail1.ams.nl.openindex.io> | from: Markus Jelsma | date: Fri, 01 Sep, 21:47 | month: 09 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<zarafa.59a9d576.2e1a.0d7e16561bc7fa15@mail1.ams.nl.openindex.io>/
+> index: 275 | id: <955CEC75-4D1E-40FD-8EBD-7804B962C86B@flax.co.uk> | from: Alan Woodward | date: Sat, 14 Jan, 09:23 | month: 01 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<955CEC75-4D1E-40FD-8EBD-7804B962C86B@flax.co.uk>/
+> index: 2222 | id: <CABd+1eLrGDRSK5BHB84QoMp3VWa5h1Pw7m0BV0t7tH9pRcHgWg@mail.gmail.com> | from: santosh sidnal | date: Mon, 03 Apr, 02:31 | month: 04 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CABd+1eLrGDRSK5BHB84QoMp3VWa5h1Pw7m0BV0t7tH9pRcHgWg@mail.gmail.com>/
+> index: 4879 | id: <CAN4YXvc8LdKRTxc_xYR+gPN7_6ZrcEf_HYY6Kd85V=sW4N2Fyg@mail.gmail.com> | from: Erick Erickson | date: Mon, 17 Jul, 19:19 | month: 07 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<CAN4YXvc8LdKRTxc_xYR+gPN7_6ZrcEf_HYY6Kd85V=sW4N2Fyg@mail.gmail.com>/
+> index: 5745 | id: <CAHM-LpvueLGjic7pO5GDouapVwbiWMw8RQ0N2W0HX5sr-MQREw@mail.gmail.com> | from: Diego Ceccarelli | date: Tue, 29 Aug, 16:35 | month: 08 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<CAHM-LpvueLGjic7pO5GDouapVwbiWMw8RQ0N2W0HX5sr-MQREw@mail.gmail.com>/
+> index: 5509 | id: <F6FC6063-894F-48CA-871E-63CB53A14F52@intelligencebank.com> | from: Eddie Trejo | date: Thu, 17 Aug, 03:55 | month: 08 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<F6FC6063-894F-48CA-871E-63CB53A14F52@intelligencebank.com>/
+> index: 522 | id: <zarafa.588b3cc9.1f14.531af61911c6daaf@mail1.ams.nl.openindex.io> | from: Markus Jelsma | date: Fri, 27 Jan, 12:27 | month: 01 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<zarafa.588b3cc9.1f14.531af61911c6daaf@mail1.ams.nl.openindex.io>/
+> index: 5888 | id: <CAN4YXvc96+273uueCtd=7_=fsHk3+dB_cuXyoveBH9J605c_fQ@mail.gmail.com> | from: Erick Erickson | date: Tue, 05 Sep, 13:47 | month: 09 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<CAN4YXvc96+273uueCtd=7_=fsHk3+dB_cuXyoveBH9J605c_fQ@mail.gmail.com>/
+> index: 947 | id: <adde35f8-f962-04b9-6944-02e2e75c58e1@gmail.com> | from: Yasufumi Mizoguchi | date: Mon, 13 Feb, 01:50 | month: 02 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<adde35f8-f962-04b9-6944-02e2e75c58e1@gmail.com>/
+> index: 619 | id: <1487136238798-4320427.post@n3.nabble.com> | from: mohanmca01 | date: Wed, 15 Feb, 05:23 | month: 02 | depth: 7
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<1487136238798-4320427.post@n3.nabble.com>/
+> index: 3101 | id: <CAHSW19EO82Kt96px3vQpYA8hrNWAzLhLQYpwaxb4ymTxH9qs7g@mail.gmail.com> | from: Satya Marivada | date: Thu, 11 May, 17:27 | month: 05 | depth: 8
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<CAHSW19EO82Kt96px3vQpYA8hrNWAzLhLQYpwaxb4ymTxH9qs7g@mail.gmail.com>/
+> index: 3655 | id: <bccab476-96a9-e2fc-3cda-974af70dac4b@leirtech.com> | from: Rick Leir | date: Thu, 25 May, 07:11 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<bccab476-96a9-e2fc-3cda-974af70dac4b@leirtech.com>/
+> index: 5386 | id: <1387978717.8674.1502266179213.JavaMail.webmail@bluewin.ch> | from: guenterh.li...@bluewin.ch | date: Wed, 09 Aug, 08:09 | month: 08 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<1387978717.8674.1502266179213.JavaMail.webmail@bluewin.ch>/
+> index: 5022 | id: <CAN+whnJKqT2F8jD4q1s_fG9dXdecH6js+6BuDGESuXBdSaRR0Q@mail.gmail.com> | from: Nawab Zada Asad Iqbal | date: Sat, 22 Jul, 02:33 | month: 07 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<CAN+whnJKqT2F8jD4q1s_fG9dXdecH6js+6BuDGESuXBdSaRR0Q@mail.gmail.com>/
+> index: 2228 | id: <CA+A4HB12SPOhrQ=w=diRsHwePMR=7aNCJpwHfoNMPDiyKpOCTg@mail.gmail.com> | from: Greg Pendlebury | date: Tue, 04 Apr, 23:36 | month: 04 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CA+A4HB12SPOhrQ=w=diRsHwePMR=7aNCJpwHfoNMPDiyKpOCTg@mail.gmail.com>/
+> index: 2271 | id: <1491313231685-4328306.post@n3.nabble.com> | from: subinalex | date: Tue, 04 Apr, 13:40 | month: 04 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<1491313231685-4328306.post@n3.nabble.com>/
+> index: 2670 | id: <CAN4YXvdbDKTmuO9s1XxWiUs+XFgg2VvGaq92Yw7NjCHJKk7-pQ@mail.gmail.com> | from: Erick Erickson | date: Tue, 18 Apr, 15:20 | month: 04 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CAN4YXvdbDKTmuO9s1XxWiUs+XFgg2VvGaq92Yw7NjCHJKk7-pQ@mail.gmail.com>/
+> index: 4873 | id: <CAH8R_2Z_wSBe+_SAnn-zrJwSiDnHYN1o7BoL+D-uD5D7CsqxSQ@mail.gmail.com> | from: Amrit Sarkar | date: Mon, 17 Jul, 17:32 | month: 07 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<CAH8R_2Z_wSBe+_SAnn-zrJwSiDnHYN1o7BoL+D-uD5D7CsqxSQ@mail.gmail.com>/
+> index: 2336 | id: <E12BC341-1906-4350-A23D-C03194E9EE95@finra.org> | from: Xie, Sean | date: Fri, 07 Apr, 03:10 | month: 04 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<E12BC341-1906-4350-A23D-C03194E9EE95@finra.org>/
+> index: 3457 | id: <CAJU9nmhz7A5fg5tCOHONk=9L_edjHHF7VO9kOk2YsfZeHvR0og@mail.gmail.com> | from: Kevin Risden | date: Wed, 17 May, 00:27 | month: 05 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<CAJU9nmhz7A5fg5tCOHONk=9L_edjHHF7VO9kOk2YsfZeHvR0og@mail.gmail.com>/
+> index: 6504 | id: <zarafa.59d4d870.6d9d.7751480e6a1ca364@mail1.ams.nl.openindex.io> | from: Markus Jelsma | date: Wed, 04 Oct, 12:47 | month: 10 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201710.mbox/raw/<zarafa.59d4d870.6d9d.7751480e6a1ca364@mail1.ams.nl.openindex.io>/
+> index: 3288 | id: <CAN4YXvdhLk==Rn8BE4y2=ZcQJmmrF3SgsDRbN27OeWRF3m2_kg@mail.gmail.com> | from: Erick Erickson | date: Fri, 12 May, 00:34 | month: 05 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<CAN4YXvdhLk==Rn8BE4y2=ZcQJmmrF3SgsDRbN27OeWRF3m2_kg@mail.gmail.com>/
+> index: 4141 | id: <CANEGTX9Cdd76RT_im+RP8Tk8imK6EDFOB0yGbnnb=wrbf2Y4NA@mail.gmail.com> | from: Aman Deep Singh | date: Tue, 20 Jun, 06:07 | month: 06 | depth: 8
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CANEGTX9Cdd76RT_im+RP8Tk8imK6EDFOB0yGbnnb=wrbf2Y4NA@mail.gmail.com>/
+> index: 5990 | id: <CA+nqPWvzpc98HAHUuVVJ5ErJX5PuJq=iqtVzFuRrjnDRDzGeEw@mail.gmail.com> | from: Gunalan V | date: Mon, 11 Sep, 15:36 | month: 09 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<CA+nqPWvzpc98HAHUuVVJ5ErJX5PuJq=iqtVzFuRrjnDRDzGeEw@mail.gmail.com>/
+> index: 5192 | id: <SYXPR01MB1504A7AE27D5DF2C92877174C8B00@SYXPR01MB1504.ausprd01.prod.outlook.com> | from: Phil Scadden | date: Wed, 02 Aug, 21:15 | month: 08 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<SYXPR01MB1504A7AE27D5DF2C92877174C8B00@SYXPR01MB1504.ausprd01.prod.outlook.com>/
+> index: 5946 | id: <e2437f3cc1a246b1ae6cd4b9eaa41891@schrempp-edv.de> | from: Patrick Fallert | date: Thu, 07 Sep, 07:36 | month: 09 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<e2437f3cc1a246b1ae6cd4b9eaa41891@schrempp-edv.de>/
+> index: 4091 | id: <CAHSW19EUDrtiVP+mafACN+1Jphpw-7diowOPguwk+AgqcFWXhA@mail.gmail.com> | from: Satya Marivada | date: Wed, 14 Jun, 16:41 | month: 06 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CAHSW19EUDrtiVP+mafACN+1Jphpw-7diowOPguwk+AgqcFWXhA@mail.gmail.com>/
+> index: 5920 | id: <9E0BE25D-7E9A-497F-95B8-98A0473AC535@vmware.com> | from: Shashank Pedamallu | date: Wed, 06 Sep, 17:03 | month: 09 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<9E0BE25D-7E9A-497F-95B8-98A0473AC535@vmware.com>/
+> index: 3412 | id: <CAJuqOKKFHWKa+2113m=mynFMwW954WhJZAJ-ztbJnVM2J-t2yg@mail.gmail.com> | from: Susheel Kumar | date: Mon, 15 May, 20:17 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<CAJuqOKKFHWKa+2113m=mynFMwW954WhJZAJ-ztbJnVM2J-t2yg@mail.gmail.com>/
+> index: 4145 | id: <CANEGTX9ELRAqzAsnYWv7aa3TD=wJQniVeD72sTL-xnDd8fhF+g@mail.gmail.com> | from: Aman Deep Singh | date: Fri, 23 Jun, 16:23 | month: 06 | depth: 12
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CANEGTX9ELRAqzAsnYWv7aa3TD=wJQniVeD72sTL-xnDd8fhF+g@mail.gmail.com>/
+> index: 182 | id: <zarafa.5874db7b.6d16.33016d0266893169@mail1.ams.nl.openindex.io> | from: Markus Jelsma | date: Tue, 10 Jan, 13:02 | month: 01 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<zarafa.5874db7b.6d16.33016d0266893169@mail1.ams.nl.openindex.io>/
+> index: 5685 | id: <CAEPEPJLefeR=ZQ9P16yuscKkkvFpAE+H2OvAP=sEfNJLdpeZ2Q@mail.gmail.com> | from: Josh Lincoln | date: Tue, 29 Aug, 14:50 | month: 08 | depth: 7
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<CAEPEPJLefeR=ZQ9P16yuscKkkvFpAE+H2OvAP=sEfNJLdpeZ2Q@mail.gmail.com>/
+> index: 2752 | id: <CAKJSE7kTX37wjSjrgHSR5so3WMaE3_59vhBxDf8=gCLggEE0ZA@mail.gmail.com> | from: Pablo Anzorena | date: Fri, 21 Apr, 18:16 | month: 04 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CAKJSE7kTX37wjSjrgHSR5so3WMaE3_59vhBxDf8=gCLggEE0ZA@mail.gmail.com>/
+> index: 2303 | id: <CAMQdpPw1qXtyn1PENuy0a_LfRMvEo7fcFLO8ExXGTBV8CfXj5Q@mail.gmail.com> | from: VJ | date: Wed, 05 Apr, 11:08 | month: 04 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CAMQdpPw1qXtyn1PENuy0a_LfRMvEo7fcFLO8ExXGTBV8CfXj5Q@mail.gmail.com>/
+> index: 772 | id: <CAC9-YrUdxk1gsTZNyUwEkMpUuNUgO+Am9ipcNXRQoLx4EeJ5QA@mail.gmail.com> | from: Damien Kamerman | date: Mon, 06 Feb, 03:33 | month: 02 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<CAC9-YrUdxk1gsTZNyUwEkMpUuNUgO+Am9ipcNXRQoLx4EeJ5QA@mail.gmail.com>/
+> index: 4122 | id: <CAJuqOKJuXYrXsb6mnwBsPdKgyAtxahZOxOT=dtaZD0OKnp=HDg@mail.gmail.com> | from: Susheel Kumar | date: Thu, 15 Jun, 14:23 | month: 06 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CAJuqOKJuXYrXsb6mnwBsPdKgyAtxahZOxOT=dtaZD0OKnp=HDg@mail.gmail.com>/
+> index: 1243 | id: <7227E953-058F-41EE-A6BF-B11209BE63FC@gmail.com> | from: Erik Hatcher | date: Tue, 28 Feb, 02:42 | month: 02 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<7227E953-058F-41EE-A6BF-B11209BE63FC@gmail.com>/
+> index: 4398 | id: <1498667605634-4343221.post@n3.nabble.com> | from: puneeta | date: Wed, 28 Jun, 16:33 | month: 06 | depth: 6
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<1498667605634-4343221.post@n3.nabble.com>/
+> index: 356 | id: <CAN4YXvcV6EQAPif8_POYHCWsd=qARfs=2=19cv9TcFEY3L=n5w@mail.gmail.com> | from: Erick Erickson | date: Thu, 19 Jan, 02:19 | month: 01 | depth: 5
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<CAN4YXvcV6EQAPif8_POYHCWsd=qARfs=2=19cv9TcFEY3L=n5w@mail.gmail.com>/
+> index: 6326 | id: <1506423355438-0.post@n3.nabble.com> | from: saurabhagrawal | date: Tue, 26 Sep, 10:55 | month: 09 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<1506423355438-0.post@n3.nabble.com>/
+> index: 1125 | id: <CAN4YXvfDvz93f7E9YrutqwaX17fV=QR26Ck1uz7dCkANYutmSg@mail.gmail.com> | from: Erick Erickson | date: Wed, 22 Feb, 16:25 | month: 02 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<CAN4YXvfDvz93f7E9YrutqwaX17fV=QR26Ck1uz7dCkANYutmSg@mail.gmail.com>/
+> index: 1437 | id: <CAE4tqLOX8NuxnOFyTR0pzOBQ1Hdq66hh1BLpDgSp7Jq6bA6ssw@mail.gmail.com> | from: Joel Bernstein | date: Tue, 07 Mar, 13:48 | month: 03 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAE4tqLOX8NuxnOFyTR0pzOBQ1Hdq66hh1BLpDgSp7Jq6bA6ssw@mail.gmail.com>/
+> index: 542 | id: <1485757335995-4317767.post@n3.nabble.com> | from: Mugeesh Husain | date: Mon, 30 Jan, 06:22 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<1485757335995-4317767.post@n3.nabble.com>/
+> index: 5082 | id: <CAG-A-8igUBhp=ss7hsGopfYzSDk3Qh+hP7FOSL7BUk0UEQv24g@mail.gmail.com> | from: elisabeth benoit | date: Wed, 26 Jul, 07:30 | month: 07 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<CAG-A-8igUBhp=ss7hsGopfYzSDk3Qh+hP7FOSL7BUk0UEQv24g@mail.gmail.com>/
+> index: 4724 | id: <d3cb43a6-83be-479c-b285-4219cd67a1a1@gmail.com> | from: Joe Obernberger | date: Wed, 12 Jul, 13:14 | month: 07 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<d3cb43a6-83be-479c-b285-4219cd67a1a1@gmail.com>/
+> index: 894 | id: <zarafa.589c6db1.51ce.1885d3642305ad4d@mail1.ams.nl.openindex.io> | from: Markus Jelsma | date: Thu, 09 Feb, 13:25 | month: 02 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<zarafa.589c6db1.51ce.1885d3642305ad4d@mail1.ams.nl.openindex.io>/
+> index: 243 | id: <b9598cc9-aebb-b277-a3da-c996f2283527@gmx.net> | from: Hendrik Haddorp | date: Thu, 19 Jan, 11:09 | month: 01 | depth: 7
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<b9598cc9-aebb-b277-a3da-c996f2283527@gmx.net>/
+> index: 232 | id: <CAA70BoXE7y0y-2uvcMsY-g6NZLXymnjoNx_qj0oMr+z0xi1hww@mail.gmail.com> | from: Chetas Joshi | date: Wed, 11 Jan, 18:27 | month: 01 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<CAA70BoXE7y0y-2uvcMsY-g6NZLXymnjoNx_qj0oMr+z0xi1hww@mail.gmail.com>/
+> index: 1830 | id: <D59B8193-FDE0-40DD-BE41-B48C1100D8D6@wunderwood.org> | from: Walter Underwood | date: Fri, 17 Mar, 17:13 | month: 03 | depth: 6
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<D59B8193-FDE0-40DD-BE41-B48C1100D8D6@wunderwood.org>/
+> index: 5270 | id: <733EC8E9-4C46-4BA0-A57E-EC4B4E94656F@wunderwood.org> | from: Walter Underwood | date: Fri, 04 Aug, 23:41 | month: 08 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<733EC8E9-4C46-4BA0-A57E-EC4B4E94656F@wunderwood.org>/
+> index: 5763 | id: <894dbf1a-52f0-b782-408d-6998e58d97f3@gmail.com> | from: Adrian H | date: Wed, 30 Aug, 13:02 | month: 08 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<894dbf1a-52f0-b782-408d-6998e58d97f3@gmail.com>/
+> index: 5158 | id: <CAPJT6oRxxTG21a74jFCK2ocxq39aonGy-EQvgcbdHYfqbHkNZA@mail.gmail.com> | from: Chris Troullis | date: Tue, 01 Aug, 22:18 | month: 08 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<CAPJT6oRxxTG21a74jFCK2ocxq39aonGy-EQvgcbdHYfqbHkNZA@mail.gmail.com>/
+> index: 2251 | id: <1491281606598-4328233.post@n3.nabble.com> | from: adfel70 | date: Tue, 04 Apr, 04:53 | month: 04 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<1491281606598-4328233.post@n3.nabble.com>/
+> index: 5743 | id: <CAEQzTQs6YKmZpaPOTdM4L_fTLKMaX5p86kyzTdPi0-t_re4HyQ@mail.gmail.com> | from: Craig Smiles | date: Tue, 29 Aug, 15:15 | month: 08 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<CAEQzTQs6YKmZpaPOTdM4L_fTLKMaX5p86kyzTdPi0-t_re4HyQ@mail.gmail.com>/
+> index: 2884 | id: <e2f5db8d-de1d-7df9-2066-1e7b5e09f874@rcbowen.com> | from: Rich Bowen | date: Wed, 26 Apr, 13:46 | month: 04 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<e2f5db8d-de1d-7df9-2066-1e7b5e09f874@rcbowen.com>/
+> index: 2369 | id: <F3AA71B4-0223-4804-9E77-AF364957393B@leirtech.com> | from: Rick Leir | date: Sun, 09 Apr, 01:41 | month: 04 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<F3AA71B4-0223-4804-9E77-AF364957393B@leirtech.com>/
+> index: 496 | id: <2143505321.99837755.1485460160742.JavaMail.zimbra@comcast.net> | from: KRIS MUSSHORN | date: Thu, 26 Jan, 19:49 | month: 01 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<2143505321.99837755.1485460160742.JavaMail.zimbra@comcast.net>/
+> index: 3954 | id: <AE80066F0453A441A4BE89A28D2775BE0B2363FA@EAGNMNSXMB39.usa.dce.usps.gov> | from: Miller, William K - Norman, OK - Contractor | date: Thu, 08 Jun, 16:12 | month: 06 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<AE80066F0453A441A4BE89A28D2775BE0B2363FA@EAGNMNSXMB39.usa.dce.usps.gov>/
+> index: 1507 | id: <CAE9-U41WCkgktCVS=F_FF-iY9OUZr3fQXcxM6gdej1eiACnjAQ@mail.gmail.com> | from: Ivan Bianchi | date: Tue, 07 Mar, 16:58 | month: 03 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAE9-U41WCkgktCVS=F_FF-iY9OUZr3fQXcxM6gdej1eiACnjAQ@mail.gmail.com>/
+> index: 2107 | id: <D8D38EC5-2CCF-4A04-B3A1-677BFBB33395@leirtech.com> | from: Rick Leir | date: Tue, 28 Mar, 23:20 | month: 03 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<D8D38EC5-2CCF-4A04-B3A1-677BFBB33395@leirtech.com>/
+> index: 712 | id: <2237579.54zVbZr0FZ@hlavkinb> | from: Michal Hlavac | date: Fri, 03 Feb, 09:28 | month: 02 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<2237579.54zVbZr0FZ@hlavkinb>/
+> index: 5460 | id: <CY1PR09MB0442AD7EAC90D1F0C9AD5DAF89890@CY1PR09MB0442.namprd09.prod.outlook.com> | from: Davis, Daniel (NIH/NLM) [C] | date: Fri, 11 Aug, 20:29 | month: 08 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<CY1PR09MB0442AD7EAC90D1F0C9AD5DAF89890@CY1PR09MB0442.namprd09.prod.outlook.com>/
+> index: 437 | id: <7D037F00-6804-4F8C-9103-D3063A5A605C@bodleian.ox.ac.uk> | from: Chris Rogers | date: Tue, 24 Jan, 13:32 | month: 01 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<7D037F00-6804-4F8C-9103-D3063A5A605C@bodleian.ox.ac.uk>/
+> index: 6204 | id: <MWHPR0101MB2973D63681EEAEDEDF95F215B2610@MWHPR0101MB2973.prod.exchangelabs.com> | from: Bill Oconnor | date: Wed, 20 Sep, 20:42 | month: 09 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<MWHPR0101MB2973D63681EEAEDEDF95F215B2610@MWHPR0101MB2973.prod.exchangelabs.com>/
+> index: 47 | id: <4009f826-2b5f-6396-6f18-3cc4f32d6186@elyograg.org> | from: Shawn Heisey | date: Tue, 03 Jan, 19:29 | month: 01 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<4009f826-2b5f-6396-6f18-3cc4f32d6186@elyograg.org>/
+> index: 6147 | id: <CANGA2_MJo=HGCHsq-Ue-J1WoFN=weNFhoASxeMwK3g2ix1=5Hw@mail.gmail.com> | from: David Hastings | date: Tue, 19 Sep, 16:54 | month: 09 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<CANGA2_MJo=HGCHsq-Ue-J1WoFN=weNFhoASxeMwK3g2ix1=5Hw@mail.gmail.com>/
+> index: 3808 | id: <1496336355145-4338496.post@n3.nabble.com> | from: BenCall | date: Thu, 01 Jun, 16:59 | month: 06 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<1496336355145-4338496.post@n3.nabble.com>/
+> index: 5479 | id: <2e735cfa-90f8-576d-f777-5863a7abe177@gmail.com> | from: Joe Obernberger | date: Mon, 14 Aug, 23:53 | month: 08 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<2e735cfa-90f8-576d-f777-5863a7abe177@gmail.com>/
+> index: 5891 | id: <CACCK0pxAVMJAoafOW5oTqpvouAiA0AJye_=MuZFqViPaL9mrKQ@mail.gmail.com> | from: Wael Kader | date: Wed, 06 Sep, 06:49 | month: 09 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<CACCK0pxAVMJAoafOW5oTqpvouAiA0AJye_=MuZFqViPaL9mrKQ@mail.gmail.com>/
+> index: 98 | id: <e9dafa86-cf3a-3cc2-14ad-7626d74ef4ca@flax.co.uk> | from: Charlie Hull | date: Thu, 05 Jan, 16:31 | month: 01 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<e9dafa86-cf3a-3cc2-14ad-7626d74ef4ca@flax.co.uk>/
+> index: 3250 | id: <fa892a44-e962-f07c-2cc7-8edcde0a3795@elyograg.org> | from: Shawn Heisey | date: Wed, 10 May, 12:35 | month: 05 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<fa892a44-e962-f07c-2cc7-8edcde0a3795@elyograg.org>/
+> index: 2508 | id: <CALQXJ6M1UB66tUSkdSbh1_iC1SGdH5M7u0GB+1TrUYN=odHoZQ@mail.gmail.com> | from: OTH | date: Thu, 13 Apr, 13:24 | month: 04 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CALQXJ6M1UB66tUSkdSbh1_iC1SGdH5M7u0GB+1TrUYN=odHoZQ@mail.gmail.com>/
+> index: 5056 | id: <56bf04cd-fd99-ac02-a6e1-d3fba91186ab@uni-bielefeld.de> | from: Bernd Fehling | date: Tue, 25 Jul, 13:22 | month: 07 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<56bf04cd-fd99-ac02-a6e1-d3fba91186ab@uni-bielefeld.de>/
+> index: 1795 | id: <CADGaJFj6bZCf3h8ishQ41uNVPe0hBSPi8eETDqPXvEk9J5VuJQ@mail.gmail.com> | from: Sujay Bawaskar | date: Thu, 16 Mar, 14:17 | month: 03 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CADGaJFj6bZCf3h8ishQ41uNVPe0hBSPi8eETDqPXvEk9J5VuJQ@mail.gmail.com>/
+> index: 3041 | id: <CAF2DzVW10LTmp7DH5kQdj6zYvFbOYZ5_4wgSpFHuKy7zDK1yzQ@mail.gmail.com> | from: Zheng Lin Edwin Yeo | date: Thu, 04 May, 23:17 | month: 05 | depth: 17
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<CAF2DzVW10LTmp7DH5kQdj6zYvFbOYZ5_4wgSpFHuKy7zDK1yzQ@mail.gmail.com>/
+> index: 5653 | id: <1503582526053-4351942.post@n3.nabble.com> | from: davidvartanian | date: Thu, 24 Aug, 13:48 | month: 08 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<1503582526053-4351942.post@n3.nabble.com>/
+> index: 3429 | id: <0db48039-da46-f1b1-279c-9f1cf8a5a7e3@elyograg.org> | from: Shawn Heisey | date: Tue, 16 May, 13:01 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<0db48039-da46-f1b1-279c-9f1cf8a5a7e3@elyograg.org>/
+> index: 4772 | id: <CA+x26eei_XdQcMGX=rFBFE+YVjriCf3r64o4DtRMw2SCA3eXTA@mail.gmail.com> | from: govind nitk | date: Thu, 13 Jul, 17:54 | month: 07 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<CA+x26eei_XdQcMGX=rFBFE+YVjriCf3r64o4DtRMw2SCA3eXTA@mail.gmail.com>/
+> index: 5960 | id: <CAMRY8CL7vUbPumua3kdUjiuD-8UkeiP_OaXEuyG9P8r9RbY=wQ@mail.gmail.com> | from: Varun Thacker | date: Fri, 08 Sep, 02:46 | month: 09 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<CAMRY8CL7vUbPumua3kdUjiuD-8UkeiP_OaXEuyG9P8r9RbY=wQ@mail.gmail.com>/
+> index: 3535 | id: <CAN4YXvc_fk6cf87q9GPfte0bowfMm13u9094eZHeR4Mhxuij6g@mail.gmail.com> | from: Erick Erickson | date: Fri, 19 May, 19:34 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<CAN4YXvc_fk6cf87q9GPfte0bowfMm13u9094eZHeR4Mhxuij6g@mail.gmail.com>/
+> index: 2815 | id: <CADAGt5ZQqdP37x9XGfN6khthptCKBQTm1OTg7oMscZXFE9ArBQ@mail.gmail.com> | from: Saurav Maulick | date: Mon, 24 Apr, 19:13 | month: 04 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CADAGt5ZQqdP37x9XGfN6khthptCKBQTm1OTg7oMscZXFE9ArBQ@mail.gmail.com>/
+> index: 1925 | id: <6CF39282-6EEA-4513-B58B-ABFA2C9E912C@gmail.com> | from: David Smiley | date: Wed, 22 Mar, 02:13 | month: 03 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<6CF39282-6EEA-4513-B58B-ABFA2C9E912C@gmail.com>/
+> index: 4034 | id: <CAB_8Yd_2QRBmbS5=gsC+yigAG=khtMeBTL6MzJ1VdfS1anJ4Eg@mail.gmail.com> | from: Yonik Seeley | date: Mon, 12 Jun, 16:32 | month: 06 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CAB_8Yd_2QRBmbS5=gsC+yigAG=khtMeBTL6MzJ1VdfS1anJ4Eg@mail.gmail.com>/
+> index: 3447 | id: <CAF8TkC7zKHXMoZ-b75Oq+SpzF+r=01PdhUNN4Vu0Jr584-RGQQ@mail.gmail.com> | from: Mikhail Khludnev | date: Tue, 16 May, 17:45 | month: 05 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<CAF8TkC7zKHXMoZ-b75Oq+SpzF+r=01PdhUNN4Vu0Jr584-RGQQ@mail.gmail.com>/
+> index: 4180 | id: <CAN4YXvcTvcGs5K_J6pkbORu-+yNeZsDO_ZVQKiJvzk=WVrTnpw@mail.gmail.com> | from: Erick Erickson | date: Mon, 19 Jun, 15:17 | month: 06 | depth: 5
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CAN4YXvcTvcGs5K_J6pkbORu-+yNeZsDO_ZVQKiJvzk=WVrTnpw@mail.gmail.com>/
+> index: 975 | id: <CAN4YXvfDWti-sTKPXgA6XTCoufHSSN-he=k9x_24fRZQk3dZVw@mail.gmail.com> | from: Erick Erickson | date: Wed, 15 Feb, 05:04 | month: 02 | depth: 7
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<CAN4YXvfDWti-sTKPXgA6XTCoufHSSN-he=k9x_24fRZQk3dZVw@mail.gmail.com>/
+> index: 679 | id: <6F1036E2-5911-4E27-AD4A-231DE8CAE151@shoebuy.com> | from: David Kramer | date: Thu, 02 Feb, 15:20 | month: 02 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<6F1036E2-5911-4E27-AD4A-231DE8CAE151@shoebuy.com>/
+> index: 6205 | id: <B16AC883-361B-4363-B657-55FCD252E8D5@wunderwood.org> | from: Walter Underwood | date: Wed, 20 Sep, 22:00 | month: 09 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<B16AC883-361B-4363-B657-55FCD252E8D5@wunderwood.org>/
+> index: 4811 | id: <CAN4YXvfDrm7zY84+fLs48KyBseeRUwzEQ3CT_5ykUcG6_Q38vQ@mail.gmail.com> | from: Erick Erickson | date: Thu, 20 Jul, 14:12 | month: 07 | depth: 5
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<CAN4YXvfDrm7zY84+fLs48KyBseeRUwzEQ3CT_5ykUcG6_Q38vQ@mail.gmail.com>/
+> index: 3089 | id: <CAOOKt52wsmFts2=MVc4rcG0QxY_L70vUwa1+riQv=7Bmt5khXA@mail.gmail.com> | from: Shalin Shekhar Mangar | date: Thu, 04 May, 08:48 | month: 05 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<CAOOKt52wsmFts2=MVc4rcG0QxY_L70vUwa1+riQv=7Bmt5khXA@mail.gmail.com>/
+> index: 3856 | id: <CAN4YXvfbP0jS9W1_f+z7gVMF+iKr21o+U6EFQwz-Ctpf6WZzWA@mail.gmail.com> | from: Erick Erickson | date: Fri, 02 Jun, 15:54 | month: 06 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CAN4YXvfbP0jS9W1_f+z7gVMF+iKr21o+U6EFQwz-Ctpf6WZzWA@mail.gmail.com>/
+> index: 1379 | id: <CAEFAe-GPPofn25uasv8Z0tKZTRGUHfV5V1U21HOJMbwcJw8Gqg@mail.gmail.com> | from: Alexandre Rafalovitch | date: Fri, 03 Mar, 03:36 | month: 03 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAEFAe-GPPofn25uasv8Z0tKZTRGUHfV5V1U21HOJMbwcJw8Gqg@mail.gmail.com>/
+> index: 769 | id: <tencent_1C56D4BC6772FD62445D43DC@qq.com> | from: alias | date: Mon, 06 Feb, 02:20 | month: 02 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<tencent_1C56D4BC6772FD62445D43DC@qq.com>/
+> index: 4333 | id: <CAJn2xr8Rf8YaZ7UogqYxvAop7BtCWyXjhyVQTV_Aw3eLjN8P8g@mail.gmail.com> | from: Arcadius Ahouansou | date: Sat, 24 Jun, 08:14 | month: 06 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CAJn2xr8Rf8YaZ7UogqYxvAop7BtCWyXjhyVQTV_Aw3eLjN8P8g@mail.gmail.com>/
+> index: 1691 | id: <CAD2rrpufcq1=nKdwdjaoriGixan20Q6Ye1_=uDohSuA94SZDsg@mail.gmail.com> | from: serwah sabetghadam | date: Tue, 14 Mar, 15:06 | month: 03 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAD2rrpufcq1=nKdwdjaoriGixan20Q6Ye1_=uDohSuA94SZDsg@mail.gmail.com>/
+> index: 3176 | id: <CAE4tqLPyogDNhS5TAE=3o6AgcwCfE05AWkXhuP+rH2xcowqvFg@mail.gmail.com> | from: Joel Bernstein | date: Fri, 05 May, 15:23 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<CAE4tqLPyogDNhS5TAE=3o6AgcwCfE05AWkXhuP+rH2xcowqvFg@mail.gmail.com>/
+> index: 1587 | id: <CAE4tqLOUVNY3TdjKUF=TpvR_GN1VPaiEy4yvPqMvJq1-Atd+Dw@mail.gmail.com> | from: Joel Bernstein | date: Sun, 12 Mar, 16:24 | month: 03 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAE4tqLOUVNY3TdjKUF=TpvR_GN1VPaiEy4yvPqMvJq1-Atd+Dw@mail.gmail.com>/
+> index: 943 | id: <1486881764072-4319929.post@n3.nabble.com> | from: SOLR4189 | date: Sun, 12 Feb, 06:42 | month: 02 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<1486881764072-4319929.post@n3.nabble.com>/
+> index: 2593 | id: <CAEhMYmNfHgXv_xuCZM6_FqL+Q7NDYZ-J0CNPqLH2-0g7b=g6LA@mail.gmail.com> | from: Michael Nilsson | date: Tue, 18 Apr, 17:12 | month: 04 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CAEhMYmNfHgXv_xuCZM6_FqL+Q7NDYZ-J0CNPqLH2-0g7b=g6LA@mail.gmail.com>/
+> index: 5214 | id: <CAN4YXvcCdZs=CF3oaQ3XU57945knSme=q6abcCh=8p-=AoWxMA@mail.gmail.com> | from: Erick Erickson | date: Thu, 03 Aug, 14:52 | month: 08 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<CAN4YXvcCdZs=CF3oaQ3XU57945knSme=q6abcCh=8p-=AoWxMA@mail.gmail.com>/
+> index: 4782 | id: <CAE4tqLNVgiYTfdHg=-gpzEEeh=xkcdwZ7h=+Azi28=TZF5kOmA@mail.gmail.com> | from: Joel Bernstein | date: Thu, 13 Jul, 21:04 | month: 07 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<CAE4tqLNVgiYTfdHg=-gpzEEeh=xkcdwZ7h=+Azi28=TZF5kOmA@mail.gmail.com>/
+> index: 902 | id: <17B9BE9F-CF95-4220-A089-A8A0829612CC@finra.org> | from: Xie, Sean | date: Thu, 09 Feb, 17:09 | month: 02 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<17B9BE9F-CF95-4220-A089-A8A0829612CC@finra.org>/
+> index: 6358 | id: <AE80066F0453A441A4BE89A28D2775BE1E85567D@EAGNMNSXMB39.usa.dce.usps.gov> | from: Miller, William K - Norman, OK - Contractor | date: Thu, 28 Sep, 16:15 | month: 09 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<AE80066F0453A441A4BE89A28D2775BE1E85567D@EAGNMNSXMB39.usa.dce.usps.gov>/
+> index: 3763 | id: <CY1PR09MB0774E40139803E72C4BA9646C7F10@CY1PR09MB0774.namprd09.prod.outlook.com> | from: Allison, Timothy B. | date: Wed, 31 May, 13:29 | month: 05 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<CY1PR09MB0774E40139803E72C4BA9646C7F10@CY1PR09MB0774.namprd09.prod.outlook.com>/
+> index: 500 | id: <6D42ED8C-0C97-4F05-A57D-9297DA0A9A09@comcast.net> | from: Comcast | date: Fri, 27 Jan, 18:09 | month: 01 | depth: 7
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<6D42ED8C-0C97-4F05-A57D-9297DA0A9A09@comcast.net>/
+> index: 1552 | id: <CAE4tqLONJet0919gM2bJOaG3nYufeHVQg8fDvAsNJeYOHH0ECg@mail.gmail.com> | from: Joel Bernstein | date: Wed, 08 Mar, 20:27 | month: 03 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAE4tqLONJet0919gM2bJOaG3nYufeHVQg8fDvAsNJeYOHH0ECg@mail.gmail.com>/
+> index: 1704 | id: <CAC9-YrVowFNPuGyWP5i-Rnhi=gw10Gqc0XfH84hqcx8b59pQXg@mail.gmail.com> | from: Damien Kamerman | date: Wed, 15 Mar, 02:53 | month: 03 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAC9-YrVowFNPuGyWP5i-Rnhi=gw10Gqc0XfH84hqcx8b59pQXg@mail.gmail.com>/
+> index: 1599 | id: <CAF2DzVW8W6Fj=tJ0Pw3QwFbRPPmgFrgPLbYWaR8Aasu86jT=yQ@mail.gmail.com> | from: Zheng Lin Edwin Yeo | date: Mon, 13 Mar, 05:59 | month: 03 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAF2DzVW8W6Fj=tJ0Pw3QwFbRPPmgFrgPLbYWaR8Aasu86jT=yQ@mail.gmail.com>/
+> index: 609 | id: <fca15f69-da11-f81b-96d2-b6e5631f9540@student.tugraz.at> | from: Ewald Moitzi | date: Wed, 01 Feb, 10:39 | month: 02 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<fca15f69-da11-f81b-96d2-b6e5631f9540@student.tugraz.at>/
+> index: 1155 | id: <DB6PR0202MB28727F3F2F09B29A6B86AFA0EE500@DB6PR0202MB2872.eurprd02.prod.outlook.com> | from: Sebastian Riemer | date: Wed, 22 Feb, 14:19 | month: 02 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<DB6PR0202MB28727F3F2F09B29A6B86AFA0EE500@DB6PR0202MB2872.eurprd02.prod.outlook.com>/
+> index: 879 | id: <CAN4YXve6bOEbt12OXRGtvk6z+4eqqbOgu21TZkYimhgwX2TUWQ@mail.gmail.com> | from: Erick Erickson | date: Thu, 09 Feb, 19:46 | month: 02 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<CAN4YXve6bOEbt12OXRGtvk6z+4eqqbOgu21TZkYimhgwX2TUWQ@mail.gmail.com>/
+> index: 4194 | id: <66E71D2A-37E1-48C5-B28C-CEA747887EC9@leirtech.com> | from: Rick Leir | date: Mon, 19 Jun, 20:22 | month: 06 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<66E71D2A-37E1-48C5-B28C-CEA747887EC9@leirtech.com>/
+> index: 2072 | id: <VI1PR0802MB239982DD78C2D952AFD85FB4EC330@VI1PR0802MB2399.eurprd08.prod.outlook.com> | from: Ercan Karadeniz | date: Mon, 27 Mar, 19:46 | month: 03 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<VI1PR0802MB239982DD78C2D952AFD85FB4EC330@VI1PR0802MB2399.eurprd08.prod.outlook.com>/
+> index: 2638 | id: <CAG0nzUOTAmBqnJYRaDC8T2kYr3JOBMKY=9nNKpLkAR54CPpkKA@mail.gmail.com> | from: Maria Muslea | date: Tue, 18 Apr, 03:11 | month: 04 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CAG0nzUOTAmBqnJYRaDC8T2kYr3JOBMKY=9nNKpLkAR54CPpkKA@mail.gmail.com>/
+> index: 4936 | id: <zarafa.596f27e4.74cb.2b403eb50023e8c8@mail1.ams.nl.openindex.io> | from: Markus Jelsma | date: Wed, 19 Jul, 09:35 | month: 07 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<zarafa.596f27e4.74cb.2b403eb50023e8c8@mail1.ams.nl.openindex.io>/
+> index: 2746 | id: <1492779889953-4331265.post@n3.nabble.com> | from: apoorvqwerty | date: Fri, 21 Apr, 13:04 | month: 04 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<1492779889953-4331265.post@n3.nabble.com>/
+> index: 2660 | id: <CAPJfaaEQHVYADt7mVF1c1K4U-DT87=qo3Oq_psthOfBrORU-Ng@mail.gmail.com> | from: Dominique Bejean | date: Tue, 18 Apr, 13:28 | month: 04 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CAPJfaaEQHVYADt7mVF1c1K4U-DT87=qo3Oq_psthOfBrORU-Ng@mail.gmail.com>/
+> index: 6546 | id: <CAB_8Yd9ZDquUjzHgv0ivr3NduKxFU0XdFtHdddJO=pW6DcGC8Q@mail.gmail.com> | from: Yonik Seeley | date: Thu, 05 Oct, 14:20 | month: 10 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201710.mbox/raw/<CAB_8Yd9ZDquUjzHgv0ivr3NduKxFU0XdFtHdddJO=pW6DcGC8Q@mail.gmail.com>/
+> index: 2478 | id: <C36D72F2-925B-491D-9FEA-03BF34D0613D@wunderwood.org> | from: Walter Underwood | date: Wed, 12 Apr, 03:48 | month: 04 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<C36D72F2-925B-491D-9FEA-03BF34D0613D@wunderwood.org>/
+> index: 6079 | id: <CALYnYqHYpkgavtRC3RuKbhrTG24NJg=RvQuLkYv_apFDQFZQsg@mail.gmail.com> | from: James Keeney | date: Thu, 14 Sep, 20:01 | month: 09 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<CALYnYqHYpkgavtRC3RuKbhrTG24NJg=RvQuLkYv_apFDQFZQsg@mail.gmail.com>/
+> index: 1214 | id: <CAEFAe-HyBy7AsGKc_KhMFH0Sw5=ghX9OD6o0zthcBawgx=58Dg@mail.gmail.com> | from: Alexandre Rafalovitch | date: Sun, 26 Feb, 19:33 | month: 02 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<CAEFAe-HyBy7AsGKc_KhMFH0Sw5=ghX9OD6o0zthcBawgx=58Dg@mail.gmail.com>/
+> index: 1222 | id: <148644AA-5DD2-4F32-B4EB-9A1D5D787736@leirtech.com> | from: Rick Leir | date: Mon, 27 Feb, 23:43 | month: 02 | depth: 5
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<148644AA-5DD2-4F32-B4EB-9A1D5D787736@leirtech.com>/
+> index: 3088 | id: <6bf304d3-904f-e117-fa1f-ae9c8a9b376c@uni-bielefeld.de> | from: Bernd Fehling | date: Thu, 04 May, 07:22 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<6bf304d3-904f-e117-fa1f-ae9c8a9b376c@uni-bielefeld.de>/
+> index: 1496 | id: <CALQXJ6PDc2iRSropWy26KyrNLF5BUJWYJzxZ-ZUoD3bm3o8nVA@mail.gmail.com> | from: OTH | date: Tue, 07 Mar, 20:02 | month: 03 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CALQXJ6PDc2iRSropWy26KyrNLF5BUJWYJzxZ-ZUoD3bm3o8nVA@mail.gmail.com>/
+> index: 1346 | id: <1488540740.2575.102.camel@kb.dk> | from: Toke Eskildsen | date: Fri, 03 Mar, 11:32 | month: 03 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<1488540740.2575.102.camel@kb.dk>/
+> index: 4401 | id: <CABEwPvEdSN7cBe-7AWdXjNwRVTYNb+oTrJutqvZtbrW-1NV0aw@mail.gmail.com> | from: David Smiley | date: Thu, 29 Jun, 04:03 | month: 06 | depth: 9
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CABEwPvEdSN7cBe-7AWdXjNwRVTYNb+oTrJutqvZtbrW-1NV0aw@mail.gmail.com>/
+> index: 4916 | id: <1500391454274-4346582.post@n3.nabble.com> | from: Umoreno | date: Tue, 18 Jul, 15:24 | month: 07 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<1500391454274-4346582.post@n3.nabble.com>/
+> index: 3584 | id: <CAKTEqfmuUaGctovGAaTXG80a2CT2HJSR1c0qgFL24cvhjzVm5w@mail.gmail.com> | from: Webster Homer | date: Tue, 23 May, 17:12 | month: 05 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<CAKTEqfmuUaGctovGAaTXG80a2CT2HJSR1c0qgFL24cvhjzVm5w@mail.gmail.com>/
+> index: 5713 | id: <CABS73CKuhGvFK2t7n2BjR6rmTKksYMpWeQ2ntsD3RNzcvT1kQA@mail.gmail.com> | from: Renuka Srishti | date: Wed, 30 Aug, 11:49 | month: 08 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<CABS73CKuhGvFK2t7n2BjR6rmTKksYMpWeQ2ntsD3RNzcvT1kQA@mail.gmail.com>/
+> index: 3011 | id: <73E9F4E2-BC3F-4E18-85FB-CBB13587F97D@whitepages.com> | from: Jeff Wartes | date: Wed, 03 May, 18:35 | month: 05 | depth: 7
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<73E9F4E2-BC3F-4E18-85FB-CBB13587F97D@whitepages.com>/
+> index: 6525 | id: <722A2262-E405-478D-BAD7-C81510E94A5B@sematext.com> | from: Emir Arnautović | date: Thu, 05 Oct, 08:16 | month: 10 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201710.mbox/raw/<722A2262-E405-478D-BAD7-C81510E94A5B@sematext.com>/
+> index: 2395 | id: <CAF8TkC5T_mz2kQt71qbdh8MQQDTuNFcRQkQKF=Dt=M4bn0NBRw@mail.gmail.com> | from: Mikhail Khludnev | date: Tue, 18 Apr, 13:21 | month: 04 | depth: 5
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CAF8TkC5T_mz2kQt71qbdh8MQQDTuNFcRQkQKF=Dt=M4bn0NBRw@mail.gmail.com>/
+> index: 2492 | id: <CAHPRk5H=E-9+oNKU_m_20=-2RCP3tTm4ga9izNaU_vG4CWPChg@mail.gmail.com> | from: Ishan Chattopadhyaya | date: Thu, 13 Apr, 20:42 | month: 04 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CAHPRk5H=E-9+oNKU_m_20=-2RCP3tTm4ga9izNaU_vG4CWPChg@mail.gmail.com>/
+> index: 372 | id: <204259DB-509F-471E-AC77-11F0BE32F9CB@cominvent.com> | from: Jan Høydahl | date: Thu, 19 Jan, 21:49 | month: 01 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<204259DB-509F-471E-AC77-11F0BE32F9CB@cominvent.com>/
+> index: 4475 | id: <alpine.DEB.2.11.1706301040021.28918@tray> | from: Chris Hostetter | date: Fri, 30 Jun, 17:41 | month: 06 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<alpine.DEB.2.11.1706301040021.28918@tray>/
+> index: 1889 | id: <1489874050561-4325808.post@n3.nabble.com> | from: donato | date: Sat, 18 Mar, 21:54 | month: 03 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<1489874050561-4325808.post@n3.nabble.com>/
+> index: 1786 | id: <CAEFAe-F0rQYeerZtrLMi6J4ARx5GbqhvAxMqgj8ffEXyKBKyrw@mail.gmail.com> | from: Alexandre Rafalovitch | date: Fri, 17 Mar, 03:07 | month: 03 | depth: 8
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAEFAe-F0rQYeerZtrLMi6J4ARx5GbqhvAxMqgj8ffEXyKBKyrw@mail.gmail.com>/
+> index: 3151 | id: <alpine.DEB.2.11.1705101640090.17972@tray> | from: Chris Hostetter | date: Thu, 11 May, 00:08 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<alpine.DEB.2.11.1705101640090.17972@tray>/
+> index: 5028 | id: <CALG6HL854o9y5stzmRF1=yNcP9uj6Sd8JpWz02XSSqeGSPKDrg@mail.gmail.com> | from: Doug Turnbull | date: Sun, 23 Jul, 15:47 | month: 07 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<CALG6HL854o9y5stzmRF1=yNcP9uj6Sd8JpWz02XSSqeGSPKDrg@mail.gmail.com>/
+> index: 867 | id: <CAC-Y6CUKktFBd3hsLDj3JWTbv5OV3X57P0EdHzoT-7UG_0POjg@mail.gmail.com> | from: Midas A | date: Thu, 09 Feb, 10:37 | month: 02 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<CAC-Y6CUKktFBd3hsLDj3JWTbv5OV3X57P0EdHzoT-7UG_0POjg@mail.gmail.com>/
+> index: 1608 | id: <CAF2DzVX6q4jGPc6YV=BQNV3miWhkP8RXd263AcZ2+hTETcB3mg@mail.gmail.com> | from: Zheng Lin Edwin Yeo | date: Tue, 14 Mar, 16:20 | month: 03 | depth: 9
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAF2DzVX6q4jGPc6YV=BQNV3miWhkP8RXd263AcZ2+hTETcB3mg@mail.gmail.com>/
+> index: 5392 | id: <CANEGTX8=MZTaVCtgsESHLrV4qOfYjpgsQeDJQ156cLE4=N9dkw@mail.gmail.com> | from: Aman Deep Singh | date: Wed, 09 Aug, 12:34 | month: 08 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<CANEGTX8=MZTaVCtgsESHLrV4qOfYjpgsQeDJQ156cLE4=N9dkw@mail.gmail.com>/
+> index: 1553 | id: <6B0A36B6-BF92-4295-B1EA-E1CCB9CFD160@gmail.com> | from: Sundeep T | date: Thu, 09 Mar, 03:34 | month: 03 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<6B0A36B6-BF92-4295-B1EA-E1CCB9CFD160@gmail.com>/
+> index: 4417 | id: <3A1951AB-2B93-49EF-82A2-AF99D32DC013@wunderwood.org> | from: Walter Underwood | date: Wed, 28 Jun, 21:13 | month: 06 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<3A1951AB-2B93-49EF-82A2-AF99D32DC013@wunderwood.org>/
+> index: 1847 | id: <CAJ6zLTW9Do09UL0sOpjWFDpcpzdX0V4oS5GHF997APj_mwQgYw@mail.gmail.com> | from: Sundeep T | date: Fri, 17 Mar, 18:13 | month: 03 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAJ6zLTW9Do09UL0sOpjWFDpcpzdX0V4oS5GHF997APj_mwQgYw@mail.gmail.com>/
+> index: 6025 | id: <1505241776596-0.post@n3.nabble.com> | from: ruby | date: Tue, 12 Sep, 18:42 | month: 09 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<1505241776596-0.post@n3.nabble.com>/
+> index: 429 | id: <HE1PR0501MB1961B9F7A268C22C7603CB7B98750@HE1PR0501MB1961.eurprd05.prod.outlook.com> | from: Fabien Renaud | date: Tue, 24 Jan, 12:30 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<HE1PR0501MB1961B9F7A268C22C7603CB7B98750@HE1PR0501MB1961.eurprd05.prod.outlook.com>/
+> index: 5152 | id: <CABqCXLTCSafJvh0gnkM7QsrpDiwFJJa-r5YXeCmoRGnXCrJf8w@mail.gmail.com> | from: Michael B. Klein | date: Wed, 02 Aug, 14:56 | month: 08 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<CABqCXLTCSafJvh0gnkM7QsrpDiwFJJa-r5YXeCmoRGnXCrJf8w@mail.gmail.com>/
+> index: 6468 | id: <CAEFAe-FvMsDuC3=yf-yJ11DYu8vFVzuPiYYgrnyhTi41PryX3w@mail.gmail.com> | from: Alexandre Rafalovitch | date: Tue, 03 Oct, 17:01 | month: 10 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201710.mbox/raw/<CAEFAe-FvMsDuC3=yf-yJ11DYu8vFVzuPiYYgrnyhTi41PryX3w@mail.gmail.com>/
+> index: 5334 | id: <1077462582.1548338.1502159901040@mail.yahoo.com> | from: Deepak Vohra | date: Tue, 08 Aug, 02:38 | month: 08 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<1077462582.1548338.1502159901040@mail.yahoo.com>/
+> index: 6280 | id: <CAE4tqLOY_d=tQuik8gKvk0rbKx4F3+12JtUcsAW2=mQ_k7cNDA@mail.gmail.com> | from: Joel Bernstein | date: Mon, 25 Sep, 11:41 | month: 09 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<CAE4tqLOY_d=tQuik8gKvk0rbKx4F3+12JtUcsAW2=mQ_k7cNDA@mail.gmail.com>/
+> index: 2244 | id: <CALGaNM=-vdw_BUSH0Pw_VmWAACh4R83DWOC-w7UJm1uFp9nCVw@mail.gmail.com> | from: Rohit Kanchan | date: Mon, 03 Apr, 22:29 | month: 04 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CALGaNM=-vdw_BUSH0Pw_VmWAACh4R83DWOC-w7UJm1uFp9nCVw@mail.gmail.com>/
+> index: 3462 | id: <fc7fb796-b6e1-20b3-0596-f31a43a5d145@elyograg.org> | from: Shawn Heisey | date: Wed, 17 May, 14:22 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<fc7fb796-b6e1-20b3-0596-f31a43a5d145@elyograg.org>/
+> index: 1257 | id: <07C302FC-A4B6-4A1B-9ACC-4AEFE9FD25D6@flexerasoftware.com> | from: Deeksha Sharma | date: Tue, 28 Feb, 18:12 | month: 02 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<07C302FC-A4B6-4A1B-9ACC-4AEFE9FD25D6@flexerasoftware.com>/
+> index: 483 | id: <CALfVa4+GmoxZNitRpD3MQZDfeQW9EcAsxZEgVpVC+RmC3hed6w@mail.gmail.com> | from: Dan Scarf | date: Wed, 25 Jan, 23:06 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<CALfVa4+GmoxZNitRpD3MQZDfeQW9EcAsxZEgVpVC+RmC3hed6w@mail.gmail.com>/
+> index: 2857 | id: <ec48a0bd-2bbd-485e-587e-d8f30e66fa44@elyograg.org> | from: Shawn Heisey | date: Wed, 26 Apr, 19:35 | month: 04 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<ec48a0bd-2bbd-485e-587e-d8f30e66fa44@elyograg.org>/
+> index: 6372 | id: <CAN4YXvdFEqhQh8P-ekQBqxmsQokPM3WH-6fL0UMFdZWHLmtA-Q@mail.gmail.com> | from: Erick Erickson | date: Wed, 27 Sep, 14:52 | month: 09 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<CAN4YXvdFEqhQh8P-ekQBqxmsQokPM3WH-6fL0UMFdZWHLmtA-Q@mail.gmail.com>/
+> index: 1230 | id: <CAEFAe-Hmq2z=bhX9Qs__U05vFP-nnmZRzq6pxfU=QOgMFLuTZw@mail.gmail.com> | from: Alexandre Rafalovitch | date: Tue, 28 Feb, 01:02 | month: 02 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<CAEFAe-Hmq2z=bhX9Qs__U05vFP-nnmZRzq6pxfU=QOgMFLuTZw@mail.gmail.com>/
+> index: 2798 | id: <1C0C1A3F-7FD2-49A5-9DCF-93BC753D4E0C@leirtech.com> | from: Rick Leir | date: Tue, 25 Apr, 17:49 | month: 04 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<1C0C1A3F-7FD2-49A5-9DCF-93BC753D4E0C@leirtech.com>/
+> index: 4362 | id: <CAPaHVDsNhCXJBaz2GumD4sCf=wmqav=JvwRy_9VYkTNdEGzDyg@mail.gmail.com> | from: Saurabh Sethi | date: Mon, 26 Jun, 20:26 | month: 06 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CAPaHVDsNhCXJBaz2GumD4sCf=wmqav=JvwRy_9VYkTNdEGzDyg@mail.gmail.com>/
+> index: 521 | id: <1485519770140-4317531.post@n3.nabble.com> | from: alessandro.benedetti | date: Fri, 27 Jan, 12:22 | month: 01 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<1485519770140-4317531.post@n3.nabble.com>/
+> index: 2309 | id: <CABq33g3A2OR53d7Um_LTRVuDhDFW3jrbCReUoB5F-PJRW95V7Q@mail.gmail.com> | from: Jordi Domingo Borràs | date: Wed, 05 Apr, 12:45 | month: 04 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CABq33g3A2OR53d7Um_LTRVuDhDFW3jrbCReUoB5F-PJRW95V7Q@mail.gmail.com>/
+> index: 6212 | id: <83D3B2EC-3E76-422C-91CA-C830E0781761@wunderwood.org> | from: Walter Underwood | date: Thu, 21 Sep, 02:00 | month: 09 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201709.mbox/raw/<83D3B2EC-3E76-422C-91CA-C830E0781761@wunderwood.org>/
+> index: 2993 | id: <zarafa.59070edc.4ded.4d28dacb2da49f38@mail1.ams.nl.openindex.io> | from: Markus Jelsma | date: Mon, 01 May, 10:33 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<zarafa.59070edc.4ded.4d28dacb2da49f38@mail1.ams.nl.openindex.io>/
+> index: 1815 | id: <CAF8TkC7bTcoQuMs03M4YnWcmLNrTXzR6aBGSXQMOon+euvrBMA@mail.gmail.com> | from: Mikhail Khludnev | date: Thu, 16 Mar, 18:53 | month: 03 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAF8TkC7bTcoQuMs03M4YnWcmLNrTXzR6aBGSXQMOon+euvrBMA@mail.gmail.com>/
+> index: 450 | id: <4E851B3B-4374-4A1F-A6D6-E8B54837AAF2@gmail.com> | from: Stanislav Sandalnikov | date: Tue, 24 Jan, 15:29 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<4E851B3B-4374-4A1F-A6D6-E8B54837AAF2@gmail.com>/
+> index: 5060 | id: <CAH8R_2Z9_P=o7jfaJVOMo+6oxQE4TZ=dNNdCSbWE=93vQJFhFA@mail.gmail.com> | from: Amrit Sarkar | date: Tue, 25 Jul, 17:57 | month: 07 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<CAH8R_2Z9_P=o7jfaJVOMo+6oxQE4TZ=dNNdCSbWE=93vQJFhFA@mail.gmail.com>/
+> index: 693 | id: <68f841c7-dc95-ca96-5655-0810ad4cb34b@elyograg.org> | from: Shawn Heisey | date: Thu, 02 Feb, 14:41 | month: 02 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201702.mbox/raw/<68f841c7-dc95-ca96-5655-0810ad4cb34b@elyograg.org>/
+> index: 311 | id: <CAF2DzVW1WR-pbxSi6nAH+CHX9pF8WL1pas_yLC9NqbRToSPuNw@mail.gmail.com> | from: Zheng Lin Edwin Yeo | date: Tue, 17 Jan, 04:01 | month: 01 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<CAF2DzVW1WR-pbxSi6nAH+CHX9pF8WL1pas_yLC9NqbRToSPuNw@mail.gmail.com>/
+> index: 2192 | id: <CAEFAe-F1NyahF7BaGy0dd5+HiNfx9tMxGkZmHr_EoWbkR9qhEQ@mail.gmail.com> | from: Alexandre Rafalovitch | date: Fri, 31 Mar, 22:44 | month: 03 | depth: 4
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAEFAe-F1NyahF7BaGy0dd5+HiNfx9tMxGkZmHr_EoWbkR9qhEQ@mail.gmail.com>/
+> index: 2470 | id: <CANGA2_PjOO0dZsMhsPgcfskgKae=csK1E8x0KupK3dx+=mO9Pg@mail.gmail.com> | from: David Hastings | date: Tue, 11 Apr, 20:18 | month: 04 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201704.mbox/raw/<CANGA2_PjOO0dZsMhsPgcfskgKae=csK1E8x0KupK3dx+=mO9Pg@mail.gmail.com>/
+> index: 391 | id: <1485769786431-4317781.post@n3.nabble.com> | from: alessandro.benedetti | date: Mon, 30 Jan, 09:49 | month: 01 | depth: 6
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<1485769786431-4317781.post@n3.nabble.com>/
+> index: 5662 | id: <CAN4YXvcLMbpgZhzc=GFr=5ops131XNrw0aPBpg-mB4Hc9=7H6A@mail.gmail.com> | from: Erick Erickson | date: Fri, 25 Aug, 00:01 | month: 08 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<CAN4YXvcLMbpgZhzc=GFr=5ops131XNrw0aPBpg-mB4Hc9=7H6A@mail.gmail.com>/
+> index: 4804 | id: <CAN+whnLqY8yNj8z54DUs=qjaHsgqrrv7SLPRpkE25+kcVOnkgg@mail.gmail.com> | from: Nawab Zada Asad Iqbal | date: Fri, 14 Jul, 14:29 | month: 07 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<CAN+whnLqY8yNj8z54DUs=qjaHsgqrrv7SLPRpkE25+kcVOnkgg@mail.gmail.com>/
+> index: 582 | id: <1485866906689-4317996.post@n3.nabble.com> | from: alessandro.benedetti | date: Tue, 31 Jan, 12:48 | month: 01 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<1485866906689-4317996.post@n3.nabble.com>/
+> index: 6506 | id: <2C4D760D-68E8-4DD7-8713-D7833F2E04CA@sematext.com> | from: Emir Arnautović | date: Wed, 04 Oct, 13:03 | month: 10 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201710.mbox/raw/<2C4D760D-68E8-4DD7-8713-D7833F2E04CA@sematext.com>/
+> index: 359 | id: <1484796189462-4314761.post@n3.nabble.com> | from: Keiichi MORITA | date: Thu, 19 Jan, 03:23 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<1484796189462-4314761.post@n3.nabble.com>/
+> index: 1523 | id: <ME1PR01MB1219D9BED18A31A530223E4CC82F0@ME1PR01MB1219.ausprd01.prod.outlook.com> | from: Phil Scadden | date: Tue, 07 Mar, 23:54 | month: 03 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<ME1PR01MB1219D9BED18A31A530223E4CC82F0@ME1PR01MB1219.ausprd01.prod.outlook.com>/
+> index: 3389 | id: <CAEo-30H2HGt2rv=pcmY3F9KN7hkRLR6UY3Nw=qYMh3TWsXVc+g@mail.gmail.com> | from: Shawn Feldman | date: Fri, 19 May, 21:03 | month: 05 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<CAEo-30H2HGt2rv=pcmY3F9KN7hkRLR6UY3Nw=qYMh3TWsXVc+g@mail.gmail.com>/
+> index: 1645 | id: <CAHsXEHWoQzT1uQKitDDHQpv0LrJM0k+5ZAb+sOSTv88w4z40nQ@mail.gmail.com> | from: Furkan KAMACI | date: Mon, 13 Mar, 15:09 | month: 03 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAHsXEHWoQzT1uQKitDDHQpv0LrJM0k+5ZAb+sOSTv88w4z40nQ@mail.gmail.com>/
+> index: 4975 | id: <59D93065-42DB-45F0-8FAB-86F87ECAACDE@wunderwood.org> | from: Walter Underwood | date: Thu, 20 Jul, 15:00 | month: 07 | depth: 3
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<59D93065-42DB-45F0-8FAB-86F87ECAACDE@wunderwood.org>/
+> index: 345 | id: <47097ed9-31f4-cc33-2b50-77aaf9f6bfb7@apache.org> | from: Rich Bowen | date: Wed, 18 Jan, 16:45 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<47097ed9-31f4-cc33-2b50-77aaf9f6bfb7@apache.org>/
+> index: 4359 | id: <CA+x26ec8mdU1F1GtD5gHQTjUmPU+i1Qy20X-0D7C5SaEib7zqA@mail.gmail.com> | from: govind nitk | date: Mon, 26 Jun, 08:38 | month: 06 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201706.mbox/raw/<CA+x26ec8mdU1F1GtD5gHQTjUmPU+i1Qy20X-0D7C5SaEib7zqA@mail.gmail.com>/
+> index: 2140 | id: <CAN4YXvdKMX3RVGBBk2rRLe1PyVy3ufu03CE8Fj-LtsjV1cCsww@mail.gmail.com> | from: Erick Erickson | date: Thu, 30 Mar, 17:17 | month: 03 | depth: 7
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201703.mbox/raw/<CAN4YXvdKMX3RVGBBk2rRLe1PyVy3ufu03CE8Fj-LtsjV1cCsww@mail.gmail.com>/
+> index: 4822 | id: <CABRMmtVXOV+Z72LAuCPWSSt7ALQ9JjkzqiBj5o5p-xrAJ74bag@mail.gmail.com> | from: Atita Arora | date: Fri, 14 Jul, 17:08 | month: 07 | depth: 1
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<CABRMmtVXOV+Z72LAuCPWSSt7ALQ9JjkzqiBj5o5p-xrAJ74bag@mail.gmail.com>/
+> index: 3450 | id: <9FE86805-ABA6-4B7D-B25E-216B26A64395@wunderwood.org> | from: Walter Underwood | date: Tue, 16 May, 17:55 | month: 05 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201705.mbox/raw/<9FE86805-ABA6-4B7D-B25E-216B26A64395@wunderwood.org>/
+> index: 153 | id: <1483942914259.20331@impetus.co.in> | from: Manan Sheth | date: Mon, 09 Jan, 06:21 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201701.mbox/raw/<1483942914259.20331@impetus.co.in>/
+> index: 4677 | id: <CY1PR09MB0774CBD7B6CA1D8FDAF04BAEC7A90@CY1PR09MB0774.namprd09.prod.outlook.com> | from: Allison, Timothy B. | date: Mon, 10 Jul, 19:40 | month: 07 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201707.mbox/raw/<CY1PR09MB0774CBD7B6CA1D8FDAF04BAEC7A90@CY1PR09MB0774.namprd09.prod.outlook.com>/
+> index: 5151 | id: <CAN4YXvcNPmquwDwkCLS_ZO7bMpb4Rxr0F0r0HddrrGEgGw2NPA@mail.gmail.com> | from: Erick Erickson | date: Wed, 02 Aug, 01:14 | month: 08 | depth: 2
+http://mail-archives.apache.org/mod_mbox/lucene-solr-user/201708.mbox/raw/<CAN4YXvcNPmquwDwkCLS_ZO7bMpb4Rxr0F0r0HddrrGEgGw2NPA@mail.gmail.com>/
+========================= TEST =========================
+Selected 100 indices from 5603 mails:  [3906, 3398, 5051, 5522, 3643, 1154, 561, 5597, 5326, 1668, 3082, 3874, 3340, 1980, 1497, 3649, 549, 2129, 2302, 4611, 4782, 2840, 4295, 4179, 5281, 1666, 1403, 2694, 4599, 3431, 1688, 4438, 5372, 5585, 1990, 2668, 3184, 4147, 1950, 3258, 293, 2952, 4283, 1090, 4400, 4850, 5171, 2010, 1076, 2576, 1756, 4151, 3958, 2288, 3448, 1581, 4076, 842, 2451, 3918, 1250, 3360, 1533, 4260, 5541, 3029, 1925, 425, 3395, 1520, 1023, 111, 3442, 2996, 1795, 3730, 2726, 510, 5206, 856, 4398, 1928, 4264, 623, 3208, 4000, 4891, 2643, 3066, 2406, 2699, 5283, 3490, 3812, 3519, 3662, 1014, 14, 832, 5509]
+> index: 3906 | id: <1498522225412-28793.post@n3.nabble.com> | from: satishl | date: Tue, 27 Jun, 00:10 | month: 06 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<1498522225412-28793.post@n3.nabble.com>/
+> index: 3398 | id: <VI1PR08MB118419E7258F6385E2740D34CAF70@VI1PR08MB1184.eurprd08.prod.outlook.com> | from: yohann jardin | date: Fri, 02 Jun, 17:10 | month: 06 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<VI1PR08MB118419E7258F6385E2740D34CAF70@VI1PR08MB1184.eurprd08.prod.outlook.com>/
+> index: 5051 | id: <1504178213884-0.post@n3.nabble.com> | from: grumi | date: Thu, 31 Aug, 11:16 | month: 08 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201708.mbox/raw/<1504178213884-0.post@n3.nabble.com>/
+> index: 5522 | id: <CAMc-71=Vp8bU9XJ=E0kYJUPWKMGF15isHNwddMKg9wYRzwk1Ng@mail.gmail.com> | from: Gerard Maas | date: Sun, 01 Oct, 18:46 | month: 10 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201710.mbox/raw/<CAMc-71=Vp8bU9XJ=E0kYJUPWKMGF15isHNwddMKg9wYRzwk1Ng@mail.gmail.com>/
+> index: 3643 | id: <BN1PR12MB0084B1AF29EDAE933A032983D0C70@BN1PR12MB0084.namprd12.prod.outlook.com> | from: Yong Zhang | date: Sun, 18 Jun, 13:26 | month: 06 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<BN1PR12MB0084B1AF29EDAE933A032983D0C70@BN1PR12MB0084.namprd12.prod.outlook.com>/
+> index: 1154 | id: <CAJBLQXWVZn4sWRWrdcOx_mMZbg7VocYdMy_LFQj5i3CxeaeZNg@mail.gmail.com> | from: Srikanth | date: Tue, 07 Feb, 22:49 | month: 02 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201702.mbox/raw/<CAJBLQXWVZn4sWRWrdcOx_mMZbg7VocYdMy_LFQj5i3CxeaeZNg@mail.gmail.com>/
+> index: 561 | id: <CAMyctv6iid8YfWZsw9bJo6QuCBZdFuyeKoDko5AjD7AO=pCE1Q@mail.gmail.com> | from: Pavel Plotnikov | date: Fri, 20 Jan, 10:23 | month: 01 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201701.mbox/raw/<CAMyctv6iid8YfWZsw9bJo6QuCBZdFuyeKoDko5AjD7AO=pCE1Q@mail.gmail.com>/
+> index: 5597 | id: <1507535403298-0.post@n3.nabble.com> | from: Vikash Pareek | date: Mon, 09 Oct, 07:50 | month: 10 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201710.mbox/raw/<1507535403298-0.post@n3.nabble.com>/
+> index: 5326 | id: <CAB_G8ZvsbswQNq1Gy=zOqSjFzoiWWWtGbxnpNG9xxrCggqpy5Q@mail.gmail.com> | from: Jacek Laskowski | date: Tue, 19 Sep, 12:13 | month: 09 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201709.mbox/raw/<CAB_G8ZvsbswQNq1Gy=zOqSjFzoiWWWtGbxnpNG9xxrCggqpy5Q@mail.gmail.com>/
+> index: 1668 | id: <CALAQ4HukYDRMWXzAA4om4h+CrBVAe-iatjCcz5tMzQ=BsVYU1w@mail.gmail.com> | from: Mike Thomsen | date: Wed, 01 Mar, 19:50 | month: 03 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201703.mbox/raw/<CALAQ4HukYDRMWXzAA4om4h+CrBVAe-iatjCcz5tMzQ=BsVYU1w@mail.gmail.com>/
+> index: 3082 | id: <CAK1Fs9LwMgjEY9Uoce+A7ecD=LksY+Ba8Ujw=gJpnUGhTU_Fnw@mail.gmail.com> | from: issues solution | date: Mon, 15 May, 08:32 | month: 05 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201705.mbox/raw/<CAK1Fs9LwMgjEY9Uoce+A7ecD=LksY+Ba8Ujw=gJpnUGhTU_Fnw@mail.gmail.com>/
+> index: 3874 | id: <CAMAsSdL5ud4x00b87Cd+dHgxYKWmu4yYtqRpb_DYmWrFfYncmQ@mail.gmail.com> | from: Sean Owen | date: Sun, 25 Jun, 19:46 | month: 06 | depth: 3
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<CAMAsSdL5ud4x00b87Cd+dHgxYKWmu4yYtqRpb_DYmWrFfYncmQ@mail.gmail.com>/
+> index: 3340 | id: <CAKWX9VWqKkCp-MkbF+o4TSGXiERnCHf9Dy-k4GHuP0pug87v-A@mail.gmail.com> | from: Cody Koeninger | date: Tue, 30 May, 15:33 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201705.mbox/raw/<CAKWX9VWqKkCp-MkbF+o4TSGXiERnCHf9Dy-k4GHuP0pug87v-A@mail.gmail.com>/
+> index: 1980 | id: <6D45E3CF-D849-40BF-A2D5-E2B5B99861DD@gmail.com> | from: Dominik Safaric | date: Sat, 18 Mar, 09:34 | month: 03 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201703.mbox/raw/<6D45E3CF-D849-40BF-A2D5-E2B5B99861DD@gmail.com>/
+> index: 1497 | id: <CACo38_RrDhuDmeC99gbdbKukm5XNrcraWawDYg4xHn6qSvw3sw@mail.gmail.com> | from: Jacek Laskowski | date: Fri, 24 Feb, 18:45 | month: 02 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201702.mbox/raw/<CACo38_RrDhuDmeC99gbdbKukm5XNrcraWawDYg4xHn6qSvw3sw@mail.gmail.com>/
+> index: 3649 | id: <CAPziQv-x5LzmZ+KTNsV4vQDcOR7vy78r-Fv6KT3d7hz6vx1xJg@mail.gmail.com> | from: Aakash Basu | date: Fri, 16 Jun, 19:04 | month: 06 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<CAPziQv-x5LzmZ+KTNsV4vQDcOR7vy78r-Fv6KT3d7hz6vx1xJg@mail.gmail.com>/
+> index: 549 | id: <MEXPR01MB04884066E9D6403B3D2F38E9817E0@MEXPR01MB0488.ausprd01.prod.outlook.com> | from: Deepu Raj | date: Thu, 19 Jan, 22:49 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201701.mbox/raw/<MEXPR01MB04884066E9D6403B3D2F38E9817E0@MEXPR01MB0488.ausprd01.prod.outlook.com>/
+> index: 2129 | id: <CAAswR-4Zf25uz+bZ6=H1yZG66SvT2g7beuOcgvFjsWab3FLEmA@mail.gmail.com> | from: Michael Armbrust | date: Mon, 27 Mar, 20:25 | month: 03 | depth: 5
+http://mail-archives.apache.org/mod_mbox/spark-user/201703.mbox/raw/<CAAswR-4Zf25uz+bZ6=H1yZG66SvT2g7beuOcgvFjsWab3FLEmA@mail.gmail.com>/
+> index: 2302 | id: <CAKVtN-5R0LeyYS+QD_2yBcZhX+Kkzka=Xp+44TSEg_Tc4bJ7og@mail.gmail.com> | from: Keith Chapman | date: Tue, 04 Apr, 19:12 | month: 04 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201704.mbox/raw/<CAKVtN-5R0LeyYS+QD_2yBcZhX+Kkzka=Xp+44TSEg_Tc4bJ7og@mail.gmail.com>/
+> index: 4611 | id: <F5FD74FD-FD3D-47FE-BCAC-4509BA2D9C3E@gmail.com> | from: Parijat Mazumdar | date: Fri, 04 Aug, 04:39 | month: 08 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201708.mbox/raw/<F5FD74FD-FD3D-47FE-BCAC-4509BA2D9C3E@gmail.com>/
+> index: 4782 | id: <CAAswR-5hvxBVGTAKK3Y4F+2AtHX6J4Mtwa7b5DhxKiiutew3Yw@mail.gmail.com> | from: Michael Armbrust | date: Tue, 15 Aug, 19:25 | month: 08 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201708.mbox/raw/<CAAswR-5hvxBVGTAKK3Y4F+2AtHX6J4Mtwa7b5DhxKiiutew3Yw@mail.gmail.com>/
+> index: 2840 | id: <CAKWX9VWCZZMyQpGYYL_Nmxs=JjNAfzPMEaZM4A0YMjJfyZKraw@mail.gmail.com> | from: Cody Koeninger | date: Tue, 02 May, 18:50 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201705.mbox/raw/<CAKWX9VWCZZMyQpGYYL_Nmxs=JjNAfzPMEaZM4A0YMjJfyZKraw@mail.gmail.com>/
+> index: 4295 | id: <CAAOnQ7tKSF80Jqo_J9XWV6CkQTOfOavKDEPemt+pkJNS3M55fg@mail.gmail.com> | from: Marcelo Vanzin | date: Thu, 20 Jul, 23:25 | month: 07 | depth: 10
+http://mail-archives.apache.org/mod_mbox/spark-user/201707.mbox/raw/<CAAOnQ7tKSF80Jqo_J9XWV6CkQTOfOavKDEPemt+pkJNS3M55fg@mail.gmail.com>/
+> index: 4179 | id: <CAKR5Mf0hh4GXU5Bh4+GpHwR0z-gcDc-dfRHwFOBkNk9x8h+fxg@mail.gmail.com> | from: Alonso Isidoro Roman | date: Mon, 17 Jul, 12:27 | month: 07 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201707.mbox/raw/<CAKR5Mf0hh4GXU5Bh4+GpHwR0z-gcDc-dfRHwFOBkNk9x8h+fxg@mail.gmail.com>/
+> index: 5281 | id: <CA+iiNx8AtcmMt+dy1_f+bnn5H5TNNJZHkMNPVF6Ln4vp0yy6jw@mail.gmail.com> | from: kant kodali | date: Wed, 13 Sep, 18:20 | month: 09 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201709.mbox/raw/<CA+iiNx8AtcmMt+dy1_f+bnn5H5TNNJZHkMNPVF6Ln4vp0yy6jw@mail.gmail.com>/
+> index: 1666 | id: <CAGFSP8adiOn8WjZGvRogcuaeYjP=n+=G9LzRVd99pXf9x4XiwQ@mail.gmail.com> | from: Bill Schwanitz | date: Wed, 01 Mar, 18:28 | month: 03 | depth: 3
+http://mail-archives.apache.org/mod_mbox/spark-user/201703.mbox/raw/<CAGFSP8adiOn8WjZGvRogcuaeYjP=n+=G9LzRVd99pXf9x4XiwQ@mail.gmail.com>/
+> index: 1403 | id: <CAPziQv8dxhNZ2+gj3PNu7J=YtY+iMT=R4LJ2NiqTSdViiAbaEg@mail.gmail.com> | from: Aakash Basu | date: Fri, 17 Feb, 14:33 | month: 02 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201702.mbox/raw/<CAPziQv8dxhNZ2+gj3PNu7J=YtY+iMT=R4LJ2NiqTSdViiAbaEg@mail.gmail.com>/
+> index: 2694 | id: <580937342.23521.1492973381218@office.mailbox.org> | from: Richard Hanson | date: Sun, 23 Apr, 18:49 | month: 04 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201704.mbox/raw/<580937342.23521.1492973381218@office.mailbox.org>/
+> index: 4599 | id: <CAGWtUW+87MptNH9e-Zn4=9hi+Sy1kbabP7-Lh9+vtPvQpp2z5w@mail.gmail.com> | from: Patrick | date: Wed, 02 Aug, 19:05 | month: 08 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201708.mbox/raw/<CAGWtUW+87MptNH9e-Zn4=9hi+Sy1kbabP7-Lh9+vtPvQpp2z5w@mail.gmail.com>/
+> index: 3431 | id: <CAL8bMubvK49aFvAAKxw+KLyUpeydxNtJD369uE=-zHQnHvrXXA@mail.gmail.com> | from: Anton Okolnychyi | date: Mon, 05 Jun, 19:59 | month: 06 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<CAL8bMubvK49aFvAAKxw+KLyUpeydxNtJD369uE=-zHQnHvrXXA@mail.gmail.com>/
+> index: 1688 | id: <CAAsvFPmKFNRCZQf1cp7pr-+0+Px+3XLRr-_C8TUEzeTyqTfZQQ@mail.gmail.com> | from: Mark Hamstra | date: Fri, 03 Mar, 23:09 | month: 03 | depth: 8
+http://mail-archives.apache.org/mod_mbox/spark-user/201703.mbox/raw/<CAAsvFPmKFNRCZQf1cp7pr-+0+Px+3XLRr-_C8TUEzeTyqTfZQQ@mail.gmail.com>/
+> index: 4438 | id: <CACQQHvtTyQRW-KwSNh_sVjOz2CJD1z0c7VGAhu_1oOqjMktzWQ@mail.gmail.com> | from: Gokula Krishnan D | date: Tue, 25 Jul, 12:21 | month: 07 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201707.mbox/raw/<CACQQHvtTyQRW-KwSNh_sVjOz2CJD1z0c7VGAhu_1oOqjMktzWQ@mail.gmail.com>/
+> index: 5372 | id: <CAAswR-5d-PVrEOau4m4xpDFjHi7K3aR3aU=1COqw1-8b97OKCw@mail.gmail.com> | from: Michael Armbrust | date: Fri, 22 Sep, 19:51 | month: 09 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201709.mbox/raw/<CAAswR-5d-PVrEOau4m4xpDFjHi7K3aR3aU=1COqw1-8b97OKCw@mail.gmail.com>/
+> index: 5585 | id: <1507393090502-0.post@n3.nabble.com> | from: Weitong Chen | date: Sat, 07 Oct, 16:18 | month: 10 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201710.mbox/raw/<1507393090502-0.post@n3.nabble.com>/
+> index: 1990 | id: <1490059586954-28512.post@n3.nabble.com> | from: darin | date: Tue, 21 Mar, 01:26 | month: 03 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201703.mbox/raw/<1490059586954-28512.post@n3.nabble.com>/
+> index: 2668 | id: <D749DEC3-2A57-4473-985C-87AC3C73778B@gmail.com> | from: Jörn Franke | date: Fri, 21 Apr, 18:39 | month: 04 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201704.mbox/raw/<D749DEC3-2A57-4473-985C-87AC3C73778B@gmail.com>/
+> index: 3184 | id: <B0DBE36B-F44F-4395-BE94-1B8604920C89@gmail.com> | from: kanth...@gmail.com | date: Fri, 19 May, 08:45 | month: 05 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201705.mbox/raw/<B0DBE36B-F44F-4395-BE94-1B8604920C89@gmail.com>/
+> index: 4147 | id: <CACJxWGJC7acVoY=v_+AZ0WKeCdyXmxr27N33-37OEnkOGFYjcA@mail.gmail.com> | from: Valentin Ursu | date: Tue, 11 Jul, 16:58 | month: 07 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201707.mbox/raw/<CACJxWGJC7acVoY=v_+AZ0WKeCdyXmxr27N33-37OEnkOGFYjcA@mail.gmail.com>/
+> index: 1950 | id: <CAKxDxQWvZpyEW0Ho7v5j=-3dnzdk+axxksqrgwtBEbtz3-W-+Q@mail.gmail.com> | from: Nathan Case | date: Wed, 15 Mar, 15:56 | month: 03 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201703.mbox/raw/<CAKxDxQWvZpyEW0Ho7v5j=-3dnzdk+axxksqrgwtBEbtz3-W-+Q@mail.gmail.com>/
+> index: 3258 | id: <CAEGK35cn=_YcbnkJWC-Nk8XruRejSLVbxPR045FL4fwodafhpQ@mail.gmail.com> | from: Andrii Biletskyi | date: Tue, 23 May, 19:59 | month: 05 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201705.mbox/raw/<CAEGK35cn=_YcbnkJWC-Nk8XruRejSLVbxPR045FL4fwodafhpQ@mail.gmail.com>/
+> index: 293 | id: <CAFXMq62_RvrhyKcG1TZ7k_qAk6=Sbkxia456dp15RmVxBYu+gA@mail.gmail.com> | from: Md. Rezaul Karim | date: Thu, 12 Jan, 13:43 | month: 01 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201701.mbox/raw/<CAFXMq62_RvrhyKcG1TZ7k_qAk6=Sbkxia456dp15RmVxBYu+gA@mail.gmail.com>/
+> index: 2952 | id: <CAO4-Pq9m-zi+yO+kaeiCMKDGOJP45-fuoGpGBwuJsW1-+iB0rw@mail.gmail.com> | from: Dirceu Semighini Filho | date: Mon, 08 May, 18:07 | month: 05 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201705.mbox/raw/<CAO4-Pq9m-zi+yO+kaeiCMKDGOJP45-fuoGpGBwuJsW1-+iB0rw@mail.gmail.com>/
+> index: 4283 | id: <CALD+6GOJX15nipndGzK+NNwc59-VYP_G-G_fmUY3S6QcTKQxBw@mail.gmail.com> | from: Nick Pentreath | date: Wed, 19 Jul, 14:15 | month: 07 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201707.mbox/raw/<CALD+6GOJX15nipndGzK+NNwc59-VYP_G-G_fmUY3S6QcTKQxBw@mail.gmail.com>/
+> index: 1090 | id: <CAMrx5DwHALkAZM_8E7SMkQ1eBBb7XPMEScZ1g5URFvTURDnw0w@mail.gmail.com> | from: Egor Pahomov | date: Tue, 07 Feb, 01:53 | month: 02 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201702.mbox/raw/<CAMrx5DwHALkAZM_8E7SMkQ1eBBb7XPMEScZ1g5URFvTURDnw0w@mail.gmail.com>/
+> index: 4400 | id: <CAJ8R1wxK6WOJDcfFQ0EFVZQ+SUCwfWCT2UycPeNouLhNLTfp2g@mail.gmail.com> | from: Aseem Bansal | date: Mon, 24 Jul, 11:34 | month: 07 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201707.mbox/raw/<CAJ8R1wxK6WOJDcfFQ0EFVZQ+SUCwfWCT2UycPeNouLhNLTfp2g@mail.gmail.com>/
+> index: 4850 | id: <CA+hp6TdKb8dc-0PMYqhUaM_YpNpwOY+75N_dijTFJXbiXzsMGw@mail.gmail.com> | from: KhajaAsmath Mohammed | date: Sun, 20 Aug, 17:54 | month: 08 | depth: 8
+http://mail-archives.apache.org/mod_mbox/spark-user/201708.mbox/raw/<CA+hp6TdKb8dc-0PMYqhUaM_YpNpwOY+75N_dijTFJXbiXzsMGw@mail.gmail.com>/
+> index: 5171 | id: <CAJnByzh-BXERzGtKpiHvknkLq3Q-rqLFjuQb_yqXvXmcZ=LGjg@mail.gmail.com> | from: Xiaoye Sun | date: Mon, 11 Sep, 22:36 | month: 09 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201709.mbox/raw/<CAJnByzh-BXERzGtKpiHvknkLq3Q-rqLFjuQb_yqXvXmcZ=LGjg@mail.gmail.com>/
+> index: 2010 | id: <OF24628788.5A5AB1D5-ON492580E7.0035E504-492580E7.0036C187@notes.na.collabserv.com> | from: Kazuaki Ishizaki | date: Sat, 18 Mar, 09:58 | month: 03 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201703.mbox/raw/<OF24628788.5A5AB1D5-ON492580E7.0035E504-492580E7.0036C187@notes.na.collabserv.com>/
+> index: 1076 | id: <CANF+cm+ke1XzYz+1+0JuXZX+oHeo-G3ZRiNsUXwj8r21Y-S62Q@mail.gmail.com> | from: vaquar khan | date: Mon, 06 Feb, 01:56 | month: 02 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201702.mbox/raw/<CANF+cm+ke1XzYz+1+0JuXZX+oHeo-G3ZRiNsUXwj8r21Y-S62Q@mail.gmail.com>/
+> index: 2576 | id: <CALO8y5DndLPAcAW56OquJRpPK7RFmPrm53HfjmOVAzsqsiY3mw@mail.gmail.com> | from: Gaurav Pandya | date: Mon, 17 Apr, 07:49 | month: 04 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201704.mbox/raw/<CALO8y5DndLPAcAW56OquJRpPK7RFmPrm53HfjmOVAzsqsiY3mw@mail.gmail.com>/
+> index: 1756 | id: <CABq2XnbVmPYjtATF93az0AXWQvixJYC4gYAhKN7=VjgxRHNCQQ@mail.gmail.com> | from: Ankur Srivastava | date: Mon, 06 Mar, 21:20 | month: 03 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201703.mbox/raw/<CABq2XnbVmPYjtATF93az0AXWQvixJYC4gYAhKN7=VjgxRHNCQQ@mail.gmail.com>/
+> index: 4151 | id: <1499815993139-28849.post@n3.nabble.com> | from: muthu | date: Tue, 11 Jul, 23:33 | month: 07 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201707.mbox/raw/<1499815993139-28849.post@n3.nabble.com>/
+> index: 3958 | id: <CALKvMUVJ4AvLCNXhsFqKdLRkp9bmYtKijWVmo6GqJ-B9MYd9Mw@mail.gmail.com> | from: satyajit vegesna | date: Thu, 29 Jun, 00:13 | month: 06 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<CALKvMUVJ4AvLCNXhsFqKdLRkp9bmYtKijWVmo6GqJ-B9MYd9Mw@mail.gmail.com>/
+> index: 2288 | id: <1491205302239.6218@UGent.be> | from: gvdongen | date: Mon, 03 Apr, 07:41 | month: 04 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201704.mbox/raw/<1491205302239.6218@UGent.be>/
+> index: 3448 | id: <D55C9F68.C495%zhongshuang.li@envisioncn.com> | from: Jonnas Li(Contractor) | date: Tue, 06 Jun, 10:14 | month: 06 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<D55C9F68.C495%zhongshuang.li@envisioncn.com>/
+FAILED HTTP request!
+> index: 1581 | id: <tencent_61A48B5A79B69564A8F9698B@qq.com> | from: yuyong.zhai | date: Mon, 27 Feb, 02:19 | month: 02 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201702.mbox/raw/<tencent_61A48B5A79B69564A8F9698B@qq.com>/
+> index: 4076 | id: <1800290080.32686.1499370121262@mail.yahoo.com> | from: upendra 1991 | date: Thu, 06 Jul, 19:42 | month: 07 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201707.mbox/raw/<1800290080.32686.1499370121262@mail.yahoo.com>/
+> index: 842 | id: <CA+TbnUNoKh4p+Sr7DFtC5EZKGq=2t_aNC5v270y9dryZzddvJQ@mail.gmail.com> | from: Roberto Coluccio | date: Mon, 30 Jan, 10:23 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201701.mbox/raw/<CA+TbnUNoKh4p+Sr7DFtC5EZKGq=2t_aNC5v270y9dryZzddvJQ@mail.gmail.com>/
+> index: 2451 | id: <CANx3uAiyk0TbMbctuw5Kq9mvcRe6Z2vL-D9xcxH5MAXSxVi2fg@mail.gmail.com> | from: Koert Kuipers | date: Sat, 08 Apr, 23:18 | month: 04 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201704.mbox/raw/<CANx3uAiyk0TbMbctuw5Kq9mvcRe6Z2vL-D9xcxH5MAXSxVi2fg@mail.gmail.com>/
+> index: 3918 | id: <CAKOFcwokdtkUfiNE2DzajLM1QeyStra4Dto9GEi9HQ75mWnqWA@mail.gmail.com> | from: John Omernik | date: Tue, 27 Jun, 12:47 | month: 06 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<CAKOFcwokdtkUfiNE2DzajLM1QeyStra4Dto9GEi9HQ75mWnqWA@mail.gmail.com>/
+> index: 1250 | id: <CAO17acYeJGmR8eNt5h8vMGm0aNOAqe5SpOeKdsu98uCTVG56sg@mail.gmail.com> | from: Calvin Jia | date: Mon, 13 Feb, 09:29 | month: 02 | depth: 4
+http://mail-archives.apache.org/mod_mbox/spark-user/201702.mbox/raw/<CAO17acYeJGmR8eNt5h8vMGm0aNOAqe5SpOeKdsu98uCTVG56sg@mail.gmail.com>/
+> index: 3360 | id: <CAAswR-7mRrykwgsqKni+tfUnE-LAdXwn9USvpcBkMuNHbrZw6Q@mail.gmail.com> | from: Michael Armbrust | date: Wed, 31 May, 19:59 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201705.mbox/raw/<CAAswR-7mRrykwgsqKni+tfUnE-LAdXwn9USvpcBkMuNHbrZw6Q@mail.gmail.com>/
+> index: 1533 | id: <CAJDfK9Ee8L1FHosOj7qOqOZp6vri4jAxddppN329qjOf7mSXEg@mail.gmail.com> | from: Dana Ram Meghwal | date: Fri, 24 Feb, 07:08 | month: 02 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201702.mbox/raw/<CAJDfK9Ee8L1FHosOj7qOqOZp6vri4jAxddppN329qjOf7mSXEg@mail.gmail.com>/
+> index: 4260 | id: <CA+MEsbDtdF4G00LuAbjdK7sbMX9+OgWNayB3t7A9Wz0DSOt=EA@mail.gmail.com> | from: Chetan Khatri | date: Thu, 20 Jul, 03:46 | month: 07 | depth: 11
+http://mail-archives.apache.org/mod_mbox/spark-user/201707.mbox/raw/<CA+MEsbDtdF4G00LuAbjdK7sbMX9+OgWNayB3t7A9Wz0DSOt=EA@mail.gmail.com>/
+> index: 5541 | id: <CAF=CqfstLCsmR64303G=XXXxMEngovKNdu0vNhBhN3iy=EDWWQ@mail.gmail.com> | from: Marco Mistroni | date: Sat, 07 Oct, 19:34 | month: 10 | depth: 5
+http://mail-archives.apache.org/mod_mbox/spark-user/201710.mbox/raw/<CAF=CqfstLCsmR64303G=XXXxMEngovKNdu0vNhBhN3iy=EDWWQ@mail.gmail.com>/
+> index: 3029 | id: <400C5377-CDB6-48C8-8BE7-9A59C86283CE@hortonworks.com> | from: Steve Loughran | date: Tue, 16 May, 17:10 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201705.mbox/raw/<400C5377-CDB6-48C8-8BE7-9A59C86283CE@hortonworks.com>/
+> index: 1925 | id: <CAFn71VOW5Z242ohoU7imdV0Hyyne+spY8Mvfk8PmN+=47kA8kQ@mail.gmail.com> | from: vincent gromakowski | date: Wed, 15 Mar, 07:49 | month: 03 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201703.mbox/raw/<CAFn71VOW5Z242ohoU7imdV0Hyyne+spY8Mvfk8PmN+=47kA8kQ@mail.gmail.com>/
+> index: 425 | id: <CANx3uAjL9m4PVgkLz9xsFt21JMpDmEuWCz1_pvL98RigRD9jUw@mail.gmail.com> | from: Koert Kuipers | date: Tue, 17 Jan, 23:24 | month: 01 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201701.mbox/raw/<CANx3uAjL9m4PVgkLz9xsFt21JMpDmEuWCz1_pvL98RigRD9jUw@mail.gmail.com>/
+> index: 3395 | id: <CAJ8R1wwMC4Jm3hSDXpr8-5BBQyJvTxXkSzGZnLZTLY6CCmfC_w@mail.gmail.com> | from: Aseem Bansal | date: Fri, 02 Jun, 14:11 | month: 06 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<CAJ8R1wwMC4Jm3hSDXpr8-5BBQyJvTxXkSzGZnLZTLY6CCmfC_w@mail.gmail.com>/
+> index: 1520 | id: <CAPziQv_W=d_zjYO4pi61vj-hVLCk50n9xE1_GWJaobDq8dg_Pw@mail.gmail.com> | from: Aakash Basu | date: Thu, 23 Feb, 18:31 | month: 02 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201702.mbox/raw/<CAPziQv_W=d_zjYO4pi61vj-hVLCk50n9xE1_GWJaobDq8dg_Pw@mail.gmail.com>/
+> index: 1023 | id: <CA+iiNx_37ry+PJekqqM+ip4iXVbpo7UVR-MayNz-CXUivPqA5Q@mail.gmail.com> | from: kant kodali | date: Sat, 04 Feb, 06:08 | month: 02 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201702.mbox/raw/<CA+iiNx_37ry+PJekqqM+ip4iXVbpo7UVR-MayNz-CXUivPqA5Q@mail.gmail.com>/
+> index: 111 | id: <CABq2XnaVgmibfES0A-=2-zonYJKJXtVvOae9peH5hp7D_3VmCw@mail.gmail.com> | from: Ankur Srivastava | date: Thu, 05 Jan, 23:45 | month: 01 | depth: 8
+http://mail-archives.apache.org/mod_mbox/spark-user/201701.mbox/raw/<CABq2XnaVgmibfES0A-=2-zonYJKJXtVvOae9peH5hp7D_3VmCw@mail.gmail.com>/
+> index: 3442 | id: <CA+AHuKkRwyFeB9BjYwu4wK7HrGvwntYGWCz2VdgJG5zDsB+b3Q@mail.gmail.com> | from: Tathagata Das | date: Tue, 06 Jun, 08:26 | month: 06 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<CA+AHuKkRwyFeB9BjYwu4wK7HrGvwntYGWCz2VdgJG5zDsB+b3Q@mail.gmail.com>/
+> index: 2996 | id: <4E2D62B698F0814BB1E367C9F243AB800E35AB@MX302CL02.corp.emc.com> | from: Mendelson, Assaf | date: Wed, 17 May, 07:24 | month: 05 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201705.mbox/raw/<4E2D62B698F0814BB1E367C9F243AB800E35AB@MX302CL02.corp.emc.com>/
+> index: 1795 | id: <BN6PR10MB141112DFC1759FAABC5D4976982F0@BN6PR10MB1411.namprd10.prod.outlook.com> | from: Adaryl Wakefield | date: Tue, 07 Mar, 23:27 | month: 03 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201703.mbox/raw/<BN6PR10MB141112DFC1759FAABC5D4976982F0@BN6PR10MB1411.namprd10.prod.outlook.com>/
+> index: 3730 | id: <20170622091346.86e2a3fe4ed66eeddef39aac7dfe83bb.6f7ce9fd13.wbe@email09.godaddy.com> | from: LisTree Team | date: Thu, 22 Jun, 16:13 | month: 06 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<20170622091346.86e2a3fe4ed66eeddef39aac7dfe83bb.6f7ce9fd13.wbe@email09.godaddy.com>/
+> index: 2726 | id: <CACGOFMq7N9OYvnDFPtH=y3HsPVMR=uCq9uLtcmSTY57gGFHuoQ@mail.gmail.com> | from: Zeming Yu | date: Tue, 25 Apr, 00:22 | month: 04 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201704.mbox/raw/<CACGOFMq7N9OYvnDFPtH=y3HsPVMR=uCq9uLtcmSTY57gGFHuoQ@mail.gmail.com>/
+> index: 510 | id: <535972941.313177.1484804646259@mail.yahoo.com> | from: Richard Xin | date: Thu, 19 Jan, 05:44 | month: 01 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201701.mbox/raw/<535972941.313177.1484804646259@mail.yahoo.com>/
+> index: 5206 | id: <CAAswR-7xCqWC3jHJvjmHzeFRiaJHhMXCoSNEancOA+id+52Cig@mail.gmail.com> | from: Michael Armbrust | date: Mon, 11 Sep, 21:26 | month: 09 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201709.mbox/raw/<CAAswR-7xCqWC3jHJvjmHzeFRiaJHhMXCoSNEancOA+id+52Cig@mail.gmail.com>/
+> index: 856 | id: <CABE=_j_sTgD0eUX9x29K4RGJHG2XynvQ=5r5YEwekgVvkULvig@mail.gmail.com> | from: Manish Tripathi | date: Mon, 30 Jan, 23:20 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201701.mbox/raw/<CABE=_j_sTgD0eUX9x29K4RGJHG2XynvQ=5r5YEwekgVvkULvig@mail.gmail.com>/
+> index: 4398 | id: <CAGWtUW+4=wy6hB7HPrkj7sbA6rLL0p3Vk5EKAUxMdkOcaq-ARQ@mail.gmail.com> | from: Patrick | date: Mon, 24 Jul, 10:34 | month: 07 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201707.mbox/raw/<CAGWtUW+4=wy6hB7HPrkj7sbA6rLL0p3Vk5EKAUxMdkOcaq-ARQ@mail.gmail.com>/
+> index: 1928 | id: <CALNFXi1Mb5iKprw4qu8xxntRFiGHaVKwS2A_xJwUbLOiu=YxQQ@mail.gmail.com> | from: Richard Siebeling | date: Wed, 15 Mar, 11:53 | month: 03 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201703.mbox/raw/<CALNFXi1Mb5iKprw4qu8xxntRFiGHaVKwS2A_xJwUbLOiu=YxQQ@mail.gmail.com>/
+> index: 4264 | id: <CA+aG7eHmzL5cB-S5Fh50SNWnrRwHAXTR62U3BcFB0wbk+=mwzQ@mail.gmail.com> | from: Ivan Sadikov | date: Wed, 19 Jul, 02:21 | month: 07 | depth: 3
+http://mail-archives.apache.org/mod_mbox/spark-user/201707.mbox/raw/<CA+aG7eHmzL5cB-S5Fh50SNWnrRwHAXTR62U3BcFB0wbk+=mwzQ@mail.gmail.com>/
+> index: 623 | id: <CAKWX9VW0rTW6vwcEBS-G34xE17748aseGOObnSqgx1zByqVbkw@mail.gmail.com> | from: Cody Koeninger | date: Tue, 24 Jan, 02:42 | month: 01 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201701.mbox/raw/<CAKWX9VW0rTW6vwcEBS-G34xE17748aseGOObnSqgx1zByqVbkw@mail.gmail.com>/
+> index: 3208 | id: <CAKR5Mf2m8ChBrKA+9CRrcKu_7MDLKbTom-btLF+Y_VE_jV8OrA@mail.gmail.com> | from: Alonso Isidoro Roman | date: Sun, 21 May, 17:20 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201705.mbox/raw/<CAKR5Mf2m8ChBrKA+9CRrcKu_7MDLKbTom-btLF+Y_VE_jV8OrA@mail.gmail.com>/
+> index: 4000 | id: <CAL0_=Xgz8Tb79hSQ9vpWHTxcgUphp1G44kH4_1m87W04cp3KSQ@mail.gmail.com> | from: Saatvik Shah | date: Fri, 30 Jun, 14:05 | month: 06 | depth: 4
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<CAL0_=Xgz8Tb79hSQ9vpWHTxcgUphp1G44kH4_1m87W04cp3KSQ@mail.gmail.com>/
+> index: 4891 | id: <CY1PR07MB21520B8D9DDBA02C39FB9EA9CA850@CY1PR07MB2152.namprd07.prod.outlook.com> | from: Sun, Keith | date: Wed, 23 Aug, 11:12 | month: 08 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201708.mbox/raw/<CY1PR07MB21520B8D9DDBA02C39FB9EA9CA850@CY1PR07MB2152.namprd07.prod.outlook.com>/
+> index: 2643 | id: <24544849.6357718.1492700243351@mail.yahoo.com> | from: Patrick GRANDJEAN | date: Thu, 20 Apr, 14:57 | month: 04 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201704.mbox/raw/<24544849.6357718.1492700243351@mail.yahoo.com>/
+> index: 3066 | id: <CA+iiNx8DsAvQRdnhsNsA3CpvdiWSJFNrQPVMRH0+9Jjg2S1twA@mail.gmail.com> | from: kant kodali | date: Sun, 14 May, 03:48 | month: 05 | depth: 4
+http://mail-archives.apache.org/mod_mbox/spark-user/201705.mbox/raw/<CA+iiNx8DsAvQRdnhsNsA3CpvdiWSJFNrQPVMRH0+9Jjg2S1twA@mail.gmail.com>/
+> index: 2406 | id: <CAPbE_8+iU7NYhT52CSstr0u4AS5JvEhEC5aKxE=fsO_Ftt6-kA@mail.gmail.com> | from: Gourav Sengupta | date: Tue, 11 Apr, 19:46 | month: 04 | depth: 9
+http://mail-archives.apache.org/mod_mbox/spark-user/201704.mbox/raw/<CAPbE_8+iU7NYhT52CSstr0u4AS5JvEhEC5aKxE=fsO_Ftt6-kA@mail.gmail.com>/
+> index: 2699 | id: <CACj_CzfjYP03RjcTVaVs=K0f32dunEBdqV13wA4etJUL0H+D_w@mail.gmail.com> | from: Selvam Raman | date: Mon, 24 Apr, 10:22 | month: 04 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201704.mbox/raw/<CACj_CzfjYP03RjcTVaVs=K0f32dunEBdqV13wA4etJUL0H+D_w@mail.gmail.com>/
+> index: 5283 | id: <CA+iiNx_ap0thhabhMp5GeKcRPABndSoZNi0eZcBXPVXo7jL0iw@mail.gmail.com> | from: kant kodali | date: Fri, 15 Sep, 02:07 | month: 09 | depth: 2
+http://mail-archives.apache.org/mod_mbox/spark-user/201709.mbox/raw/<CA+iiNx_ap0thhabhMp5GeKcRPABndSoZNi0eZcBXPVXo7jL0iw@mail.gmail.com>/
+> index: 3490 | id: <CAOOzPEeCPtYq-z68pPt-f4F-QPOqk56SuMcD8oL-y5LaziqTqw@mail.gmail.com> | from: Patrik Medvedev | date: Wed, 07 Jun, 09:15 | month: 06 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<CAOOzPEeCPtYq-z68pPt-f4F-QPOqk56SuMcD8oL-y5LaziqTqw@mail.gmail.com>/
+> index: 3812 | id: <CAGparvVt0QM3WWkm2EWpNc2x0x6eXMRwh7fKSUqgK_uNfUvBtg@mail.gmail.com> | from: Chen He | date: Thu, 22 Jun, 04:36 | month: 06 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<CAGparvVt0QM3WWkm2EWpNc2x0x6eXMRwh7fKSUqgK_uNfUvBtg@mail.gmail.com>/
+> index: 3519 | id: <005101d2dfa9$a7887250$f69956f0$@gmail.com> | from: williamtellme...@gmail.com | date: Wed, 07 Jun, 16:18 | month: 06 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<005101d2dfa9$a7887250$f69956f0$@gmail.com>/
+> index: 3662 | id: <CAPtPYMVWEOeMY21F0kzurMHDPwSJf=cjfh1HpMcd8cduu3YmAQ@mail.gmail.com> | from: Pralabh Kumar | date: Fri, 16 Jun, 14:30 | month: 06 | depth: 3
+http://mail-archives.apache.org/mod_mbox/spark-user/201706.mbox/raw/<CAPtPYMVWEOeMY21F0kzurMHDPwSJf=cjfh1HpMcd8cduu3YmAQ@mail.gmail.com>/
+> index: 1014 | id: <CAB1GMv=ena-u0bub_inVR0LTXUBo4Lk65dDqyx-odWjnoOFTpg@mail.gmail.com> | from: ☼ R Nair (रविशंकर नायर) | date: Fri, 03 Feb, 18:48 | month: 02 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201702.mbox/raw/<CAB1GMv=ena-u0bub_inVR0LTXUBo4Lk65dDqyx-odWjnoOFTpg@mail.gmail.com>/
+> index: 14 | id: <CAP-mtLm2TFCTMQOuw1scky62QtOK22kU3zZ-VnbSM_Vm033F_Q@mail.gmail.com> | from: Satya Varaprasad Allumallu | date: Wed, 04 Jan, 20:16 | month: 01 | depth: 4
+http://mail-archives.apache.org/mod_mbox/spark-user/201701.mbox/raw/<CAP-mtLm2TFCTMQOuw1scky62QtOK22kU3zZ-VnbSM_Vm033F_Q@mail.gmail.com>/
+> index: 832 | id: <b631e82fbb7c435399663f2e5a2c7139@SN2PR4204MB0349.048d.mgd.msft.net> | from: jasbir.s...@accenture.com | date: Mon, 30 Jan, 05:08 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/spark-user/201701.mbox/raw/<b631e82fbb7c435399663f2e5a2c7139@SN2PR4204MB0349.048d.mgd.msft.net>/
+> index: 5509 | id: <8E12CC7D-5969-4ED2-88C2-8E08806A550D@gmail.com> | from: mailford...@gmail.com | date: Sun, 01 Oct, 03:32 | month: 10 | depth: 1
+http://mail-archives.apache.org/mod_mbox/spark-user/201710.mbox/raw/<8E12CC7D-5969-4ED2-88C2-8E08806A550D@gmail.com>/
+========================= EVAL =========================
+Selected 50 indices from 5210 mails:  [518, 4711, 2761, 452, 4851, 1331, 4357, 1850, 4603, 739, 5050, 2515, 4371, 664, 4651, 4071, 3669, 1494, 2180, 2600, 2379, 1138, 1523, 5102, 104, 3408, 4445, 2920, 1801, 253, 1677, 1488, 589, 4981, 4161, 2014, 1993, 773, 3964, 165, 2321, 1106, 607, 3349, 1882, 212, 3804, 2437, 2096, 3452]
+> index: 518 | id: <CAMX9TYe=WmHTTUaSX6zmqi=3-+QRQqw+oErAdkkeR7Ao1K=RsQ@mail.gmail.com> | from: Dmitry Golubets | date: Wed, 25 Jan, 19:24 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/flink-user/201701.mbox/raw/<CAMX9TYe=WmHTTUaSX6zmqi=3-+QRQqw+oErAdkkeR7Ao1K=RsQ@mail.gmail.com>/
+> index: 4711 | id: <CAOmjRb1eHoWHnhLGHmYjQ5gMU=CgNWLgeSRYSmvOzNwh5a1G1Q@mail.gmail.com> | from: Steven Wu | date: Tue, 12 Sep, 05:08 | month: 09 | depth: 0
+http://mail-archives.apache.org/mod_mbox/flink-user/201709.mbox/raw/<CAOmjRb1eHoWHnhLGHmYjQ5gMU=CgNWLgeSRYSmvOzNwh5a1G1Q@mail.gmail.com>/
+> index: 2761 | id: <etPan.59476089.3483d7a3.110@apache.org> | from: Tzu-Li (Gordon) Tai | date: Mon, 19 Jun, 05:26 | month: 06 | depth: 12
+http://mail-archives.apache.org/mod_mbox/flink-user/201706.mbox/raw/<etPan.59476089.3483d7a3.110@apache.org>/
+> index: 452 | id: <BY2PR04MB20855F421F5422EEC2E40CBF93750@BY2PR04MB2085.namprd04.prod.outlook.com> | from: Katsipoulakis, Nikolaos Romanos | date: Tue, 24 Jan, 16:18 | month: 01 | depth: 2
+http://mail-archives.apache.org/mod_mbox/flink-user/201701.mbox/raw/<BY2PR04MB20855F421F5422EEC2E40CBF93750@BY2PR04MB2085.namprd04.prod.outlook.com>/
+> index: 4851 | id: <CAAdrtT3k8y=LuPdFMtNb-rYbcbWF0s63Q9m9vtB60baT0kAP1A@mail.gmail.com> | from: Fabian Hueske | date: Wed, 20 Sep, 17:03 | month: 09 | depth: 4
+http://mail-archives.apache.org/mod_mbox/flink-user/201709.mbox/raw/<CAAdrtT3k8y=LuPdFMtNb-rYbcbWF0s63Q9m9vtB60baT0kAP1A@mail.gmail.com>/
+> index: 1331 | id: <1489055210.4117489.905615248.14BB62C0@webmail.messagingengine.com> | from: Aljoscha Krettek | date: Thu, 09 Mar, 10:26 | month: 03 | depth: 4
+http://mail-archives.apache.org/mod_mbox/flink-user/201703.mbox/raw/<1489055210.4117489.905615248.14BB62C0@webmail.messagingengine.com>/
+> index: 4357 | id: <CAFDmHdNMRJo=NSfHUp784Jsvqdrz_DCKt+4Jh6vW15kNJB_vqQ@mail.gmail.com> | from: Elias Levy | date: Thu, 31 Aug, 00:46 | month: 08 | depth: 3
+http://mail-archives.apache.org/mod_mbox/flink-user/201708.mbox/raw/<CAFDmHdNMRJo=NSfHUp784Jsvqdrz_DCKt+4Jh6vW15kNJB_vqQ@mail.gmail.com>/
+> index: 1850 | id: <CANC1h_vGdMqdpspYUWOWySoUKvVveZOHJAH5_nbm-iQRZ2+1DQ@mail.gmail.com> | from: Stephan Ewen | date: Sun, 23 Apr, 16:38 | month: 04 | depth: 4
+http://mail-archives.apache.org/mod_mbox/flink-user/201704.mbox/raw/<CANC1h_vGdMqdpspYUWOWySoUKvVveZOHJAH5_nbm-iQRZ2+1DQ@mail.gmail.com>/
+> index: 4603 | id: <CA+iiNx809bvfn50=HtONAbaSpva6Ao2YTN=LxzVgh=ZmQ1dmHg@mail.gmail.com> | from: kant kodali | date: Thu, 07 Sep, 19:43 | month: 09 | depth: 0
+http://mail-archives.apache.org/mod_mbox/flink-user/201709.mbox/raw/<CA+iiNx809bvfn50=HtONAbaSpva6Ao2YTN=LxzVgh=ZmQ1dmHg@mail.gmail.com>/
+> index: 739 | id: <CAGr9p8DkGs=FO6KUAp1GU8+7Wtt1M+1F2RW9HoRqWBaW_WojMw@mail.gmail.com> | from: Robert Metzger | date: Thu, 09 Feb, 13:29 | month: 02 | depth: 2
+http://mail-archives.apache.org/mod_mbox/flink-user/201702.mbox/raw/<CAGr9p8DkGs=FO6KUAp1GU8+7Wtt1M+1F2RW9HoRqWBaW_WojMw@mail.gmail.com>/
+> index: 5050 | id: <CAANHH3BCxHzYUu_QYN6hidSZa+J6si9VUQfHQQQYaQA8jGr9xA@mail.gmail.com> | from: ant burton | date: Thu, 28 Sep, 08:54 | month: 09 | depth: 0
+http://mail-archives.apache.org/mod_mbox/flink-user/201709.mbox/raw/<CAANHH3BCxHzYUu_QYN6hidSZa+J6si9VUQfHQQQYaQA8jGr9xA@mail.gmail.com>/
+> index: 2515 | id: <2C1588EF-4948-4A86-9906-44E154D5FE4B@data-artisans.com> | from: Kostas Kloudas | date: Wed, 31 May, 13:22 | month: 05 | depth: 10
+http://mail-archives.apache.org/mod_mbox/flink-user/201705.mbox/raw/<2C1588EF-4948-4A86-9906-44E154D5FE4B@data-artisans.com>/
+> index: 4371 | id: <a7a89bbf-aa2f-f940-9c8d-e41cacd91234@apache.org> | from: Chesnay Schepler | date: Thu, 31 Aug, 11:33 | month: 08 | depth: 5
+http://mail-archives.apache.org/mod_mbox/flink-user/201708.mbox/raw/<a7a89bbf-aa2f-f940-9c8d-e41cacd91234@apache.org>/
+> index: 664 | id: <CAGr9p8CyjY9OXJcsnynp1C9s+iE3cnPqueeVQXL2acVF7OVhyg@mail.gmail.com> | from: Robert Metzger | date: Wed, 08 Feb, 08:58 | month: 02 | depth: 5
+http://mail-archives.apache.org/mod_mbox/flink-user/201702.mbox/raw/<CAGr9p8CyjY9OXJcsnynp1C9s+iE3cnPqueeVQXL2acVF7OVhyg@mail.gmail.com>/
+> index: 4651 | id: <CAELUF_Bh_QzsUonvgm=WFTmhTXMxTF6NxknvUfzEfmeVQgdmvA@mail.gmail.com> | from: Flavio Pompermaier | date: Thu, 14 Sep, 14:50 | month: 09 | depth: 6
+http://mail-archives.apache.org/mod_mbox/flink-user/201709.mbox/raw/<CAELUF_Bh_QzsUonvgm=WFTmhTXMxTF6NxknvUfzEfmeVQgdmvA@mail.gmail.com>/
+> index: 4071 | id: <5994efad.c553650a.3f25b.7620@mx.google.com> | from: Ted Yu | date: Thu, 17 Aug, 01:21 | month: 08 | depth: 1
+http://mail-archives.apache.org/mod_mbox/flink-user/201708.mbox/raw/<5994efad.c553650a.3f25b.7620@mx.google.com>/
+> index: 3669 | id: <CAAdrtT1DfD5mxg5aQxwAnMrXtf7==Myz4pAnu+oUDhNmqkBP_Q@mail.gmail.com> | from: Fabian Hueske | date: Mon, 31 Jul, 19:30 | month: 07 | depth: 8
+http://mail-archives.apache.org/mod_mbox/flink-user/201707.mbox/raw/<CAAdrtT1DfD5mxg5aQxwAnMrXtf7==Myz4pAnu+oUDhNmqkBP_Q@mail.gmail.com>/
+> index: 1494 | id: <CAKiyyaEExArv5B=91U_aX5SAFvyVO=BoRaXTkRuz58AMarYfzA@mail.gmail.com> | from: Ufuk Celebi | date: Mon, 20 Mar, 09:41 | month: 03 | depth: 2
+http://mail-archives.apache.org/mod_mbox/flink-user/201703.mbox/raw/<CAKiyyaEExArv5B=91U_aX5SAFvyVO=BoRaXTkRuz58AMarYfzA@mail.gmail.com>/
+> index: 2180 | id: <C7D67E83-333C-409E-BDEB-C00AD8FCAB67@data-artisans.com> | from: Kostas Kloudas | date: Thu, 04 May, 16:10 | month: 05 | depth: 3
+http://mail-archives.apache.org/mod_mbox/flink-user/201705.mbox/raw/<C7D67E83-333C-409E-BDEB-C00AD8FCAB67@data-artisans.com>/
+> index: 2600 | id: <CANZWe4S-cnxCyZxZdTiTrSRn9uLgTOjdn8gZtv8PhfTtZcdezg@mail.gmail.com> | from: MAHESH KUMAR | date: Thu, 01 Jun, 16:32 | month: 06 | depth: 2
+http://mail-archives.apache.org/mod_mbox/flink-user/201706.mbox/raw/<CANZWe4S-cnxCyZxZdTiTrSRn9uLgTOjdn8gZtv8PhfTtZcdezg@mail.gmail.com>/
+> index: 2379 | id: <45DA8C47-A2E7-4F43-A385-13E3DDC80F30@data-artisans.com> | from: Kostas Kloudas | date: Wed, 17 May, 11:42 | month: 05 | depth: 1
+http://mail-archives.apache.org/mod_mbox/flink-user/201705.mbox/raw/<45DA8C47-A2E7-4F43-A385-13E3DDC80F30@data-artisans.com>/
+> index: 1138 | id: <354D5809-1C6C-4082-B87C-C4783A3245B6@icloud.com> | from: Fritz Budiyanto | date: Mon, 27 Feb, 18:12 | month: 02 | depth: 0
+http://mail-archives.apache.org/mod_mbox/flink-user/201702.mbox/raw/<354D5809-1C6C-4082-B87C-C4783A3245B6@icloud.com>/
+> index: 1523 | id: <0F03C178-CE12-4DC0-908A-2795806E3F3B@micardo.com> | from: Florian König | date: Wed, 22 Mar, 14:13 | month: 03 | depth: 0
+http://mail-archives.apache.org/mod_mbox/flink-user/201703.mbox/raw/<0F03C178-CE12-4DC0-908A-2795806E3F3B@micardo.com>/
+> index: 5102 | id: <etPan.59d744ca.619bb159.1e8f@apache.org> | from: Tzu-Li (Gordon) Tai | date: Fri, 06 Oct, 08:54 | month: 10 | depth: 2
+http://mail-archives.apache.org/mod_mbox/flink-user/201710.mbox/raw/<etPan.59d744ca.619bb159.1e8f@apache.org>/
+> index: 104 | id: <CAGApggM9-uOhd2XYLVcYc-y2agWBOOObN3Gp_5dLY9RiYadrfQ@mail.gmail.com> | from: Abdul Salam Shaikh | date: Thu, 05 Jan, 10:57 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/flink-user/201701.mbox/raw/<CAGApggM9-uOhd2XYLVcYc-y2agWBOOObN3Gp_5dLY9RiYadrfQ@mail.gmail.com>/
+> index: 3408 | id: <1501102971445-14484.post@n4.nabble.com> | from: ninad | date: Wed, 26 Jul, 21:02 | month: 07 | depth: 2
+http://mail-archives.apache.org/mod_mbox/flink-user/201707.mbox/raw/<1501102971445-14484.post@n4.nabble.com>/
+> index: 4445 | id: <CAKhqdDy7MJCQbDzbaj-QG_at+sO0nUwP-pTwdEHyXvuiQ1e6_A@mail.gmail.com> | from: Tony Wei | date: Thu, 07 Sep, 08:24 | month: 09 | depth: 7
+http://mail-archives.apache.org/mod_mbox/flink-user/201709.mbox/raw/<CAKhqdDy7MJCQbDzbaj-QG_at+sO0nUwP-pTwdEHyXvuiQ1e6_A@mail.gmail.com>/
+> index: 2920 | id: <B93750FD-0BBA-45EE-A582-E36DE1938720@apache.org> | from: Aljoscha Krettek | date: Thu, 15 Jun, 11:48 | month: 06 | depth: 3
+http://mail-archives.apache.org/mod_mbox/flink-user/201706.mbox/raw/<B93750FD-0BBA-45EE-A582-E36DE1938720@apache.org>/
+> index: 1801 | id: <CALte62x9Vi6geRGUOfWq9ZM-Pi8UyzQn=DTdKdkANVYKqzOCWw@mail.gmail.com> | from: Ted Yu | date: Fri, 14 Apr, 00:02 | month: 04 | depth: 1
+http://mail-archives.apache.org/mod_mbox/flink-user/201704.mbox/raw/<CALte62x9Vi6geRGUOfWq9ZM-Pi8UyzQn=DTdKdkANVYKqzOCWw@mail.gmail.com>/
+> index: 253 | id: <71EEF658-E10C-4721-8295-953D40462FDD@expedia.com> | from: Shannon Carey | date: Thu, 26 Jan, 21:59 | month: 01 | depth: 5
+http://mail-archives.apache.org/mod_mbox/flink-user/201701.mbox/raw/<71EEF658-E10C-4721-8295-953D40462FDD@expedia.com>/
+> index: 1677 | id: <BC9CB2B4-5BD3-4433-BAF1-942C383BDD31@kth.se> | from: Paris Carbone | date: Mon, 03 Apr, 11:33 | month: 04 | depth: 1
+http://mail-archives.apache.org/mod_mbox/flink-user/201704.mbox/raw/<BC9CB2B4-5BD3-4433-BAF1-942C383BDD31@kth.se>/
+> index: 1488 | id: <CALte62w8ieCdkiz1aLqr3FG0b19JA91CYhj+hGF2k3SQM4NFvw@mail.gmail.com> | from: Ted Yu | date: Sat, 18 Mar, 02:20 | month: 03 | depth: 5
+http://mail-archives.apache.org/mod_mbox/flink-user/201703.mbox/raw/<CALte62w8ieCdkiz1aLqr3FG0b19JA91CYhj+hGF2k3SQM4NFvw@mail.gmail.com>/
+> index: 589 | id: <CA+YaHHWYSKumzpTm9eHubWYmnK4KQwW82RNiQOxXXFxNL4YUMg@mail.gmail.com> | from: Dawid Wysakowicz | date: Thu, 02 Feb, 07:01 | month: 02 | depth: 1
+http://mail-archives.apache.org/mod_mbox/flink-user/201702.mbox/raw/<CA+YaHHWYSKumzpTm9eHubWYmnK4KQwW82RNiQOxXXFxNL4YUMg@mail.gmail.com>/
+> index: 4981 | id: <CAKcRf443BhVAiDp5jusD5wxyTsD-L6T6eQczsKYubjChwYdgZA@mail.gmail.com> | from: Rahul Raj | date: Tue, 26 Sep, 07:21 | month: 09 | depth: 1
+http://mail-archives.apache.org/mod_mbox/flink-user/201709.mbox/raw/<CAKcRf443BhVAiDp5jusD5wxyTsD-L6T6eQczsKYubjChwYdgZA@mail.gmail.com>/
+> index: 4161 | id: <CAC27z=PP0bAvLKXZGPZtM-8W5ic5LKtQ55r1f-zaq1ECGD56Hg@mail.gmail.com> | from: Till Rohrmann | date: Fri, 18 Aug, 07:07 | month: 08 | depth: 1
+http://mail-archives.apache.org/mod_mbox/flink-user/201708.mbox/raw/<CAC27z=PP0bAvLKXZGPZtM-8W5ic5LKtQ55r1f-zaq1ECGD56Hg@mail.gmail.com>/
+> index: 2014 | id: <CA+x1tfa_MLz48B5s6=XqhJ3mZ3e393O1gsVhc8-eSr+BQofm_A@mail.gmail.com> | from: lining jing | date: Wed, 26 Apr, 06:59 | month: 04 | depth: 1
+http://mail-archives.apache.org/mod_mbox/flink-user/201704.mbox/raw/<CA+x1tfa_MLz48B5s6=XqhJ3mZ3e393O1gsVhc8-eSr+BQofm_A@mail.gmail.com>/
+> index: 1993 | id: <CAJV0mRsCtY60b_jd3sFGY3jAG+7kdtDoU7Qm3YJbHOQiHd=sKQ@mail.gmail.com> | from: Kamil Dziublinski | date: Tue, 25 Apr, 17:54 | month: 04 | depth: 0
+http://mail-archives.apache.org/mod_mbox/flink-user/201704.mbox/raw/<CAJV0mRsCtY60b_jd3sFGY3jAG+7kdtDoU7Qm3YJbHOQiHd=sKQ@mail.gmail.com>/
+> index: 773 | id: <CAES76rEgW72asOuTdbTgagh7n4h9FcWPSqC6sSs0Wi9wZ0vzAA@mail.gmail.com> | from: Geoffrey Mon | date: Thu, 16 Feb, 19:37 | month: 02 | depth: 3
+http://mail-archives.apache.org/mod_mbox/flink-user/201702.mbox/raw/<CAES76rEgW72asOuTdbTgagh7n4h9FcWPSqC6sSs0Wi9wZ0vzAA@mail.gmail.com>/
+> index: 3964 | id: <0AEBCC5D-7992-4CD8-81DA-E23C40C05E8F@secdata.com> | from: Conrad Crampton | date: Thu, 10 Aug, 13:36 | month: 08 | depth: 0
+http://mail-archives.apache.org/mod_mbox/flink-user/201708.mbox/raw/<0AEBCC5D-7992-4CD8-81DA-E23C40C05E8F@secdata.com>/
+> index: 165 | id: <1483905976681-10912.post@n4.nabble.com> | from: igor.berman | date: Sun, 08 Jan, 20:06 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/flink-user/201701.mbox/raw/<1483905976681-10912.post@n4.nabble.com>/
+> index: 2321 | id: <1494864689655-13144.post@n4.nabble.com> | from: Sendoh | date: Mon, 15 May, 16:11 | month: 05 | depth: 2
+http://mail-archives.apache.org/mod_mbox/flink-user/201705.mbox/raw/<1494864689655-13144.post@n4.nabble.com>/
+> index: 1106 | id: <CAOT3TWrE9NfpzzhK789i3f4jUa5aNskv8OM1K9QWKcgqcrAciA@mail.gmail.com> | from: Mohit Anchlia | date: Mon, 27 Feb, 17:15 | month: 02 | depth: 2
+http://mail-archives.apache.org/mod_mbox/flink-user/201702.mbox/raw/<CAOT3TWrE9NfpzzhK789i3f4jUa5aNskv8OM1K9QWKcgqcrAciA@mail.gmail.com>/
+> index: 607 | id: <CAGr9p8A8tp_5On39nnx0wQuQkGnp8SX8v2nuY+n0kMxH4Rd+0Q@mail.gmail.com> | from: Robert Metzger | date: Tue, 07 Feb, 17:34 | month: 02 | depth: 5
+http://mail-archives.apache.org/mod_mbox/flink-user/201702.mbox/raw/<CAGr9p8A8tp_5On39nnx0wQuQkGnp8SX8v2nuY+n0kMxH4Rd+0Q@mail.gmail.com>/
+> index: 3349 | id: <CA+faj9wfWP8XueVOFSwydvWygTRFLf-OP1mk-O-0HxMD8HNHag@mail.gmail.com> | from: Gyula Fóra | date: Wed, 12 Jul, 10:23 | month: 07 | depth: 4
+http://mail-archives.apache.org/mod_mbox/flink-user/201707.mbox/raw/<CA+faj9wfWP8XueVOFSwydvWygTRFLf-OP1mk-O-0HxMD8HNHag@mail.gmail.com>/
+> index: 1882 | id: <CAELUF_D1CojMPWNKZnyjY7SMdB4AaV_VEACm1TAr5pGPMh-_cA@mail.gmail.com> | from: Flavio Pompermaier | date: Fri, 21 Apr, 12:09 | month: 04 | depth: 8
+http://mail-archives.apache.org/mod_mbox/flink-user/201704.mbox/raw/<CAELUF_D1CojMPWNKZnyjY7SMdB4AaV_VEACm1TAr5pGPMh-_cA@mail.gmail.com>/
+> index: 212 | id: <CAKcr_iHHmh-ZJY8LvMMc7zYO1bbDQ8wH7PdxDkeY_UTHHkZDXQ@mail.gmail.com> | from: Giuliano Caliari | date: Wed, 11 Jan, 00:22 | month: 01 | depth: 0
+http://mail-archives.apache.org/mod_mbox/flink-user/201701.mbox/raw/<CAKcr_iHHmh-ZJY8LvMMc7zYO1bbDQ8wH7PdxDkeY_UTHHkZDXQ@mail.gmail.com>/
+> index: 3804 | id: <EEE06CC1-22D4-423F-BBF1-4AC385EAA15C@gmx.net> | from: Peter Ertl | date: Thu, 03 Aug, 10:41 | month: 08 | depth: 0
+http://mail-archives.apache.org/mod_mbox/flink-user/201708.mbox/raw/<EEE06CC1-22D4-423F-BBF1-4AC385EAA15C@gmx.net>/
+> index: 2437 | id: <47FA4BFD-C5E4-4507-8AE8-90350644441F@data-artisans.com> | from: Stefan Richter | date: Wed, 24 May, 13:07 | month: 05 | depth: 3
+http://mail-archives.apache.org/mod_mbox/flink-user/201705.mbox/raw/<47FA4BFD-C5E4-4507-8AE8-90350644441F@data-artisans.com>/
+> index: 2096 | id: <FB53DE4B-B486-4B09-9E76-EBA93C86727B@apache.org> | from: Aljoscha Krettek | date: Mon, 08 May, 12:11 | month: 05 | depth: 5
+http://mail-archives.apache.org/mod_mbox/flink-user/201705.mbox/raw/<FB53DE4B-B486-4B09-9E76-EBA93C86727B@apache.org>/
+> index: 3452 | id: <CANC1h_sD=+QD+F2RMXGqqOmqzafp9h55j7VbW2Kc_KaQBcOXmA@mail.gmail.com> | from: Stephan Ewen | date: Mon, 24 Jul, 17:56 | month: 07 | depth: 7
+http://mail-archives.apache.org/mod_mbox/flink-user/201707.mbox/raw/<CANC1h_sD=+QD+F2RMXGqqOmqzafp9h55j7VbW2Kc_KaQBcOXmA@mail.gmail.com>/
