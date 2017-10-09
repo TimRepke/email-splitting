@@ -1,5 +1,5 @@
 from sklearn.svm import LinearSVC, SVC
-from sklearn.metrics import accuracy_score, classification_report, precision_recall_fscore_support
+from sklearn.metrics import accuracy_score, classification_report, precision_recall_fscore_support, confusion_matrix
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from scripts.utils import AnnotatedEmails
 from scripts.utils import denotation_types
@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     X_train, X_test, X_eval = emails.features
     print('loaded features')
-    y_train, y_test, y_eval = emails.two_zones_labels_numeric
+    y_train, y_test, y_eval = emails.two_zones_labels
     print('loaded labels')
 
     ss = StandardScaler()
@@ -46,7 +46,7 @@ if __name__ == '__main__':
     xt = X_test
     yt = y_test
 
-    svc = SVC(max_iter=200, random_state=42, verbose=1)  # , class_weight='balanced') , class_weight={0: 1.0, 1: 0.5}
+    svc = SVC(max_iter=200, random_state=42, verbose=1)  # , class_weight='balanced')  # , class_weight={0: 1.0, 1: 0.5}
     svc.fit(X_train, y_train)
     print('fitted')
     y_pred = svc.predict(xt)
@@ -55,4 +55,5 @@ if __name__ == '__main__':
     print(le.classes_)
 
     print('Accuracy: ', accuracy_score(yt, y_pred))
-    print(classification_report(yt, y_pred))
+    print(classification_report(yt, y_pred, target_names=le.classes_))
+    print(confusion_matrix(yt, y_pred))
