@@ -2,6 +2,7 @@ import xml.etree.ElementTree as ET
 from urllib import request, error, parse
 from pprint import pprint
 import os
+import html
 import random
 
 base_url = 'http://mail-archives.apache.org/mod_mbox/'
@@ -51,14 +52,19 @@ for dataset, num_samples in datasets.items():
                                                                                       sample[k_from], sample[k_date],
                                                                                       str_month, sample[k_depth]))
         try:
+            # 'http://mail-archives.apache.org/mod_mbox/flink-user/201709.mbox/ajax/%3CCAMUrgW_9%3DCvZPcreQWkY%3DBw_h%2BbT1Uzv_4d7_uiTyB%2BE0w0HQA%40mail.gmail.com%3E'
             url = 'http://mail-archives.apache.org/mod_mbox/' + sample[k_list] + '/' + \
-                  sample[k_year] + str_month + '.mbox/raw/' + sample[k_id] + mail_format  # parse.quote(sample[k_id])
+                  sample[k_year] + str_month + '.mbox/ajax/' + parse.quote(sample[k_id])
             print(url)
             req = request.Request(url)
             with request.urlopen(req) as response:
                 content = response.read()
-                with open(os.path.join(target_folder, dataset, 'train_' + str(selected_index)), 'w') as file:
-                    file.write(content.decode('utf-8'))
+                message = ET.fromstring(content)
+                for child in message:
+                    if child.tag == 'contents':
+                        with open(os.path.join(target_folder, dataset, 'train_' + str(selected_index)), 'w') as file:
+                            file.write(html.unescape(child.text))
+                        break
 
         except error.HTTPError:
             print('FAILED HTTP request!')
