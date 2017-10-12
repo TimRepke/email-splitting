@@ -36,8 +36,10 @@ from keras.layers import Dense, Input, Dropout, MaxPooling1D, Conv1D, GlobalAver
 from keras.layers import LSTM, Lambda
 from keras.layers import TimeDistributed, Bidirectional
 from keras.layers.normalization import BatchNormalization
+from keras_contrib.layers import CRF
 
-folder = "../../data/enron/annotated/"
+# folder = "../../../../enron/data/original/"
+folder = "../../data/asf/annotated/"
 
 char_index = list(' '
                   'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -153,9 +155,9 @@ class MailBatches(Sequence):
     def on_epoch_end(self):
         pass
 
-    def __init__(self, mails, labels, label_encoder, batch_size, embedding_function=None,
+    def __init__(self, mails, labels, label_encoder, batch_size, embedding_functions=None,
                  max_len=None, one_hot=True, with_weights=True, fix_to_max=False):
-        self.embedding_function = embedding_function
+        self.embedding_functions = embedding_functions
         self.mails = mails
         self.labels = labels
         self.label_encoder = label_encoder
@@ -180,8 +182,8 @@ class MailBatches(Sequence):
             longest_line = self.max_len
         longest_mail = max([len(m.lines) for m in mails])
 
-        if self.embedding_function is not None:
-            x = np.zeros((self.batch_size, longest_mail, line_embedding_size))
+        if self.embedding_functions is not None:
+            x = np.zeros((self.batch_size, longest_mail, line_embedding_size * 2))
         elif self.one_hot:
             x = np.zeros((self.batch_size, longest_mail, longest_line, num_possible_chars + 1))
         else:
@@ -198,17 +200,22 @@ class MailBatches(Sequence):
                         xi[j][k][char2num(c)] = 1
                     else:
                         xi[j][k] = char2num(c)
-            if self.embedding_function is not None:
-                xi = self.embedding_function(xi)
+            if self.embedding_functions is not None:
+                xi = np.concatenate([self.embedding_functions[0](xi),
+                                     self.embedding_functions[1](xi)], axis=1)
+                # set padded lines to zero, embedding will not do that!
+                for li in range(len(mail.lines), longest_mail):
+                    xi[li] = np.zeros((line_embedding_size * 2,))
+
             x[i] = xi
 
-        w = np.zeros((self.batch_size, longest_mail))
         y = np.zeros((self.batch_size, longest_mail, len(self.label_encoder.classes_)))
+        w = np.zeros((self.batch_size, longest_mail))
         for i, m_labels in enumerate(labels):
             labels_encoded = self.label_encoder.transform(m_labels)
             for j, label in enumerate(labels_encoded):
-                w[i][j] = self.class_weights[label]
                 y[i][j][label] = 1
+                w[i][j] = self.class_weights[label]
 
         return (x, y, w) if self.with_weights else (x, y)
 
@@ -229,8 +236,8 @@ def flatten(lst):
     return [l for sub in lst for l in sub]
 
 
-def get_line_model(embedding_size):
-    num_labels = len(line_label_encoder.classes_)
+def get_line_model(embedding_size, le):
+    num_labels = len(le.classes_)
     in_line = Input(shape=(None, num_possible_chars + 1), dtype='float32')
 
     embedding_conv = Conv1D(64, 3, activation='relu')(in_line)
@@ -255,8 +262,8 @@ def get_line_model(embedding_size):
     return model, embedding_lamda
 
 
-def get_line_training_sets(validation_size):
-    label_encoder = line_label_encoder
+def get_line_training_sets(validation_size, label_encoder):
+    # label_encoder = line_label_encoder
     y_train, y_test, y_eval = get_labels(len(label_encoder.classes_))
     train = LineBatches(train_mails, y_train, label_encoder, fix_to_max=True,
                         batch_size=line_training_batch_size, max_len=max_line_len, one_hot=True, with_weights=True)
@@ -275,24 +282,24 @@ def get_labels(zones):
     return emails.two_zones_labels if zones == 2 else emails.five_zones_labels
 
 
-def get_mail_training_sets(validation_size, test_size, embedding_function):
+def get_mail_training_sets(validation_size, test_size, embedding_function_a, embedding_function_b):
     label_encoder = mail_label_encoder
-    y_train, y_test, y_eval = get_labels(len(label_encoder.classes_))
+    y_train_, y_test_, y_eval_ = get_labels(len(label_encoder.classes_))
+    use_weights = False
+    train_ = MailBatches(train_mails, y_train_, label_encoder, batch_size=mail_two_zone_batch_size,
+                         embedding_functions=[embedding_function_a, embedding_function_b], fix_to_max=True,
+                         max_len=max_line_len, one_hot=True, with_weights=use_weights)
 
-    train = MailBatches(train_mails, y_train, label_encoder, batch_size=mail_two_zone_batch_size,
-                        embedding_function=embedding_function, fix_to_max=True,
-                        max_len=max_line_len, one_hot=True, with_weights=True)
+    test_ = MailBatches(test_mails, y_test_, label_encoder, batch_size=validation_size,
+                        embedding_functions=[embedding_function_a, embedding_function_b], fix_to_max=True,
+                        max_len=max_line_len, one_hot=True, with_weights=use_weights)
+    val_ = test_.__getitem__(0)
 
-    test = MailBatches(test_mails, y_test, label_encoder, batch_size=validation_size,
-                       embedding_function=embedding_function, fix_to_max=True,
-                       max_len=max_line_len, one_hot=True, with_weights=True)
-    val = test.__getitem__(0)
+    test_ = MailBatches(test_mails, y_test_, label_encoder, batch_size=test_size,
+                        embedding_functions=[embedding_function_a, embedding_function_b], fix_to_max=True,
+                        max_len=max_line_len, one_hot=True, with_weights=False)
 
-    test = MailBatches(test_mails, y_test, label_encoder, batch_size=test_size,
-                       embedding_function=embedding_function, fix_to_max=True,
-                       max_len=max_line_len, one_hot=True, with_weights=False)
-
-    return train, val, test, y_test
+    return train_, val_, test_, y_test_
 
 
 def evaluate(yt, yp, labels):
@@ -305,11 +312,11 @@ def evaluate(yt, yp, labels):
     print(confusion_matrix(yt, yp, labels=labels))
 
 
-def eval_line_training(Y_pred, y_test):
-    le = line_label_encoder
+def eval_line_training(Y_pred, y_test, le):
     print(Y_pred.shape)
 
     y_pred = Y_pred.argmax(axis=1)
+    print(y_pred)
 
     evaluate(flatten(y_test)[:len(y_pred)],
              le.inverse_transform(y_pred),
@@ -348,37 +355,39 @@ def lambda_embedding(embedding_model, embedding_layer):
 
 def get_mail_model():
     output_size = len(mail_label_encoder.classes_)
-    in_mail = Input(shape=(None, line_embedding_size), dtype='float32')
+    in_mail = Input(shape=(None, line_embedding_size * 2), dtype='float32')
 
-    hidden = LSTM(32,
-                  return_sequences=True,
-                  implementation=0)(in_mail)
-    output = LSTM(output_size,
-                  return_sequences=True,
-                  activation='softmax',
-                  implementation=0)(hidden)
+    mask = Masking()(in_mail)
+    hidden = Bidirectional(GRU(32 // 2,
+                               return_sequences=True,
+                               implementation=0))(mask)
+    crf = CRF(output_size, sparse_target=False)
+    output = crf(hidden)
+    # output = LSTM(output_size,
+    #               return_sequences=True,
+    #               activation='softmax',
+    #               implementation=0)(hidden)
 
     model = Model(inputs=in_mail, outputs=output)
 
     model.summary()
 
-    model.compile(loss='categorical_crossentropy',
+    model.compile(loss=crf.loss_function,  # 'categorical_crossentropy',
                   optimizer=Adam(lr=0.01),
-                  sample_weight_mode='temporal',
-                  metrics=['accuracy'])
+                  # sample_weight_mode='temporal',
+                  metrics=[crf.accuracy])  # metrics=['accuracy'])
     return model
 
 
 if __name__ == "__main__":
     line_training_batch_size = 20
-    line_training_epochs = 5
-    line_embedding_size = 48
+    line_training_epochs = 2
+    line_embedding_size = 64
 
     mail_two_zone_batch_size = 2
     mail_two_zone_epochs = 5
 
-    zones = 5
-    max_line_len = 100
+    max_line_len = 80
 
     label_encoder_two = get_label_encoder(2)
     label_encoder_five = get_label_encoder(5)
@@ -389,24 +398,35 @@ if __name__ == "__main__":
     train_mails, test_mails, eval_mails = emails.features
     print('loaded texts')
 
-    line_label_encoder = label_encoder_five
+    line_label_encoder = label_encoder_two
     mail_label_encoder = label_encoder_five
 
     # Training line embeddings
-    line_model, line_embedding = get_line_model(line_embedding_size)
-    train, val, test, y_test = get_line_training_sets(100)
-    history = line_model.fit_generator(train,
-                                       steps_per_epoch=len(train),
-                                       epochs=line_training_epochs,
-                                       verbose=1,
-                                       validation_data=val,
-                                       validation_steps=None).history
-    Y_pred = line_model.predict_generator(test, steps=len(test))
-    eval_line_training(Y_pred, y_test)
+    line_model_a, line_embedding_a = get_line_model(line_embedding_size, label_encoder_five)
+    train, val, test, y_test = get_line_training_sets(100, label_encoder_five)
+    history = line_model_a.fit_generator(train,
+                                         steps_per_epoch=len(train),
+                                         epochs=5,
+                                         verbose=1,
+                                         validation_data=val,
+                                         validation_steps=None).history
+    Y_pred = line_model_a.predict_generator(test, steps=len(test))
+    eval_line_training(Y_pred, y_test, label_encoder_five)
+
+    line_model_b, line_embedding_b = get_line_model(line_embedding_size, label_encoder_two)
+    train, val, test, y_test = get_line_training_sets(100, label_encoder_two)
+    history = line_model_b.fit_generator(train,
+                                         steps_per_epoch=len(train),
+                                         epochs=2,
+                                         verbose=1,
+                                         validation_data=val,
+                                         validation_steps=None).history
+    Y_pred = line_model_b.predict_generator(test, steps=len(test))
+    eval_line_training(Y_pred, y_test, label_encoder_two)
 
     # Training two zone model
     two_zone_mail_model = get_mail_model()
-    train, val, test, y_test = get_mail_training_sets(100, 150, line_embedding)
+    train, val, test, y_test = get_mail_training_sets(100, 160, line_embedding_a, line_embedding_b)
     history = two_zone_mail_model.fit_generator(train,
                                                 steps_per_epoch=len(train),
                                                 epochs=mail_two_zone_epochs,

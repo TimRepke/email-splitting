@@ -226,10 +226,14 @@ def _labels_to_numeric(labels):
 class AnnotatedEmail(Email):
     def __init__(self, file, skip_blank=False):
         self.skip_blank = skip_blank
-        f = open(file, 'r')
-        self.annotation = json.load(f)
-        f.close()
-        super().__init__(os.path.dirname(file), os.path.basename(file), self.annotation['meta']['header'])
+        try:
+            f = open(file, 'r')
+            self.annotation = json.load(f)
+            f.close()
+            super().__init__(os.path.dirname(file), os.path.basename(file), self.annotation['meta'].get('header', {}))
+        except json.decoder.JSONDecodeError:
+            print('Error loading JSON Annotation File: ' + file)
+            raise
 
     @property
     def body(self):
@@ -436,7 +440,7 @@ class AnnotatedEmailsIterator:
     def _iterator(self, split):
         for root, _, files in os.walk(self.folder):
             for file in files:
-                if file.endswith('.txt.ann'):
+                if file.endswith('.ann'):
                     fname = os.path.join(root, file)
                     if split in fname:
                         yield AnnotatedEmail(fname, False)

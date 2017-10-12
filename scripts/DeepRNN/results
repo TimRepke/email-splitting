@@ -1,0 +1,22 @@
+==========================================
+Multistep with CRF out and concatenated input (5 zone [5 epochs] + 2 zone [2 epochs]), 4 epochs
+Accuracy:  0.935840707965
+                precision    recall  f1-score   support
+
+          Body       0.95      0.97      0.96      5239
+    Body/Intro       0.60      0.21      0.31        29
+    Body/Outro       0.77      0.52      0.62       182
+Body/Signature       0.74      0.60      0.67       279
+        Header       0.92      0.96      0.94      1051
+
+   avg / total       0.93      0.94      0.93      6780
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[5071    4   22   58   84]
+ [  23    6    0    0    0]
+ [  87    0   95    0    0]
+ [ 103    0    6  168    2]
+ [  46    0    0    0 1005]]
+
+==========================================
+Multistep, 5 zone embedding
