@@ -166,7 +166,7 @@ Further we show improvements in flexibility and performance over earlier work on
 
 %our goal: clean up emails properly, don't assume full corpus, therefore keep all information
 
-\subsection{Problem statement}
+\paragraph{Problem statement}
 In this paper we propose approaches to extract the inherent structure of free text emails containing a conversation thread composed of consecutive quoted or forwarded messages.
 Components of an email are referred to as \textit{zones} similar to definition used by Lampert et al~\cite{zones}.
 We assume that a conversation thread is represented as a sequence of \textit{header and body blocks}, which is consistent with emails in the Enron corpus.
@@ -364,24 +364,100 @@ Prior to sampling from the Enron corpus, duplicates are removed based on sender,
 This reduces the corpus almost by 50\%, which confirms the assumption of a full dataset, where an email in one's sent folder is also found in someone else's archive.
 
 \begin{table}
-	\centering
-	\caption{Dataset Statistics}
+	\caption{Annotated Datasets in Numbers}
 	\label{tab:dataset}
 	
-	\begin{tabular}{ccccccc}
+	\centering
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} ccccccc}
 		\toprule
 		& \multicolumn{3}{c}{Enron} &  \multicolumn{3}{c}{ASF} \\
-		\cmidrule(lr){2-4}
-		\cmidrule(lr){5-7}
-		& Train    & Test   & Eval   & Train   & Test   & Eval  \\
+		\cmidrule{2-4}
+		\cmidrule{5-7}
+		                          & Train    & Test   & Eval   & Train   & Test   & Eval  \\
 		\midrule
-		Emails                    & 500      & 200    & 100    &   250   &  100   &   50  \\
-		Individual messages       & ?        & ?      & ?      &         &        &       \\
-		Average length of threads & ?        & ?      & ?      &         &        &       \\
-		Number of Signatures      & ?        & ?      & ?      &         &        &       \\
+		Emails                    & 500      & 200    & 100    &  350   &  100   &   50   \\
+		Individual messages       & 1048     & 474    & 233    &  934   &  226   &   108  \\
+		Average length of threads & 3.5      & 3.6    & 3.5    &  3.5   &  3.7   &   3.1  \\
+		Number of Signatures      & 103      & 58     & 26     &  76    &  13    &   5    \\
 		\bottomrule
-	\end{tabular}
+	\end{tabular*}
 \end{table}
+
+%##### > ../../DATA/ENRON/ANNOTATED < #####
+%=========== Train:
+%num mails 500
+%num mails - no thread 279
+%num mails - with thread 221
+%num actual messages 1048
+%avg threadlen 2.096
+%avg threadlen - nonzero 3.47963800905
+%num headers per mail 0: 0.56, 1: 0.16, 2: 0.14, 3: 0.05, 4: 0.04, 5: 0.02, 6: 0.01, 7: 0.01, 8: 0.01, 18: 0.00
+%num sigs 103
+%avg sig len 6.73786407767
+%avg email len (lines) 46.934
+%avg message len (lines) 23.4055299539
+%=========== Test:
+%num mails 200
+%num mails - no thread 94
+%num mails - with thread 106
+%num actual messages 474
+%avg threadlen 2.37
+%avg threadlen - nonzero 3.58490566038
+%num headers per mail 0: 0.47, 1: 0.14, 2: 0.23, 3: 0.07, 4: 0.04, 5: 0.03, 6: 0.02, 7: 0.01, 8: 0.01, 9: 0.01, 15: 0.01
+%num sigs 58
+%avg sig len 6.81034482759
+%avg email len (lines) 42.875
+%avg message len (lines) 20.5965909091
+%=========== Eval:
+%num mails 101
+%num mails - no thread 48
+%num mails - with thread 53
+%num actual messages 233
+%avg threadlen 2.30693069307
+%avg threadlen - nonzero 3.49056603774
+%num headers per mail 0: 0.48, 1: 0.18, 2: 0.22, 3: 0.05, 4: 0.04, 5: 0.01, 6: 0.01, 8: 0.01, 20: 0.01
+%num sigs 26
+%avg sig len 5.53846153846
+%avg email len (lines) 42.0594059406
+%avg message len (lines) 20.3579545455
+%
+%##### > ../../DATA/ASF/ANNOTATED < #####
+%=========== Train:
+%num mails 358
+%num mails - no thread 132
+%num mails - with thread 226
+%num actual messages 934
+%avg threadlen 2.60893854749
+%avg threadlen - nonzero 3.54867256637
+%num headers per mail 0: 0.37, 1: 0.26, 2: 0.15, 3: 0.08, 4: 0.06, 5: 0.02, 6: 0.03, 7: 0.01, 8: 0.01, 9: 0.00, 10: 0.00, 11: 0.00, 13: 0.00
+%num sigs 76
+%avg sig len 6.28947368421
+%avg email len (lines) 68.7988826816
+%avg message len (lines) 26.1347438753
+%=========== Test:
+%num mails 91
+%num mails - no thread 41
+%num mails - with thread 50
+%num actual messages 226
+%avg threadlen 2.48351648352
+%avg threadlen - nonzero 3.7
+%num headers per mail 0: 0.45, 1: 0.22, 2: 0.11, 3: 0.07, 4: 0.05, 5: 0.03, 6: 0.02, 7: 0.02, 8: 0.02
+%num sigs 13
+%avg sig len 6.15384615385
+%avg email len (lines) 66.8351648352
+%avg message len (lines) 24.1651785714
+%=========== Eval:
+%num mails 45
+%num mails - no thread 16
+%num mails - with thread 29
+%num actual messages 108
+%avg threadlen 2.4
+%avg threadlen - nonzero 3.1724137931
+%num headers per mail 0: 0.36, 1: 0.33, 2: 0.13, 3: 0.09, 4: 0.02, 6: 0.02, 7: 0.04
+%num sigs 5
+%avg sig len 5.8
+%avg email len (lines) 64.8666666667
+%avg message len (lines) 26.4166666667
 
 \Fref{tab:dataset} shows an overview of the selected dataset and the expected number of messages to be extracted.
 Prior heuristic analysis of the Enron corpus estimated 60\% of emails to contain conversation threads~\cite{enron}, which is close to our annotated data.
@@ -412,7 +488,7 @@ Although this level of detail exceeds the requirements for the objective of this
 We compare our proposed model for extracting zones from emails against several other approaches.
 Most notably, Jangada and Zebra~\cite{zones,signature} are reimplemented with slight modifications to fit the more refined problem statement.
 Both systems originally are intended to distinguish lines within an email, which are not part of the latest message of that thread.
-Clearly that deviates from our goal to extract all individual parts and detect zones with additional detail within them.
+Clearly that deviates from our goal to extract \textit{all} individual parts and detect zones with additional detail within those.
 Since the systems are supposed to detect zones within the first part of the email, their features and underlying models should in principle also work on our task.
 
 The source code for Jangada is freely available on the author's web page\footnote{\url{http://www.cs.cmu.edu/~vitor/software/jangada/}}.
@@ -422,7 +498,7 @@ In our implementation, the perceptron performs a multi-class classification alon
 
 The Zebra project web page\footnote{\url{http://zebra.thoughtlets.org/zoning.php}} does only provide annotated data, but not the system's source code. 
 Gossen et al. implemented\footnote{\url{https://github.com/gerhardgossen/soZebra}} it for their work on classification of action items in emails~\cite{sozebra}.
-Our Python implementation is derived from that and adapted to our specific task description.
+We used that as a guideline for our adapted Python implementation.
 
 
 
