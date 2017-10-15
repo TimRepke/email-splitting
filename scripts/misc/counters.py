@@ -24,6 +24,10 @@ def stat(splitit):
     print('avg email len (lines)', np.array([len(m.body.split('\n')) for m in splitit]).mean())
     print('avg message len (lines)', np.array([len(deno['text'].split('\n')) for mail in splitit
                                        for deno in mail.denotations if deno['type'] == 'Body']).mean())
+    print('avg line len:', np.array([len(line) for mail in splitit for line in mail.lines]).mean())
+    print('avg line len (w/o empty lines):', np.array([l for l in [len(line.strip()) for mail in splitit for line in mail.lines] if l > 1]).mean())
+
+    print('mails with advanced annotation', len([]))
 
 
 if __name__ == '__main__':
