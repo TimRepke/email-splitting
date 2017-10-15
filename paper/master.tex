@@ -9,6 +9,7 @@
 \usepackage{makeidx}  % allows for indexgeneration
 \usepackage{graphicx}
 \usepackage{subcaption}
+%\usepackage{pstricks}
 \usepackage{booktabs}
 \usepackage[table]{xcolor}
 \usepackage{listings}
@@ -393,15 +394,39 @@ Furthermore, as input we concatenate two embeddings, which are pre-trained on a 
 This way, we managed to improve the performance by implicitly helping the model understand the inherent ontology, where emails consist of header and body blocks and the body can be further segmented.
 
 In sequence to sequence classification, recurrent neural networks only consider the previous hidden state but neglect the actually predicted label sequence.
-By using a bidirectional layer, we observed a small improvement over a unidirectional recurrent layer.
+By using a bidirectional layer, we observed a small improvement over a unidirectional recurrent layer, since each line's context reflects the previous and following lines.
 Like in language models~\cite{lstm_crf,lstm_cnn_crf}, the addition of a CRF to the output shows further performance gains.
 
+\begin{figure}
+	\centering{
+		\resizebox{0.8\textwidth}{!}{\input{model.pdf_tex}}
+		\caption{Schematic model overview; Left side shows line embedding stage using the CNN approach, right side outlines email zoning model.}
+		\label{fig:model}
+	}
+\end{figure}
+
+\Fref{fig:model} shows a schematic overview of our proposed system of email zoning.
+This model topology can be trained in two ways.
+One would be to pre-train the embedding model and use it to encode the emails before passing them into the second stage of the system.
+Another approach would be to directly connect the last layer before the classification layer of the embedding model to the first layer of the second model and continue training.
+Training the entire model in one pass without pre-training the first stage model leads to unstable results and we observed best performance running both stages individually.
+
+The sequence of zone types per line can be used to extract the conversational parts of an email and also separate the message from boilerplate content such as signatures, greetings and signoffs.
+Consecutive lines with the same predicted zone type are taken into a block.
+Further processing inevitably requires making some assumptions about the general structure of emails.
+Based on the analysis of emails in the training data, we assume, that a body proceeds a header block.
+Furthermore, we define that in-line replies with quoted parts belong to one message, which is not problematic though, since this would usually only appear in Usenet-style emails, which use indicators like repeated $>$ at the beginning of a line and therefore don't require sophisticated processing as presented here anyway.
+
+Small errors in the prediction can be fixed heuristically, for example a block with a single line classified as header containing only the "Subject:" keyword likely is either a false positive or belongs to another block nearby.
+Other similar rules can be constructed, but accumulatively reduce the initial robustness of the model due to added assumptions.
+In the scope of our work we found, that combining this model as a pre-processor for finding related blocks and rules to parse them significantly improves the accuracy of downstream tasks like constructing communication graphs by parsing header blocks compared to a purely rule-based parsed without pre-processing.
+We regard further processing as a task specific engineering problem.
 
 % continue training for classification into header/body
 % how to split thread based on that
 
-\subsection{Extraction of Email Meta-Data}
-continue training for further classification of body and header parts individually
+%\subsection{Extraction of Email Meta-Data}
+%continue training for further classification of body and header parts individually
 
 \section{Experimental Setup}
 In this section we present an overview of the email datasets we used and discuss the sampling of emails for an unbiased evaluation.
@@ -561,8 +586,7 @@ Both models originally weren't designed to find the inherent structure of an ent
 It seems fair to assume, that the approaches for zoning the last message in an email should easily transfer to following messages as well.
 We use a selection of features from both models is taken as input for a recurrent neural network with two GRU layers~\cite{gru}, which will be referred to as \textit{FeatureRNN}.
 
-Finally, we compare those to our proposed model as described in \Fref{sec:model}.
-
+We compare those to our proposed model as described in \Fref{sec:model} using convolutions in the first stage.
 
 % baseline (regex+rules)
 % reimplement zebra\footnote{\url{http://zebra.thoughtlets.org/zoning.php}} https://github.com/gerhardgossen/soZebra
