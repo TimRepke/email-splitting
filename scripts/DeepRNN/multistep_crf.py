@@ -32,7 +32,7 @@ import sys
 from keras.optimizers import RMSprop, SGD, Adadelta, Adagrad, Adam
 import pandas as pd
 from keras.models import Model
-from keras.layers import Dense, Input, Dropout, MaxPooling1D, Conv1D, GlobalAveragePooling1D
+from keras.layers import Dense, Input, Dropout, MaxPooling1D, Conv1D, GlobalAveragePooling1D, Highway
 from keras.layers import LSTM, Lambda
 from keras.layers import TimeDistributed, Bidirectional
 from keras.layers.normalization import BatchNormalization
@@ -239,9 +239,12 @@ def flatten(lst):
 def get_line_model(embedding_size, le):
     num_labels = len(le.classes_)
     in_line = Input(shape=(None, num_possible_chars + 1), dtype='float32')
-
+    #hw = TimeDistributed(Highway())(in_line)
+    #hw = TimeDistributed(Highway())(hw)
+    #hw = TimeDistributed(Highway())(hw)
+    #embedding_conv = Conv1D(64, 3, activation='relu')(hw)
     embedding_conv = Conv1D(64, 3, activation='relu')(in_line)
-    embedding_conv = Conv1D(64, 3, activation='relu')(embedding_conv)
+    #embedding_conv = Conv1D(64, 3, activation='relu')(embedding_conv)
     embedding_conv = MaxPooling1D(3)(embedding_conv)
     embedding_conv = Conv1D(128, 3, activation='relu')(embedding_conv)
     embedding_conv = GlobalAveragePooling1D()(embedding_conv)
@@ -279,7 +282,11 @@ def get_line_training_sets(validation_size, label_encoder):
 
 
 def get_labels(zones):
-    return emails.two_zones_labels if zones == 2 else emails.five_zones_labels
+    if zones == 2:
+        return emails.two_zones_labels
+    if zones == 3:
+        return emails.three_zones_labels
+    return emails.five_zones_labels
 
 
 def get_mail_training_sets(validation_size, test_size, embedding_function_a, embedding_function_b):
@@ -390,7 +397,7 @@ if __name__ == "__main__":
     max_line_len = 80
 
     label_encoder_two = get_label_encoder(2)
-    label_encoder_five = get_label_encoder(5)
+    label_encoder_five = get_label_encoder(3)
 
     emails = AnnotatedEmails('/home/tim/workspace/enno/data', lambda m: m)
     print('loaded mails')
