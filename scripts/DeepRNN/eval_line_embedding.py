@@ -201,7 +201,7 @@ if __name__ == "__main__":
 
     train_mails, test_mails, eval_mails = emails.features
     print('loaded texts')
-
+    # cat scripts/DeepRNN/eval_line_embedding.log| grep "line\|Accuracy\|avg\|==="
     for chars_per_line in [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]:
         for num_labels in [2, 5]:
             for embedding_size in [16, 32, 64]:
