@@ -9,9 +9,11 @@
 \usepackage{makeidx}  % allows for indexgeneration
 \usepackage{graphicx}
 \usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{filecontents}
 %\usepackage{pstricks}
 \usepackage{booktabs}
-\usepackage[table]{xcolor}
+%\usepackage[table]{xcolor}
 \usepackage{listings}
 \lstdefinestyle{mystyle}{
 	%backgroundcolor=\color{backcolour},   
@@ -125,15 +127,21 @@
 %                                     also used for the TOC unless
 %                                     \toctitle is used
 %
-\author{Tim Repke \and Ralf Krestel}
+%\author{Tim Repke \and Ralf Krestel}
+\author{First Author \and Second Author}
 %
-\authorrunning{Tim Repke et al.} % abbreviated author list (for running head)
+%\authorrunning{Tim Repke et al.} % abbreviated author list (for running head)
+\authorrunning{First Author et al.}
 %
 %%%% list of authors for the TOC (use if author list has to be modified)
-\tocauthor{Tim Repke, Ralf Krestel}
+%\tocauthor{Tim Repke, Ralf Krestel}
+\tocauthor{First Author, Second Author}
 %
-\institute{Hasso Plattner Institute, Potsdam, Germany\\
-\email{(tim.repke|ralf.krestel)@hpi.de}}
+%\institute{Hasso Plattner Institute, Potsdam, Germany\\
+%\email{(tim.repke|ralf.krestel)@hpi.de}}
+
+\institute{A Research Institute, City, Country\\
+	\email{(second.author|first.author)@domain.tld}}
 
 \maketitle              % typeset the title of the contribution
 
@@ -158,9 +166,6 @@ To do so, they rely on having the preceding emails that are matched by subject a
 
 We propose a neural network based approach and enable downstream tasks to utilise otherwise hidden or noisy information and overcome problems of error-prone rule-based approaches.
 Further we show improvements in flexibility and performance over earlier work on similar tasks.
-
-
-
 
 
 %früher: emails strukturiert, eingerückt, etc; heute: sehr frei/divers, geht nicht mehr mit regeln; Ansatz: deep learning
@@ -255,7 +260,7 @@ In case of conflicts, the predominant or detailed type is used.
 	\\ 
 	\hline 
 \end{tabular} 
-\caption{Example email with zones; consecutive empty lines reduced to one}
+\caption{Example email with zones; consecutive blank lines reduced to one}
 \label{fig:examplemail}
 \end{figure}
 
@@ -369,7 +374,6 @@ Each line is encoded as a sequence of one-hot vectors representing respective ch
 We distinguish one hundred different case-sensitive alpha-numeric characters and basic ASCII symbols plus an out-of-scope placeholder.
 This scope is sufficient for all email corpora we looked at, where only a negligible portion of characters exceeds this set.
 For applications with Cyrillic, Arabic or other alphabets, this can easily be adapted.
-Most lines in our test sets are between 40 and 50 characters long.
 
 Inspired by research on character-aware language models~\cite{char_nn}, we experiment with recurrent and convolutional neural networks.
 The first model consists of a layer with varying number of gated recurrent units (GRU), where the last unit's output later serves as a fixed size embedding of the line.
@@ -427,6 +431,93 @@ We regard further processing as a task specific engineering problem.
 
 %\subsection{Extraction of Email Meta-Data}
 %continue training for further classification of body and header parts individually
+\subsection{Selection of Model Parameters}
+In the description of the proposed model, we highlighted parameters that can be adapted.
+This includes the model for line representations in the first stage, limiting the length of each line, and finding the ideal dimension of line embeddings.
+The configurations of the model topology exceeds the scope of this work, we therefore refer interested readers to the analysis of related models~\cite{char_nn,lstm_cnn_crf,lstm_crf}.
+\begin{filecontents*}{dataevallines.csv}
+	10,10,10,10,10,10,10,10,10,10,10,10,0.71,0.71,0.71,0.71,0.71,0.71,0.59,0.59,0.59,0.59,0.59,0.59,0.84,0.84,0.84,0.84,0.84,0.84,0.77,0.77,0.77,0.77,0.77,0.77,0.77,0.77,0.77,0.77,0.77,0.77,0.67,0.67,0.67,0.67,0.67,0.67,0.842061281337,0.842061281337,0.842061281337,0.842061281337,0.842061281337,0.842061281337,0.770334261838,0.770334261838,0.770334261838,0.770334261838,0.770334261838,0.770334261838
+	20,20,20,20,20,20,20,20,20,20,20,20,0.93,0.94,0.93,0.93,0.93,0.93,0.85,0.85,0.86,0.85,0.85,0.84,0.93,0.94,0.93,0.94,0.93,0.93,0.71,0.79,0.83,0.76,0.74,0.62,0.93,0.94,0.93,0.94,0.93,0.93,0.76,0.81,0.84,0.79,0.77,0.69,0.933844011142,0.936908077994,0.933983286908,0.936490250696,0.927158774373,0.933844011142,0.711838440111,0.785515320334,0.833704735376,0.755849582173,0.735793871866,0.621727019499
+	30,30,30,30,30,30,30,30,30,30,30,30,0.95,0.94,0.94,0.94,0.94,0.94,0.85,0.85,0.86,0.85,0.86,0.86,0.95,0.94,0.94,0.94,0.94,0.94,0.8,0.79,0.82,0.79,0.84,0.82,0.95,0.94,0.94,0.94,0.94,0.94,0.82,0.81,0.84,0.81,0.85,0.84,0.94721448468,0.940111420613,0.941364902507,0.942061281337,0.937883008357,0.936629526462,0.797075208914,0.790668523677,0.823259052925,0.791922005571,0.842757660167,0.824233983287
+	40,40,40,40,40,40,40,40,40,40,40,40,0.95,0.95,0.93,0.89,0.94,0.95,0.82,0.86,0.87,0.86,0.87,0.87,0.95,0.95,0.93,0.85,0.94,0.95,0.52,0.83,0.82,0.83,0.8,0.82,0.95,0.95,0.93,0.86,0.94,0.95,0.59,0.85,0.84,0.84,0.83,0.84,0.947353760446,0.948328690808,0.927298050139,0.9059164345404,0.943871866295,0.953342618384,0.516155988858,0.833983286908,0.819777158774,0.833426183844,0.80069637883,0.820334261838
+	50,50,50,50,50,50,50,50,50,50,50,50,0.94,0.95,0.95,0.95,0.93,0.93,0.86,0.87,0.87,0.87,0.88,0.87,0.94,0.95,0.95,0.95,0.93,0.93,0.81,0.83,0.8,0.83,0.81,0.82,0.94,0.95,0.95,0.95,0.93,0.93,0.83,0.84,0.82,0.85,0.84,0.84,0.938161559889,0.949860724234,0.95208913649,0.947075208914,0.92938718663,0.927158774373,0.806824512535,0.827576601671,0.79860724234,0.826601671309,0.81295264624,0.823955431755
+	60,60,60,60,60,60,60,60,60,60,60,60,0.92,0.95,0.95,0.94,0.95,0.93,0.86,0.86,0.87,0.86,0.87,0.87,0.92,0.95,0.95,0.94,0.95,0.93,0.81,0.82,0.8,0.79,0.83,0.79,0.92,0.95,0.95,0.94,0.95,0.93,0.83,0.84,0.82,0.81,0.84,0.82,0.918245125348,0.950278551532,0.948746518106,0.942479108635,0.949442896936,0.933844011142,0.810167130919,0.824651810585,0.796796657382,0.785097493036,0.825626740947,0.785515320334
+	70,70,70,70,70,70,70,70,70,70,70,70,0.95,0.94,0.95,0.95,0.95,0.94,0.87,0.83,0.84,0.87,0.83,0.86,0.95,0.94,0.95,0.95,0.95,0.94,0.79,0.49,0.67,0.83,0.6,0.81,0.95,0.94,0.95,0.95,0.95,0.94,0.82,0.57,0.73,0.85,0.66,0.83,0.948189415042,0.939554317549,0.952367688022,0.95348189415,0.953760445682,0.941922005571,0.793871866295,0.485097493036,0.751587743733,0.832451253482,0.596796657382,0.813509749304
+	80,80,80,80,80,80,80,80,80,80,80,80,0.94,0.95,0.94,0.94,0.95,0.94,0.87,0.86,0.85,0.87,0.83,0.87,0.94,0.95,0.94,0.94,0.95,0.94,0.8,0.81,0.54,0.8,0.46,0.83,0.94,0.95,0.94,0.94,0.95,0.94,0.83,0.83,0.63,0.83,0.55,0.85,0.940668523677,0.94860724234,0.943871866295,0.943036211699,0.950417827298,0.944011142061,0.802367688022,0.808077994429,0.7235515320334,0.803760445682,0.461838440111,0.828412256267
+	90,90,90,90,90,90,90,90,90,90,90,90,0.94,0.94,0.95,0.95,0.95,0.93,0.86,0.87,0.88,0.87,0.87,0.87,0.94,0.94,0.95,0.95,0.95,0.93,0.8,0.81,0.82,0.8,0.83,0.83,0.94,0.94,0.95,0.95,0.95,0.93,0.82,0.83,0.84,0.83,0.85,0.85,0.937883008357,0.942896935933,0.948050139276,0.94860724234,0.950835654596,0.93217270195,0.80278551532,0.805988857939,0.822144846797,0.798746518106,0.832033426184,0.832729805014
+	100,100,100,100,100,100,100,100,100,100,100,100,0.94,0.95,0.95,0.95,0.93,0.95,0.87,0.87,0.87,0.87,0.87,0.87,0.94,0.95,0.95,0.95,0.92,0.95,0.81,0.82,0.83,0.79,0.8,0.83,0.94,0.95,0.95,0.95,0.93,0.95,0.83,0.84,0.85,0.82,0.83,0.84,0.943175487465,0.948885793872,0.947632311978,0.947632311978,0.923816155989,0.948885793872,0.808774373259,0.820891364903,0.833844011142,0.792479108635,0.796239554318,0.825487465181
+	110,110,110,110,110,110,110,110,110,110,110,110,0.95,0.94,0.94,0.95,0.95,0.95,0.88,0.87,0.87,0.87,0.85,0.88,0.95,0.95,0.94,0.95,0.95,0.95,0.81,0.73,0.8,0.82,0.65,0.82,0.95,0.94,0.94,0.95,0.95,0.95,0.84,0.78,0.83,0.84,0.72,0.85,0.948746518106,0.945543175487,0.937883008357,0.948467966574,0.947353760446,0.948467966574,0.814902506964,0.726601671309,0.801671309192,0.823676880223,0.654735376045,0.824930362117
+	120,120,120,120,120,120,120,120,120,120,120,120,0.94,0.94,0.95,0.94,0.94,0.95,0.87,0.87,0.87,0.86,0.87,0.87,0.94,0.94,0.95,0.94,0.94,0.95,0.79,0.8,0.79,0.79,0.84,0.81,0.94,0.94,0.95,0.94,0.94,0.95,0.82,0.83,0.82,0.82,0.85,0.84,0.942618384401,0.941364902507,0.949860724234,0.944846796657,0.943175487465,0.946657381616,0.793593314763,0.80069637883,0.791504178273,0.788579387187,0.83704735376,0.814902506964
+	130,130,130,130,130,130,130,130,130,130,130,130,0.94,0.93,0.95,0.95,0.94,0.94,0.88,0.86,0.87,0.87,0.87,0.87,0.94,0.92,0.95,0.95,0.94,0.94,0.56,0.82,0.78,0.77,0.81,0.8,0.94,0.92,0.95,0.95,0.94,0.94,0.66,0.84,0.82,0.81,0.84,0.82,0.942757660167,0.920891364903,0.94791086351,0.948746518106,0.939554317549,0.935236768802,0.560863509749,0.816573816156,0.781754874652,0.774791086351,0.811559888579,0.795543175487
+	140,140,140,140,140,140,140,140,140,140,140,140,0.93,0.95,0.94,0.95,0.95,0.95,0.89,0.87,0.87,0.86,0.87,0.87,0.93,0.95,0.94,0.95,0.95,0.95,0.55,0.83,0.79,0.81,0.83,0.77,0.93,0.95,0.94,0.95,0.95,0.95,0.65,0.85,0.82,0.83,0.84,0.8,0.930362116992,0.947632311978,0.943036211699,0.95069637883,0.951949860724,0.946657381616,0.547493036212,0.82938718663,0.787604456825,0.805431754875,0.828272980501,0.769080779944
+	150,150,150,150,150,150,150,150,150,150,150,150,0.95,0.93,0.94,0.94,0.94,0.94,0.88,0.87,0.87,0.87,0.86,0.87,0.95,0.93,0.94,0.94,0.94,0.94,0.39,0.81,0.81,0.69,0.79,0.8,0.95,0.93,0.94,0.94,0.94,0.94,0.47,0.83,0.84,0.76,0.82,0.83,0.949025069638,0.93147632312,0.938718662953,0.941504178273,0.938022284123,0.935793871866,0.391225626741,0.806545961003,0.812813370474,0.694428969359,0.786629526462,0.796378830084
+\end{filecontents*}
+% [(0, 'linelen216cnn'), (1, 'linelen216rnn'), (2, 'linelen232cnn'), (3, 'linelen232rnn'), (4, 'linelen264cnn'), (5, 'linelen264rnn'), (6, 'linelen516cnn'), (7, 'linelen516rnn'), (8, 'linelen532cnn'), (9, 'linelen532rnn'), (10, 'linelen564cnn'), (11, 'linelen564rnn'), (12, 'prec216cnn'), (13, 'prec216rnn'), (14, 'prec232cnn'), (15, 'prec232rnn'), (16, 'prec264cnn'), (17, 'prec264rnn'), (18, 'prec516cnn'), (19, 'prec516rnn'), (20, 'prec532cnn'), (21, 'prec532rnn'), (22, 'prec564cnn'), (23, 'prec564rnn'), (24, 'rec216cnn'), (25, 'rec216rnn'), (26, 'rec232cnn'), (27, 'rec232rnn'), (28, 'rec264cnn'), (29, 'rec264rnn'), (30, 'rec516cnn'), (31, 'rec516rnn'), (32, 'rec532cnn'), (33, 'rec532rnn'), (34, 'rec564cnn'), (35, 'rec564rnn'), (36, 'f1216cnn'), (37, 'f1216rnn'), (38, 'f1232cnn'), (39, 'f1232rnn'), (40, 'f1264cnn'), (41, 'f1264rnn'), (42, 'f1516cnn'), (43, 'f1516rnn'), (44, 'f1532cnn'), (45, 'f1532rnn'), (46, 'f1564cnn'), (47, 'f1564rnn'), (48, 'acc216cnn'), (49, 'acc216rnn'), (50, 'acc232cnn'), (51, 'acc232rnn'), (52, 'acc264cnn'), (53, 'acc264rnn'), (54, 'acc516cnn'), (55, 'acc516rnn'), (56, 'acc532cnn'), (57, 'acc532rnn'), (58, 'acc564cnn'), (59, 'acc564rnn')]
+\begin{figure}
+	\centering
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\begin{tikzpicture} % 16: 48,49 | 32: 50,51 | 64: 52,53 (cnn,rnn|2zone)
+		\begin{axis}[width=0.98\textwidth, height=0.66\textwidth,
+		             every tick label/.append style={font=\scriptsize},
+		             every label/.append style={font=\scriptsize}, ylabel near ticks,
+		             mark options={solid,scale=0.7}, legend style={at={(0.99,0.01)},anchor=south east},
+		             xlabel={maximum line length}, ylabel={Accuracy}]
+		\addplot[solid, color=black, mark=x] table[x index={0},y index={50}, col sep=comma] {dataevallines.csv};
+		\addlegendentry{\tiny CNN};
+		\addplot[dashed, color=black, mark=o] table[x index={0},y index={51}, col sep=comma] {dataevallines.csv};
+		\addlegendentry{\tiny RNN};
+		\end{axis}
+		\end{tikzpicture}
+		%\caption{Two Zone Model}
+	\end{subfigure}%
+	~ 
+	\begin{subfigure}[t]{0.5\textwidth}
+		\centering
+		\begin{tikzpicture} % 16: 54,55 | 32: 56,57 | 64: 58,59 (cnn,rnn|5zone)
+		\begin{axis}[width=0.98\textwidth, height=0.66\textwidth,
+		mark options={solid,scale=0.7}, legend style={at={(0.99,0.01)},anchor=south east},
+		every tick label/.append style={font=\scriptsize},
+		every label/.append style={font=\scriptsize}, 
+		yticklabel pos=right, ylabel near ticks,
+		xlabel={maximum line length}, ylabel={Accuracy}]
+		\addplot[solid, color=black, mark=x] table[x index={0},y index={56}, col sep=comma] {dataevallines.csv};
+		\addlegendentry{\tiny CNN};
+		\addplot[dashed, color=black, mark=o] table[x index={0},y index={57}, col sep=comma] {dataevallines.csv};
+		\addlegendentry{\tiny RNN};
+		\end{axis}
+		\end{tikzpicture}
+		%\caption{Five Zone Model}
+	\end{subfigure}
+	\caption{Accuracy of $d$-dimensional line embeddings at increasing maximum line length; tested $d\in\{16, 32, 48, 64\}$, showing $d=32$; Trained using two-zone (left) and five-zone (right) classification}
+	\label{fig:gridsearch}
+\end{figure}
+
+The ideal configuration for the embedding stage is determined through grid search across mentioned parameters.
+We record the accuracy of the CNN and RNN approach for the two zone task as well as the full five zone task as \Fref{fig:gridsearch} shows.
+Note, that the CNN model assumes a fixed size input, so shorter lines are zero-padded at the end.
+When evaluating the reported accuracy, one has to consider two things.
+First, this metric may not project down to the later stage of our system, and second, the line type distribution bias reduces the range of values to 0.8 (or 0.6) upwards.
+
+We did not observe significant differences between embedding dimensions above 32, so we choose this dimensionality in favour of a less complex model.
+Most errors are caused by blank lines, which are usually classified as "Body".
+Results when training using two-zone classification are mostly stable for both models.
+The majority of lines in our training data are between forty and fifty characters long.
+Interestingly, we observe a drop in performance of the convolutional model for fixed input lengths just over this average in the five-zone classification.
+
+Both approaches for line representations seem to have their strengths and weaknesses.
+Since there is no clear winner, we continue only using the convolutional model in this work.
+We do so based on the argument, that one may want to process large corpora and prefers a faster model.
+
+% conv cant handle much padding, rnn better at that
+% avg line len 40-50, so choose cnn for simplicity
+% robustness?
+
+%\subsection{Flexibility of the Model}
+%perturbation resistance
+%size of training dataset (how much annotated data needed)
+%cross corpus (?)
+
 
 \section{Experimental Setup}
 In this section we present an overview of the email datasets we used and discuss the sampling of emails for an unbiased evaluation.
@@ -595,33 +686,6 @@ We compare those to our proposed model as described in \Fref{sec:model} using co
 % RNN with features
 % show which task is more or less comparable between all
 
-\subsection{Learning Model Parameters}
-
-\begin{figure}
-	\centering
-	\begin{subfigure}[t]{0.5\textwidth}
-		\centering
-		\dummyfig{0.17}{0.9}{xaxis=perturbation, yaxis=accuracy, one line/boxplot} 
-		\caption{Obfuscating test samples}
-	\end{subfigure}%
-	~ 
-	\begin{subfigure}[t]{0.5\textwidth}
-		\centering
-		\dummyfig{0.17}{0.9}{xaxis=perturbation, yaxis=accuracy, three lines for different perturbation during eval} 
-		\caption{Training with perturbation}
-	\end{subfigure}
-	\caption{Tolerance of the trained model against perturbation of the input}
-\end{figure}
-
-line length
-
-embedding size
-
-size of model/dimensions
-
-size of training dataset (how much annotated data needed)
-
-cross corpus (?)
 
 \section{Results}
 evaluate different complexities: full task (get all information), split head+body, additionally split body parts (sig, intro, outro)
