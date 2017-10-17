@@ -116,8 +116,8 @@ class MailBatches(Sequence):
         if y is not None:
             y_flat = flatten(y)
             self.class_weights = compute_class_weight('balanced', self.label_encoder.classes_, y_flat)
-            print(Counter(y_flat))
-            print(dict(zip(self.label_encoder.classes_, self.class_weights)))
+            # print(Counter(y_flat))
+            # print(dict(zip(self.label_encoder.classes_, self.class_weights)))
 
     def __len__(self):
         return len(self.x) // self.batch_size
@@ -147,7 +147,7 @@ class MailBatches(Sequence):
         X = np.array(X)
         Y = np.array(Y)
         W = np.array(W)
-        print(idx, X.shape, Y.shape, W.shape)
+        # print(idx, X.shape, Y.shape, W.shape)
         self.cache[idx] = (X, Y, W)
 
         return self._return_value(X, Y, W)
@@ -231,13 +231,13 @@ class Model:
                       kernel_initializer='glorot_uniform',
                       recurrent_initializer='orthogonal',
                       bias_initializer='zeros',
-                      #kernel_regularizer=l2(0.1),
+                      # kernel_regularizer=l2(0.1),
                       bias_regularizer=l2(0.2),
-                      #recurrent_regularizer=l2(0.4),
-                      #activity_regularizer=l2(0.4),
+                      # recurrent_regularizer=l2(0.4),
+                      # activity_regularizer=l2(0.4),
                       activation='tanh',
                       recurrent_activation='hard_sigmoid',
-                      #dropout=0.2,
+                      # dropout=0.2,
                       # recurrent_dropout=0.1,
                       name='rnn_layer1'))
         # model.add(LSTM(units=10,
@@ -262,8 +262,8 @@ class Model:
                       kernel_initializer='glorot_uniform',
                       recurrent_initializer='orthogonal',
                       bias_initializer='zeros',
-                      #kernel_regularizer=l2(0.2),
-                      #bias_regularizer=l2(0.2),
+                      # kernel_regularizer=l2(0.2),
+                      # bias_regularizer=l2(0.2),
                       # recurrent_regularizer=l2(0.2),
                       # activity_regularizer=l2(0.2),
                       recurrent_activation='hard_sigmoid',
@@ -330,64 +330,74 @@ if __name__ == '__main__':
     epochs = 20
     features = cols
     labels = AnnotatedEmail.zone_labels(zones)
+    # folder = "../../data/enron/annotated/"
+    folder = "../../data/asf/annotated/"
 
-    emails = AnnotatedEmails('/home/tim/workspace/enno/data', mail2features)
-    print('loaded mails')
+    for perturb in [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6]:
+        print('=============================================================')
+        print('PERTURBATION:', perturb)
+        emails = AnnotatedEmails(folder, mail2features, perturbation=perturb)
+        print('loaded mails')
 
-    X_train, X_test, X_eval = emails.features
-    print('loaded features')
+        X_train, X_test, X_eval = emails.features
+        print('loaded features')
 
-    if zones == 5:
-        y_train, y_test, y_eval = emails.five_zones_labels
-    elif zones == 3:
-        y_train, y_test, y_eval = emails.three_zones_labels
-    else:
-        y_train, y_test, y_eval = emails.two_zones_labels
-    print('loaded labels')
+        if zones == 5:
+            y_train, y_test, y_eval = emails.five_zones_labels
+        elif zones == 3:
+            y_train, y_test, y_eval = emails.three_zones_labels
+        else:
+            y_train, y_test, y_eval = emails.two_zones_labels
+        print('loaded labels')
 
-    # for zs, m in zip(y_train, emails.train_set):
-    #    for z, l in zip(zs, m.lines):
-    #        if z == ['Body', 'Header', 'Body/Signature', 'Body/Intro', 'Body/Outro'][2]:
-    #            print(l)
+        # for zs, m in zip(y_train, emails.train_set):
+        #    for z, l in zip(zs, m.lines):
+        #        if z == ['Body', 'Header', 'Body/Signature', 'Body/Intro', 'Body/Outro'][2]:
+        #            print(l)
 
-    label_encoder = LabelEncoder()
-    label_encoder.fit(labels)
+        label_encoder = LabelEncoder()
+        label_encoder.fit(labels)
+        le = label_encoder
+        class_weights = compute_class_weight('balanced', le.classes_, flatten(y_train))
+        print(class_weights)
+        if perturb == 0.0 and True:
+            model = Model(features, label_encoder, batch_size=batch_size)
+            model.init_lstm_model()
+            model.fit_model(X_train, y_train, epochs=epochs, x_test=X_test, y_test=y_test, verbose=0, balanced=True, )
+            # callback=TensorBoard(log_dir='./logs/' + time.strftime('%Y-%m-%d_%H-%M'),
+            #                    write_images=True, histogram_freq=1))
 
-    model = Model(features, label_encoder, batch_size=batch_size)
-    model.init_lstm_model()
-    model.fit_model(X_train, y_train, epochs=epochs, x_test=X_test, y_test=y_test, verbose=1, balanced=True,
-                    callback=TensorBoard(log_dir='./logs/' + time.strftime('%Y-%m-%d_%H-%M'),
-                                         write_images=True, histogram_freq=1))
+        Y_pred = model.predict(X_test, y_test)
 
-    Y_pred = model.predict(X_test, y_test)
+        y_pred = []
+        y_pred_p = []
+        a = True
+        for m, mm in zip(Y_pred, X_test):
+            # if a:
+            #    a = False
+            #    print(m.shape, len(mm))
+            #    for w, l in zip(m[0:len(mm)], emails.test_set[0].lines):
+            #        print(list(w), label_encoder.inverse_transform([w.argmax()])[0], ')', l[:100])
+            # print(list(m)[0:len(mm)])
+            # y_pred += list(m.argmax(axis=1))[len(m)-len(mm):]  # [0:len(mm)]
+            # y_pred_p += list(m)[len(m)-len(mm):]  # [0:len(mm)]
+            y_pred += list(m.argmax(axis=1))[0:len(mm)]
+            y_pred_p += list(m)[0:len(mm)]
 
-    y_pred = []
-    y_pred_p = []
-    a = True
-    for m, mm in zip(Y_pred, X_test):
-        if a:
-            a = False
-            print(m.shape, len(mm))
-            for w, l in zip(m[0:len(mm)], emails.test_set[0].lines):
-                print(list(w), label_encoder.inverse_transform([w.argmax()])[0], ')', l[:100])
-                # print(list(m)[0:len(mm)])
-        # y_pred += list(m.argmax(axis=1))[len(m)-len(mm):]  # [0:len(mm)]
-        # y_pred_p += list(m)[len(m)-len(mm):]  # [0:len(mm)]
-        y_pred += list(m.argmax(axis=1))[0:len(mm)]
-        y_pred_p += list(m)[0:len(mm)]
+        # a = le.transform(flatten(y_test))
+        a = flatten(y_test)
+        b = label_encoder.inverse_transform(y_pred)
 
-    # a = le.transform(flatten(y_test))
-    a = flatten(y_test)
-    b = label_encoder.inverse_transform(y_pred)
+        # pprint(list(zip(a, b)))
+        # pprint(list(zip(a, y_pred_p)))
 
-    # pprint(list(zip(a, b)))
-    # pprint(list(zip(a, y_pred_p)))
-
-    print('Accuracy: ', accuracy_score(a, b))
-    print(classification_report(a, b, target_names=label_encoder.classes_))
-    # pprint(precision_recall_fscore_support(b, a))
-    print(label_encoder.classes_)
-    print(confusion_matrix(a, b, labels=label_encoder.classes_))
+        print('Accuracy: ', accuracy_score(a, b))
+        print(classification_report(a, b, target_names=label_encoder.classes_))
+        print('Accuracy (weighted): ', accuracy_score(a, b, sample_weight=[class_weights[s] for s in le.transform(a)]))
+        print(classification_report(a, b, target_names=le.classes_, sample_weight=[class_weights[s] for s in le.transform(a)]))
+        # pprint(precision_recall_fscore_support(b, a))
+        print(label_encoder.classes_)
+        print(confusion_matrix(a, b, labels=label_encoder.classes_))
 
 
 # self.X_train = None

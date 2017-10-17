@@ -1,4 +1,5 @@
 import re
+import sre_constants
 from collections import Counter
 
 # implements features described in
@@ -62,6 +63,7 @@ def names2regex(names):
 def mail2features(m):
     mail = m.body
     maill = m.lines
+    clean_lines = m.lines_clean
 
     unigrams = tokenise(mail, 1)
     bigrams = tokenise(mail, 2)
@@ -192,21 +194,27 @@ def mail2features(m):
             features['contains_senders_name_prev'] = 1
 
         # whether the text fragment contains the sender's initials
-        initials = [re.sub(r"\|\(\)\+\^\$\*", '', p[0]) for p in re.split(r"(?:\s+[,;]?\s*|\s*[,;]?\s+)", m.xsender)][
-                   0:2]
-        initials_regex = "(?:" + (''.join(initials)) + '|' + ('.'.join(initials) + '.') + '|' + \
-                         ('. '.join(initials) + '.')
-        if len(initials) > 1:
-            initials = [initials[0]] + [initials[-1]]
-            initials_regex += '|' + (''.join(initials)) + '|' + ('.'.join(initials) + '.') + '|' + \
-                              ('. '.join(initials) + '.')
-        initials_regex += ')'
-        if re.search(initials_regex, line):
-            features['contains_senders_initials'] = 1
+        try:
+            initials = [re.sub(r"\|\(\)\+\^\$\*", '', p[0]) for p in re.split(r"(?:\s+[,;]?\s*|\s*[,;]?\s+)", m.xsender)][
+                       0:2]
+            initials_regex = "(?:" + (''.join(initials)) + '|' + ('.'.join(initials) + '.') + '|' + \
+                             ('. '.join(initials) + '.')
+            if len(initials) > 1:
+                initials = [initials[0]] + [initials[-1]]
+                initials_regex += '|' + (''.join(initials)) + '|' + ('.'.join(initials) + '.') + '|' + \
+                                  ('. '.join(initials) + '.')
+            initials_regex += ')'
+            if re.search(initials_regex, line):
+                features['contains_senders_initials'] = 1
+        except IndexError:
+            pass
 
         # whether the text fragment contains a recipient's name
-        if re.search(names2regex(m.xto), line):
-            features['contains_recipients_name'] = 1
+        try:
+            if re.search(names2regex(m.xto), line):
+                features['contains_recipients_name'] = 1
+        except sre_constants.error:
+            pass
 
         mail_features.append(features)
 

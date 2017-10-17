@@ -1,5 +1,6 @@
 from email import parser as ep
 from datetime import datetime, timezone
+import numpy as np
 import os
 import re
 import json
@@ -76,47 +77,47 @@ class Email:
 
     @property
     def id(self):
-        return self.mail['Message-ID']
+        return self.mail.get('Message-ID', '')
 
     @property
     def mailbox(self):
-        return self.mail['X-Origin']
+        return self.mail.get('X-Origin', '')
 
     @property
     def subject(self):
-        return self.mail['Subject']
+        return self.mail.get('Subject', '')
 
     @property
     def sender(self):
-        return self.mail['From']
+        return self.mail.get('From', '')
 
     @property
     def xsender(self):
-        return self.mail['X-From']
+        return self.mail.get('X-From', '')
 
     @property
     def to(self):
-        return self.mail['To']
+        return self.mail.get('To', '')
 
     @property
     def xto(self):
-        return self.mail['X-To']
+        return self.mail.get('X-To', '')
 
     @property
     def cc(self):
-        return self.mail['Cc']
+        return self.mail.get('Cc', '')
 
     @property
     def xcc(self):
-        return self.mail['X-cc']
+        return self.mail.get('X-cc', '')
 
     @property
     def bcc(self):
-        return self.mail['Bcc']
+        return self.mail.get('Bcc', '')
 
     @property
     def xbcc(self):
-        return self.mail['X-bcc']
+        return self.mail.get('X-bcc', '')
 
     @property
     def body(self):
@@ -224,8 +225,9 @@ def _labels_to_numeric(labels):
 
 
 class AnnotatedEmail(Email):
-    def __init__(self, file, skip_blank=False):
+    def __init__(self, file, skip_blank=False, perturbation=0.0):
         self.skip_blank = skip_blank
+        self.perturbation = perturbation
         try:
             f = open(file, 'r')
             self.annotation = json.load(f)
@@ -242,14 +244,47 @@ class AnnotatedEmail(Email):
     @property
     def lines(self):
         # return [l+'\n' for l in self.body.split('\n') if not (self.skip_blank and re.search(r"^\s*$", l))]
+        return [self._perturbate_line(l) + '\n' for l in self.body.split('\n')]
+
+    @property
+    def lines_clean(self):
+        # return [l+'\n' for l in self.body.split('\n') if not (self.skip_blank and re.search(r"^\s*$", l))]
         return [l + '\n' for l in self.body.split('\n')]
+
+    def _perturbate_line(self, line):
+        if self.perturbation < 0.001:
+            return line
+        ret = ''
+        chars = list(' '
+                     'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+                     'abcdefghijklmnopqrstuvwxyz'
+                     '0123456789'
+                     '@€-_.:,;#\'+*~\?}=])[({/&%$§"!^°|><´`')
+        rem = 0.33 * self.perturbation
+        add = 0.66 * self.perturbation
+        randoms = np.random.rand(len(line))
+        for i, rand in enumerate(randoms):
+            if rand > self.perturbation:
+                ret += line[i]
+            else:
+                if rand < rem:
+                    # remove character
+                    pass
+                elif rand < add:
+                    # add character
+                    ret += line[i]
+                    ret += chars[np.random.randint(0, len(chars), 1)[0]]
+                else:
+                    # edit character
+                    ret += chars[np.random.randint(0, len(chars), 1)[0]]
+        return ret
 
     def __len__(self):
         return len(self.lines)
 
     @property
     def lines_with_boundaries(self):
-        lines = self.lines
+        lines = self.lines_clean
         cursor = 0
         ret = []
         for line in lines:
@@ -325,23 +360,24 @@ class AnnotatedEmail(Email):
 
 
 class AnnotatedEmails:
-    def __init__(self, folder, feature_function, skip_blank=False):
+    def __init__(self, folder, feature_function, skip_blank=False, perturbation=0.0):
         self.skip_blank = skip_blank  # TODO
         self.feature_function = feature_function
+        self.perturbation = perturbation
         self.emails_train = []
         self.emails_test = []
         self.emails_eval = []
 
         for root, _, files in os.walk(folder):
             for file in files:
-                if file.endswith('.txt.ann'):
+                if file.endswith('.ann'):
                     fname = os.path.join(root, file)
                     if 'eval' in fname:
-                        self.emails_eval.append(AnnotatedEmail(fname, skip_blank))
+                        self.emails_eval.append(AnnotatedEmail(fname, skip_blank, perturbation=self.perturbation))
                     elif 'test' in fname:
-                        self.emails_test.append(AnnotatedEmail(fname, skip_blank))
+                        self.emails_test.append(AnnotatedEmail(fname, skip_blank, perturbation=self.perturbation))
                     else:
-                        self.emails_train.append(AnnotatedEmail(fname, skip_blank))
+                        self.emails_train.append(AnnotatedEmail(fname, skip_blank, perturbation=self.perturbation))
         print('train:', len(self.emails_train))
         print('test', len(self.emails_test))
         print('eval:', len(self.emails_eval))
