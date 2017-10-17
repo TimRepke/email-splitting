@@ -1,0 +1,295 @@
+=============================================================
+PERTURBATION: 0.0
+train: 222
+test 91
+eval: 45
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+Task training sequence perceptron: 1.52% (135/8880 sequences) in 1.00 sec
+Epoch 0: sequenceErr=135 transitionErrors=2975/15629
+Task training sequence perceptron: 3.94% (350/8880 sequences) in 2.01 sec
+Epoch 1: sequenceErr=75 transitionErrors=834/15629
+Task training sequence perceptron: 6.80% (604/8880 sequences) in 3.05 sec
+Epoch 2: sequenceErr=59 transitionErrors=592/15629
+Task training sequence perceptron: 9.54% (847/8880 sequences) in 4.05 sec
+Epoch 3: sequenceErr=45 transitionErrors=465/15629
+Task training sequence perceptron: 12.13% (1077/8880 sequences) in 5.09 sec
+Epoch 4: sequenceErr=91 transitionErrors=1396/15629
+Task training sequence perceptron: 14.52% (1289/8880 sequences) in 6.09 sec
+Epoch 5: sequenceErr=66 transitionErrors=878/15629
+Task training sequence perceptron: 17.15% (1523/8880 sequences) in 7.09 sec
+Epoch 6: sequenceErr=55 transitionErrors=472/15629
+Task training sequence perceptron: 19.76% (1755/8880 sequences) in 8.10 sec
+Epoch 7: sequenceErr=50 transitionErrors=429/15629
+Task training sequence perceptron: 22.27% (1978/8880 sequences) in 9.10 sec
+Epoch 8: sequenceErr=50 transitionErrors=419/15629
+Epoch 9: sequenceErr=44 transitionErrors=396/15629
+Task training sequence perceptron: 25.07% (2226/8880 sequences) in 10.10 sec
+Epoch 10: sequenceErr=38 transitionErrors=350/15629
+Task training sequence perceptron: 27.58% (2449/8880 sequences) in 11.10 sec
+Epoch 11: sequenceErr=50 transitionErrors=675/15629
+Task training sequence perceptron: 30.20% (2682/8880 sequences) in 12.14 sec
+Epoch 12: sequenceErr=49 transitionErrors=438/15629
+Task training sequence perceptron: 32.87% (2919/8880 sequences) in 13.14 sec
+Epoch 13: sequenceErr=39 transitionErrors=359/15629
+Task training sequence perceptron: 35.46% (3149/8880 sequences) in 14.15 sec
+Epoch 14: sequenceErr=37 transitionErrors=341/15629
+Task training sequence perceptron: 37.91% (3366/8880 sequences) in 15.15 sec
+Epoch 15: sequenceErr=46 transitionErrors=435/15629
+Task training sequence perceptron: 40.57% (3603/8880 sequences) in 16.16 sec
+Epoch 16: sequenceErr=46 transitionErrors=519/15629
+Task training sequence perceptron: 43.46% (3859/8880 sequences) in 17.16 sec
+Epoch 17: sequenceErr=34 transitionErrors=295/15629
+Task training sequence perceptron: 45.86% (4072/8880 sequences) in 18.16 sec
+Epoch 18: sequenceErr=40 transitionErrors=399/15629
+Task training sequence perceptron: 48.57% (4313/8880 sequences) in 19.16 sec
+Epoch 19: sequenceErr=41 transitionErrors=369/15629
+Task training sequence perceptron: 50.97% (4526/8880 sequences) in 20.16 sec
+Epoch 20: sequenceErr=38 transitionErrors=333/15629
+Task training sequence perceptron: 53.41% (4743/8880 sequences) in 21.16 sec
+Epoch 21: sequenceErr=39 transitionErrors=363/15629
+Task training sequence perceptron: 56.06% (4978/8880 sequences) in 22.20 sec
+Epoch 22: sequenceErr=34 transitionErrors=375/15629
+Task training sequence perceptron: 58.52% (5197/8880 sequences) in 23.20 sec
+Epoch 23: sequenceErr=39 transitionErrors=322/15629
+Task training sequence perceptron: 61.04% (5420/8880 sequences) in 24.20 sec
+Epoch 24: sequenceErr=37 transitionErrors=339/15629
+Task training sequence perceptron: 63.63% (5650/8880 sequences) in 25.23 sec
+Epoch 25: sequenceErr=42 transitionErrors=410/15629
+Task training sequence perceptron: 66.32% (5889/8880 sequences) in 26.23 sec
+Epoch 26: sequenceErr=47 transitionErrors=669/15629
+Task training sequence perceptron: 68.78% (6108/8880 sequences) in 27.23 sec
+Epoch 27: sequenceErr=49 transitionErrors=414/15629
+Task training sequence perceptron: 71.41% (6341/8880 sequences) in 28.24 sec
+Epoch 28: sequenceErr=45 transitionErrors=453/15629
+Task training sequence perceptron: 74.21% (6590/8880 sequences) in 29.25 sec
+Epoch 29: sequenceErr=40 transitionErrors=435/15629
+Task training sequence perceptron: 76.50% (6793/8880 sequences) in 30.25 sec
+Epoch 30: sequenceErr=40 transitionErrors=355/15629
+Task training sequence perceptron: 79.31% (7043/8880 sequences) in 31.26 sec
+Epoch 31: sequenceErr=37 transitionErrors=328/15629
+Task training sequence perceptron: 82.11% (7291/8880 sequences) in 32.27 sec
+Epoch 32: sequenceErr=37 transitionErrors=528/15629
+Task training sequence perceptron: 84.38% (7493/8880 sequences) in 33.27 sec
+Epoch 33: sequenceErr=48 transitionErrors=630/15629
+Task training sequence perceptron: 87.02% (7727/8880 sequences) in 34.28 sec
+Epoch 34: sequenceErr=40 transitionErrors=430/15629
+Task training sequence perceptron: 89.50% (7948/8880 sequences) in 35.28 sec
+Epoch 35: sequenceErr=37 transitionErrors=340/15629
+Task training sequence perceptron: 92.17% (8185/8880 sequences) in 36.28 sec
+Epoch 36: sequenceErr=33 transitionErrors=286/15629
+Task training sequence perceptron: 94.93% (8430/8880 sequences) in 37.31 sec
+Epoch 37: sequenceErr=34 transitionErrors=298/15629
+Epoch 38: sequenceErr=39 transitionErrors=349/15629
+Task training sequence perceptron: 97.56% (8663/8880 sequences) in 38.31 sec
+Epoch 39: sequenceErr=49 transitionErrors=598/15629
+fitted
+predicted
+Counter({'Body': 5782, 'Header': 300})
+Counter({'Body': 5818, 'Header': 264})
+Accuracy:  0.989148306478
+             precision    recall  f1-score   support
+
+       Body       1.00      0.99      0.99      5818
+     Header       0.83      0.94      0.88       264
+
+avg / total       0.99      0.99      0.99      6082
+
+Accuracy (weighted):  0.968519964209
+             precision    recall  f1-score   support
+
+       Body       0.95      0.99      0.97 3056.2490588869236
+     Header       0.99      0.94      0.97 2739.745019920313
+
+avg / total       0.97      0.97      0.97 5795.994078807236
+
+[[5767   51]
+ [  15  249]]
+=============================================================
+PERTURBATION: 0.1
+train: 222
+test 91
+eval: 45
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+fitted
+predicted
+Counter({'Body': 5852, 'Header': 230})
+Counter({'Body': 5818, 'Header': 264})
+Accuracy:  0.980269648142
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      5818
+     Header       0.81      0.71      0.76       264
+
+avg / total       0.98      0.98      0.98      6082
+
+Accuracy (weighted):  0.858233016996
+             precision    recall  f1-score   support
+
+       Body       0.79      0.99      0.88 3056.2490588869236
+     Header       0.99      0.71      0.83 2739.745019920313
+
+avg / total       0.88      0.86      0.85 5795.994078807236
+
+[[5775   43]
+ [  77  187]]
+=============================================================
+PERTURBATION: 0.2
+train: 222
+test 91
+eval: 45
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+fitted
+predicted
+Counter({'Body': 5893, 'Header': 189})
+Counter({'Body': 5818, 'Header': 264})
+Accuracy:  0.970240052614
+             precision    recall  f1-score   support
+
+       Body       0.98      0.99      0.98      5818
+     Header       0.72      0.52      0.60       264
+
+avg / total       0.97      0.97      0.97      6082
+
+Accuracy (weighted):  0.766010352641
+             precision    recall  f1-score   support
+
+       Body       0.70      0.99      0.82 3056.2490588869236
+     Header       0.98      0.52      0.68 2739.745019920313
+
+avg / total       0.83      0.77      0.75 5795.994078807236
+
+[[5765   53]
+ [ 128  136]]
+=============================================================
+PERTURBATION: 0.3
+train: 222
+test 91
+eval: 45
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+fitted
+predicted
+Counter({'Body': 5956, 'Header': 126})
+Counter({'Body': 5818, 'Header': 264})
+Accuracy:  0.963498849063
+             precision    recall  f1-score   support
+
+       Body       0.97      0.99      0.98      5818
+     Header       0.67      0.32      0.43       264
+
+avg / total       0.96      0.96      0.96      6082
+
+Accuracy (weighted):  0.673900468187
+             precision    recall  f1-score   support
+
+       Body       0.62      0.99      0.76 3056.2490588869236
+     Header       0.98      0.32      0.48 2739.745019920313
+
+avg / total       0.79      0.67      0.63 5795.994078807236
+
+[[5776   42]
+ [ 180   84]]
+=============================================================
+PERTURBATION: 0.4
+train: 222
+test 91
+eval: 45
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+fitted
+predicted
+Counter({'Body': 5969, 'Header': 113})
+Counter({'Body': 5818, 'Header': 264})
+Accuracy:  0.959388359092
+             precision    recall  f1-score   support
+
+       Body       0.97      0.99      0.98      5818
+     Header       0.58      0.25      0.34       264
+
+avg / total       0.95      0.96      0.95      6082
+
+Accuracy (weighted):  0.639336858999
+             precision    recall  f1-score   support
+
+       Body       0.59      0.99      0.74 3056.2490588869236
+     Header       0.96      0.25      0.39 2739.745019920313
+
+avg / total       0.77      0.64      0.58 5795.994078807236
+
+[[5770   48]
+ [ 199   65]]
+=============================================================
+PERTURBATION: 0.5
+train: 222
+test 91
+eval: 45
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+fitted
+predicted
+Counter({'Body': 6013, 'Header': 69})
+Counter({'Body': 5818, 'Header': 264})
+Accuracy:  0.955771127918
+             precision    recall  f1-score   support
+
+       Body       0.96      0.99      0.98      5818
+     Header       0.46      0.12      0.19       264
+
+avg / total       0.94      0.96      0.94      6082
+
+Accuracy (weighted):  0.58124678481
+             precision    recall  f1-score   support
+
+       Body       0.56      0.99      0.71 3056.2490588869236
+     Header       0.94      0.12      0.21 2739.745019920313
+
+avg / total       0.74      0.58      0.48 5795.994078807236
+
+[[5781   37]
+ [ 232   32]]
+=============================================================
+PERTURBATION: 0.6
+train: 222
+test 91
+eval: 45
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+fitted
+predicted
+Counter({'Body': 6019, 'Header': 63})
+Counter({'Body': 5818, 'Header': 264})
+Accuracy:  0.95412693193
+             precision    recall  f1-score   support
+
+       Body       0.96      0.99      0.98      5818
+     Header       0.38      0.09      0.15       264
+
+avg / total       0.93      0.95      0.94      6082
+
+Accuracy (weighted):  0.566741387864
+             precision    recall  f1-score   support
+
+       Body       0.55      0.99      0.71 3056.2490588869236
+     Header       0.92      0.09      0.17 2739.745019920313
+
+avg / total       0.73      0.57      0.45 5795.994078807236
+
+[[5779   39]
+ [ 240   24]]

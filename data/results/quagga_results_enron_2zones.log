@@ -1,0 +1,384 @@
+Using TensorFlow backend.
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded texts
+['Body' 'Header']
+Counter({'Body': 20088, 'Header': 3379})
+boosting lines by 7822
+['Body' 'Header']
+Counter({'Body': 7080, 'Header': 1451})
+boosting lines by 2843
+['Body' 'Header']
+Counter({'Body': 7080, 'Header': 1451})
+boosting lines by 2843
+2017-10-17 18:10:11.152812: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2017-10-17 18:10:11.411346: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:892] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2017-10-17 18:10:11.411822: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GT 740M major: 3 minor: 5 memoryClockRate(GHz): 1.0325
+pciBusID: 0000:01:00.0
+totalMemory: 1.96GiB freeMemory: 1.93GiB
+2017-10-17 18:10:11.411837: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GT 740M, pci bus id: 0000:01:00.0, compute capability: 3.5)
+fitted embedding b (two zones)
+2017-10-17 18:10:43.817348: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.68GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-17 18:10:46.410941: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.82GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-17 18:10:46.475822: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.25GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-17 18:10:46.579825: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.58GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-17 18:10:50.032243: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.29GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-17 18:10:54.743259: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.24GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-17 18:10:55.474533: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.20GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-17 18:10:56.160624: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.29GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-17 18:10:56.666575: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.07GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-17 18:10:56.924389: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.08GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+fitted model
+=============================================================
+PERTURBATION: 0.0
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.980658773883
+             precision    recall  f1-score   support
+
+       Body       1.00      0.98      0.99      7080
+     Header       0.91      0.98      0.95      1451
+
+avg / total       0.98      0.98      0.98      8531
+
+Accuracy (weighted):  0.980676340494
+             precision    recall  f1-score   support
+
+       Body       0.98      0.98      0.98 4265.499999999922
+     Header       0.98      0.98      0.98 4265.4999999999345
+
+avg / total       0.98      0.98      0.98 8530.999999999856
+
+['Body' 'Header']
+[[6943  137]
+ [  28 1423]]
+----------- EVAL ---------------
+..
+Accuracy:  0.985875706215
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      3508
+     Header       0.95      0.97      0.96       740
+
+avg / total       0.99      0.99      0.99      4248
+
+Accuracy (weighted):  0.978492654106
+             precision    recall  f1-score   support
+
+       Body       0.97      0.99      0.98 2113.470903954719
+     Header       0.99      0.97      0.98 2175.375603032363
+
+avg / total       0.98      0.98      0.98 4288.846506987082
+
+['Body' 'Header']
+[[3472   36]
+ [  24  716]]
+=============================================================
+PERTURBATION: 0.1
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.979252139257
+             precision    recall  f1-score   support
+
+       Body       0.99      0.98      0.99      7080
+     Header       0.91      0.97      0.94      1451
+
+avg / total       0.98      0.98      0.98      8531
+
+Accuracy (weighted):  0.975445387362
+             precision    recall  f1-score   support
+
+       Body       0.97      0.98      0.98 4265.499999999922
+     Header       0.98      0.97      0.98 4265.4999999999345
+
+avg / total       0.98      0.98      0.98 8530.999999999856
+
+['Body' 'Header']
+[[6947  133]
+ [  44 1407]]
+----------- EVAL ---------------
+..
+Accuracy:  0.985404896422
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      3508
+     Header       0.96      0.96      0.96       740
+
+avg / total       0.99      0.99      0.99      4248
+
+Accuracy (weighted):  0.975486934846
+             precision    recall  f1-score   support
+
+       Body       0.96      0.99      0.98 2113.470903954719
+     Header       0.99      0.96      0.98 2175.375603032363
+
+avg / total       0.98      0.98      0.98 4288.846506987082
+
+['Body' 'Header']
+[[3475   33]
+ [  29  711]]
+=============================================================
+PERTURBATION: 0.2
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.977962724182
+             precision    recall  f1-score   support
+
+       Body       0.99      0.98      0.99      7080
+     Header       0.92      0.95      0.94      1451
+
+avg / total       0.98      0.98      0.98      8531
+
+Accuracy (weighted):  0.966175528663
+             precision    recall  f1-score   support
+
+       Body       0.95      0.98      0.97 4265.499999999922
+     Header       0.98      0.95      0.97 4265.4999999999345
+
+avg / total       0.97      0.97      0.97 8530.999999999856
+
+['Body' 'Header']
+[[6967  113]
+ [  75 1376]]
+----------- EVAL ---------------
+..
+Accuracy:  0.981403013183
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      3508
+     Header       0.95      0.94      0.95       740
+
+avg / total       0.98      0.98      0.98      4248
+
+Accuracy (weighted):  0.964379608005
+             precision    recall  f1-score   support
+
+       Body       0.94      0.99      0.96 2113.470903954719
+     Header       0.99      0.94      0.96 2175.375603032363
+
+avg / total       0.97      0.96      0.96 4288.846506987082
+
+['Body' 'Header']
+[[3474   34]
+ [  45  695]]
+=============================================================
+PERTURBATION: 0.3
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.963310280155
+             precision    recall  f1-score   support
+
+       Body       0.98      0.98      0.98      7080
+     Header       0.90      0.88      0.89      1451
+
+avg / total       0.96      0.96      0.96      8531
+
+Accuracy (weighted):  0.931046872019
+             precision    recall  f1-score   support
+
+       Body       0.89      0.98      0.93 4265.499999999922
+     Header       0.98      0.88      0.93 4265.4999999999345
+
+avg / total       0.94      0.93      0.93 8530.999999999856
+
+['Body' 'Header']
+[[6938  142]
+ [ 171 1280]]
+----------- EVAL ---------------
+..
+Accuracy:  0.973399246704
+             precision    recall  f1-score   support
+
+       Body       0.98      0.99      0.98      3508
+     Header       0.96      0.88      0.92       740
+
+avg / total       0.97      0.97      0.97      4248
+
+Accuracy (weighted):  0.937260366329
+             precision    recall  f1-score   support
+
+       Body       0.89      0.99      0.94 2113.470903954719
+     Header       0.99      0.88      0.93 2175.375603032363
+
+avg / total       0.94      0.94      0.94 4288.846506987082
+
+['Body' 'Header']
+[[3481   27]
+ [  86  654]]
+=============================================================
+PERTURBATION: 0.4
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.95252608135
+             precision    recall  f1-score   support
+
+       Body       0.96      0.98      0.97      7080
+     Header       0.91      0.80      0.85      1451
+
+avg / total       0.95      0.95      0.95      8531
+
+Accuracy (weighted):  0.892495385999
+             precision    recall  f1-score   support
+
+       Body       0.83      0.98      0.90 4265.499999999922
+     Header       0.98      0.80      0.88 4265.4999999999345
+
+avg / total       0.91      0.89      0.89 8530.999999999856
+
+['Body' 'Header']
+[[6963  117]
+ [ 288 1163]]
+----------- EVAL ---------------
+..
+Accuracy:  0.950329566855
+             precision    recall  f1-score   support
+
+       Body       0.95      0.99      0.97      3508
+     Header       0.95      0.76      0.84       740
+
+avg / total       0.95      0.95      0.95      4248
+
+Accuracy (weighted):  0.872813164251
+             precision    recall  f1-score   support
+
+       Body       0.80      0.99      0.88 2113.470903954719
+     Header       0.99      0.76      0.86 2175.375603032363
+
+avg / total       0.90      0.87      0.87 4288.846506987082
+
+['Body' 'Header']
+[[3476   32]
+ [ 179  561]]
+=============================================================
+PERTURBATION: 0.5
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.9367014418
+             precision    recall  f1-score   support
+
+       Body       0.95      0.98      0.96      7080
+     Header       0.88      0.73      0.80      1451
+
+avg / total       0.93      0.94      0.93      8531
+
+Accuracy (weighted):  0.853920829975
+             precision    recall  f1-score   support
+
+       Body       0.78      0.98      0.87 4265.499999999922
+     Header       0.97      0.73      0.83 4265.4999999999345
+
+avg / total       0.88      0.85      0.85 8530.999999999856
+
+['Body' 'Header']
+[[6934  146]
+ [ 394 1057]]
+----------- EVAL ---------------
+..
+Accuracy:  0.943032015066
+             precision    recall  f1-score   support
+
+       Body       0.95      0.99      0.97      3508
+     Header       0.92      0.74      0.82       740
+
+avg / total       0.94      0.94      0.94      4248
+
+Accuracy (weighted):  0.85919424612
+             precision    recall  f1-score   support
+
+       Body       0.78      0.99      0.87 2113.470903954719
+     Header       0.98      0.74      0.84 2175.375603032363
+
+avg / total       0.88      0.86      0.86 4288.846506987082
+
+['Body' 'Header']
+[[3462   46]
+ [ 196  544]]
+=============================================================
+PERTURBATION: 0.6
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.920994021803
+             precision    recall  f1-score   support
+
+       Body       0.92      0.99      0.95      7080
+     Header       0.91      0.59      0.72      1451
+
+avg / total       0.92      0.92      0.91      8531
+
+Accuracy (weighted):  0.791307670144
+             precision    recall  f1-score   support
+
+       Body       0.71      0.99      0.83 4265.499999999922
+     Header       0.98      0.59      0.74 4265.4999999999345
+
+avg / total       0.84      0.79      0.78 8530.999999999856
+
+['Body' 'Header']
+[[6994   86]
+ [ 588  863]]
+----------- EVAL ---------------
+..
+Accuracy:  0.924670433145
+             precision    recall  f1-score   support
+
+       Body       0.92      0.99      0.96      3508
+     Header       0.94      0.61      0.74       740
+
+avg / total       0.93      0.92      0.92      4248
+
+Accuracy (weighted):  0.795921662903
+             precision    recall  f1-score   support
+
+       Body       0.71      0.99      0.83 2113.470903954719
+     Header       0.99      0.61      0.75 2175.375603032363
+
+avg / total       0.85      0.80      0.79 4288.846506987082
+
+['Body' 'Header']
+[[3480   28]
+ [ 292  448]]

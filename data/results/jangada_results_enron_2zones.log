@@ -1,0 +1,305 @@
+=============================================================
+PERTURBATION: 0.0
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+Task training sequence perceptron: 1.63% (326/20000 sequences) in 1.00 sec
+Epoch 0: sequenceErr=275 transitionErrors=9057/23467
+Task training sequence perceptron: 3.38% (676/20000 sequences) in 2.00 sec
+Epoch 1: sequenceErr=228 transitionErrors=5501/23467
+Task training sequence perceptron: 5.76% (1153/20000 sequences) in 3.01 sec
+Epoch 2: sequenceErr=220 transitionErrors=4864/23467
+Task training sequence perceptron: 7.74% (1548/20000 sequences) in 4.01 sec
+Task training sequence perceptron: 9.96% (1991/20000 sequences) in 5.01 sec
+Epoch 3: sequenceErr=210 transitionErrors=5080/23467
+Task training sequence perceptron: 11.91% (2383/20000 sequences) in 6.01 sec
+Epoch 4: sequenceErr=221 transitionErrors=6544/23467
+Task training sequence perceptron: 14.07% (2815/20000 sequences) in 7.01 sec
+Epoch 5: sequenceErr=195 transitionErrors=3957/23467
+Task training sequence perceptron: 16.04% (3207/20000 sequences) in 8.17 sec
+Epoch 6: sequenceErr=212 transitionErrors=5160/23467
+Task training sequence perceptron: 17.95% (3591/20000 sequences) in 9.19 sec
+Epoch 7: sequenceErr=192 transitionErrors=4099/23467
+Task training sequence perceptron: 20.46% (4092/20000 sequences) in 10.19 sec
+Epoch 8: sequenceErr=184 transitionErrors=4230/23467
+Task training sequence perceptron: 22.61% (4522/20000 sequences) in 11.29 sec
+Task training sequence perceptron: 24.52% (4904/20000 sequences) in 12.29 sec
+Epoch 9: sequenceErr=182 transitionErrors=4223/23467
+Task training sequence perceptron: 26.99% (5398/20000 sequences) in 13.29 sec
+Epoch 10: sequenceErr=174 transitionErrors=3667/23467
+Task training sequence perceptron: 28.91% (5781/20000 sequences) in 14.30 sec
+Epoch 11: sequenceErr=198 transitionErrors=4738/23467
+Task training sequence perceptron: 30.92% (6184/20000 sequences) in 15.33 sec
+Epoch 12: sequenceErr=186 transitionErrors=4117/23467
+Task training sequence perceptron: 33.06% (6613/20000 sequences) in 16.33 sec
+Epoch 13: sequenceErr=195 transitionErrors=5069/23467
+Task training sequence perceptron: 35.48% (7095/20000 sequences) in 17.33 sec
+Task training sequence perceptron: 37.41% (7481/20000 sequences) in 18.38 sec
+Epoch 14: sequenceErr=187 transitionErrors=4473/23467
+Task training sequence perceptron: 39.38% (7875/20000 sequences) in 19.41 sec
+Epoch 15: sequenceErr=192 transitionErrors=4216/23467
+Task training sequence perceptron: 41.72% (8343/20000 sequences) in 20.46 sec
+Epoch 16: sequenceErr=176 transitionErrors=4177/23467
+Task training sequence perceptron: 43.92% (8784/20000 sequences) in 21.46 sec
+Epoch 17: sequenceErr=197 transitionErrors=5006/23467
+Task training sequence perceptron: 45.64% (9128/20000 sequences) in 22.46 sec
+Epoch 18: sequenceErr=181 transitionErrors=3863/23467
+Task training sequence perceptron: 48.18% (9636/20000 sequences) in 23.46 sec
+Epoch 19: sequenceErr=189 transitionErrors=4432/23467
+Task training sequence perceptron: 50.04% (10008/20000 sequences) in 24.55 sec
+Task training sequence perceptron: 52.04% (10408/20000 sequences) in 25.55 sec
+Epoch 20: sequenceErr=172 transitionErrors=3601/23467
+Task training sequence perceptron: 54.13% (10826/20000 sequences) in 26.56 sec
+Epoch 21: sequenceErr=181 transitionErrors=3832/23467
+Task training sequence perceptron: 56.23% (11247/20000 sequences) in 27.64 sec
+Epoch 22: sequenceErr=179 transitionErrors=4012/23467
+Task training sequence perceptron: 57.82% (11564/20000 sequences) in 28.64 sec
+Epoch 23: sequenceErr=184 transitionErrors=4153/23467
+Task training sequence perceptron: 60.05% (12010/20000 sequences) in 29.71 sec
+Task training sequence perceptron: 62.27% (12453/20000 sequences) in 30.71 sec
+Epoch 24: sequenceErr=165 transitionErrors=3563/23467
+Task training sequence perceptron: 64.24% (12848/20000 sequences) in 31.71 sec
+Epoch 25: sequenceErr=202 transitionErrors=5313/23467
+Task training sequence perceptron: 66.32% (13264/20000 sequences) in 32.75 sec
+Epoch 26: sequenceErr=173 transitionErrors=3677/23467
+Task training sequence perceptron: 68.75% (13749/20000 sequences) in 33.75 sec
+Epoch 27: sequenceErr=193 transitionErrors=5457/23467
+Task training sequence perceptron: 70.94% (14188/20000 sequences) in 34.76 sec
+Epoch 28: sequenceErr=260 transitionErrors=6942/23467
+Task training sequence perceptron: 72.70% (14540/20000 sequences) in 35.76 sec
+Task training sequence perceptron: 74.53% (14907/20000 sequences) in 36.82 sec
+Epoch 29: sequenceErr=219 transitionErrors=4723/23467
+Task training sequence perceptron: 76.54% (15308/20000 sequences) in 37.83 sec
+Epoch 30: sequenceErr=188 transitionErrors=4261/23467
+Task training sequence perceptron: 78.50% (15701/20000 sequences) in 38.84 sec
+Epoch 31: sequenceErr=176 transitionErrors=3465/23467
+Task training sequence perceptron: 80.92% (16183/20000 sequences) in 39.84 sec
+Epoch 32: sequenceErr=186 transitionErrors=3994/23467
+Task training sequence perceptron: 83.22% (16644/20000 sequences) in 40.85 sec
+Task training sequence perceptron: 84.86% (16973/20000 sequences) in 41.85 sec
+Epoch 33: sequenceErr=154 transitionErrors=3054/23467
+Task training sequence perceptron: 86.97% (17394/20000 sequences) in 42.85 sec
+Epoch 34: sequenceErr=168 transitionErrors=3223/23467
+Task training sequence perceptron: 89.12% (17825/20000 sequences) in 43.85 sec
+Epoch 35: sequenceErr=189 transitionErrors=4405/23467
+Task training sequence perceptron: 90.36% (18071/20000 sequences) in 44.85 sec
+Epoch 36: sequenceErr=162 transitionErrors=2942/23467
+Task training sequence perceptron: 92.51% (18502/20000 sequences) in 45.86 sec
+Task training sequence perceptron: 94.33% (18866/20000 sequences) in 46.87 sec
+Epoch 37: sequenceErr=162 transitionErrors=3455/23467
+Task training sequence perceptron: 96.34% (19268/20000 sequences) in 47.87 sec
+Epoch 38: sequenceErr=162 transitionErrors=3245/23467
+Task training sequence perceptron: 98.37% (19674/20000 sequences) in 48.87 sec
+Epoch 39: sequenceErr=167 transitionErrors=3305/23467
+fitted
+predicted
+Counter({'Body': 8044, 'Header': 487})
+Counter({'Body': 7080, 'Header': 1451})
+Accuracy:  0.88231156957
+             precision    recall  f1-score   support
+
+       Body       0.88      1.00      0.93      7080
+     Header       0.96      0.32      0.48      1451
+
+avg / total       0.89      0.88      0.86      8531
+
+Accuracy (weighted):  0.626271051795
+             precision    recall  f1-score   support
+
+       Body       0.55      1.00      0.71 4135.462962962887
+     Header       0.99      0.32      0.49 5038.56422018354
+
+avg / total       0.79      0.63      0.59 9174.027183146427
+
+[[7060   20]
+ [ 984  467]]
+=============================================================
+PERTURBATION: 0.1
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+fitted
+predicted
+Counter({'Body': 8173, 'Header': 358})
+Counter({'Body': 7080, 'Header': 1451})
+Accuracy:  0.868362442855
+             precision    recall  f1-score   support
+
+       Body       0.86      1.00      0.93      7080
+     Header       0.96      0.24      0.38      1451
+
+avg / total       0.88      0.87      0.83      8531
+
+Accuracy (weighted):  0.57965394213
+             precision    recall  f1-score   support
+
+       Body       0.52      1.00      0.68 4135.462962962887
+     Header       0.99      0.24      0.38 5038.56422018354
+
+avg / total       0.78      0.58      0.52 9174.027183146427
+
+[[7065   15]
+ [1108  343]]
+=============================================================
+PERTURBATION: 0.2
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+fitted
+predicted
+Counter({'Body': 8248, 'Header': 283})
+Counter({'Body': 7080, 'Header': 1451})
+Accuracy:  0.859336537334
+             precision    recall  f1-score   support
+
+       Body       0.86      1.00      0.92      7080
+     Header       0.94      0.18      0.31      1451
+
+avg / total       0.87      0.86      0.82      8531
+
+Accuracy (weighted):  0.550823379876
+             precision    recall  f1-score   support
+
+       Body       0.50      1.00      0.67 4135.462962962887
+     Header       0.99      0.18      0.31 5038.56422018354
+
+avg / total       0.77      0.55      0.47 9174.027183146427
+
+[[7064   16]
+ [1184  267]]
+=============================================================
+PERTURBATION: 0.3
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+fitted
+predicted
+Counter({'Body': 8312, 'Header': 219})
+Counter({'Body': 7080, 'Header': 1451})
+Accuracy:  0.851365607783
+             precision    recall  f1-score   support
+
+       Body       0.85      1.00      0.92      7080
+     Header       0.92      0.14      0.24      1451
+
+avg / total       0.86      0.85      0.80      8531
+
+Accuracy (weighted):  0.525714265687
+             precision    recall  f1-score   support
+
+       Body       0.49      1.00      0.65 4135.462962962887
+     Header       0.99      0.14      0.24 5038.56422018354
+
+avg / total       0.76      0.53      0.43 9174.027183146427
+
+[[7062   18]
+ [1250  201]]
+=============================================================
+PERTURBATION: 0.4
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+fitted
+predicted
+Counter({'Body': 8367, 'Header': 164})
+Counter({'Body': 7080, 'Header': 1451})
+Accuracy:  0.845856288829
+             precision    recall  f1-score   support
+
+       Body       0.84      1.00      0.91      7080
+     Header       0.91      0.10      0.19      1451
+
+avg / total       0.86      0.85      0.79      8531
+
+Accuracy (weighted):  0.506664844203
+             precision    recall  f1-score   support
+
+       Body       0.48      1.00      0.65 4135.462962962887
+     Header       0.98      0.10      0.19 5038.56422018354
+
+avg / total       0.76      0.51      0.39 9174.027183146427
+
+[[7066   14]
+ [1301  150]]
+=============================================================
+PERTURBATION: 0.5
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+fitted
+predicted
+Counter({'Body': 8398, 'Header': 133})
+Counter({'Body': 7080, 'Header': 1451})
+Accuracy:  0.841519165397
+             precision    recall  f1-score   support
+
+       Body       0.84      1.00      0.91      7080
+     Header       0.87      0.08      0.15      1451
+
+avg / total       0.85      0.84      0.78      8531
+
+Accuracy (weighted):  0.493604436532
+             precision    recall  f1-score   support
+
+       Body       0.47      1.00      0.64 4135.462962962887
+     Header       0.98      0.08      0.15 5038.56422018354
+
+avg / total       0.75      0.49      0.37 9174.027183146427
+
+[[7063   17]
+ [1335  116]]
+=============================================================
+PERTURBATION: 0.6
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+fitted
+predicted
+Counter({'Body': 8433, 'Header': 98})
+Counter({'Body': 7080, 'Header': 1451})
+Accuracy:  0.837885359278
+             precision    recall  f1-score   support
+
+       Body       0.84      1.00      0.91      7080
+     Header       0.85      0.06      0.11      1451
+
+avg / total       0.84      0.84      0.77      8531
+
+Accuracy (weighted):  0.48124088768
+             precision    recall  f1-score   support
+
+       Body       0.46      1.00      0.63 4135.462962962887
+     Header       0.97      0.06      0.11 5038.56422018354
+
+avg / total       0.74      0.48      0.35 9174.027183146427
+
+[[7065   15]
+ [1368   83]]

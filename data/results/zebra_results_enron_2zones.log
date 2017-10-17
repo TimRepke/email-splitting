@@ -1,0 +1,232 @@
+=============================================================
+PERTURBATION: 0.0
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+train (23467, 3313)
+test (8531, 3313)
+eval (4248, 3313)
+WARN: libsvm Solver reached max_iter
+optimization finished, #iter = 200
+obj = -399.889241, rho = -0.123543
+nSV = 400, nBSV = 400
+Total nSV = 400
+/usr/lib/python3.6/site-packages/sklearn/svm/base.py:218: ConvergenceWarning: Solver terminated early (max_iter=200).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
+  % self.max_iter, ConvergenceWarning)
+[LibSVM]fitted
+predicted
+['Body' 'Header']
+Accuracy:  0.248153792053
+             precision    recall  f1-score   support
+
+       Body       0.76      0.14      0.23      7080
+     Header       0.16      0.79      0.26      1451
+
+avg / total       0.66      0.25      0.24      8531
+
+Accuracy (weighted):  0.494967779772
+             precision    recall  f1-score   support
+
+       Body       0.35      0.14      0.20 4135.462962962887
+     Header       0.53      0.79      0.63 5038.56422018354
+
+avg / total       0.45      0.49      0.44 9174.027183146427
+
+[[ 973 6107]
+ [ 307 1144]]
+=============================================================
+PERTURBATION: 0.1
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+train (23467, 3313)
+test (8531, 3313)
+eval (4248, 3313)
+predicted
+['Body' 'Header']
+Accuracy:  0.216035634744
+             precision    recall  f1-score   support
+
+       Body       0.76      0.08      0.15      7080
+     Header       0.16      0.87      0.27      1451
+
+avg / total       0.66      0.22      0.17      8531
+
+Accuracy (weighted):  0.515933124918
+             precision    recall  f1-score   support
+
+       Body       0.34      0.08      0.13 4135.462962962887
+     Header       0.54      0.87      0.66 5038.56422018354
+
+avg / total       0.45      0.52      0.42 9174.027183146427
+
+[[ 577 6503]
+ [ 185 1266]]
+=============================================================
+PERTURBATION: 0.2
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+train (23467, 3313)
+test (8531, 3313)
+eval (4248, 3313)
+predicted
+['Body' 'Header']
+Accuracy:  0.193881139374
+             precision    recall  f1-score   support
+
+       Body       0.73      0.05      0.09      7080
+     Header       0.16      0.92      0.28      1451
+
+avg / total       0.63      0.19      0.12      8531
+
+Accuracy (weighted):  0.524049514944
+             precision    recall  f1-score   support
+
+       Body       0.31      0.05      0.08 4135.462962962887
+     Header       0.54      0.92      0.68 5038.56422018354
+
+avg / total       0.44      0.52      0.41 9174.027183146427
+
+[[ 324 6756]
+ [ 121 1330]]
+=============================================================
+PERTURBATION: 0.3
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+train (23467, 3313)
+test (8531, 3313)
+eval (4248, 3313)
+predicted
+['Body' 'Header']
+Accuracy:  0.184503575196
+             precision    recall  f1-score   support
+
+       Body       0.75      0.03      0.05      7080
+     Header       0.17      0.96      0.29      1451
+
+avg / total       0.65      0.18      0.09      8531
+
+Accuracy (weighted):  0.53753165947
+             precision    recall  f1-score   support
+
+       Body       0.33      0.03      0.05 4135.462962962887
+     Header       0.54      0.96      0.69 5038.56422018354
+
+avg / total       0.45      0.54      0.40 9174.027183146427
+
+[[ 185 6895]
+ [  62 1389]]
+=============================================================
+PERTURBATION: 0.4
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+train (23467, 3313)
+test (8531, 3313)
+eval (4248, 3313)
+predicted
+['Body' 'Header']
+Accuracy:  0.178408158481
+             precision    recall  f1-score   support
+
+       Body       0.74      0.02      0.03      7080
+     Header       0.17      0.97      0.29      1451
+
+avg / total       0.65      0.18      0.07      8531
+
+Accuracy (weighted):  0.54209190826
+             precision    recall  f1-score   support
+
+       Body       0.33      0.02      0.03 4135.462962962887
+     Header       0.55      0.97      0.70 5038.56422018354
+
+avg / total       0.45      0.54      0.40 9174.027183146427
+
+[[ 108 6972]
+ [  37 1414]]
+=============================================================
+PERTURBATION: 0.5
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+train (23467, 3313)
+test (8531, 3313)
+eval (4248, 3313)
+predicted
+['Body' 'Header']
+Accuracy:  0.173836595944
+             precision    recall  f1-score   support
+
+       Body       0.75      0.01      0.01      7080
+     Header       0.17      0.99      0.29      1451
+
+avg / total       0.65      0.17      0.06      8531
+
+Accuracy (weighted):  0.546220490103
+             precision    recall  f1-score   support
+
+       Body       0.34      0.01      0.01 4135.462962962887
+     Header       0.55      0.99      0.71 5038.56422018354
+
+avg / total       0.45      0.55      0.39 9174.027183146427
+
+[[  48 7032]
+ [  16 1435]]
+=============================================================
+PERTURBATION: 0.6
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+['Body' 'Header']
+loaded labels
+train (23467, 3313)
+test (8531, 3313)
+eval (4248, 3313)
+predicted
+['Body' 'Header']
+Accuracy:  0.172312741765
+             precision    recall  f1-score   support
+
+       Body       0.76      0.00      0.01      7080
+     Header       0.17      0.99      0.29      1451
+
+avg / total       0.66      0.17      0.06      8531
+
+Accuracy (weighted):  0.54759668405
+             precision    recall  f1-score   support
+
+       Body       0.34      0.00      0.01 4135.462962962887
+     Header       0.55      0.99      0.71 5038.56422018354
+
+avg / total       0.46      0.55      0.39 9174.027183146427
+
+[[  28 7052]
+ [   9 1442]]
