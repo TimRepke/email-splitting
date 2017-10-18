@@ -1,0 +1,332 @@
+Using TensorFlow backend.
+=============================================================
+ZONES: 2
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded texts
+train on: ../../data/enron/annotated/
+test on: ../../data/asf/annotated/
+-------------------------------
+SET SIZE (TRAIN): 1.0
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+2017-10-18 16:12:14.881578: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2017-10-18 16:12:15.151202: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:892] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2017-10-18 16:12:15.151642: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GT 740M major: 3 minor: 5 memoryClockRate(GHz): 1.0325
+pciBusID: 0000:01:00.0
+totalMemory: 1.96GiB freeMemory: 1.93GiB
+2017-10-18 16:12:15.151655: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GT 740M, pci bus id: 0000:01:00.0, compute capability: 3.5)
+fitted embedding b (two zones)
+{'val_loss': [0.16970176398754119, 0.10767465531826019], 'val_acc': [0.92000000476837163, 0.9399999856948853], 'loss': [0.36559658294317793, 0.24115428776397674], 'acc': [0.89149616105848795, 0.95358055944332987]}
+2017-10-18 16:12:43.201626: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.58GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+>>>>> N train epochs 250 / 250 ( 500 )
+2017-10-18 16:12:48.035642: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.74GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 16:12:48.529842: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.29GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 16:12:51.588469: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.02GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 16:12:53.566643: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.12GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 16:12:55.329562: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.67GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 16:12:58.768350: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.07GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 16:13:03.268909: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.32GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 16:13:04.460250: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.91GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 16:13:05.334181: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.78GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+fitted model
+{'val_loss': [6.0947688752412796, 6.0834625804424283, 6.0634939140081405, 6.0735222077369686], 'val_acc': [0.97786932229995727, 0.97739123344421386, 0.97851577758789066, 0.98161210298538204], 'loss': [3.5042407168452629, 3.485371405397542, 3.4802325844783337, 3.4791642384994774], 'acc': [0.9773536860644817, 0.98828125071525574, 0.98883579635620122, 0.98754772853851314]}
+train: 222
+test 91
+eval: 45
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.940480105229
+             precision    recall  f1-score   support
+
+       Body       0.97      0.97      0.97      5818
+     Header       0.27      0.22      0.25       264
+
+avg / total       0.94      0.94      0.94      6082
+
+Accuracy (weighted):  0.598249815098
+             precision    recall  f1-score   support
+
+       Body       0.56      0.97      0.71 3040.999999999686
+     Header       0.89      0.22      0.36 3041.000000000016
+
+avg / total       0.72      0.60      0.53 6081.999999999702
+
+['Body' 'Header']
+[[5661  157]
+ [ 205   59]]
+----------- EVAL ---------------
+..
+Accuracy:  0.973621103118
+             precision    recall  f1-score   support
+
+       Body       0.97      1.00      0.99      2790
+     Header       1.00      0.40      0.57       129
+
+avg / total       0.97      0.97      0.97      2919
+
+Accuracy (weighted):  0.698748286914
+             precision    recall  f1-score   support
+
+       Body       0.62      1.00      0.77 1458.3001031281665
+     Header       1.00      0.40      0.57 1485.9431818181847
+
+avg / total       0.81      0.70      0.67 2944.243284946351
+
+['Body' 'Header']
+[[2790    0]
+ [  77   52]]
+=============================================================
+ZONES: 5
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded texts
+train on: ../../data/enron/annotated/
+test on: ../../data/asf/annotated/
+-------------------------------
+SET SIZE (TRAIN): 1.0
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding a (five zones)
+{'val_loss': [0.89909889698028567, 0.7278630197048187, 0.73339050114154813, 0.69039714932441709, 0.65064215660095215], 'val_acc': [0.4599999964237213, 0.45999999046325685, 0.5600000143051147, 0.78000000715255735, 0.72000000476837156], 'loss': [1.1884483251806415, 0.85280320182284264, 0.68813019490249538, 0.59573279614673447, 0.54438670266930289], 'acc': [0.46198849202803027, 0.5622762152806039, 0.69223145752802229, 0.72826086927224376, 0.78248081824330185]}
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.075700587034225469, 0.094315935671329496], 'val_acc': [0.9799999952316284, 0.9799999952316284], 'loss': [0.35044500916073656, 0.24013573853174147], 'acc': [0.8839194342979918, 0.95370843685696571]}
+>>>>> N train epochs 250 ( 500 )
+fitted model
+{'val_loss': [14.220736780166625, 14.148882093429565, 14.113285803794861, 14.123219065666198], 'val_acc': [0.90017918586730961, 0.91841031789779659, 0.92081111669540405, 0.91776797056198123], 'loss': [8.2456825380623346, 8.1623796945735805, 8.140832564551383, 8.1332154524214566], 'acc': [0.91765304398536685, 0.93909157514572139, 0.93619344663619997, 0.93990862727165225]}
+train: 222
+test 91
+eval: 45
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.893127260769
+                precision    recall  f1-score   support
+
+          Body       0.91      0.98      0.94      5333
+    Body/Intro       0.78      0.21      0.33       146
+    Body/Outro       0.86      0.33      0.48       272
+Body/Signature       0.00      0.00      0.00        67
+        Header       0.79      0.27      0.40       264
+
+   avg / total       0.89      0.89      0.87      6082
+
+Accuracy (weighted):  0.358942384818
+                precision    recall  f1-score   support
+
+          Body       0.24      0.98      0.38 1216.3999999998614
+    Body/Intro       0.90      0.21      0.34 1216.3999999999962
+    Body/Outro       0.93      0.33      0.49 1216.4000000000003
+Body/Signature       0.00      0.00      0.00 1216.3999999999994
+        Header       0.99      0.27      0.42 1216.3999999999983
+
+   avg / total       0.61      0.36      0.33 6081.999999999856
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[5240    3   13   58   19]
+ [ 114   31    1    0    0]
+ [ 181    1   90    0    0]
+ [  66    0    1    0    0]
+ [ 185    5    0    3   71]]
+----------- EVAL ---------------
+..
+Accuracy:  0.887632750942
+                precision    recall  f1-score   support
+
+          Body       0.89      0.99      0.94      2461
+    Body/Intro       1.00      0.28      0.44        89
+    Body/Outro       0.92      0.28      0.43       216
+Body/Signature       0.00      0.00      0.00        24
+        Header       0.98      0.47      0.63       129
+
+   avg / total       0.89      0.89      0.86      2919
+
+Accuracy (weighted):  0.398683314416
+                precision    recall  f1-score   support
+
+          Body       0.22      0.99      0.36 561.3276579786251
+    Body/Intro       1.00      0.28      0.44 741.5041095890401
+    Body/Outro       0.97      0.28      0.44 965.9647058823568
+Body/Signature       0.00      0.00      0.00 435.72537313432844
+        Header       0.97      0.47      0.63 594.3772727272735
+
+   avg / total       0.72      0.40      0.40 3298.899119311624
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[2445    0    4   12    0]
+ [  62   25    1    0    1]
+ [ 155    0   61    0    0]
+ [  24    0    0    0    0]
+ [  69    0    0    0   60]]
+=============================================================
+ZONES: 2
+train: 222
+test 91
+eval: 45
+loaded mails
+loaded texts
+train on: ../../data/asf/annotated/
+test on: ../../data/enron/annotated/
+-------------------------------
+SET SIZE (TRAIN): 1.0
+boosting lines by 5209
+boosting lines by 2027
+boosting lines by 2027
+fitted embedding b (two zones)
+{'val_loss': [0.054482065141201019, 0.042194558680057524], 'val_acc': [0.9799999952316284, 1.0], 'loss': [0.28179194499903126, 0.11972755089886046], 'acc': [0.8820845309276345, 0.98237271571136464]}
+>>>>> N train epochs 111 / 111 ( 222 )
+fitted model
+{'val_loss': [14.479388694763184, 14.43211404800415, 14.435543284416198, 14.398700189590453], 'val_acc': [0.97793489217758178, 0.97941181182861325, 0.97871190786361695, 0.97977217197418209], 'loss': [0.93750537057231009, 0.92854957440909969, 0.92871796960999087, 0.92770164057865179], 'acc': [0.99656748556875963, 0.99764694770177209, 0.99764974213935231, 0.99824477638210263]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.881139374048
+             precision    recall  f1-score   support
+
+       Body       0.88      0.99      0.93      7080
+     Header       0.90      0.34      0.49      1451
+
+avg / total       0.88      0.88      0.86      8531
+
+Accuracy (weighted):  0.666475974099
+             precision    recall  f1-score   support
+
+       Body       0.60      0.99      0.75 4265.499999999922
+     Header       0.98      0.34      0.51 4265.4999999999345
+
+avg / total       0.79      0.67      0.63 8530.999999999856
+
+['Body' 'Header']
+[[7022   58]
+ [ 956  495]]
+----------- EVAL ---------------
+..
+Accuracy:  0.875470809793
+             precision    recall  f1-score   support
+
+       Body       0.87      1.00      0.93      3508
+     Header       0.94      0.30      0.46       740
+
+avg / total       0.88      0.88      0.85      4248
+
+Accuracy (weighted):  0.64503778956
+             precision    recall  f1-score   support
+
+       Body       0.58      1.00      0.73 2113.470903954719
+     Header       0.99      0.30      0.46 2175.375603032363
+
+avg / total       0.79      0.65      0.60 4288.846506987082
+
+['Body' 'Header']
+[[3494   14]
+ [ 515  225]]
+=============================================================
+ZONES: 5
+train: 222
+test 91
+eval: 45
+loaded mails
+loaded texts
+train on: ../../data/asf/annotated/
+test on: ../../data/enron/annotated/
+-------------------------------
+SET SIZE (TRAIN): 1.0
+boosting lines by 5209
+boosting lines by 2027
+boosting lines by 2027
+fitted embedding a (five zones)
+{'val_loss': [0.18659738898277284, 0.17795655727386475, 0.12971221804618835, 0.12430918216705322, 0.12473607063293457], 'val_acc': [0.63999999761581416, 0.61999999284744267, 0.66000000238418577, 0.66000000238418577, 0.63999999761581416], 'loss': [1.1676731589827312, 0.77856156552044042, 0.65178447883302393, 0.57957469923515681, 0.54885568558365938], 'acc': [0.46863592817563487, 0.57478386192340103, 0.60513928869343747, 0.63813640789900916, 0.64414024990012619]}
+boosting lines by 5209
+boosting lines by 2027
+boosting lines by 2027
+fitted embedding b (two zones)
+{'val_loss': [0.056230485439300537, 0.025148454308509826], 'val_acc': [0.95999999046325679, 1.0], 'loss': [0.28249528315748063, 0.11986203229946207], 'acc': [0.91541786450717333, 0.98338136108418595]}
+>>>>> N train epochs 111 ( 222 )
+fitted model
+{'val_loss': [33.382519741058353, 33.351783084869382, 33.335933713912965, 33.347035808563234], 'val_acc': [0.93841120719909665, 0.94999271869659418, 0.95593078374862672, 0.95024924039840697], 'loss': [2.357836817970147, 2.2395175843088477, 2.2221689071204209, 2.2154035252762272], 'acc': [0.91770591925796086, 0.96294778370642442, 0.96714665707167202, 0.96815099641009494]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.784316023913
+                precision    recall  f1-score   support
+
+          Body       0.87      0.92      0.89      6484
+    Body/Intro       0.18      0.47      0.26        55
+    Body/Outro       0.42      0.66      0.51       235
+Body/Signature       0.18      0.40      0.25       306
+        Header       0.91      0.28      0.43      1451
+
+   avg / total       0.83      0.78      0.78      8531
+
+Accuracy (weighted):  0.548867951223
+                precision    recall  f1-score   support
+
+          Body       0.35      0.92      0.51 1706.199999999957
+    Body/Intro       0.94      0.47      0.63 1706.1999999999991
+    Body/Outro       0.81      0.66      0.73 1706.2000000000037
+Body/Signature       0.60      0.40      0.48 1706.2000000000019
+        Header       0.78      0.28      0.42 1706.1999999999748
+
+   avg / total       0.69      0.55      0.55 8530.999999999936
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[5973  104  167  204   36]
+ [  22   26    3    0    4]
+ [  78    1  156    0    0]
+ [ 163    0   19  123    1]
+ [ 657   13   26  342  413]]
+----------- EVAL ---------------
+..
+Accuracy:  0.806026365348
+                precision    recall  f1-score   support
+
+          Body       0.90      0.94      0.92      3256
+    Body/Intro       0.38      0.69      0.49        26
+    Body/Outro       0.47      0.78      0.59       119
+Body/Signature       0.15      0.58      0.24       107
+        Header       0.96      0.24      0.39       740
+
+   avg / total       0.88      0.81      0.80      4248
+
+Accuracy (weighted):  0.65072763008
+                precision    recall  f1-score   support
+
+          Body       0.47      0.94      0.63 856.783960518178
+    Body/Intro       0.98      0.69      0.81 806.5672727272724
+    Body/Outro       0.86      0.78      0.82 863.9906382978706
+Body/Signature       0.49      0.58      0.53 596.6124183006542
+        Header       0.94      0.24      0.39 870.1502412129462
+
+   avg / total       0.76      0.65      0.64 3994.104531056921
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[3071   25   77   78    5]
+ [   8   18    0    0    0]
+ [  23    0   93    3    0]
+ [  30    0   13   62    2]
+ [ 275    4   13  268  180]]

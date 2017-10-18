@@ -1,7 +1,7 @@
 import re
 
 datasets = ['asf', 'enron']
-zoness = [2]#, 5]
+zoness = [2, 5]
 results = []
 
 for dataset in datasets:

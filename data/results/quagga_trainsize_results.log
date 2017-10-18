@@ -1,0 +1,1421 @@
+Using TensorFlow backend.
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded texts
+train on: ../../data/enron/annotated/
+test on: ../../data/enron/annotated/
+=============================================================
+ZONES: 2
+-------------------------------
+SET SIZE (TRAIN): 0.1
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+2017-10-18 13:16:00.390193: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2017-10-18 13:16:00.664687: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:892] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2017-10-18 13:16:00.665135: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GT 740M major: 3 minor: 5 memoryClockRate(GHz): 1.0325
+pciBusID: 0000:01:00.0
+totalMemory: 1.96GiB freeMemory: 1.93GiB
+2017-10-18 13:16:00.665148: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GT 740M, pci bus id: 0000:01:00.0, compute capability: 3.5)
+fitted embedding b (two zones)
+{'val_loss': [0.1227743923664093, 0.10601837337017059], 'val_acc': [0.95999999046325679, 0.95999999046325679], 'loss': [0.36268349020461116, 0.23765862891791573], 'acc': [0.87276214521968987, 0.9505434751967945]}
+2017-10-18 13:16:28.459813: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.58GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+>>>>> N train epochs 25 / 250 ( 50 )
+2017-10-18 13:16:31.046667: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.78GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 13:16:34.320913: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.67GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 13:16:40.073369: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.99GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 13:16:40.946945: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.82GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 13:16:42.634346: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.78GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 13:16:43.247264: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.25GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 13:16:44.708777: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.29GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 13:16:45.731207: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.24GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-18 13:16:52.669045: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.72GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+fitted model
+{'val_loss': [6.1173806732892988, 6.1234817570447921, 6.1214696127176289, 6.1303607392311097], 'val_acc': [0.9767591238021851, 0.96712339162826533, 0.98421841859817505, 0.96492384433746337], 'loss': [2.0404680602625014, 8.3156438423693189, 6.1384176111221311, 1.4706899313628674], 'acc': [0.9411570763587952, 0.99126878261566165, 0.98519261360168453, 0.99386819839477536]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.978079943735
+             precision    recall  f1-score   support
+
+       Body       0.98      0.99      0.99      7080
+     Header       0.96      0.91      0.93      1451
+
+avg / total       0.98      0.98      0.98      8531
+
+Accuracy (weighted):  0.950629947396
+             precision    recall  f1-score   support
+
+       Body       0.92      0.99      0.95 4265.499999999922
+     Header       0.99      0.91      0.95 4265.4999999999345
+
+avg / total       0.95      0.95      0.95 8530.999999999856
+
+['Body' 'Header']
+[[7025   55]
+ [ 132 1319]]
+----------- EVAL ---------------
+..
+Accuracy:  0.979284369115
+             precision    recall  f1-score   support
+
+       Body       0.98      0.99      0.99      3508
+     Header       0.97      0.91      0.94       740
+
+avg / total       0.98      0.98      0.98      4248
+
+Accuracy (weighted):  0.950036440002
+             precision    recall  f1-score   support
+
+       Body       0.91      0.99      0.95 2113.470903954719
+     Header       0.99      0.91      0.95 2175.375603032363
+
+avg / total       0.95      0.95      0.95 4288.846506987082
+
+['Body' 'Header']
+[[3489   19]
+ [  69  671]]
+-------------------------------
+SET SIZE (TRAIN): 0.2
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.14612644016742707, 0.10180517584085465], 'val_acc': [0.95999999046325679, 0.9799999952316284], 'loss': [0.36287995473341184, 0.24735731277368081], 'acc': [0.90792838581230328, 0.95063938295273376]}
+>>>>> N train epochs 50 / 250 ( 100 )
+fitted model
+{'val_loss': [6.1169164335727695, 6.1161811077594761, 6.1418180847167969, 6.1084301495552067], 'val_acc': [0.97785854339599609, 0.96718650102615356, 0.95487093448638916, 0.9752997231483459], 'loss': [2.1165492355823519, 4.9335349862650038, 2.4103071399335749, 2.8375509897386655], 'acc': [0.93771762549877169, 0.98069217443466183, 0.98227850317955012, 0.98090182900428768]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.982182628062
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      7080
+     Header       0.94      0.95      0.95      1451
+
+avg / total       0.98      0.98      0.98      8531
+
+Accuracy (weighted):  0.970909649297
+             precision    recall  f1-score   support
+
+       Body       0.96      0.99      0.97 4265.499999999922
+     Header       0.99      0.95      0.97 4265.4999999999345
+
+avg / total       0.97      0.97      0.97 8530.999999999856
+
+['Body' 'Header']
+[[6995   85]
+ [  67 1384]]
+----------- EVAL ---------------
+..
+Accuracy:  0.984463276836
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      3508
+     Header       0.96      0.95      0.96       740
+
+avg / total       0.98      0.98      0.98      4248
+
+Accuracy (weighted):  0.969475496326
+             precision    recall  f1-score   support
+
+       Body       0.95      0.99      0.97 2113.470903954719
+     Header       0.99      0.95      0.97 2175.375603032363
+
+avg / total       0.97      0.97      0.97 4288.846506987082
+
+['Body' 'Header']
+[[3481   27]
+ [  39  701]]
+-------------------------------
+SET SIZE (TRAIN): 0.3
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.20388433635234832, 0.10532089918851853], 'val_acc': [0.95999999046325679, 0.9799999952316284], 'loss': [0.35492809240345558, 0.24582418196548628], 'acc': [0.89613171051854212, 0.95188618616422505]}
+>>>>> N train epochs 75 / 250 ( 150 )
+fitted model
+{'val_loss': [6.1244967532157899, 6.1052502429485322, 6.1130039525032043, 6.1064008700847623], 'val_acc': [0.97907815456390379, 0.96441796064376828, 0.97513139247894287, 0.97941628456115726], 'loss': [3.8521629595259825, 3.5180447528262935, 3.2758707472588866, 2.9362834668753202], 'acc': [0.97692166964213056, 0.98566592852274582, 0.9931682411829631, 0.99062138557434087]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.98628531239
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      7080
+     Header       0.95      0.97      0.96      1451
+
+avg / total       0.99      0.99      0.99      8531
+
+Accuracy (weighted):  0.980504580905
+             precision    recall  f1-score   support
+
+       Body       0.97      0.99      0.98 4265.499999999922
+     Header       0.99      0.97      0.98 4265.4999999999345
+
+avg / total       0.98      0.98      0.98 8530.999999999856
+
+['Body' 'Header']
+[[7004   76]
+ [  41 1410]]
+----------- EVAL ---------------
+..
+Accuracy:  0.987052730697
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      3508
+     Header       0.97      0.95      0.96       740
+
+avg / total       0.99      0.99      0.99      4248
+
+Accuracy (weighted):  0.972655573829
+             precision    recall  f1-score   support
+
+       Body       0.95      0.99      0.97 2113.470903954719
+     Header       0.99      0.95      0.97 2175.375603032363
+
+avg / total       0.97      0.97      0.97 4288.846506987082
+
+['Body' 'Header']
+[[3489   19]
+ [  36  704]]
+-------------------------------
+SET SIZE (TRAIN): 0.4
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.048770815134048462, 0.092583349347114569], 'val_acc': [1.0, 0.9799999952316284], 'loss': [0.35669123514380213, 0.24072354362070641], 'acc': [0.88916240083506271, 0.95332480474706272]}
+>>>>> N train epochs 100 / 250 ( 200 )
+fitted model
+{'val_loss': [6.0924065470695492, 6.0873002159595488, 6.0627051335573192, 6.0659217363595959], 'val_acc': [0.96285994052886958, 0.98096316099166869, 0.98688025236129762, 0.98558474063873291], 'loss': [3.2886826068698429, 4.7067266886774455, 1.4426004498905969, 5.1600914316251876], 'acc': [0.97622932553291319, 0.99099321901798243, 0.98649719059467311, 0.98648749709129335]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.988278044778
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      7080
+     Header       0.96      0.97      0.97      1451
+
+avg / total       0.99      0.99      0.99      8531
+
+Accuracy (weighted):  0.982527051284
+             precision    recall  f1-score   support
+
+       Body       0.97      0.99      0.98 4265.499999999922
+     Header       0.99      0.97      0.98 4265.4999999999345
+
+avg / total       0.98      0.98      0.98 8530.999999999856
+
+['Body' 'Header']
+[[7018   62]
+ [  38 1413]]
+----------- EVAL ---------------
+..
+Accuracy:  0.984698681733
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      3508
+     Header       0.96      0.95      0.96       740
+
+avg / total       0.98      0.98      0.98      4248
+
+Accuracy (weighted):  0.971795787288
+             precision    recall  f1-score   support
+
+       Body       0.95      0.99      0.97 2113.470903954719
+     Header       0.99      0.95      0.97 2175.375603032363
+
+avg / total       0.97      0.97      0.97 4288.846506987082
+
+['Body' 'Header']
+[[3478   30]
+ [  35  705]]
+-------------------------------
+SET SIZE (TRAIN): 0.5
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.12916694879531859, 0.084191018342971796], 'val_acc': [0.9799999952316284, 0.9799999952316284], 'loss': [0.33427729115068072, 0.24371809430320823], 'acc': [0.90214194109677659, 0.95156649306959584]}
+>>>>> N train epochs 125 / 250 ( 250 )
+fitted model
+{'val_loss': [6.1153108477592468, 6.1020376217365264, 6.0850232636928556, 6.0658050805330275], 'val_acc': [0.97286149501800534, 0.96895404815673825, 0.97587252616882325, 0.97742179632186887], 'loss': [3.8949007032066585, 3.1615942281484606, 3.449952914945781, 3.5348799158930779], 'acc': [0.96356180191040042, 0.98379913425445553, 0.98867335796356204, 0.98705526065826421]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.984058140898
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      7080
+     Header       0.96      0.95      0.95      1451
+
+avg / total       0.98      0.98      0.98      8531
+
+Accuracy (weighted):  0.968751971171
+             precision    recall  f1-score   support
+
+       Body       0.95      0.99      0.97 4265.499999999922
+     Header       0.99      0.95      0.97 4265.4999999999345
+
+avg / total       0.97      0.97      0.97 8530.999999999856
+
+['Body' 'Header']
+[[7023   57]
+ [  79 1372]]
+----------- EVAL ---------------
+..
+Accuracy:  0.985640301318
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      3508
+     Header       0.97      0.95      0.96       740
+
+avg / total       0.99      0.99      0.99      4248
+
+Accuracy (weighted):  0.969632912486
+             precision    recall  f1-score   support
+
+       Body       0.95      0.99      0.97 2113.470903954719
+     Header       0.99      0.95      0.97 2175.375603032363
+
+avg / total       0.97      0.97      0.97 4288.846506987082
+
+['Body' 'Header']
+[[3487   21]
+ [  40  700]]
+-------------------------------
+SET SIZE (TRAIN): 0.6
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.15921593010425567, 0.12582820653915405], 'val_acc': [0.9399999856948853, 0.95999999046325679], 'loss': [0.35611332099887877, 0.24241992156828909], 'acc': [0.8935421965015895, 0.95201406360167984]}
+>>>>> N train epochs 150 / 250 ( 300 )
+fitted model
+{'val_loss': [6.1547896003723146, 6.1190185499191285, 6.1038744759559629, 6.1071662336587904], 'val_acc': [0.95949051141738895, 0.98173860549926761, 0.97886450529098512, 0.98281480550765987], 'loss': [3.0393927726584176, 4.1762567113687208, 2.52174380057957, 3.4870616992438834], 'acc': [0.98309664169947308, 0.98811295350392658, 0.98583645741144821, 0.98766274372736618]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.985816434181
+             precision    recall  f1-score   support
+
+       Body       1.00      0.99      0.99      7080
+     Header       0.94      0.98      0.96      1451
+
+avg / total       0.99      0.99      0.99      8531
+
+Accuracy (weighted):  0.982961779719
+             precision    recall  f1-score   support
+
+       Body       0.98      0.99      0.98 4265.499999999922
+     Header       0.99      0.98      0.98 4265.4999999999345
+
+avg / total       0.98      0.98      0.98 8530.999999999856
+
+['Body' 'Header']
+[[6990   90]
+ [  31 1420]]
+----------- EVAL ---------------
+..
+Accuracy:  0.987994350282
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      3508
+     Header       0.97      0.96      0.97       740
+
+avg / total       0.99      0.99      0.99      4248
+
+Accuracy (weighted):  0.978122058128
+             precision    recall  f1-score   support
+
+       Body       0.96      0.99      0.98 2113.470903954719
+     Header       0.99      0.96      0.98 2175.375603032363
+
+avg / total       0.98      0.98      0.98 4288.846506987082
+
+['Body' 'Header']
+[[3484   24]
+ [  27  713]]
+-------------------------------
+SET SIZE (TRAIN): 0.7
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.17355833351612091, 0.081734113395214081], 'val_acc': [0.9399999856948853, 1.0], 'loss': [0.35575342166466867, 0.23689262091978833], 'acc': [0.9058823502858353, 0.95498720928550229]}
+>>>>> N train epochs 175 / 250 ( 350 )
+fitted model
+{'val_loss': [6.1285340189933777, 6.1234765291213993, 6.1181327164173123, 6.1037206727266309], 'val_acc': [0.971082272529602, 0.95412049531936649, 0.96205540895462038, 0.9712711477279663], 'loss': [2.9499281722393684, 3.6888059126585722, 3.630976783921942, 3.0157508014594869], 'acc': [0.97899439505168373, 0.9895490557806832, 0.98896148817879814, 0.98835065058299476]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.986988629703
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      7080
+     Header       0.97      0.95      0.96      1451
+
+avg / total       0.99      0.99      0.99      8531
+
+Accuracy (weighted):  0.974079097992
+             precision    recall  f1-score   support
+
+       Body       0.96      0.99      0.97 4265.499999999922
+     Header       0.99      0.95      0.97 4265.4999999999345
+
+avg / total       0.97      0.97      0.97 8530.999999999856
+
+['Body' 'Header']
+[[7035   45]
+ [  66 1385]]
+----------- EVAL ---------------
+..
+Accuracy:  0.988700564972
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      3508
+     Header       0.98      0.96      0.97       740
+
+avg / total       0.99      0.99      0.99      4248
+
+Accuracy (weighted):  0.976908617692
+             precision    recall  f1-score   support
+
+       Body       0.96      0.99      0.98 2113.470903954719
+     Header       0.99      0.96      0.98 2175.375603032363
+
+avg / total       0.98      0.98      0.98 4288.846506987082
+
+['Body' 'Header']
+[[3490   18]
+ [  30  710]]
+-------------------------------
+SET SIZE (TRAIN): 0.8
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.097939372062683105, 0.091524040699005133], 'val_acc': [1.0, 0.9799999952316284], 'loss': [0.35334018877852719, 0.23633754905039039], 'acc': [0.88097825777881289, 0.95530690231105631]}
+>>>>> N train epochs 200 / 250 ( 400 )
+fitted model
+{'val_loss': [6.1572952222824098, 6.1069940471649167, 6.114152559041977, 6.1048991322517399], 'val_acc': [0.96297165870666501, 0.97390978813171392, 0.97756689786911011, 0.97537586688995359], 'loss': [3.9875770769594236, 2.8967700369961675, 3.4388393042451937, 3.3397484692058059], 'acc': [0.98074688673019406, 0.9890307620167732, 0.9861906808614731, 0.98779552340507504]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.98628531239
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      7080
+     Header       0.96      0.96      0.96      1451
+
+avg / total       0.99      0.99      0.99      8531
+
+Accuracy (weighted):  0.976942990807
+             precision    recall  f1-score   support
+
+       Body       0.96      0.99      0.98 4265.499999999922
+     Header       0.99      0.96      0.98 4265.4999999999345
+
+avg / total       0.98      0.98      0.98 8530.999999999856
+
+['Body' 'Header']
+[[7017   63]
+ [  54 1397]]
+----------- EVAL ---------------
+..
+Accuracy:  0.988700564972
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      3508
+     Header       0.97      0.96      0.97       740
+
+avg / total       0.99      0.99      0.99      4248
+
+Accuracy (weighted):  0.977453571914
+             precision    recall  f1-score   support
+
+       Body       0.96      0.99      0.98 2113.470903954719
+     Header       0.99      0.96      0.98 2175.375603032363
+
+avg / total       0.98      0.98      0.98 4288.846506987082
+
+['Body' 'Header']
+[[3489   19]
+ [  29  711]]
+-------------------------------
+SET SIZE (TRAIN): 0.9
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.20438302457332611, 0.20158824920654297], 'val_acc': [0.95999999046325679, 0.9399999856948853], 'loss': [0.34939673807172261, 0.2392341478139991], 'acc': [0.8931585648323378, 0.9548273630621259]}
+>>>>> N train epochs 225 / 250 ( 450 )
+fitted model
+{'val_loss': [6.0789299666881558, 6.0668669444322587, 6.064750670790672, 6.061325645446777], 'val_acc': [0.97415651082992549, 0.96654188156127929, 0.9787806725502014, 0.98170743227005008], 'loss': [3.6421209309150515, 3.6990479885072758, 3.5338615673438958, 3.2536151420632895], 'acc': [0.98552667220433554, 0.98579256163703066, 0.98866874112023251, 0.98993575970331826]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.986988629703
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      7080
+     Header       0.95      0.97      0.96      1451
+
+avg / total       0.99      0.99      0.99      8531
+
+Accuracy (weighted):  0.980928309718
+             precision    recall  f1-score   support
+
+       Body       0.97      0.99      0.98 4265.499999999922
+     Header       0.99      0.97      0.98 4265.4999999999345
+
+avg / total       0.98      0.98      0.98 8530.999999999856
+
+['Body' 'Header']
+[[7010   70]
+ [  41 1410]]
+----------- EVAL ---------------
+..
+Accuracy:  0.989171374765
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      3508
+     Header       0.97      0.96      0.97       740
+
+avg / total       0.99      0.99      0.99      4248
+
+Accuracy (weighted):  0.979369382731
+             precision    recall  f1-score   support
+
+       Body       0.96      0.99      0.98 2113.470903954719
+     Header       0.99      0.96      0.98 2175.375603032363
+
+avg / total       0.98      0.98      0.98 4288.846506987082
+
+['Body' 'Header']
+[[3488   20]
+ [  26  714]]
+-------------------------------
+SET SIZE (TRAIN): 1.0
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.12849673926830291, 0.074473330378532404], 'val_acc': [0.95999999046325679, 1.0], 'loss': [0.34789156908820468, 0.23967310920460294], 'acc': [0.89923273357550815, 0.95284526551718751]}
+>>>>> N train epochs 250 / 250 ( 500 )
+fitted model
+{'val_loss': [6.1038133025169374, 6.0830839735269544, 6.0670172137022016, 6.0724899399280545], 'val_acc': [0.96334927558898931, 0.97785278558731081, 0.98014755964279177, 0.98305724143981932], 'loss': [3.5014808740637964, 3.4914415433746764, 3.4881076810132363, 3.485243191698566], 'acc': [0.984798825263977, 0.9871063799858093, 0.98808163332939147, 0.98805236172676092]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.989333020748
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      7080
+     Header       0.97      0.97      0.97      1451
+
+avg / total       0.99      0.99      0.99      8531
+
+Accuracy (weighted):  0.980970896752
+             precision    recall  f1-score   support
+
+       Body       0.97      0.99      0.98 4265.499999999922
+     Header       0.99      0.97      0.98 4265.4999999999345
+
+avg / total       0.98      0.98      0.98 8530.999999999856
+
+['Body' 'Header']
+[[7035   45]
+ [  46 1405]]
+----------- EVAL ---------------
+..
+Accuracy:  0.9868173258
+             precision    recall  f1-score   support
+
+       Body       0.99      0.99      0.99      3508
+     Header       0.97      0.96      0.96       740
+
+avg / total       0.99      0.99      0.99      4248
+
+Accuracy (weighted):  0.975239870861
+             precision    recall  f1-score   support
+
+       Body       0.96      0.99      0.98 2113.470903954719
+     Header       0.99      0.96      0.98 2175.375603032363
+
+avg / total       0.98      0.98      0.98 4288.846506987082
+
+['Body' 'Header']
+[[3483   25]
+ [  31  709]]
+=============================================================
+ZONES: 5
+-------------------------------
+SET SIZE (TRAIN): 0.1
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding a (five zones)
+{'val_loss': [1.2576838850975036, 0.96980926990509031, 0.84747353494167332, 1.0443077743053437, 0.7090054452419281], 'val_acc': [0.39999999105930328, 0.5200000047683716, 0.76000000238418575, 0.50000000596046446, 0.80000001192092896], 'loss': [1.1866149926728442, 0.84053378235152743, 0.66953643667332996, 0.59504320979788028, 0.53561537133574788], 'acc': [0.46154092185561307, 0.57209079366062987, 0.69219948798227493, 0.77285805573005739, 0.74213554836866802]}
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.10489058196544647, 0.11269542127847672], 'val_acc': [0.94000000953674312, 0.95999999046325679], 'loss': [0.35936615897493368, 0.23709666877440141], 'acc': [0.91131713232049327, 0.95607416560430358]}
+>>>>> N train epochs 25 ( 50 )
+fitted model
+{'val_loss': [14.310790324211121, 14.281516199111939, 14.205214447975159, 14.208220872879028], 'val_acc': [0.87370556831359858, 0.87268968105316158, 0.89350798130035403, 0.90389935970306401], 'loss': [7.1358783257007596, 6.7121692508459088, 6.9280275112390521, 9.0973009824752804], 'acc': [0.83750723212957379, 0.90848643302917476, 0.90108413934707643, 0.93535952806472777]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.915836361505
+                precision    recall  f1-score   support
+
+          Body       0.91      0.98      0.95      6484
+    Body/Intro       0.45      0.09      0.15        55
+    Body/Outro       0.87      0.20      0.33       235
+Body/Signature       0.78      0.23      0.35       306
+        Header       0.94      0.91      0.92      1451
+
+   avg / total       0.91      0.92      0.90      8531
+
+Accuracy (weighted):  0.481447714575
+                precision    recall  f1-score   support
+
+          Body       0.28      0.98      0.44 1706.199999999957
+    Body/Intro       0.99      0.09      0.17 1706.1999999999991
+    Body/Outro       0.99      0.20      0.33 1706.2000000000037
+Body/Signature       0.99      0.23      0.37 1706.2000000000019
+        Header       0.94      0.91      0.92 1706.1999999999748
+
+   avg / total       0.84      0.48      0.44 8530.999999999936
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[6375    6    7   19   77]
+ [  48    5    0    0    2]
+ [ 188    0   47    0    0]
+ [ 233    0    0   69    4]
+ [ 134    0    0    0 1317]]
+----------- EVAL ---------------
+..
+Accuracy:  0.922551789077
+                precision    recall  f1-score   support
+
+          Body       0.92      0.98      0.95      3256
+    Body/Intro       0.00      0.00      0.00        26
+    Body/Outro       0.79      0.25      0.38       119
+Body/Signature       0.59      0.36      0.45       107
+        Header       0.95      0.89      0.92       740
+
+   avg / total       0.91      0.92      0.91      4248
+
+Accuracy (weighted):  0.51253424167
+                precision    recall  f1-score   support
+
+          Body       0.31      0.98      0.47 856.783960518178
+    Body/Intro       0.00      0.00      0.00 806.5672727272724
+    Body/Outro       0.99      0.25      0.40 863.9906382978706
+Body/Signature       0.96      0.36      0.53 596.6124183006542
+        Header       0.93      0.89      0.91 870.1502412129462
+
+   avg / total       0.63      0.51      0.46 3994.104531056921
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[3194    2    8   25   27]
+ [  25    0    0    0    1]
+ [  89    0   30    0    0]
+ [  64    0    0   39    4]
+ [  82    0    0    2  656]]
+-------------------------------
+SET SIZE (TRAIN): 0.2
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding a (five zones)
+{'val_loss': [0.87435805201530459, 0.78223701417446134, 0.85234898924827573, 0.9143741190433502, 0.89049994647502895], 'val_acc': [0.5, 0.5200000047683716, 0.54000000953674321, 0.81999998092651372, 0.82000000476837154], 'loss': [1.2077069529838373, 0.84888060126275589, 0.68595610210482016, 0.5906798718769215, 0.54690773872636056], 'acc': [0.4669437355164181, 0.55744884989898447, 0.65850383630189135, 0.69351022986842847, 0.76595268453068821]}
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.12504410743713379, 0.12593544423580169], 'val_acc': [0.95999999046325679, 0.95999999046325679], 'loss': [0.34576458323505121, 0.23826301300026587], 'acc': [0.88069053447764856, 0.95278132694732887]}
+>>>>> N train epochs 50 ( 100 )
+fitted model
+{'val_loss': [14.289825668334961, 14.276047406196595, 14.218275830745696, 14.199101865291595], 'val_acc': [0.87029813528060918, 0.87511845469474792, 0.89323925137519833, 0.90484337806701665], 'loss': [5.0415637429058551, 6.9235555607080457, 15.660339957773685, 4.4785277706384656], 'acc': [0.85581516414880754, 0.91365431785583495, 0.91922028303146364, 0.94360714912414556]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.923690071504
+                precision    recall  f1-score   support
+
+          Body       0.93      0.98      0.95      6484
+    Body/Intro       0.55      0.11      0.18        55
+    Body/Outro       0.76      0.52      0.62       235
+Body/Signature       0.82      0.34      0.48       306
+        Header       0.93      0.91      0.92      1451
+
+   avg / total       0.92      0.92      0.92      8531
+
+Accuracy (weighted):  0.57208944544
+                precision    recall  f1-score   support
+
+          Body       0.32      0.98      0.48 1706.199999999957
+    Body/Intro       0.99      0.11      0.20 1706.1999999999991
+    Body/Outro       0.98      0.52      0.68 1706.2000000000037
+Body/Signature       0.99      0.34      0.51 1706.2000000000019
+        Header       0.96      0.91      0.93 1706.1999999999748
+
+   avg / total       0.85      0.57      0.56 8530.999999999936
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[6327    5   37   22   93]
+ [  48    6    0    0    1]
+ [ 112    0  123    0    0]
+ [ 197    0    1  105    3]
+ [ 131    0    0    1 1319]]
+----------- EVAL ---------------
+..
+Accuracy:  0.927495291902
+                precision    recall  f1-score   support
+
+          Body       0.94      0.97      0.96      3256
+    Body/Intro       0.33      0.08      0.12        26
+    Body/Outro       0.62      0.45      0.52       119
+Body/Signature       0.56      0.56      0.56       107
+        Header       0.95      0.91      0.93       740
+
+   avg / total       0.92      0.93      0.92      4248
+
+Accuracy (weighted):  0.601431173164
+                precision    recall  f1-score   support
+
+          Body       0.37      0.97      0.53 856.783960518178
+    Body/Intro       0.98      0.08      0.14 806.5672727272724
+    Body/Outro       0.97      0.45      0.61 863.9906382978706
+Body/Signature       0.91      0.56      0.69 596.6124183006542
+        Header       0.89      0.91      0.90 870.1502412129462
+
+   avg / total       0.81      0.60      0.57 3994.104531056921
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[3152    4   31   44   25]
+ [  22    2    0    0    2]
+ [  63    0   53    3    0]
+ [  40    0    1   60    6]
+ [  66    0    0    1  673]]
+-------------------------------
+SET SIZE (TRAIN): 0.3
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding a (five zones)
+{'val_loss': [0.90938987731933596, 0.7049652904272079, 0.76247177422046664, 0.65508479475975034, 0.65668178647756581], 'val_acc': [0.5200000047683716, 0.59999999999999998, 0.5600000143051147, 0.89999997615814209, 0.90000000000000002], 'loss': [1.1878432302730981, 0.82603039300327352, 0.68872179673068212, 0.59323352801642093, 0.53397994524570924], 'acc': [0.44299872213607783, 0.59098465558941793, 0.69616368300307663, 0.7523337589824558, 0.79290281229026027]}
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.13945278078317641, 0.097382412850856775], 'val_acc': [0.95999999046325679, 0.9799999952316284], 'loss': [0.3621063801701882, 0.23383506628730161], 'acc': [0.87320971641870559, 0.95466751580500542]}
+>>>>> N train epochs 75 ( 150 )
+fitted model
+{'val_loss': [14.312356200218201, 14.256794505119323, 14.174115443229676, 14.131002931594848], 'val_acc': [0.87983351230621343, 0.89181312084197994, 0.90557708740234377, 0.92698276758193965], 'loss': [6.3905491195122401, 9.9979506657520929, 8.8560731492439899, 6.8861051150163011], 'acc': [0.89098924179871875, 0.91133024056752521, 0.92519607543945315, 0.92072684486707057]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.935177587622
+                precision    recall  f1-score   support
+
+          Body       0.95      0.97      0.96      6484
+    Body/Intro       0.50      0.18      0.27        55
+    Body/Outro       0.65      0.61      0.63       235
+Body/Signature       0.80      0.53      0.64       306
+        Header       0.94      0.95      0.94      1451
+
+   avg / total       0.93      0.94      0.93      8531
+
+Accuracy (weighted):  0.647926178236
+                precision    recall  f1-score   support
+
+          Body       0.36      0.97      0.53 1706.199999999957
+    Body/Intro       0.99      0.18      0.31 1706.1999999999991
+    Body/Outro       0.96      0.61      0.75 1706.2000000000037
+Body/Signature       0.97      0.53      0.69 1706.2000000000019
+        Header       0.98      0.95      0.96 1706.1999999999748
+
+   avg / total       0.85      0.65      0.65 8530.999999999936
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[6290   10   69   35   80]
+ [  45   10    0    0    0]
+ [  89    0  144    2    0]
+ [ 139    0    3  162    2]
+ [  71    0    5    3 1372]]
+----------- EVAL ---------------
+..
+Accuracy:  0.922551789077
+                precision    recall  f1-score   support
+
+          Body       0.95      0.95      0.95      3256
+    Body/Intro       0.33      0.15      0.21        26
+    Body/Outro       0.55      0.59      0.57       119
+Body/Signature       0.48      0.63      0.54       107
+        Header       0.94      0.93      0.94       740
+
+   avg / total       0.93      0.92      0.92      4248
+
+Accuracy (weighted):  0.658199298418
+                precision    recall  f1-score   support
+
+          Body       0.39      0.95      0.55 856.783960518178
+    Body/Intro       0.98      0.15      0.27 806.5672727272724
+    Body/Outro       0.95      0.59      0.73 863.9906382978706
+Body/Signature       0.93      0.63      0.75 596.6124183006542
+        Header       0.96      0.93      0.94 870.1502412129462
+
+   avg / total       0.84      0.66      0.65 3994.104531056921
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[3089    8   53   69   37]
+ [  22    4    0    0    0]
+ [  48    0   70    1    0]
+ [  34    0    1   67    5]
+ [  44    0    4    3  689]]
+-------------------------------
+SET SIZE (TRAIN): 0.4
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding a (five zones)
+{'val_loss': [0.80180234909057613, 0.93861350417137146, 0.79513697028160091, 1.2005409359931947, 1.3410329312086104], 'val_acc': [0.1600000023841858, 0.48000000119209291, 0.82000000476837154, 0.52000001072883606, 0.81999998092651372], 'loss': [1.1971783893054251, 0.85104705587655005, 0.686845917652538, 0.59053991212177004, 0.54597257172136238], 'acc': [0.46464194446240009, 0.58264066527604752, 0.64952046045190315, 0.7560102294730332, 0.74108056224825436]}
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.18931533694267272, 0.15377250015735627], 'val_acc': [0.95999999046325679, 0.95999999046325679], 'loss': [0.35677916565912215, 0.23666663872512558], 'acc': [0.86739130181443813, 0.95425191493061801]}
+>>>>> N train epochs 100 ( 200 )
+fitted model
+{'val_loss': [14.279180121421813, 14.28788088798523, 14.196155619621276, 14.178409287929535], 'val_acc': [0.89112189292907718, 0.89746394395828244, 0.91479949235916136, 0.90238594293594365], 'loss': [9.6566725218296057, 7.5825185990333557, 5.1989936920627953, 9.3449506348371507], 'acc': [0.88175690531730655, 0.92396052420139307, 0.93270186722278592, 0.93294346988201138]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.922986754191
+                precision    recall  f1-score   support
+
+          Body       0.92      0.98      0.95      6484
+    Body/Intro       0.75      0.05      0.10        55
+    Body/Outro       0.81      0.47      0.59       235
+Body/Signature       0.83      0.30      0.44       306
+        Header       0.96      0.89      0.92      1451
+
+   avg / total       0.92      0.92      0.91      8531
+
+Accuracy (weighted):  0.539314293141
+                precision    recall  f1-score   support
+
+          Body       0.30      0.98      0.46 1706.199999999957
+    Body/Intro       1.00      0.05      0.10 1706.1999999999991
+    Body/Outro       0.99      0.47      0.63 1706.2000000000037
+Body/Signature       0.99      0.30      0.47 1706.2000000000019
+        Header       0.99      0.89      0.93 1706.1999999999748
+
+   avg / total       0.85      0.54      0.52 8530.999999999936
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[6383    1   25   19   56]
+ [  52    3    0    0    0]
+ [ 125    0  110    0    0]
+ [ 211    0    1   93    1]
+ [ 166    0    0    0 1285]]
+----------- EVAL ---------------
+..
+Accuracy:  0.927024482109
+                precision    recall  f1-score   support
+
+          Body       0.93      0.98      0.95      3256
+    Body/Intro       1.00      0.08      0.14        26
+    Body/Outro       0.81      0.42      0.55       119
+Body/Signature       0.51      0.42      0.46       107
+        Header       0.97      0.88      0.93       740
+
+   avg / total       0.92      0.93      0.92      4248
+
+Accuracy (weighted):  0.571749845431
+                precision    recall  f1-score   support
+
+          Body       0.33      0.98      0.50 856.783960518178
+    Body/Intro       1.00      0.08      0.14 806.5672727272724
+    Body/Outro       0.99      0.42      0.59 863.9906382978706
+Body/Signature       0.93      0.42      0.58 596.6124183006542
+        Header       0.97      0.88      0.93 870.1502412129462
+
+   avg / total       0.84      0.57      0.55 3994.104531056921
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[3187    0   12   43   14]
+ [  24    2    0    0    0]
+ [  68    0   50    1    0]
+ [  59    0    0   45    3]
+ [  86    0    0    0  654]]
+-------------------------------
+SET SIZE (TRAIN): 0.5
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding a (five zones)
+{'val_loss': [0.86072649955749514, 0.73508803248405452, 0.80580632090568538, 0.58117930293083186, 0.64171535968780513], 'val_acc': [0.54000000953674321, 0.5200000047683716, 0.50000000596046446, 0.78000000715255735, 0.86000001430511475], 'loss': [1.190024393710696, 0.88241553616941049, 0.72651034933962988, 0.61361498423644201, 0.54973934681194681], 'acc': [0.47269821077432778, 0.54910486012392334, 0.63622122725276542, 0.72666240402776039, 0.77151534387656029]}
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.22498873770236968, 0.16874562501907348], 'val_acc': [0.90000000000000002, 0.94000000953674312], 'loss': [0.36139656216568011, 0.23372289341274816], 'acc': [0.87707800275462744, 0.95220587901113662]}
+>>>>> N train epochs 125 ( 250 )
+fitted model
+{'val_loss': [14.272085237503052, 14.186007170677184, 14.14100751399994, 14.170097398757935], 'val_acc': [0.87964186310768122, 0.91272761106491085, 0.92707508087158208, 0.90722782850265504], 'loss': [10.547887855738402, 5.9492588032484051, 8.167380774587393, 8.1517663718760005], 'acc': [0.89263038516044613, 0.92677014398574831, 0.93630339241027827, 0.93937787532806394]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.923221193295
+                precision    recall  f1-score   support
+
+          Body       0.92      0.99      0.95      6484
+    Body/Intro       0.53      0.16      0.25        55
+    Body/Outro       0.92      0.25      0.39       235
+Body/Signature       0.70      0.07      0.13       306
+        Header       0.95      0.96      0.96      1451
+
+   avg / total       0.91      0.92      0.90      8531
+
+Accuracy (weighted):  0.485395731943
+                precision    recall  f1-score   support
+
+          Body       0.28      0.99      0.43 1706.199999999957
+    Body/Intro       0.99      0.16      0.28 1706.1999999999991
+    Body/Outro       1.00      0.25      0.40 1706.2000000000037
+Body/Signature       0.97      0.07      0.13 1706.2000000000019
+        Header       0.99      0.96      0.97 1706.1999999999748
+
+   avg / total       0.84      0.49      0.44 8530.999999999936
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[6392    8    5    7   72]
+ [  46    9    0    0    0]
+ [ 177    0   58    0    0]
+ [ 284    0    0   21    1]
+ [  53    0    0    2 1396]]
+----------- EVAL ---------------
+..
+Accuracy:  0.93950094162
+                precision    recall  f1-score   support
+
+          Body       0.94      0.99      0.96      3256
+    Body/Intro       0.25      0.04      0.07        26
+    Body/Outro       0.81      0.18      0.30       119
+Body/Signature       0.74      0.37      0.50       107
+        Header       0.97      0.96      0.96       740
+
+   avg / total       0.93      0.94      0.93      4248
+
+Accuracy (weighted):  0.523948270893
+                precision    recall  f1-score   support
+
+          Body       0.31      0.99      0.48 856.783960518178
+    Body/Intro       0.98      0.04      0.07 806.5672727272724
+    Body/Outro       0.99      0.18      0.31 863.9906382978706
+Body/Signature       0.95      0.37      0.54 596.6124183006542
+        Header       0.96      0.96      0.96 870.1502412129462
+
+   avg / total       0.83      0.52      0.47 3994.104531056921
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[3221    3    5   11   16]
+ [  25    1    0    0    0]
+ [  96    0   22    1    0]
+ [  62    0    0   40    5]
+ [  31    0    0    2  707]]
+-------------------------------
+SET SIZE (TRAIN): 0.6
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding a (five zones)
+{'val_loss': [0.7411052346229553, 0.94649932384490965, 0.77202585637569432, 0.78705553412437435, 0.80064522922039028], 'val_acc': [0.40000000745058062, 0.77999999523162844, 0.58000000119209294, 0.74000000953674316, 0.86000001430511475], 'loss': [1.2113691602721619, 0.8290709276822672, 0.68287889908052701, 0.5956036206004155, 0.53887898476331086], 'acc': [0.45569053788662262, 0.57864450192426709, 0.70214194335434066, 0.71959718647162851, 0.75300511404100201]}
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.17881497740745544, 0.09186726957559585], 'val_acc': [0.94000000953674312, 0.95999999046325679], 'loss': [0.35463116943063844, 0.23762665957017018], 'acc': [0.88574168508839046, 0.95329283584681013]}
+>>>>> N train epochs 150 ( 300 )
+fitted model
+{'val_loss': [14.220177328586578, 14.14775354385376, 14.141166090965271, 14.122466545104981], 'val_acc': [0.87565384149551395, 0.90743247509002689, 0.92081902503967283, 0.9224629592895508], 'loss': [8.2759557354946924, 6.5623176030690473, 8.8341994350900261, 9.1266720151777072], 'acc': [0.90117530683676406, 0.92441757619380949, 0.94075120508670806, 0.94137794891993209]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.937873637323
+                precision    recall  f1-score   support
+
+          Body       0.94      0.98      0.96      6484
+    Body/Intro       0.54      0.25      0.35        55
+    Body/Outro       0.76      0.56      0.65       235
+Body/Signature       0.89      0.38      0.53       306
+        Header       0.95      0.95      0.95      1451
+
+   avg / total       0.93      0.94      0.93      8531
+
+Accuracy (weighted):  0.625336715478
+                precision    recall  f1-score   support
+
+          Body       0.35      0.98      0.51 1706.199999999957
+    Body/Intro       0.98      0.25      0.40 1706.1999999999991
+    Body/Outro       0.97      0.56      0.71 1706.2000000000037
+Body/Signature       0.99      0.38      0.55 1706.2000000000019
+        Header       0.99      0.95      0.97 1706.1999999999748
+
+   avg / total       0.86      0.63      0.63 8530.999999999936
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[6355   11   37   14   67]
+ [  41   14    0    0    0]
+ [ 102    1  132    0    0]
+ [ 187    0    4  115    0]
+ [  65    0    1    0 1385]]
+----------- EVAL ---------------
+..
+Accuracy:  0.941384180791
+                precision    recall  f1-score   support
+
+          Body       0.95      0.97      0.96      3256
+    Body/Intro       0.40      0.15      0.22        26
+    Body/Outro       0.61      0.55      0.58       119
+Body/Signature       0.65      0.52      0.58       107
+        Header       0.97      0.96      0.96       740
+
+   avg / total       0.94      0.94      0.94      4248
+
+Accuracy (weighted):  0.644192310222
+                precision    recall  f1-score   support
+
+          Body       0.38      0.97      0.55 856.783960518178
+    Body/Intro       0.94      0.15      0.26 806.5672727272724
+    Body/Outro       0.95      0.55      0.69 863.9906382978706
+Body/Signature       0.93      0.52      0.67 596.6124183006542
+        Header       0.99      0.96      0.97 870.1502412129462
+
+   avg / total       0.83      0.64      0.63 3994.104531056921
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[3167    5   38   25   21]
+ [  22    4    0    0    0]
+ [  51    1   65    2    0]
+ [  48    0    2   56    1]
+ [  29    0    1    3  707]]
+-------------------------------
+SET SIZE (TRAIN): 0.7
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding a (five zones)
+{'val_loss': [0.88808727860450742, 0.7656008124351501, 1.0208889365196228, 1.1642779588699341, 1.2633923292160034], 'val_acc': [0.5, 0.5, 0.26000000536441803, 0.5, 0.45999999046325685], 'loss': [1.1991660061120855, 0.85133132651118359, 0.6900492640290623, 0.59543163453906423, 0.53888537526594582], 'acc': [0.47874041038143744, 0.53292838953997546, 0.62426470569275372, 0.67682225092807236, 0.77669437253214135]}
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.24578023254871367, 0.24449740946292878], 'val_acc': [0.88000000715255733, 0.9199999928474426], 'loss': [0.36254281469612876, 0.2427600820438037], 'acc': [0.86831841195988302, 0.95015984329888048]}
+>>>>> N train epochs 175 ( 350 )
+fitted model
+{'val_loss': [14.207138397693633, 14.191840069293976, 14.152383623123169, 14.15728903055191], 'val_acc': [0.90226980686187741, 0.9035155344009399, 0.90594824075698854, 0.91230577468872065], 'loss': [7.898875561548131, 7.806796803719231, 8.0743523513419291, 8.0188171163360984], 'acc': [0.92443674377032692, 0.93688386031559534, 0.93818665368216381, 0.94154351813452586]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.929199390458
+                precision    recall  f1-score   support
+
+          Body       0.93      0.98      0.96      6484
+    Body/Intro       1.00      0.02      0.04        55
+    Body/Outro       0.64      0.53      0.58       235
+Body/Signature       1.00      0.13      0.23       306
+        Header       0.97      0.96      0.96      1451
+
+   avg / total       0.93      0.93      0.91      8531
+
+Accuracy (weighted):  0.524483617583
+                precision    recall  f1-score   support
+
+          Body       0.30      0.98      0.46 1706.199999999957
+    Body/Intro       1.00      0.02      0.04 1706.1999999999991
+    Body/Outro       0.94      0.53      0.68 1706.2000000000037
+Body/Signature       1.00      0.13      0.23 1706.2000000000019
+        Header       0.97      0.96      0.97 1706.1999999999748
+
+   avg / total       0.84      0.52      0.47 8530.999999999936
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[6369    0   66    0   49]
+ [  52    1    1    0    1]
+ [ 110    0  125    0    0]
+ [ 264    0    2   40    0]
+ [  58    0    1    0 1392]]
+----------- EVAL ---------------
+..
+Accuracy:  0.941854990584
+                precision    recall  f1-score   support
+
+          Body       0.95      0.98      0.96      3256
+    Body/Intro       0.00      0.00      0.00        26
+    Body/Outro       0.65      0.51      0.57       119
+Body/Signature       0.67      0.36      0.46       107
+        Header       0.99      0.95      0.97       740
+
+   avg / total       0.93      0.94      0.93      4248
+
+/usr/lib/python3.6/site-packages/sklearn/metrics/classification.py:1135: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples.
+  'precision', 'predicted', average, warn_for)
+Accuracy (weighted):  0.581884482831
+                precision    recall  f1-score   support
+
+          Body       0.34      0.98      0.50 856.783960518178
+    Body/Intro       0.00      0.00      0.00 806.5672727272724
+    Body/Outro       0.97      0.51      0.67 863.9906382978706
+Body/Signature       0.98      0.36      0.52 596.6124183006542
+        Header       0.99      0.95      0.97 870.1502412129462
+
+   avg / total       0.64      0.58      0.54 3994.104531056921
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[3198    0   31   19    8]
+ [  26    0    0    0    0]
+ [  58    0   61    0    0]
+ [  67    0    1   38    1]
+ [  35    0    1    0  704]]
+-------------------------------
+SET SIZE (TRAIN): 0.8
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding a (five zones)
+{'val_loss': [0.89855488538742068, 0.66482120454311366, 0.71895810961723328, 0.65445059537887573, 0.72161192893981929], 'val_acc': [0.4400000125169754, 0.86000001430511475, 0.54000000953674321, 0.76000000238418575, 0.82000000476837154], 'loss': [1.1557434892836873, 0.82000479694598627, 0.6899645883436778, 0.59537407692242017, 0.53799313436897378], 'acc': [0.45840793005798175, 0.56780690583340876, 0.71016624043731358, 0.71281969270256851, 0.77346547252600983]}
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.12457821816205979, 0.083791702240705493], 'val_acc': [0.9799999952316284, 0.95999999046325679], 'loss': [0.35643075697559889, 0.24132804958679144], 'acc': [0.86758311750734096, 0.95236572603483105]}
+>>>>> N train epochs 200 ( 400 )
+fitted model
+{'val_loss': [14.185259029865264, 14.13174313545227, 14.136556246280669, 14.176010096073151], 'val_acc': [0.88145900249481202, 0.92003474235534666, 0.9220390057563782, 0.91688439130783084], 'loss': [8.6397258169949058, 9.8028802740015095, 6.4556029283790846, 7.2450684081600052], 'acc': [0.90651409905403857, 0.94222944974899292, 0.94363313362002377, 0.94335691154003143]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.919939045833
+                precision    recall  f1-score   support
+
+          Body       0.93      0.97      0.95      6484
+    Body/Intro       0.67      0.04      0.07        55
+    Body/Outro       0.83      0.43      0.56       235
+Body/Signature       0.83      0.18      0.29       306
+        Header       0.88      0.98      0.93      1451
+
+   avg / total       0.92      0.92      0.91      8531
+
+Accuracy (weighted):  0.516861139318
+                precision    recall  f1-score   support
+
+          Body       0.30      0.97      0.46 1706.199999999957
+    Body/Intro       1.00      0.04      0.07 1706.1999999999991
+    Body/Outro       0.99      0.43      0.59 1706.2000000000037
+Body/Signature       0.99      0.18      0.30 1706.2000000000019
+        Header       0.88      0.98      0.93 1706.1999999999748
+
+   avg / total       0.83      0.52      0.47 8530.999999999936
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[6272    1   19   11  181]
+ [  48    2    0    0    5]
+ [ 135    0  100    0    0]
+ [ 246    0    1   54    5]
+ [  31    0    0    0 1420]]
+----------- EVAL ---------------
+..
+Accuracy:  0.937853107345
+                precision    recall  f1-score   support
+
+          Body       0.94      0.98      0.96      3256
+    Body/Intro       0.00      0.00      0.00        26
+    Body/Outro       0.74      0.35      0.48       119
+Body/Signature       0.86      0.39      0.54       107
+        Header       0.93      0.97      0.95       740
+
+   avg / total       0.93      0.94      0.93      4248
+
+Accuracy (weighted):  0.555541097879
+                precision    recall  f1-score   support
+
+          Body       0.34      0.98      0.50 856.783960518178
+    Body/Intro       0.00      0.00      0.00 806.5672727272724
+    Body/Outro       0.90      0.35      0.51 863.9906382978706
+Body/Signature       0.99      0.39      0.56 596.6124183006542
+        Header       0.91      0.97      0.94 870.1502412129462
+
+   avg / total       0.61      0.56      0.51 3994.104531056921
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[3184    0   14    7   51]
+ [  23    0    1    0    2]
+ [  77    0   42    0    0]
+ [  64    0    0   42    1]
+ [  24    0    0    0  716]]
+-------------------------------
+SET SIZE (TRAIN): 0.9
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding a (five zones)
+{'val_loss': [0.86483640074729917, 1.0673407316207886, 0.73405081629753111, 0.77930122911930089, 0.73651159703731539], 'val_acc': [0.52000001072883606, 0.10000000000000001, 0.55999999046325688, 0.53999998569488528, 0.82000001668930056], 'loss': [1.1722186039627085, 0.79605375288460456, 0.66617716024456342, 0.58093932659839453, 0.5467776641146016], 'acc': [0.46419437399462743, 0.59709079334479009, 0.6222826084288795, 0.75569053650226281, 0.72055626547683382]}
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.23606355488300323, 0.11638423800468445], 'val_acc': [0.90000000000000002, 0.95999999046325679], 'loss': [0.36637675084537363, 0.24422479514785217], 'acc': [0.88545396180389935, 0.95057544461391918]}
+>>>>> N train epochs 225 ( 450 )
+fitted model
+{'val_loss': [14.216563057899474, 14.171778101921081, 14.141249356269837, 14.16675170660019], 'val_acc': [0.89421463251113886, 0.92341147422790526, 0.89060693025588988, 0.91196495294570923], 'loss': [8.1024889306724077, 7.2777146066973604, 10.025826748270127, 5.9189496819178267], 'acc': [0.92205181486076782, 0.9369926469524702, 0.94670861853493582, 0.94925575176874799]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.927441097175
+                precision    recall  f1-score   support
+
+          Body       0.92      0.99      0.95      6484
+    Body/Intro       0.73      0.15      0.24        55
+    Body/Outro       0.86      0.46      0.60       235
+Body/Signature       0.00      0.00      0.00       306
+        Header       0.96      0.96      0.96      1451
+
+   avg / total       0.89      0.93      0.91      8531
+
+Accuracy (weighted):  0.508943704007
+                precision    recall  f1-score   support
+
+          Body       0.29      0.99      0.45 1706.199999999957
+    Body/Intro       1.00      0.15      0.25 1706.1999999999991
+    Body/Outro       0.99      0.46      0.62 1706.2000000000037
+Body/Signature       0.00      0.00      0.00 1706.2000000000019
+        Header       0.94      0.96      0.95 1706.1999999999748
+
+   avg / total       0.64      0.51      0.46 8530.999999999936
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[6411    3   17    0   53]
+ [  44    8    0    0    3]
+ [ 128    0  107    0    0]
+ [ 305    0    0    0    1]
+ [  65    0    0    0 1386]]
+----------- EVAL ---------------
+..
+Accuracy:  0.93950094162
+                precision    recall  f1-score   support
+
+          Body       0.93      0.99      0.96      3256
+    Body/Intro       1.00      0.08      0.14        26
+    Body/Outro       0.79      0.45      0.58       119
+Body/Signature       0.00      0.00      0.00       107
+        Header       0.98      0.96      0.97       740
+
+   avg / total       0.91      0.94      0.92      4248
+
+Accuracy (weighted):  0.534505014062
+                precision    recall  f1-score   support
+
+          Body       0.31      0.99      0.48 856.783960518178
+    Body/Intro       1.00      0.08      0.14 806.5672727272724
+    Body/Outro       0.99      0.45      0.62 863.9906382978706
+Body/Signature       0.00      0.00      0.00 596.6124183006542
+        Header       1.00      0.96      0.98 870.1502412129462
+
+   avg / total       0.70      0.53      0.48 3994.104531056921
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[3228    0   14    0   14]
+ [  24    2    0    0    0]
+ [  65    0   54    0    0]
+ [ 107    0    0    0    0]
+ [  33    0    0    0  707]]
+-------------------------------
+SET SIZE (TRAIN): 1.0
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding a (five zones)
+{'val_loss': [0.80390335917472844, 0.78662176132202144, 0.77916992604732516, 0.9957145541906357, 1.0867277473211288], 'val_acc': [0.54000000953674321, 0.5200000047683716, 0.80000000000000004, 0.80000000000000004, 0.5], 'loss': [1.1976774178083291, 0.85915617993318227, 0.67233844012948873, 0.5895405012056949, 0.55144181018563487], 'acc': [0.43625319807473428, 0.52742966889734844, 0.62861253193739197, 0.74088874656249726, 0.743925831061514]}
+boosting lines by 7822
+boosting lines by 2843
+boosting lines by 2843
+fitted embedding b (two zones)
+{'val_loss': [0.11291612982749939, 0.10873999148607254], 'val_acc': [0.95999999046325679, 0.9799999952316284], 'loss': [0.34795523102343801, 0.2443388730670312], 'acc': [0.88433503525574575, 0.95159846218898325]}
+>>>>> N train epochs 250 ( 500 )
+fitted model
+{'val_loss': [14.156818356513977, 14.181528015136719, 14.161122088432313, 14.156153979301452], 'val_acc': [0.92814048290252682, 0.89420448064804081, 0.91840953588485719, 0.89667661905288698], 'loss': [8.2445921582430604, 8.1499109395965927, 8.1297291836533692, 8.1273194519206875], 'acc': [0.91295588624477386, 0.9453184847831726, 0.94758646988868711, 0.94305118966102597]}
+train: 500
+test 199
+eval: 101
+loaded mails
+loaded features
+loaded labels
+----------- TEST ---------------
+..
+Accuracy:  0.921931778221
+                precision    recall  f1-score   support
+
+          Body       0.94      0.96      0.95      6484
+    Body/Intro       0.63      0.22      0.32        55
+    Body/Outro       0.68      0.43      0.52       235
+Body/Signature       0.54      0.57      0.55       306
+        Header       0.97      0.92      0.94      1451
+
+   avg / total       0.92      0.92      0.92      8531
+
+Accuracy (weighted):  0.62012713882
+                precision    recall  f1-score   support
+
+          Body       0.34      0.96      0.51 1706.199999999957
+    Body/Intro       1.00      0.22      0.36 1706.1999999999991
+    Body/Outro       0.98      0.43      0.59 1706.2000000000037
+Body/Signature       0.94      0.57      0.71 1706.2000000000019
+        Header       0.99      0.92      0.95 1706.1999999999748
+
+   avg / total       0.85      0.62      0.62 8530.999999999936
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[6239    7   48  148   42]
+ [  43   12    0    0    0]
+ [ 132    0  100    3    0]
+ [ 129    0    0  175    2]
+ [ 112    0    0    0 1339]]
+----------- EVAL ---------------
+..
+Accuracy:  0.899246704331
+                precision    recall  f1-score   support
+
+          Body       0.94      0.93      0.93      3256
+    Body/Intro       0.50      0.04      0.07        26
+    Body/Outro       0.55      0.39      0.45       119
+Body/Signature       0.29      0.72      0.41       107
+        Header       0.98      0.92      0.95       740
+
+   avg / total       0.92      0.90      0.90      4248
+
+Accuracy (weighted):  0.597315787769
+                precision    recall  f1-score   support
+
+          Body       0.34      0.93      0.50 856.783960518178
+    Body/Intro       0.99      0.04      0.07 806.5672727272724
+    Body/Outro       0.97      0.39      0.55 863.9906382978706
+Body/Signature       0.84      0.72      0.78 596.6124183006542
+        Header       0.99      0.92      0.95 870.1502412129462
+
+   avg / total       0.83      0.60      0.57 3994.104531056921
+
+['Body' 'Body/Intro' 'Body/Outro' 'Body/Signature' 'Header']
+[[3018    1   38  187   12]
+ [  25    1    0    0    0]
+ [  69    0   46    4    0]
+ [  29    0    0   77    1]
+ [  60    0    0    2  678]]
