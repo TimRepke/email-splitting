@@ -11,6 +11,9 @@
 \usepackage{subcaption}
 \usepackage{pgfplots}
 \usepackage{filecontents}
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+\makesavenoteenv{table}
 %\usepackage{pstricks}
 \usepackage{booktabs}
 %\usepackage[table]{xcolor}
@@ -349,6 +352,8 @@ This way, even very small or incomplete datasets can be utilised for downstream 
 
 %\cite{20news} 20 newsgroups
 
+%https://github.com/mailgun/talon
+
 \section{Segmentation of Emails}
 \label{sec:model}
 Systems for email segmentation that are discussed earlier are based on hand written rules to match common structures directly or use them as features for machine learning models.
@@ -666,13 +671,15 @@ Clearly that deviates from our goal to extract \textit{all} individual parts and
 Since the systems are supposed to detect zones within the first part of the email, their features and underlying models should in principle also work on our task.
 
 The source code for Jangada is freely available on the author's web page\footnote{\url{http://www.cs.cmu.edu/~vitor/software/jangada/}}.
-We used the source code as a basis for an implementation in Python, however continue to use the the same implementation of the Collins Perceptron for sequence labelling, which is part of the MinorThird Library~\cite{minorthird,cperceptron}.
+We used the source code as a basis for an implementation in Python, however continue to use the the same implementation of the Collins Perceptron for sequence labelling~\cite{cperceptron}, which is part of the MinorThird Library~\cite{minorthird}.
 For the extraction of signatures, Jangada originally only considers the last ten lines of an email.
 In our implementation, the perceptron performs a multi-class classification along all lines of the email corresponding to zone types defined earlier.
+The model is trained with window-size 5 for 40 epochs.
 
 The Zebra project web page\footnote{\url{http://zebra.thoughtlets.org/zoning.php}} does only provide annotated data, but not the system's source code. 
 Gossen et al. implemented\footnote{\url{https://github.com/gerhardgossen/soZebra}} it for their work on classification of action items in emails~\cite{sozebra}.
 We used that as a guideline for our adapted Python implementation.
+The SVM is trained for a maximum of 200 iterations in a one-versus-rest fashion for multi-class classification using RBF kernels.
 
 Both models originally weren't designed to find the inherent structure of an entire email, but rather only the latest message in a conversation along with zones within it.
 It seems fair to assume, that the approaches for zoning the last message in an email should easily transfer to following messages as well.
@@ -689,69 +696,87 @@ We compare those to our proposed model as described in \Fref{sec:model} using co
 
 
 \section{Results}
-%https://github.com/mailgun/talon
-evaluate different complexities: full task (get all information), split head+body, additionally split body parts (sig, intro, outro)
+We presented a system for extracting parts of an email by classifying its lines into one of two (or five) zones.
+In this section we compare Quagga to similar systems found in related work.
+To get a good understanding of the versatility, we not only look at the results shown in \Fref{tab:results-comp}, but also consider the robustness against noise or otherwise changing data as well as how many training samples are required to get good results.
 
-results in \Fref{tab:results-comp} and \Fref{tab:results}
-
-% jangada: windowsize 5 (as in paper), epochs: 40
+We were not able to reproduce reported accuracies of Zebra~\cite{zebra}, which given the nature of the features and individual classification of lines disregarding their position and context in an email was expected.
+Jangada uses more general features and looks at a sliding window of lines and we got close to reported accuracies, especially for the ASF dataset, which is closer to the twenty newsgroup data the authors used~\cite{zones}.
+Overall, our system shows very good performances and seamlessly adapts to other datasets without problems.
 
 \begin{table}
 	\centering
-	\caption{Results of Two-Zone Task (Precision/Recall/Accuracy)}
+	\caption{Classifying Enron emails into zones (Precision/Recall/Accuracy)}
 	\label{tab:results-comp}
-	\begin{tabular*}{0.9\textwidth}{@{\extracolsep{\fill}}cccc}
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ccccc}
 		\toprule
-		Approach & Enron & ASF & Reported\footnote{Accuracy as reported by the authors}\\ \midrule
-		Jangada\cite{signature} & 0.89 / 0.88 / 0.88 & 0.97 / 0.97 / 0.97 & 0.99 \\
-		Zebra\cite{zones}       & 0.66 / 0.25 / 0.25 & 0.88 / 0.18 / 0.18 & 0.90 \\
-		FeatureRNN              & 0.98 / 0.98 / 0.97 & 0.97 / 0.95 / 0.94 & --   \\
-		Quagga                  & \textbf{0.98 / 0.98 / 0.98} & \textbf{0.98 / 0.98 / 0.98} & --   \\
+		Approach                & Zones & Enron & ASF & Reported\footnote{Accuracy as reported by the authors; Jangada only distinguishes between signature lines and "other", or additionally reply lines}\\ \midrule
+		Jangada\cite{signature} & 2 & 0.89 / 0.88 / 0.88 & 0.97 / 0.97 / 0.97 & 0.99 \\
+		Zebra\cite{zones}       & 2 & 0.66 / 0.25 / 0.25 & 0.88 / 0.18 / 0.18 & 0.90 \\
+		FeatureRNN              & 2 & 0.98 / 0.98 / 0.97 & 0.97 / 0.95 / 0.94 & --   \\
+		Quagga                  & 2 & \textbf{0.98 / 0.98 / 0.98} & \textbf{0.98 / 0.98 / 0.98} & --   \\
+		\midrule
+		Jangada\cite{signature} & 5 & 0.82 / 0.85 / 0.85 & 0.90 / 0.92 / 0.91 & 0.98 \\
+		Zebra\cite{zones}       & 5 & 0.60 / 0.25 / 0.24 & 0.81 / 0.20 / 0.20 & 0.87 \\
+		FeatureRNN              & 5 & 0.92 / 0.75 / 0.75 & 0.90 / 0.60 / 0.60 & -- \\
+		Quagga                  & 5 & \textbf{0.93 / 0.93 / 0.93} & \textbf{0.95 / 0.95 / 0.95} & -- \\
 		\bottomrule	
 	\end{tabular*}
 \end{table}
+% confusion matrix
 
-\begin{table}
-	\centering
-	\caption{Experimental Results}
-	\label{tab:results}
-	\begin{tabular}{|c|cc|}
-		\hline
-		task & prec/rec& f1\\ \hline
-		2zone& a & 0.98\\
-		5zone& a & 0.98\\
-		full& a & 0.98\\
-		\hline	
-	\end{tabular}
-\end{table}
+\paragraph{Number of Training Samples}
+Complex neural network based machine learning models require lots of training samples to reliably proficiently solve a given task.
+We limited the number of Enron emails shown to the network during training down to 10\% of the Enron training set, corresponding to 50 emails and then measured the performance whilst continuing to add training samples up to all 500 emails.
+The model trained with the least data in this scenario only lags behind around 1\% in accuracy compared to a model trained on all data in both the two- and five-zone task.
+
+%  0.1    0.2    0.3    0.4    0.5    0.6    0.7    0.8    0.9    1.0  Enron
+% 0.978, 0.982, 0.986, 0.988, 0.984, 0.986, 0.987, 0.986, 0.987, 0.989 (2zone)
+% 0.916, 0.924, 0.935, 0.923, 0.923, 0.938, 0.929, 0.920, 0.927, 0.922 (5zone)
 
 
+\paragraph{Cross Corpus Compatibility}
+% acc, prec, rec, f1 | wacc, wprec, wrec, wf1
+% Enron -> ASF
+% 2zone, test: 0.94, 0.94, 0.94, 0.94 | 0.59, 0.72, 0.60, 0.53
+% 2zone, eval: 0.97, 0.97, 0.97, 0.97 | 0.70, 0.81, 0.70, 0.67
+% 5zone, test: 0.89, 0.89, 0.89, 0.87 | 0.36, 0.61, 0.36, 0.33
+% 5zone, eval: 0.89, 0.89, 0.89, 0.86 | 0.40, 0.72, 0.40, 0.40
+% ASF -> Enron
+% 2zone, test: 0.88, 0.88, 0.88, 0.86 | 0.67, 0.79, 0.67, 0.63
+% 2zone, eval: 0.88, 0.88, 0.88, 0.85 | 0.65, 0.79, 0.65, 0.60
+% 5zone, test: 0.78, 0.83, 0.78, 0.78 | 0.55, 0.69, 0.55, 0.55
+% 5zone, eval: 0.81, 0.88, 0.81, 0.80 | 0.65, 0.76, 0.65, 0.64
+Ideally, a system like Quagga would be trained once and work well on arbitrary emails.
+The Enron and ASF datasets show more differences than there are in samples in the training and testing data of one corpus.
+Thus we trained Quagga on Enron and tested it on ASF emails and vice versa.
+We observe, that by training on ASF emails, Quagga does not generalise as well to emails from he other corpus (Accuracy: 0.86 or 0.80, for two- or five-zones) as the other way around (Accuracy: 0.94 or 0.86).
+Compared to the results when training and testing using emails from the same base dataset, this results in a decrease of performance of around 4-10\%.
 
-maybe: email classification with+without splitting (i.e. try to classify folders)
-
+\paragraph{Robustness to Noise}
 \begin{filecontents*}{perturbation.csv}
-0.0,0.97,0.9,0.98,0.92,0.99,0.9,0.89,0.82,0.88,0.81,0.66,0.6,0.95,0.6,0.98,0.75,0.99,0.92,0.88,0.85,0.18,0.2,0.25,0.25,0.96,0.68,0.98,0.81,0.99,0.91,0.86,0.82,0.26,0.25,0.24,0.23,0.948207826373,0.600460374877,0.984644238659,0.75301840347,0.989148306478,0.919763235778,0.88231156957,0.852655022858,0.181025978297,0.203387043736,0.248153792053,0.246395498769,0.95,0.78,0.98,0.87,0.97,0.65,0.79,0.4,0.4,0.46,0.45,0.35,0.95,0.76,0.98,0.87,0.97,0.59,0.63,0.25,0.41,0.32,0.49,0.18,0.95,0.75,0.98,0.87,0.97,0.54,0.59,0.19,0.37,0.27,0.44,0.11,0.945952308907,0.763584662282,0.978435928709,0.871080781539,0.968519964209,0.587631113398,0.626271051795,0.254430666932,0.414265489904,0.322617495573,0.494967779772,0.179980990317
-0.1,0.97,0.9,0.98,0.92,0.98,0.88,0.88,0.78,0.89,0.8,0.66,0.6,0.95,0.61,0.98,0.77,0.98,0.9,0.87,0.83,0.13,0.15,0.22,0.22,0.96,0.7,0.98,0.82,0.98,0.89,0.83,0.79,0.18,0.17,0.17,0.17,0.952975994739,0.614107201578,0.976673309108,0.772125190482,0.980269648142,0.903814534693,0.868362442855,0.830852186145,0.132686616245,0.151266030911,0.216035634744,0.215215097878,0.92,0.74,0.95,0.83,0.88,0.67,0.78,0.2,0.41,0.43,0.45,0.37,0.92,0.72,0.95,0.82,0.86,0.5,0.58,0.22,0.44,0.3,0.52,0.18,0.92,0.71,0.95,0.82,0.85,0.47,0.52,0.15,0.36,0.24,0.42,0.1,0.917982773201,0.716760283506,0.951752602852,0.815337546861,0.858233016996,0.503305130045,0.57965394213,0.22021953812,0.440315721133,0.303483490565,0.515933124918,0.183790089806
-0.2,0.96,0.88,0.96,0.89,0.97,0.87,0.87,0.77,0.91,0.81,0.63,0.58,0.95,0.62,0.96,0.8,0.97,0.89,0.86,0.81,0.1,0.12,0.19,0.19,0.96,0.7,0.96,0.83,0.97,0.87,0.82,0.76,0.11,0.11,0.12,0.12,0.95281157514,0.621506083525,0.956394326574,0.796741296448,0.970240052614,0.888687931601,0.859336537334,0.814089790177,0.0976652416968,0.123807957909,0.193881139374,0.193763919822,0.86,0.71,0.91,0.78,0.83,0.65,0.77,0.18,0.48,0.46,0.44,0.33,0.84,0.66,0.89,0.72,0.77,0.44,0.55,0.2,0.47,0.32,0.52,0.18,0.84,0.67,0.89,0.73,0.75,0.41,0.47,0.13,0.35,0.25,0.41,0.08,0.844797163483,0.65898563555,0.886270070469,0.724460021309,0.766010352641,0.436435473238,0.550823379876,0.203594272926,0.47030747147,0.321936026923,0.524049514944,0.181381164414
-0.3,0.96,0.88,0.93,0.88,0.96,0.85,0.86,0.77,0.87,0.81,0.65,0.59,0.95,0.63,0.93,0.81,0.96,0.88,0.85,0.82,0.07,0.1,0.18,0.19,0.95,0.71,0.92,0.84,0.96,0.86,0.8,0.77,0.06,0.07,0.09,0.09,0.951825057547,0.634330812233,0.928730512249,0.809283788536,0.963498849063,0.876192042091,0.851365607783,0.816668620326,0.0703715882933,0.0986517592897,0.184503575196,0.186027429375,0.82,0.7,0.85,0.72,0.79,0.59,0.76,0.19,0.4,0.45,0.45,0.36,0.77,0.62,0.8,0.62,0.67,0.39,0.53,0.2,0.46,0.31,0.54,0.18,0.75,0.63,0.79,0.61,0.63,0.35,0.43,0.13,0.32,0.23,0.4,0.08,0.767758621644,0.621016941808,0.795996770968,0.619520589631,0.673900468187,0.389863478922,0.525714265687,0.204673641619,0.456962251111,0.312029262724,0.53753165947,0.183758727117
-0.4,0.95,0.87,0.92,0.87,0.95,0.85,0.86,0.74,0.89,0.76,0.65,0.58,0.95,0.64,0.92,0.81,0.96,0.87,0.85,0.8,0.06,0.08,0.18,0.18,0.95,0.72,0.91,0.83,0.95,0.85,0.79,0.75,0.03,0.04,0.07,0.07,0.949852022361,0.638605721802,0.919587387176,0.808932129879,0.959388359092,0.871588293325,0.845856288829,0.799437346149,0.057218020388,0.0805656034199,0.178408158481,0.178994256242,0.79,0.68,0.84,0.71,0.77,0.61,0.76,0.17,0.43,0.38,0.45,0.42,0.71,0.6,0.76,0.58,0.64,0.39,0.51,0.19,0.47,0.28,0.54,0.18,0.68,0.62,0.75,0.58,0.58,0.35,0.39,0.12,0.32,0.2,0.4,0.07,0.710574878993,0.603108114499,0.759231480962,0.584691601645,0.639336858999,0.386673935914,0.506664844203,0.192766009286,0.46841031374,0.284838237659,0.54209190826,0.181380645161
-0.5,0.94,0.86,0.9,0.85,0.94,0.84,0.85,0.73,0.91,0.76,0.65,0.59,0.95,0.64,0.9,0.8,0.96,0.87,0.84,0.79,0.05,0.08,0.17,0.18,0.95,0.71,0.89,0.81,0.94,0.85,0.78,0.74,0.02,0.03,0.06,0.06,0.948865504768,0.637290365012,0.902707771656,0.798616809284,0.955771127918,0.866491285761,0.841519165397,0.792169733912,0.0526142716212,0.0774416310424,0.173836595944,0.175008791466,0.76,0.65,0.81,0.69,0.74,0.61,0.75,0.18,0.49,0.41,0.45,0.33,0.66,0.55,0.71,0.52,0.58,0.37,0.49,0.19,0.47,0.29,0.55,0.18,0.61,0.56,0.69,0.52,0.48,0.32,0.37,0.11,0.31,0.21,0.39,0.07,0.659034584793,0.548223936618,0.708818739603,0.516093094246,0.58124678481,0.366206617854,0.493604436532,0.186311734201,0.472672118137,0.294001663759,0.546220490103,0.180911094637
-0.6,0.94,0.85,0.89,0.83,0.93,0.83,0.84,0.72,0.96,0.81,0.66,0.52,0.95,0.64,0.89,0.79,0.95,0.86,0.84,0.78,0.05,0.07,0.17,0.17,0.94,0.72,0.87,0.8,0.94,0.83,0.77,0.72,0.01,0.02,0.06,0.06,0.949358763565,0.641072015784,0.889461962255,0.791231977494,0.95412693193,0.855804011838,0.837885359278,0.782206071973,0.0470240052614,0.0710292666886,0.172312741765,0.172078302661,0.74,0.61,0.8,0.66,0.73,0.67,0.74,0.18,0.75,0.44,0.46,0.43,0.62,0.47,0.66,0.46,0.57,0.34,0.48,0.18,0.47,0.29,0.55,0.18,0.55,0.48,0.63,0.46,0.45,0.28,0.35,0.1,0.31,0.2,0.39,0.06,0.620209171209,0.473360955528,0.661953961756,0.46256370195,0.566741387864,0.341755098701,0.48124088768,0.177054668515,0.474690240434,0.291610406068,0.54759668405,0.179915000673
+	0.0,0.97,0.9,0.98,0.92,0.99,0.9,0.89,0.82,0.88,0.81,0.66,0.6,0.95,0.6,0.98,0.75,0.99,0.92,0.88,0.85,0.18,0.2,0.25,0.25,0.96,0.68,0.98,0.81,0.99,0.91,0.86,0.82,0.26,0.25,0.24,0.23,0.948207826373,0.600460374877,0.984644238659,0.75301840347,0.989148306478,0.919763235778,0.88231156957,0.852655022858,0.181025978297,0.203387043736,0.248153792053,0.246395498769,0.95,0.78,0.98,0.87,0.97,0.65,0.79,0.4,0.4,0.46,0.45,0.35,0.95,0.76,0.98,0.87,0.97,0.59,0.63,0.25,0.41,0.32,0.49,0.18,0.95,0.75,0.98,0.87,0.97,0.54,0.59,0.19,0.37,0.27,0.44,0.11,0.945952308907,0.763584662282,0.978435928709,0.871080781539,0.968519964209,0.587631113398,0.626271051795,0.254430666932,0.414265489904,0.322617495573,0.494967779772,0.179980990317
+	0.1,0.97,0.9,0.98,0.92,0.98,0.88,0.88,0.78,0.89,0.8,0.66,0.6,0.95,0.61,0.98,0.77,0.98,0.9,0.87,0.83,0.13,0.15,0.22,0.22,0.96,0.7,0.98,0.82,0.98,0.89,0.83,0.79,0.18,0.17,0.17,0.17,0.952975994739,0.614107201578,0.976673309108,0.772125190482,0.980269648142,0.903814534693,0.868362442855,0.830852186145,0.132686616245,0.151266030911,0.216035634744,0.215215097878,0.92,0.74,0.95,0.83,0.88,0.67,0.78,0.2,0.41,0.43,0.45,0.37,0.92,0.72,0.95,0.82,0.86,0.5,0.58,0.22,0.44,0.3,0.52,0.18,0.92,0.71,0.95,0.82,0.85,0.47,0.52,0.15,0.36,0.24,0.42,0.1,0.917982773201,0.716760283506,0.951752602852,0.815337546861,0.858233016996,0.503305130045,0.57965394213,0.22021953812,0.440315721133,0.303483490565,0.515933124918,0.183790089806
+	0.2,0.96,0.88,0.96,0.89,0.97,0.87,0.87,0.77,0.91,0.81,0.63,0.58,0.95,0.62,0.96,0.8,0.97,0.89,0.86,0.81,0.1,0.12,0.19,0.19,0.96,0.7,0.96,0.83,0.97,0.87,0.82,0.76,0.11,0.11,0.12,0.12,0.95281157514,0.621506083525,0.956394326574,0.796741296448,0.970240052614,0.888687931601,0.859336537334,0.814089790177,0.0976652416968,0.123807957909,0.193881139374,0.193763919822,0.86,0.71,0.91,0.78,0.83,0.65,0.77,0.18,0.48,0.46,0.44,0.33,0.84,0.66,0.89,0.72,0.77,0.44,0.55,0.2,0.47,0.32,0.52,0.18,0.84,0.67,0.89,0.73,0.75,0.41,0.47,0.13,0.35,0.25,0.41,0.08,0.844797163483,0.65898563555,0.886270070469,0.724460021309,0.766010352641,0.436435473238,0.550823379876,0.203594272926,0.47030747147,0.321936026923,0.524049514944,0.181381164414
+	0.3,0.96,0.88,0.93,0.88,0.96,0.85,0.86,0.77,0.87,0.81,0.65,0.59,0.95,0.63,0.93,0.81,0.96,0.88,0.85,0.82,0.07,0.1,0.18,0.19,0.95,0.71,0.92,0.84,0.96,0.86,0.8,0.77,0.06,0.07,0.09,0.09,0.951825057547,0.634330812233,0.928730512249,0.809283788536,0.963498849063,0.876192042091,0.851365607783,0.816668620326,0.0703715882933,0.0986517592897,0.184503575196,0.186027429375,0.82,0.7,0.85,0.72,0.79,0.59,0.76,0.19,0.4,0.45,0.45,0.36,0.77,0.62,0.8,0.62,0.67,0.39,0.53,0.2,0.46,0.31,0.54,0.18,0.75,0.63,0.79,0.61,0.63,0.35,0.43,0.13,0.32,0.23,0.4,0.08,0.767758621644,0.621016941808,0.795996770968,0.619520589631,0.673900468187,0.389863478922,0.525714265687,0.204673641619,0.456962251111,0.312029262724,0.53753165947,0.183758727117
+	0.4,0.95,0.87,0.92,0.87,0.95,0.85,0.86,0.74,0.89,0.76,0.65,0.58,0.95,0.64,0.92,0.81,0.96,0.87,0.85,0.8,0.06,0.08,0.18,0.18,0.95,0.72,0.91,0.83,0.95,0.85,0.79,0.75,0.03,0.04,0.07,0.07,0.949852022361,0.638605721802,0.919587387176,0.808932129879,0.959388359092,0.871588293325,0.845856288829,0.799437346149,0.057218020388,0.0805656034199,0.178408158481,0.178994256242,0.79,0.68,0.84,0.71,0.77,0.61,0.76,0.17,0.43,0.38,0.45,0.42,0.71,0.6,0.76,0.58,0.64,0.39,0.51,0.19,0.47,0.28,0.54,0.18,0.68,0.62,0.75,0.58,0.58,0.35,0.39,0.12,0.32,0.2,0.4,0.07,0.710574878993,0.603108114499,0.759231480962,0.584691601645,0.639336858999,0.386673935914,0.506664844203,0.192766009286,0.46841031374,0.284838237659,0.54209190826,0.181380645161
+	0.5,0.94,0.86,0.9,0.85,0.94,0.84,0.85,0.73,0.91,0.76,0.65,0.59,0.95,0.64,0.9,0.8,0.96,0.87,0.84,0.79,0.05,0.08,0.17,0.18,0.95,0.71,0.89,0.81,0.94,0.85,0.78,0.74,0.02,0.03,0.06,0.06,0.948865504768,0.637290365012,0.902707771656,0.798616809284,0.955771127918,0.866491285761,0.841519165397,0.792169733912,0.0526142716212,0.0774416310424,0.173836595944,0.175008791466,0.76,0.65,0.81,0.69,0.74,0.61,0.75,0.18,0.49,0.41,0.45,0.33,0.66,0.55,0.71,0.52,0.58,0.37,0.49,0.19,0.47,0.29,0.55,0.18,0.61,0.56,0.69,0.52,0.48,0.32,0.37,0.11,0.31,0.21,0.39,0.07,0.659034584793,0.548223936618,0.708818739603,0.516093094246,0.58124678481,0.366206617854,0.493604436532,0.186311734201,0.472672118137,0.294001663759,0.546220490103,0.180911094637
+	0.6,0.94,0.85,0.89,0.83,0.93,0.83,0.84,0.72,0.96,0.81,0.66,0.52,0.95,0.64,0.89,0.79,0.95,0.86,0.84,0.78,0.05,0.07,0.17,0.17,0.94,0.72,0.87,0.8,0.94,0.83,0.77,0.72,0.01,0.02,0.06,0.06,0.949358763565,0.641072015784,0.889461962255,0.791231977494,0.95412693193,0.855804011838,0.837885359278,0.782206071973,0.0470240052614,0.0710292666886,0.172312741765,0.172078302661,0.74,0.61,0.8,0.66,0.73,0.67,0.74,0.18,0.75,0.44,0.46,0.43,0.62,0.47,0.66,0.46,0.57,0.34,0.48,0.18,0.47,0.29,0.55,0.18,0.55,0.48,0.63,0.46,0.45,0.28,0.35,0.1,0.31,0.2,0.39,0.06,0.620209171209,0.473360955528,0.661953961756,0.46256370195,0.566741387864,0.341755098701,0.48124088768,0.177054668515,0.474690240434,0.291610406068,0.54759668405,0.179915000673
 \end{filecontents*}
 \begin{filecontents*}{quagga.csv}
-0.0,0.98,0.95,0.98,0.93,0.98,0.84,0.98,0.85,1.0,0.95,0.99,0.93,0.97,0.89,0.98,0.83,0.98,0.95,0.98,0.93,0.98,0.74,0.98,0.63,1.0,0.96,0.99,0.93,0.97,0.76,0.98,0.64,0.98,0.95,0.98,0.93,0.98,0.72,0.98,0.62,1.0,0.95,0.99,0.93,0.97,0.76,0.98,0.62,0.978132193357,0.947550147978,0.980658773883,0.933302074786,0.97952995927,0.736357207167,0.980676340494,0.630610194037,0.995889003083,0.956491949298,0.985875706215,0.931732580038,0.971725836235,0.760005975569,0.978492654106,0.637074423646
-0.1,0.98,0.94,0.98,0.92,0.95,0.78,0.98,0.84,0.99,0.94,0.99,0.92,0.96,0.88,0.98,0.82,0.98,0.94,0.98,0.92,0.95,0.67,0.98,0.55,0.99,0.94,0.99,0.93,0.95,0.69,0.98,0.57,0.98,0.94,0.98,0.91,0.95,0.64,0.98,0.54,0.99,0.93,0.99,0.92,0.95,0.72,0.98,0.55,0.97780335416,0.943604077606,0.979252139257,0.923103973743,0.952238090774,0.667366857883,0.975445387362,0.554641876607,0.994176087701,0.938677629325,0.985404896422,0.925612052731,0.952164036684,0.692774221792,0.975486934846,0.57068312721
-0.2,0.98,0.93,0.98,0.91,0.94,0.81,0.97,0.83,0.99,0.92,0.98,0.91,0.91,0.73,0.97,0.82,0.98,0.94,0.98,0.92,0.93,0.59,0.97,0.52,0.99,0.92,0.98,0.92,0.89,0.59,0.96,0.56,0.98,0.93,0.98,0.91,0.93,0.58,0.97,0.48,0.99,0.91,0.98,0.91,0.89,0.6,0.96,0.54,0.978132193357,0.935054258468,0.977962724182,0.921228460907,0.930713980645,0.594436913915,0.966175528663,0.51519625885,0.989037341555,0.923261390887,0.981403013183,0.922080979284,0.893478638031,0.594341281277,0.964379608005,0.564456091599
-0.3,0.98,0.91,0.96,0.91,0.88,0.82,0.94,0.84,0.98,0.9,0.97,0.92,0.85,0.69,0.94,0.82,0.98,0.92,0.96,0.91,0.85,0.5,0.93,0.49,0.98,0.9,0.97,0.93,0.78,0.5,0.94,0.57,0.98,0.91,0.96,0.9,0.85,0.5,0.93,0.45,0.98,0.89,0.97,0.92,0.77,0.5,0.94,0.54,0.975501479776,0.921243012167,0.963310280155,0.912436994491,0.853402970926,0.50374680638,0.931046872019,0.490908512492,0.978759849263,0.904076738609,0.973399246704,0.930320150659,0.783577502787,0.49820784711,0.937260366329,0.565774945243
-0.4,0.97,0.88,0.95,0.88,0.82,0.58,0.91,0.82,0.97,0.88,0.95,0.9,0.81,0.7,0.9,0.82,0.97,0.9,0.95,0.9,0.73,0.38,0.89,0.42,0.97,0.88,0.95,0.9,0.7,0.39,0.87,0.47,0.97,0.88,0.95,0.87,0.71,0.34,0.89,0.34,0.97,0.86,0.95,0.89,0.67,0.39,0.87,0.42,0.971226570207,0.898388687932,0.95252608135,0.895909037627,0.728224579935,0.378532300951,0.892495385999,0.418157870686,0.972593353888,0.884892086331,0.950329566855,0.904896421846,0.701950531309,0.392675324114,0.872813164251,0.468179714828
-0.5,0.96,0.87,0.93,0.88,0.79,0.6,0.88,0.79,0.97,0.88,0.94,0.9,0.79,0.72,0.88,0.78,0.97,0.89,0.94,0.89,0.66,0.32,0.85,0.41,0.97,0.88,0.94,0.9,0.65,0.38,0.86,0.44,0.96,0.86,0.93,0.86,0.61,0.27,0.85,0.35,0.96,0.85,0.94,0.88,0.6,0.37,0.86,0.37,0.965636303847,0.888523512003,0.9367014418,0.886648693002,0.658406642916,0.322141540016,0.853920829975,0.412917065603,0.967454607742,0.88215142172,0.943032015066,0.899246704331,0.646999963687,0.384490798723,0.85919424612,0.435160508038
-0.6,0.95,0.88,0.92,0.86,0.76,0.63,0.84,0.62,0.96,0.87,0.93,0.85,0.76,0.67,0.85,0.57,0.96,0.89,0.92,0.87,0.58,0.31,0.79,0.37,0.96,0.87,0.92,0.89,0.55,0.3,0.8,0.39,0.95,0.86,0.91,0.84,0.49,0.24,0.78,0.29,0.94,0.83,0.92,0.86,0.43,0.25,0.79,0.3,0.961361394278,0.890989805985,0.920994021803,0.870003516587,0.576620232924,0.308752411129,0.791307670144,0.369808410608,0.960260363138,0.869133264817,0.924670433145,0.886770244821,0.546166250415,0.298690776246,0.795921662903,0.392229417187
+	0.0,0.98,0.95,0.98,0.93,0.98,0.84,0.98,0.85,1.0,0.95,0.99,0.93,0.97,0.89,0.98,0.83,0.98,0.95,0.98,0.93,0.98,0.74,0.98,0.63,1.0,0.96,0.99,0.93,0.97,0.76,0.98,0.64,0.98,0.95,0.98,0.93,0.98,0.72,0.98,0.62,1.0,0.95,0.99,0.93,0.97,0.76,0.98,0.62,0.978132193357,0.947550147978,0.980658773883,0.933302074786,0.97952995927,0.736357207167,0.980676340494,0.630610194037,0.995889003083,0.956491949298,0.985875706215,0.931732580038,0.971725836235,0.760005975569,0.978492654106,0.637074423646
+	0.1,0.98,0.94,0.98,0.92,0.95,0.78,0.98,0.84,0.99,0.94,0.99,0.92,0.96,0.88,0.98,0.82,0.98,0.94,0.98,0.92,0.95,0.67,0.98,0.55,0.99,0.94,0.99,0.93,0.95,0.69,0.98,0.57,0.98,0.94,0.98,0.91,0.95,0.64,0.98,0.54,0.99,0.93,0.99,0.92,0.95,0.72,0.98,0.55,0.97780335416,0.943604077606,0.979252139257,0.923103973743,0.952238090774,0.667366857883,0.975445387362,0.554641876607,0.994176087701,0.938677629325,0.985404896422,0.925612052731,0.952164036684,0.692774221792,0.975486934846,0.57068312721
+	0.2,0.98,0.93,0.98,0.91,0.94,0.81,0.97,0.83,0.99,0.92,0.98,0.91,0.91,0.73,0.97,0.82,0.98,0.94,0.98,0.92,0.93,0.59,0.97,0.52,0.99,0.92,0.98,0.92,0.89,0.59,0.96,0.56,0.98,0.93,0.98,0.91,0.93,0.58,0.97,0.48,0.99,0.91,0.98,0.91,0.89,0.6,0.96,0.54,0.978132193357,0.935054258468,0.977962724182,0.921228460907,0.930713980645,0.594436913915,0.966175528663,0.51519625885,0.989037341555,0.923261390887,0.981403013183,0.922080979284,0.893478638031,0.594341281277,0.964379608005,0.564456091599
+	0.3,0.98,0.91,0.96,0.91,0.88,0.82,0.94,0.84,0.98,0.9,0.97,0.92,0.85,0.69,0.94,0.82,0.98,0.92,0.96,0.91,0.85,0.5,0.93,0.49,0.98,0.9,0.97,0.93,0.78,0.5,0.94,0.57,0.98,0.91,0.96,0.9,0.85,0.5,0.93,0.45,0.98,0.89,0.97,0.92,0.77,0.5,0.94,0.54,0.975501479776,0.921243012167,0.963310280155,0.912436994491,0.853402970926,0.50374680638,0.931046872019,0.490908512492,0.978759849263,0.904076738609,0.973399246704,0.930320150659,0.783577502787,0.49820784711,0.937260366329,0.565774945243
+	0.4,0.97,0.88,0.95,0.88,0.82,0.58,0.91,0.82,0.97,0.88,0.95,0.9,0.81,0.7,0.9,0.82,0.97,0.9,0.95,0.9,0.73,0.38,0.89,0.42,0.97,0.88,0.95,0.9,0.7,0.39,0.87,0.47,0.97,0.88,0.95,0.87,0.71,0.34,0.89,0.34,0.97,0.86,0.95,0.89,0.67,0.39,0.87,0.42,0.971226570207,0.898388687932,0.95252608135,0.895909037627,0.728224579935,0.378532300951,0.892495385999,0.418157870686,0.972593353888,0.884892086331,0.950329566855,0.904896421846,0.701950531309,0.392675324114,0.872813164251,0.468179714828
+	0.5,0.96,0.87,0.93,0.88,0.79,0.6,0.88,0.79,0.97,0.88,0.94,0.9,0.79,0.72,0.88,0.78,0.97,0.89,0.94,0.89,0.66,0.32,0.85,0.41,0.97,0.88,0.94,0.9,0.65,0.38,0.86,0.44,0.96,0.86,0.93,0.86,0.61,0.27,0.85,0.35,0.96,0.85,0.94,0.88,0.6,0.37,0.86,0.37,0.965636303847,0.888523512003,0.9367014418,0.886648693002,0.658406642916,0.322141540016,0.853920829975,0.412917065603,0.967454607742,0.88215142172,0.943032015066,0.899246704331,0.646999963687,0.384490798723,0.85919424612,0.435160508038
+	0.6,0.95,0.88,0.92,0.86,0.76,0.63,0.84,0.62,0.96,0.87,0.93,0.85,0.76,0.67,0.85,0.57,0.96,0.89,0.92,0.87,0.58,0.31,0.79,0.37,0.96,0.87,0.92,0.89,0.55,0.3,0.8,0.39,0.95,0.86,0.91,0.84,0.49,0.24,0.78,0.29,0.94,0.83,0.92,0.86,0.43,0.25,0.79,0.3,0.961361394278,0.890989805985,0.920994021803,0.870003516587,0.576620232924,0.308752411129,0.791307670144,0.369808410608,0.960260363138,0.869133264817,0.924670433145,0.886770244821,0.546166250415,0.298690776246,0.795921662903,0.392229417187
 \end{filecontents*}
 % 	[(0, 'perturbation'), (1, 'prec-featrnn-asf-2'), (2, 'prec-featrnn-asf-5'), (3, 'prec-featrnn-enron-2'), (4, 'prec-featrnn-enron-5'), (5, 'prec-jangada-asf-2'), (6, 'prec-jangada-asf-5'), (7, 'prec-jangada-enron-2'), (8, 'prec-jangada-enron-5'), (9, 'prec-zebra-asf-2'), (10, 'prec-zebra-asf-5'), (11, 'prec-zebra-enron-2'), (12, 'prec-zebra-enron-5'), (13, 'rec-featrnn-asf-2'), (14, 'rec-featrnn-asf-5'), (15, 'rec-featrnn-enron-2'), (16, 'rec-featrnn-enron-5'), (17, 'rec-jangada-asf-2'), (18, 'rec-jangada-asf-5'), (19, 'rec-jangada-enron-2'), (20, 'rec-jangada-enron-5'), (21, 'rec-zebra-asf-2'), (22, 'rec-zebra-asf-5'), (23, 'rec-zebra-enron-2'), (24, 'rec-zebra-enron-5'), (25, 'f1-featrnn-asf-2'), (26, 'f1-featrnn-asf-5'), (27, 'f1-featrnn-enron-2'), (28, 'f1-featrnn-enron-5'), (29, 'f1-jangada-asf-2'), (30, 'f1-jangada-asf-5'), (31, 'f1-jangada-enron-2'), (32, 'f1-jangada-enron-5'), (33, 'f1-zebra-asf-2'), (34, 'f1-zebra-asf-5'), (35, 'f1-zebra-enron-2'), (36, 'f1-zebra-enron-5'), (37, 'acc-featrnn-asf-2'), (38, 'acc-featrnn-asf-5'), (39, 'acc-featrnn-enron-2'), (40, 'acc-featrnn-enron-5'), (41, 'acc-jangada-asf-2'), (42, 'acc-jangada-asf-5'), (43, 'acc-jangada-enron-2'), (44, 'acc-jangada-enron-5'), (45, 'acc-zebra-asf-2'), (46, 'acc-zebra-asf-5'), (47, 'acc-zebra-enron-2'), (48, 'acc-zebra-enron-5'), (49, 'wprec-featrnn-asf-2'), (50, 'wprec-featrnn-asf-5'), (51, 'wprec-featrnn-enron-2'), (52, 'wprec-featrnn-enron-5'), (53, 'wprec-jangada-asf-2'), (54, 'wprec-jangada-asf-5'), (55, 'wprec-jangada-enron-2'), (56, 'wprec-jangada-enron-5'), (57, 'wprec-zebra-asf-2'), (58, 'wprec-zebra-asf-5'), (59, 'wprec-zebra-enron-2'), (60, 'wprec-zebra-enron-5'), (61, 'wrec-featrnn-asf-2'), (62, 'wrec-featrnn-asf-5'), (63, 'wrec-featrnn-enron-2'), (64, 'wrec-featrnn-enron-5'), (65, 'wrec-jangada-asf-2'), (66, 'wrec-jangada-asf-5'), (67, 'wrec-jangada-enron-2'), (68, 'wrec-jangada-enron-5'), (69, 'wrec-zebra-asf-2'), (70, 'wrec-zebra-asf-5'), (71, 'wrec-zebra-enron-2'), (72, 'wrec-zebra-enron-5'), (73, 'wf1-featrnn-asf-2'), (74, 'wf1-featrnn-asf-5'), (75, 'wf1-featrnn-enron-2'), (76, 'wf1-featrnn-enron-5'), (77, 'wf1-jangada-asf-2'), (78, 'wf1-jangada-asf-5'), (79, 'wf1-jangada-enron-2'), (80, 'wf1-jangada-enron-5'), (81, 'wf1-zebra-asf-2'), (82, 'wf1-zebra-asf-5'), (83, 'wf1-zebra-enron-2'), (84, 'wf1-zebra-enron-5'), (85, 'wacc-featrnn-asf-2'), (86, 'wacc-featrnn-asf-5'), (87, 'wacc-featrnn-enron-2'), (88, 'wacc-featrnn-enron-5'), (89, 'wacc-jangada-asf-2'), (90, 'wacc-jangada-asf-5'), (91, 'wacc-jangada-enron-2'), (92, 'wacc-jangada-enron-5'), (93, 'wacc-zebra-asf-2'), (94, 'wacc-zebra-asf-5'), (95, 'wacc-zebra-enron-2'), (96, 'wacc-zebra-enron-5')]
 % [(0, 'perturbation'), (1, 'test--prec-asf-2'), (2, 'test--prec-asf-5'), (3, 'test--prec-enron-2'), (4, 'test--prec-enron-5'), (5, 'test-w-prec-asf-2'), (6, 'test-w-prec-asf-5'), (7, 'test-w-prec-enron-2'), (8, 'test-w-prec-enron-5'), (9, 'eval--prec-asf-2'), (10, 'eval--prec-asf-5'), (11, 'eval--prec-enron-2'), (12, 'eval--prec-enron-5'), (13, 'eval-w-prec-asf-2'), (14, 'eval-w-prec-asf-5'), (15, 'eval-w-prec-enron-2'), (16, 'eval-w-prec-enron-5'), (17, 'test--rec-asf-2'), (18, 'test--rec-asf-5'), (19, 'test--rec-enron-2'), (20, 'test--rec-enron-5'), (21, 'test-w-rec-asf-2'), (22, 'test-w-rec-asf-5'), (23, 'test-w-rec-enron-2'), (24, 'test-w-rec-enron-5'), (25, 'eval--rec-asf-2'), (26, 'eval--rec-asf-5'), (27, 'eval--rec-enron-2'), (28, 'eval--rec-enron-5'), (29, 'eval-w-rec-asf-2'), (30, 'eval-w-rec-asf-5'), (31, 'eval-w-rec-enron-2'), (32, 'eval-w-rec-enron-5'), (33, 'test--f1-asf-2'), (34, 'test--f1-asf-5'), (35, 'test--f1-enron-2'), (36, 'test--f1-enron-5'), (37, 'test-w-f1-asf-2'), (38, 'test-w-f1-asf-5'), (39, 'test-w-f1-enron-2'), (40, 'test-w-f1-enron-5'), (41, 'eval--f1-asf-2'), (42, 'eval--f1-asf-5'), (43, 'eval--f1-enron-2'), (44, 'eval--f1-enron-5'), (45, 'eval-w-f1-asf-2'), (46, 'eval-w-f1-asf-5'), (47, 'eval-w-f1-enron-2'), (48, 'eval-w-f1-enron-5'), (49, 'test--acc-asf-2'), (50, 'test--acc-asf-5'), (51, 'test--acc-enron-2'), (52, 'test--acc-enron-5'), (53, 'test-w-acc-asf-2'), (54, 'test-w-acc-asf-5'), (55, 'test-w-acc-enron-2'), (56, 'test-w-acc-enron-5'), (57, 'eval--acc-asf-2'), (58, 'eval--acc-asf-5'), (59, 'eval--acc-enron-2'), (60, 'eval--acc-enron-5'), (61, 'eval-w-acc-asf-2'), (62, 'eval-w-acc-asf-5'), (63, 'eval-w-acc-enron-2'), (64, 'eval-w-acc-enron-5')]
 \begin{figure}
 	% jan, zeb, fea
-	% acc5: 44,48,40 | wacc5: 92,96,88 | acc2: 43,47,39, wacc2: 91,95,87
+	% acc5: 44,48,40 | wacc5: 92,96,88 | acc2: 43,47,39, wacc2: 91,95,87 | f1_2: 31,35,27
 	% quagga: acc5: 52  | wacc5: 55 | acc2: 51 | wacc2: 56
 	\centering
 	\begin{subfigure}[t]{0.5\textwidth}
@@ -760,16 +785,16 @@ maybe: email classification with+without splitting (i.e. try to classify folders
 		\begin{axis}[width=0.98\textwidth, height=0.8\textwidth,
 		every tick label/.append style={font=\scriptsize},
 		every label/.append style={font=\scriptsize}, ylabel near ticks, xlabel near ticks,
-		mark options={solid,scale=0.7},legend style={at={(0.99,0.99)},anchor=north east},
+		mark options={solid,scale=0.7},legend style={at={(0.01,0.65)},anchor=north west},,
 		xlabel={Perturbation}, ylabel={Accuracy}]
 		\addplot[dotted, color=black, mark=o] table[x index={0},y index={43}, col sep=comma] {perturbation.csv};
-		%\addlegendentry{\tiny Jangada};
+		\addlegendentry{\tiny Jangada};
 		\addplot[dashed, color=black, mark=o] table[x index={0},y index={47}, col sep=comma] {perturbation.csv};
-		%\addlegendentry{\tiny Zebra};
+		\addlegendentry{\tiny Zebra};
 		\addplot[dotted, color=black, mark=x] table[x index={0},y index={87}, col sep=comma] {perturbation.csv};
-		%\addlegendentry{\tiny RNN};
+		\addlegendentry{\tiny RNN};
 		\addplot[solid, color=black, mark=*] table[x index={0},y index={51}, col sep=comma] {quagga.csv};
-		%\addlegendentry{\tiny Quagga};
+		\addlegendentry{\tiny Quagga};
 		\end{axis}
 		\end{tikzpicture}
 		%\caption{Two Zone Model}
@@ -786,23 +811,39 @@ maybe: email classification with+without splitting (i.e. try to classify folders
 		yticklabel pos=right, ylabel near ticks, xlabel near ticks,
 		xlabel={Perturbation}, ylabel={Accuracy}]
 		\addplot[dotted, color=black, mark=o] table[x index={0},y index={44}, col sep=comma] {perturbation.csv};
-		\addlegendentry{\tiny Jangada};
+		%\addlegendentry{\tiny Jangada};
 		\addplot[dashed, color=black, mark=o] table[x index={0},y index={48}, col sep=comma] {perturbation.csv};
-		\addlegendentry{\tiny Zebra};
+		%\addlegendentry{\tiny Zebra};
 		\addplot[dotted, color=black, mark=x] table[x index={0},y index={88}, col sep=comma] {perturbation.csv};
-		\addlegendentry{\tiny RNN};
+		%\addlegendentry{\tiny RNN};
 		\addplot[solid, color=black, mark=*] table[x index={0},y index={52}, col sep=comma] {quagga.csv};
-		\addlegendentry{\tiny Quagga};
+		%\addlegendentry{\tiny Quagga};
 		\end{axis}
 		\end{tikzpicture}
 		%\caption{Five Zone Model}
 	\end{subfigure}
 	\caption{Robustness against perturbation on two (left) and five zones (right) on the Enron test set}
+	\label{fig:perturbation}
 \end{figure}
+Our hypothesis is, that a model which learns meaningful features itself is more robust towards changes to the email text as hard coded rules responding to specific keywords or patterns.
+To show the flexibility of our model, we first introduce the notion of a perturbation threshold $\rho\in[0,1)$.
+Before passing an email to a model, a function iterates over each character and with probability $\rho$ edits, removes, or duplicates it.
+Training was performed on uncorrupted data only.
 
+The robustness of each model against increasing perturbation is shown in \Fref{fig:perturbation}.
+Relatively, the drop in performance is the same the for two- and five-zone task, although at different absolute accuracies.
+Quagga doesn't seem to be affected up to $\rho=0.2$ and keeps producing reliable results even at higher perturbation thresholds.
+Surprisingly, also Jangada is not influenced significantly by the introduction of perturbation.
+As opposed to Zebra and FeatureRNN, it is using more features related to small patterns or proportions of types of symbols, whereas the others depend on more complex patterns which are more error prone to change.
 
 \section{Conclusion and Future Work}
-nicht nur für mails, auch forenthreads und andere semi-strukturierte daten
+In this work we presented a reliable and flexible system for finding the inherent structure of an email containing multiple conversational parts.
+In the first stage, the system uses a convolutional neural network to encode lines of an email which are used by an GRU-CRF to predict a sequence of zone types per line reaching accuracies of 98\%.
+Compared to similar models, we show significant improvement and especially seamless adaptation to other datasets and robustness to corrupted data.
+
+Research based on email data largely benefits from preprocessed text input, which helps to focus algorithms on relevant parts of an email like client headers containing meta-data such as sender, recipients or dates for social network analysis, or content based research, which can be focused on the actual message without irrelevant parts like signatures.
+
+In addition to our system, which can be used automatically pre-process large corpora, we provide a detailed annotation of a subset of the Enron corpus that can directly be used for building communication networks without further parsing including linked person aliases and, if present, contact details from email signatures.
 
 % novel clean dataset for email research on enron
 % flexible model to clean up large amounts of email data
