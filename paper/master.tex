@@ -206,7 +206,7 @@ In case of conflicts, the predominant or detailed type is used.
 %- header: contains metadata like from, to, when subject
 
 
-\begin{figure}
+\begin{figure}[tb]
 % potential example listings:
 % presto-k/discussion_threads/23.
 % skilling-j/all_documents/1529.
@@ -380,7 +380,7 @@ However, even a sophisticated text parsing program will fail since client header
 Usually lines start with attribute keywords such as "From:" or "Subject:", however their value may span multiple lines and use varying delimiters.
 This even makes it hard to detect the boundaries between header and body blocks, since one can not rely on the presence of keywords or well formed, deterministic schemas.
 
-\begin{figure}
+\begin{figure}[tb]
 	\centering{
 		\resizebox{0.8\textwidth}{!}{\input{model.pdf_tex}}
 		\caption{Schematic model overview; Left side shows line embedding stage using the CNN approach, right side outlines email zoning model.}
@@ -509,8 +509,9 @@ We base the model's topology configuration on the analysis of related models~\ci
 		\end{tikzpicture}
 		%\caption{Five Zone Model}
 	\end{subfigure}
-}
-	\caption{Accuracy for increasing maximum line length using 32-dimensional embeddings}
+	}
+	\vspace{-5mm}
+	\caption{Accuracy for increasing max line length using 32-dimensional embeddings}
 	\label{fig:gridsearch}
 \end{figure}
 
@@ -553,12 +554,12 @@ We found that more recent email threads from the ASF archives, especially those 
 Each dataset is divided into three subsets for training, validation, and testing.
 Emails are sampled at random from their respective original dataset and put into one of those subsets.
 To ensure representative results that are not biased by author or domain, sampling per subset is restricted to distinct mailboxes (Enron) or mailing lists (ASF).
-The ASF dataset was compiled by randomly selecting emails from the \textit{flink-user}, \textit{spark-user}, and \textit{lucene-solr-user} mailing list archives.\footnote{Annotated datasets will be published on our website: \url{https://url-remov.ed/for/review}}
+The ASF dataset was compiled by randomly selecting emails from the \textit{flink-user}, \textit{spark-user}, and \textit{lucene-solr-user} mailing list archives.\footnote{Annotated datasets can be found at \url{https://url-remov.ed/for/review}}
 
 %Prior to sampling from the Enron corpus, duplicates are removed based on sender, recipient(s), and timestamp, which are provided by structured email meta data.
 %This reduces the corpus almost by 50\%, which confirms the assumption of a full dataset, where an email in one's sent folder is also found in someone else's archive.
 
-\begin{table}
+\begin{table}[tb]
 	\caption{Annotated Datasets in Numbers}
 	\label{tab:dataset}
 	\centering
@@ -719,9 +720,9 @@ We were not able to reproduce reported accuracies of Zebra~\cite{zones}, which g
 Jangada uses more general features and looks at a sliding window of lines and we got close to reported accuracies, especially for the ASF dataset, which is closer to the twenty newsgroup data the authors used~\cite{zones}.
 Overall, our system shows very good performances and seamlessly adapts to other datasets without problems.
 
-\begin{table}
+\begin{table}[tb]
 	\centering
-	\caption{Classifying emails into zones (Precision/Recall/Accuracy)}
+	\caption{Classifying Emails into Zones (Precision/Recall/Accuracy)}
 	\label{tab:results-comp}
 	\begin{tabular*}{0.8\textwidth}{@{\extracolsep{\fill}}cccc}
 		\toprule
@@ -842,6 +843,7 @@ Compared to the results when training and testing using emails from the same bas
 		%\caption{Five Zone Model}
 	\end{subfigure}
 	}
+	\vspace{-5mm}
 	\caption{Robustness against perturbation for the Enron test set}
 	\label{fig:perturbation}
 \end{figure}
