@@ -131,45 +131,46 @@
 %                                     \toctitle is used
 %
 %\author{Tim Repke \and Ralf Krestel}
-\author{First Author \and Second Author}
+%\author{First Author \and Second Author}
 %
 %\authorrunning{Tim Repke et al.} % abbreviated author list (for running head)
 \authorrunning{First Author et al.}
 %
 %%%% list of authors for the TOC (use if author list has to be modified)
 %\tocauthor{Tim Repke, Ralf Krestel}
-\tocauthor{First Author, Second Author}
+%\tocauthor{First Author, Second Author}
 %
 %\institute{Hasso Plattner Institute, Potsdam, Germany\\
 %\email{(tim.repke|ralf.krestel)@hpi.de}}
 
-\institute{A Research Institute, City, Country\\
-	\email{(second.author|first.author)@domain.tld}}
+%\institute{A Research Institute, City, Country\\
+%	\email{(second.author|first.author)@domain.tld}}
 
 \maketitle              % typeset the title of the contribution
 
 \begin{abstract}
-The abstract should summarize the contents of the paper
-using at least 70 and at most 150 words. It will be set in 9-point
-font size and be inset 1.0 cm from the right and left margins.
-There will be two blank lines before and after the Abstract. \dots
+Email communication plays an integral part of everybody's life nowadays.
+Especially for business emails, extracting and analysing these communication networks can reveal interesting patterns of processes and decision making within a company.
+Fraud detection is another application area where precise detection of communication networks is essential.
+In this paper we present an approach based on recurrent neural networks to untangle email threads originating from forward and reply behaviour.
+We further classify parts of emails into 2 or 5 zones to capture not only header and body information but also greetings and signatures.
+We show that our deep learning approach outperforms state-of-the-art systems based on traditional machine learning and hand-crafted rules.
+Besides using the well-known Enron email corpus for our experiments, we additionally created a new annotated email benchmark corpus from Apache mailing lists.
 %\keywords{computational geometry, graph theory, Hamilton cycles}
 \end{abstract}
 %
 \section{Introduction}
 Emails are an important part of day to day business communication, hence their analysis inspired research from a variety of disciplines.
-Many of those solely use information contained in the well structured email protocol headers, such as in Social Network Analysis, User Profiling, or Behaviour Analysis.
-
+In Social Network Analysis, User Profiling, or Behaviour Analysis often only information contained in the well structured email protocol headers is used.
 However, a lot more information remains hidden in the free text body of an email, which contains additional meta-data about a discussion in the form of quoted messages that are forwarded or replied to.
-In the early days of email communication, users followed clear rules, e.g. prefixing quoted text with angle brackets ($>$).
 
+In the early days of email communication, users followed clear rules, e.g. prefixing quoted text with angle brackets ($>$).
 Nowadays, due to the diversity of email programs, formatting standards, and the freedom to edit quoted text, identifying the different parts of a message body is a surprisingly challenging task.
 Email programs like Outlook, Thunderbird, or even online services such as Gmail, usually group emails into conversations and attempt to hide quoted parts.
-To this end, they try to match preceding emails by subject and sender.
-This procedure fails in case the subject or quoted text was edited.
+To this end, they try to match preceding emails by subject and sender, which fails in case the subject or quoted text was edited.
 
-We propose a neural network based approach to utilise otherwise hidden or noisy information and overcome problems of error-prone rule-based approaches.
-This enables downstream tasks to work with much clearer data and additional information.
+We propose a neural network based approach for extraction of the inherent structure in email text to overcome problems of error-prone rule-based approaches.
+This enables downstream tasks to work with much cleaner data and additional information by focusing on specific parts.
 Further we show improvements in flexibility and performance over earlier work on similar tasks.
 
 
@@ -185,7 +186,7 @@ Further we show improvements in flexibility and performance over earlier work on
 \paragraph{Problem statement}
 Our goal is to extract the inherent structure of free text emails containing a conversation thread composed of consecutive quoted or forwarded messages.
 Components of an email are referred to as \textit{zones} similar to the definition used by Lampert et al~\cite{zones}.
-We assume that a conversation thread is represented as a sequence of \textit{client header} and \textit{body blocks}.\footnote{This is consistent with emails in the Enron corpus}
+We assume that a conversation thread is represented as a sequence of \textit{client header} and \textit{body blocks}.
 A pair of corresponding header and body is called \textit{conversational part} or \textit{message}.
 
 In this context, client headers are blocks of meta-data automatically inserted by an email program, usually containing information on the sender, recipient, date, and subject of the quoted email.
@@ -194,8 +195,7 @@ Bodies are the actual written messages, which on reply or forward are quoted bel
 
 Message bodies can often be further separated into a \textit{greeting} (such as a formal or informal address of the recipient at the beginning of the message), \textit{authored text} (the actual message), \textit{signoff} (closing words of the message), and a \textit{signature} (containing contact information, advertising, or legal disclaimers).
 
-We assume that each single line can be assigned to exactly one zone.
-Without loss of generality, we consider exactly one zone type per line as \Fref{fig:examplemail} exemplary shows.
+We assume that each single line can be assigned to exactly one zone as \Fref{fig:examplemail} exemplary shows.
 In case of conflicts, the predominant or detailed type is used.
 
 
@@ -236,7 +236,7 @@ In case of conflicts, the predominant or detailed type is used.
 		Header         & Sent by: Randi Howard \\
 		Header         & To: Jeff Skilling/Corp/Enron@ENRON\\
 		Header         & cc:\\
-		Header         & \\
+% 		Header         & \\
 		Header         & Subject: Re: My "P" Number\\\hline
 		Body           & \\
 		Body/Greeting  & Mr. Skilling: \\
@@ -244,7 +244,7 @@ In case of conflicts, the predominant or detailed type is used.
 		Body           & Your P number is P00500599.  For your convenience, you can also go to\\
 		Body           & http://isc.enron.com/ under Site Highlights and reset your password or \\
 		Body           & find your "P" number.\\
-		Body           & \\
+%		Body           & \\
 		Body/Signoff   & Thanks,\\
 		Body/Signoff   & \\
 		Body/Signoff   & Randi Howard\\
@@ -282,26 +282,26 @@ In case of conflicts, the predominant or detailed type is used.
 % 2.2 carvalho using cperceptron (collins)
 % 2.3 lampert et al zoning + request for action (highlight improvements through zoning first)
 %     similarly rauscher et al (knowledge zoning), estival et al (author profiling)
-\paragraph{Email Corpora}
+\paragraph{Email Corpora.}
 Email corpora provide fascinating insights into human communication behaviour and therefore inspire research in many different areas.
 Datasets such as the Enron~\cite{enron} or Avocado corpus~\cite{avocado} provide real world information about business communication and contain not only professional emails, but also personal emails as well as spam.
 Ben Shneiderman published parts of his personal email archive for research~\cite{shneiderman}.
 Another popular corpus is the Twenty Newsgroups dataset of emails sampled from newsgroups in the early 90s, it only contains a few conversation threads~\cite{20news}.
-In our work at hand, we use the Enron corpus as well as a newly gathered emails from public email archives of the Apache Software Foundation.
+For the work at hand, we use the Enron corpus and emails we gathered from public email archives of the Apache Software Foundation\footnote{\url{http://mail-archives.apache.org/mod\_mbox/}}.
 
-\paragraph{Benefits of Preprocessing}
-A recent survey provides a detailed overview of the multitude email classification tasks alone~\cite{classification}.
-Similarly interesting is the analysis of communication networks based on meta-data like sender, recipients, and time extracted from emails~\cite{sna1,sna2}
+\paragraph{Benefits of Preprocessing.}
+A recent survey provides a detailed overview of the multitude of email classification tasks alone~\cite{classification}.
+Similarly interesting is the analysis of communication networks based on meta-data like sender, recipients, and time extracted from emails~\cite{sna2}.
 
 Models based on the written content of emails may get confused by automatically inserted text blocks or quoted messages.
 Thus, working with real world data requires the need to normalise data prior to the problem at hand.
-Rauscher et al. developed an approach to detect zones inside work-related emails where relevant business knowledge may be found~\cite{rauscher2015context}.
+Rauscher et al.~\cite{rauscher2015context} developed an approach to detect zones inside work-related emails where relevant business knowledge may be found.
 
-In their work towards detecting emails containing requests for action, Lampert et al. compare the performance of their model on full emails (which may contain quoted text) against the same emails after automatically removing quoted sections and managed to achieve a relative error reduction by 40\%~\cite{rfa}.
+In their work towards detecting emails containing requests for action, Lampert et al.~\cite{rfa} compare the performance of their model on full emails (which may contain quoted text) against the same emails after automatically removing quoted sections and managed to achieve a relative error reduction by 40\%.
 Similar observations were made more recently predicting reply behaviour within the Avocado dataset~\cite{replying}.
 
-\paragraph{Email Zoning with Rules and Text Alignment}
-We identify three approaches to email zoning: rule based, text alignment, and machine learning.
+\paragraph{Email Zoning with Rules and Text Alignment.}
+We identified three approaches to email zoning: rule based, text alignment, and machine learning.
 
 The most na\"ive approach is to write specific rules that match commonly used patterns in email text.
 Talon\footnote{\url{https://github.com/mailgun/talon}} provides a sophisticated set of patterns to match most popular client header formats.
@@ -319,27 +319,27 @@ Thus, such an approach will not work on arbitrary emails, nor can it handle diff
 Contrary to approaches using text alignments, we don't assume a complete corpus.
 Our goal is to extract all information from only a single email archive or even a single email.
 
-\paragraph{Machine Learning for Email Zoning}
+\paragraph{Machine Learning for Email Zoning.}
 Another approach to email zoning uses machine learning with carefully designed features.
 
-Carvalho and Cohn proposed Jangada, a system to remove quoted text and signature blocks from emails in the twenty newsgroup dataset~\cite{signature,20news}.
-They first classify emails to find those that contain quoted text or signatures and then classify each line individually using Conditional Random Fields (CRF) and Collin's Perceptrons~\cite{crf,cperceptron}.
+Carvalho and Cohn proposed Jangada~\cite{signature}, a system to remove quoted text and signature blocks from emails in the twenty newsgroup dataset~\cite{20news}.
+They first classify emails to find those that contain quoted text or signatures and then classify each line individually using Conditional Random Fields (CRF) and sequence-aware perceptrons.
 Reported accuracies range from 97\% to above 99\%.
 
 Other researchers applied Jangada to Hotmail emails and measured accuracies around 64\%~\cite{profiling}.
 With some adaptation, they managed to extract five different zones (author text, signature, advertisement, quoted text and reply lines) with an average accuracy of up to 88\%.
 
 Lampert et al. developed the Zebra system~\cite{zones} as a pre-processor to their previously mentioned work on requests for action~\cite{rfa}.
-Adversely to previous approaches, they use Support Vector Machines and therefore classify lines of an email into zones individually, rather than considering a sequence of lines.
+Adversely to previous approaches, they use Support Vector Machines and therefore classify lines of an email into zones individually rather than considering a sequence of lines.
 For that, they describe graphic, orthographic, and lexical features to represent lines within their context reaching an average accuracy of 93\% on the two-zone task and 87\% on a nine-zone task.
-
 Comparing the performance by zone type, most problems are caused by signature lines (F-score around 60\%), signoffs (70\%) and attachments (69\%).
-It was found, that adding contextual features didn't improve the performance.
-Contrary to our objectives, Zebra only tries to identify the zones within the very last message within an email thread and reject the rest as quoted text, whereas we aim to detect the zones across the entire email.
+It was found, that adding contextual features didn't improve the performance~\cite{zones}.
+Contrary to our objectives, Zebra only tries to identify the zones within the very last message within an email thread and rejects the rest as quoted text, whereas we aim to detect the zones across the entire email.
 
-In our work, we aim to improve upon those results, while providing a system that is able to detect zones along the entire conversation thread contained in an email and not only the latest part.
-Furthermore, our system uses neural networks so that feature engineering is not needed, which is potentially error-prone.
-This way, even very small or incomplete datasets can be utilised for downstream tasks like social network analysis, speech acts and other research areas using email data.
+We compare results of our system described in \Fref{sec:model} with Jangada and Zebra.
+We not only aim to improve upon those results, but also provide a system that is able to detect zones along the entire conversation thread contained in an email and not only the latest part.
+Furthermore, our system uses neural networks rendering expensive and potentially error-prone feature engineering obsolete.
+This way, even very small or incomplete datasets can be utilised for downstream tasks like social network analysis, speech act recognition and other research areas using email data.
 
 
 %\cite{rfa} (detecting request for action) works better with zoning (see \cite{zones}), removes noise and focuses on text itself (excluding signature etc)
@@ -369,13 +369,13 @@ This way, even very small or incomplete datasets can be utilised for downstream 
 %\cite{20news} 20 newsgroups
 
 %https://github.com/mailgun/talon
-
+\newpage
 \section{Segmentation of Emails}
 \label{sec:model}
 Systems for email segmentation that are discussed earlier are based on hand written rules to match common structures directly or use them as features for machine learning models.
-Such an approach will fail when client headers are localised, formats are changed or quoted messages are edited by users or get corrupted.
-In most cases it may seem obvious to the human eye how to segment an email into client headers and quoted text even though different or corrupted formats are used.
+Such approaches will fail when client headers are localised, formats are changed, or quoted messages are edited by users or get corrupted.
 
+In most cases it may seem obvious to the human eye how to segment an email into client headers and quoted text even though different or corrupted formats are used.
 However, even a sophisticated text parsing program will fail since client headers follow no standardised format.
 Usually lines start with attribute keywords such as "From:" or "Subject:", however their value may span multiple lines and use varying delimiters.
 This even makes it hard to detect the boundaries between header and body blocks, since one can not rely on the presence of keywords or well formed, deterministic schemas.
@@ -388,25 +388,24 @@ This even makes it hard to detect the boundaries between header and body blocks,
 	}
 \end{figure}
 
-Therefore, our proposed model is based on multiple stages of neural network architectures as \Fref{fig:model} schematically shows.
-In this section we describe how email text is represented and how classifiers can be used as a reliable and robust preprocessor for a simple program to extract its inherent structure.
+In this paper, we propose the \textit{Quagga}\footnote{The quagga is a subspecies of zebras. (\url{https://en.wikipedia.org/wiki/Quagga})} system based on neural network architectures.
+As shown in \Fref{fig:model}, emails are processed in two stages: the line encoding and the email zoning stage.
+In this section we describe he how email text is represented and how classifiers can be used as a reliable and robust preprocessor for a simple program to extract its inherent structure.
 
 \subsection{Representation of Email Data}
-In the initial stage of our system the email text data is encoded into a low dimensional space.
-This representation is used as input to later stages.
-Here, the smallest fragment to be considered for email zoning are the lines in the email text.
-The end of a line is delimited by a newline character (\textbackslash n).
-Note however, that this may not necessarily be the same as floated lines displayed by an email program.
+In the initial stage of our system, the email text data is encoded into a low dimensional space to be used as input to the second stage as outlined on the left side in \Fref{fig:model}.
+The smallest fragments to be considered for email zoning are the lines in the email text.
+Lines are delimited by the newline character (\textbackslash n), which may not necessarily be the same as wrapped lines displayed by an email program.
 Analysis of the annotated data shows that this granularity is sufficient for all header, body, and signature zones as was assumed by other research on similar tasks.
 
 Each line is encoded as a sequence of one-hot vectors representing respective characters.
 We distinguish one hundred different case-sensitive alpha-numeric characters and basic ASCII symbols plus an out-of-scope placeholder.
-This scope is sufficient for all email corpora we looked at, where only a negligible portion of characters exceeds this set.
-For applications with Cyrillic, Arabic or other alphabets, this can easily be adapted.
+This is sufficient for all email corpora we looked at, where only a negligible portion of characters exceeds this set.
+We presume, that this could be adapted for applications with Cyrillic, Arabic or other alphabets.
 
-Inspired by research on character-aware language models~\cite{char_nn}, we experiment with recurrent and convolutional neural networks.
-The first model consists of a layer with varying number of gated recurrent units (GRU), where the last unit's output later serves as a fixed size embedding of the line.
-The second model uses two convolutional layers, which scan the sequence of characters in a line and are intertwined by max-pooling and global-averaging layers finally leading into a densely connected layer, where the number of neurons corresponds to the embedding size as shown in the left in \Fref{fig:model}.
+Inspired by research on character-aware language models~\cite{char_nn}, we devised a recurrent and a convolutional neural network model.
+The recurrent model consists of a layer with varying number of gated recurrent units (GRU), where the last unit's output serves as a fixed size embedding of the line.
+The convolutional model uses two convolutional layers, which scan the sequence of characters in a line and are intertwined by max-pooling and global-averaging layers finally leading into a densely connected layer, where the number of neurons corresponds to the embedding size as shown on the left in \Fref{fig:model}.
 
 In both models, the line representations are learnt in a supervised fashion.
 During training, a densely connected layer with softmax activation is appended so that a classifier can be trained to distinguish between lines of corresponding zone types.
@@ -419,28 +418,28 @@ A detailed analysis of embedding accuracy when limiting the length per line is f
 % learn char or line embedding
 
 \subsection{Classification of Email Lines}
-The first stage of our systems learns line representations by classifying them into zones.
+A model in the first stage of our Quagga system learns line representations by classifying them into zones.
 That way however, the context in which a line appears is missing, resulting in less ideal performance on ambiguous or deceptive cases.
-Thus, we add a second stage to our model for sequence to sequence classification, where the input is a sequence of line embeddings of an email corresponding to the right part in \Fref{fig:mode}.
-Best performance was achieved with a bidirectional GRU layer, where the hidden states of each direction are concatenated, followed by a Conditional Random Field as model output.
+Thus, we added a second stage to our system for sequence to sequence classification using a GRU-CRF model as outlined in the right part of \Fref{fig:model}, which takes a sequence of line encodings per email as input.
 Three of the five zone types only appear within message bodies, so we use two  concatenated embeddings as input, where one is pre-trained using two- and the other with five-zone classification.
 
+Best performance was achieved with a bidirectional GRU layer, which scans the lines from top to bottom and in reverse order and concatenates the hidden states of respective lines.
 In sequence to sequence classification, recurrent neural networks only consider the previous hidden state but neglect the actually predicted label sequence.
-By using a bidirectional layer, we observed a small improvement over a unidirectional recurrent layer, since each line's context reflects the previous and following lines.
+We already observed small improvements by using a bidirectional layer over a unidirectional one, since each line's context reflects the previous and following lines.
 Like in language models~\cite{lstm_crf,lstm_cnn_crf}, the addition of a CRF to the output shows further performance gains.
 
-We train the second stage of the system separate from the line encoding stage.
-Directly connecting the embedding layer to the email line classifier described in this section and therefore training the entire model in one pass lead to unstable results even after pre-training the line encoder.
+Training both parts of the system as an entire model in one pass by directly connecting the encoder output layer to the second stage model's input lead to unstable results even after pre-training the line encoder.
+Therefore we train the model in the second stage of our system separately from the line encoding model.
 
-The sequence of zone types per line can be used to extract the conversational parts of an email and also separate the message from additional content such as signatures, greetings and signoffs.
+The predicted sequence of zone types can be used to extract the conversational parts of an email and also separate the message from additional content such as signatures, greetings and signoffs.
 Consecutive lines with the same predicted zone type are aggregated into a block.
 Further processing inevitably requires making some assumptions about the general structure of emails.
 Based on the analysis of emails in the training data, we assume that a body proceeds a header block.
 Furthermore, we define that in-line replies with quoted parts belong to one message, which is not problematic, since this would usually only appear in Usenet-style emails, which use indicators like repeated $>$ at the beginning of a line and therefore don't require sophisticated processing as presented here.
 
 Small errors in the prediction can be fixed heuristically, for example a block with a single line classified as header containing only the "Subject:" keyword likely is either a false positive or belongs to another block nearby.
-Other similar rules could be constructed, which reduce the initial robustness of the model due to added assumptions.
-In the scope of our work, we found that combining this model as a pre-processor for finding related blocks and rules to parse them significantly improves the accuracy of downstream tasks like constructing communication graphs by parsing header blocks compared to a purely rule-based parsed without pre-processing.
+The introduction of such rules could reduce the initial robustness and is omitted for the evaluation in this paper.
+In the scope of our work, we found that using the Quagga system as a pre-processor for finding related blocks significantly improves the accuracy of parsing rules for downstream tasks like constructing communication graphs from header blocks compared to a purely rule-based parser without pre-processing.
 
 % continue training for classification into header/body
 % how to split thread based on that
@@ -470,17 +469,22 @@ We base the model's topology configuration on the analysis of related models~\ci
 	150,150,150,150,150,150,150,150,150,150,150,150,0.95,0.93,0.94,0.94,0.94,0.94,0.88,0.87,0.87,0.87,0.86,0.87,0.95,0.93,0.94,0.94,0.94,0.94,0.39,0.81,0.81,0.69,0.79,0.8,0.95,0.93,0.94,0.94,0.94,0.94,0.47,0.83,0.84,0.76,0.82,0.83,0.949025069638,0.93147632312,0.938718662953,0.941504178273,0.938022284123,0.935793871866,0.391225626741,0.806545961003,0.812813370474,0.694428969359,0.786629526462,0.796378830084
 \end{filecontents*}
 % [(0, 'linelen216cnn'), (1, 'linelen216rnn'), (2, 'linelen232cnn'), (3, 'linelen232rnn'), (4, 'linelen264cnn'), (5, 'linelen264rnn'), (6, 'linelen516cnn'), (7, 'linelen516rnn'), (8, 'linelen532cnn'), (9, 'linelen532rnn'), (10, 'linelen564cnn'), (11, 'linelen564rnn'), (12, 'prec216cnn'), (13, 'prec216rnn'), (14, 'prec232cnn'), (15, 'prec232rnn'), (16, 'prec264cnn'), (17, 'prec264rnn'), (18, 'prec516cnn'), (19, 'prec516rnn'), (20, 'prec532cnn'), (21, 'prec532rnn'), (22, 'prec564cnn'), (23, 'prec564rnn'), (24, 'rec216cnn'), (25, 'rec216rnn'), (26, 'rec232cnn'), (27, 'rec232rnn'), (28, 'rec264cnn'), (29, 'rec264rnn'), (30, 'rec516cnn'), (31, 'rec516rnn'), (32, 'rec532cnn'), (33, 'rec532rnn'), (34, 'rec564cnn'), (35, 'rec564rnn'), (36, 'f1216cnn'), (37, 'f1216rnn'), (38, 'f1232cnn'), (39, 'f1232rnn'), (40, 'f1264cnn'), (41, 'f1264rnn'), (42, 'f1516cnn'), (43, 'f1516rnn'), (44, 'f1532cnn'), (45, 'f1532rnn'), (46, 'f1564cnn'), (47, 'f1564rnn'), (48, 'acc216cnn'), (49, 'acc216rnn'), (50, 'acc232cnn'), (51, 'acc232rnn'), (52, 'acc264cnn'), (53, 'acc264rnn'), (54, 'acc516cnn'), (55, 'acc516rnn'), (56, 'acc532cnn'), (57, 'acc532rnn'), (58, 'acc564cnn'), (59, 'acc564rnn')]
-\begin{figure}
+\begin{figure}[tb]
+	{%
+		\pgfplotsset{x tick label style={font=\scriptsize}}
+		\pgfplotsset{ylabel near ticks, xlabel near ticks}
+		\pgfplotsset{every label/.append style={font=\scriptsize}}
+		\pgfplotsset{xlabel={Maximum Line Length}, ylabel={Accuracy}}
+		\pgfplotsset{width=\textwidth, height=0.8\textwidth}
+	%	\pgfplotsset{/pgf/number format/.cd,fixed, fixed zerofill,precision=2}
+		\pgfplotsset{y tick label style={/pgf/number format/.cd,fixed, fixed zerofill,precision=2}}%
 	\centering
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\begin{tikzpicture} % 16: 48,49 | 32: 50,51 | 64: 52,53 (cnn,rnn|2zone)
-		\begin{axis}[width=0.98\textwidth, height=0.66\textwidth,
-		             every tick label/.append style={font=\scriptsize},
-		             every label/.append style={font=\scriptsize}, ylabel near ticks,
-		             mark options={solid,scale=0.7},  xlabel near ticks, 
+		\begin{axis}[title=(a) Two-Zone Model,
 		             legend style={at={(0.99,0.01)},anchor=south east},
-		             xlabel={maximum line length}, ylabel={Accuracy}]
+		             mark options={solid,scale=0.7}]
 		\addplot[solid, color=black, mark=x] table[x index={0},y index={50}, col sep=comma] {dataevallines.csv};
 		\addlegendentry{\tiny CNN};
 		\addplot[dashed, color=black, mark=o] table[x index={0},y index={51}, col sep=comma] {dataevallines.csv};
@@ -493,25 +497,24 @@ We base the model's topology configuration on the analysis of related models~\ci
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
 		\begin{tikzpicture} % 16: 54,55 | 32: 56,57 | 64: 58,59 (cnn,rnn|5zone)
-		\begin{axis}[width=0.98\textwidth, height=0.66\textwidth,
-		mark options={solid,scale=0.7}, legend style={at={(0.99,0.01)},anchor=south east},
-		every tick label/.append style={font=\scriptsize},
-		every label/.append style={font=\scriptsize}, 
-		yticklabel pos=right, ylabel near ticks, xlabel near ticks,
-		xlabel={maximum line length}, ylabel={Accuracy}]
+		\begin{axis}[title=(b) Five-Zone Model,
+					 yticklabel pos=right,
+					 legend style={at={(0.01,0.01)},anchor=south west},
+					 mark options={solid,scale=0.7}]
 		\addplot[solid, color=black, mark=x] table[x index={0},y index={56}, col sep=comma] {dataevallines.csv};
-		%\addlegendentry{\tiny CNN};
+		\addlegendentry{\tiny CNN};
 		\addplot[dashed, color=black, mark=o] table[x index={0},y index={57}, col sep=comma] {dataevallines.csv};
-		%\addlegendentry{\tiny RNN};
+		\addlegendentry{\tiny RNN};
 		\end{axis}
 		\end{tikzpicture}
 		%\caption{Five Zone Model}
 	\end{subfigure}
-	\caption{Accuracy of $d$-dimensional line embeddings at increasing maximum line length; tested $d\in\{16, 32, 48, 64\}$, showing $d=32$; Trained using two-zone (left) and five-zone (right) classification}
+}
+	\caption{Accuracy for increasing maximum line length using 32-dimensional embeddings}
 	\label{fig:gridsearch}
 \end{figure}
 
-The ideal configuration for the embedding stage is determined through grid search across mentioned parameters.
+The ideal configuration for the line encoder model is determined through grid search across mentioned parameters.
 We record the accuracy of the convolutional and recurrent approach for line encoding in \Fref{fig:gridsearch}.
 Note, that the convolutional model assumes a fixed size input, so shorter lines are zero-padded at the end.
 When evaluating the reported accuracy, one has to consider two things.
@@ -521,11 +524,11 @@ We did not observe significant differences between embedding dimensions above 32
 Most errors are caused by blank lines, which are usually classified as "Body".
 Results when training using two-zone classification are mostly stable for both models.
 The majority of lines in our training data are between forty and fifty characters long.
-Interestingly, we observe a drop in performance of the convolutional model for fixed input lengths just over this average in the five-zone classification.
+%Interestingly, we observe a drop in performance of the convolutional model for fixed input lengths just over this average in the five-zone classification.
 
 Both approaches for line representations seem to have their strengths and weaknesses.
-Since there is no clear winner, we continue only using the convolutional model in this work.
-We do so based on the argument, that one may want to process large corpora and prefers a faster model.
+Since there is no clear winner, we continue only using the convolutional model in this work and fix the input length to 100 characters per line.
+We do so based on the argument, that one may want to process large corpora and prefer a faster system.
 
 % conv cant handle much padding, rnn better at that
 % avg line len 40-50, so choose cnn for simplicity
@@ -543,17 +546,17 @@ Further, we describe competing approaches that are used as baselines for compari
 We also analyse model parameters and its robustness to changes in email text.
 
 \subsection{Dataset}
-We evaluate our proposed approach to email zoning on the Enron corpus~\cite{enron} and emails gathered from public mail archives of the Apache Software Foundation (ASF)\footnote{\url{http://mail-archives.apache.org/mod\_mbox/}}. 
-Estival et al. and Lampert et al. discussed shortcomings in working with Usenet-style emails, leading us to refrain from using the twenty newsgroup dataset as was done for the Jangada system ~\cite{profiling,zones,20news}.
+We evaluate our proposed approach to email zoning on the Enron corpus~\cite{enron} and emails gathered from public mail archives of the Apache Software Foundation\footnote{\url{http://mail-archives.apache.org/mod\_mbox/}} (ASF). 
+Estival et al.~\cite{profiling} and Lampert et al.~\cite{zones} discussed shortcomings in working with Usenet-style emails, leading us to refrain from using the twenty newsgroup dataset~\cite{20news} as was done for the Jangada system.
 We found that more recent email threads from the ASF archives, especially those on mailinglists for users of different software projects, offer diverse formatting patterns.
 
 Each dataset is divided into three subsets for training, validation, and testing.
 Emails are sampled at random from their respective original dataset and put into one of those subsets.
 To ensure representative results that are not biased by author or domain, sampling per subset is restricted to distinct mailboxes (Enron) or mailing lists (ASF).
-The ASF dataset was compiled by randomly selecting emails from the \textit{flink-user}, \textit{spark-user}, and \textit{lucene-solr-user} mailing list archives.
+The ASF dataset was compiled by randomly selecting emails from the \textit{flink-user}, \textit{spark-user}, and \textit{lucene-solr-user} mailing list archives.\footnote{Annotated datasets will be published on our website: \url{https://url-remov.ed/for/review}}
 
-Prior to sampling from the Enron corpus, duplicates are removed based on sender, recipient(s), and timestamp, which are provided by structured email meta data.
-This reduces the corpus almost by 50\%, which confirms the assumption of a full dataset, where an email in one's sent folder is also found in someone else's archive.
+%Prior to sampling from the Enron corpus, duplicates are removed based on sender, recipient(s), and timestamp, which are provided by structured email meta data.
+%This reduces the corpus almost by 50\%, which confirms the assumption of a full dataset, where an email in one's sent folder is also found in someone else's archive.
 
 \begin{table}
 	\caption{Annotated Datasets in Numbers}
@@ -655,14 +658,14 @@ Prior heuristic analysis of the Enron corpus estimated 60\% of emails to contain
 On average an email has two parts with 20 lines per message.
 Only a few messages contain a signature, which on average are six lines long.
 
-Our selected subsets of the Enron corpus are annotated with spans of characters nested by level of detail of their type.
-Hereby the most coarse span types are headers and bodies.
-Span types within a header are Subject, Person Name, Email Address, Date, and Time.
-Within a body the following span types are annotated: Greeting and Signoff, Person Name within those, and Signatures. Signatures are further broken down into Name, Organisation, Addresses, Phone Numbers, Attachments, and Disclaimers.
+%Our selected subsets of the Enron corpus are annotated with spans of characters nested by level of detail of their type.
+%Hereby the most coarse span types are headers and bodies.
+%Span types within a header are Subject, Person Name, Email Address, Date, and Time.
+%Within a body the following span types are annotated: Greeting and Signoff, Person Name within those, and Signatures. Signatures are further broken down into Name, Organisation, Addresses, Phone Numbers, Attachments, and Disclaimers.
 
-Spans containing names (or email addresses) are linked as alias if they refer to the same person.
-Other supplementary information such as organisations a person works for or contact details are also linked accordingly.
-Although this level of detail exceeds the requirements for the objective of this paper, it provides valuable data for future work and research on social networks, speech acts, or other tasks surrounding email\footnote{Different versions of the dataset are published on our web page:\\ \url{https://url-remov.ed/for/review}}.
+%Spans containing names (or email addresses) are linked as alias if they refer to the same person.
+%Other supplementary information such as organisations a person works for or contact details are also linked accordingly.
+%Although this level of detail exceeds the requirements for the objective of this paper, it provides valuable data for future work and research on social networks, speech acts, or other tasks surrounding email\footnote{Different versions of the dataset are published on our web page:\\ \url{https://url-remov.ed/for/review}}.
 
 %We hope to inspire future work in the area [knowledge graph]
 
@@ -683,7 +686,7 @@ Clearly that deviates from our goal to extract \textit{all} individual parts and
 Since the systems are supposed to detect zones within the first part of the email, their features and underlying models should in principle also work on our task.
 
 The source code for Jangada is freely available on the author's web page\footnote{\url{http://www.cs.cmu.edu/~vitor/software/jangada/}}.
-We used the source code as a basis for an implementation in Python, however continue to use the same implementation of the Collins Perceptron for sequence labelling~\cite{cperceptron}, which is part of the MinorThird Library~\cite{minorthird}.
+We used the source code as a basis for an implementation in Python, however continue to use the same implementation of the Collins Perceptron for sequence labelling~\cite{cperceptron}, which is part of the MinorThird Library\footnote{\url{http://minorthird.sourceforge.net/}}.
 For the extraction of signatures, Jangada originally only considers the last ten lines of an email.
 In our implementation, the perceptron performs a multi-class classification along all lines of the email corresponding to zone types defined earlier.
 The model is trained with window-size 5 for 40 epochs.
@@ -693,11 +696,11 @@ Gossen et al. implemented\footnote{\url{https://github.com/gerhardgossen/soZebra
 We used that as a guideline for our adapted Python implementation.
 The SVM is trained for a maximum of 200 iterations in a one-versus-rest fashion for multi-class classification using RBF kernels.
 
-Both models originally weren't designed to find the inherent structure of an entire email, but rather only the latest message in a conversation along with zones within it.
-It seems fair to assume that the approaches for zoning the last message in an email should easily transfer to following messages as well.
-We use a selection of features from both models as input for a recurrent neural network with two GRU layers~\cite{gru}, which we will refer to as \textit{FeatureRNN}.
+%Both models originally weren't designed to find the inherent structure of an entire email, but rather only the latest message in a conversation along with zones within it.
+%It seems fair to assume that the approaches for zoning the last message in an email should easily transfer to following messages as well.
 
-We compare those to our proposed model as described in \Fref{sec:model} using convolutions in the first stage and refer to it as \textit{Quagga}.
+We use a selection of features from both models as input for a recurrent neural network with two GRU layers~\cite{gru}, which we will refer to as \textit{FeatureRNN}.
+The above models are baselines for the comparison to our proposed Quagga system as described in \Fref{sec:model} using a convolutional model as line encoder with fixed input sizes of 100 characters per line.
 
 % baseline (regex+rules)
 % reimplement zebra\footnote{\url{http://zebra.thoughtlets.org/zoning.php}} https://github.com/gerhardgossen/soZebra
@@ -708,11 +711,11 @@ We compare those to our proposed model as described in \Fref{sec:model} using co
 
 
 \section{Results}
-We presented a system for extracting parts of an email by classifying its lines into one of two (or five) zones.
+%We presented a system for extracting parts of an email by classifying its lines into one of two (or five) zones.
 In this section we compare Quagga to similar systems found in related work.
 To get a good understanding of the versatility, we not only look at the results shown in \Fref{tab:results-comp}, but also consider the robustness against noise or otherwise changing data as well as how many training samples are required to get good results.
 
-We were not able to reproduce reported accuracies of Zebra~\cite{zebra}, which given the nature of the features and individual classification of lines disregarding their position and context in an email was expected.
+We were not able to reproduce reported accuracies of Zebra~\cite{zones}, which given the nature of the features and individual classification of lines disregarding their position and context in an email was expected.
 Jangada uses more general features and looks at a sliding window of lines and we got close to reported accuracies, especially for the ASF dataset, which is closer to the twenty newsgroup data the authors used~\cite{zones}.
 Overall, our system shows very good performances and seamlessly adapts to other datasets without problems.
 
@@ -720,18 +723,18 @@ Overall, our system shows very good performances and seamlessly adapts to other 
 	\centering
 	\caption{Classifying emails into zones (Precision/Recall/Accuracy)}
 	\label{tab:results-comp}
-	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ccccc}
+	\begin{tabular*}{0.8\textwidth}{@{\extracolsep{\fill}}cccc}
 		\toprule
-		Approach                & Zones & Enron & ASF & Others\footnote{Accuracy as reported in the original paper; Jangada only distinguishes between signature lines and "other", or additionally reply lines}\\ \midrule
-		Jangada\cite{signature} & 2 & 0.89 / 0.88 / 0.88 & 0.97 / 0.97 / 0.97 & 0.99 \\
-		Zebra\cite{zones}       & 2 & 0.66 / 0.25 / 0.25 & 0.88 / 0.18 / 0.18 & 0.90 \\
-		FeatureRNN              & 2 & 0.98 / 0.98 / 0.97 & 0.97 / 0.95 / 0.94 & --   \\
-		Quagga                  & 2 & \textbf{0.98 / 0.98 / 0.98} & \textbf{0.98 / 0.98 / 0.98} & --   \\
+		Approach                & Zones & Enron & ASF\\ \midrule% & Others\footnote{Accuracy as reported in the original paper; Jangada only distinguishes between signature lines and "other", or additionally reply lines}\\ \midrule
+		Jangada\cite{signature} & 2 & 0.89 / 0.88 / 0.88 & 0.97 / 0.97 / 0.97\\% & 0.99 \\
+		Zebra\cite{zones}       & 2 & 0.66 / 0.25 / 0.25 & 0.88 / 0.18 / 0.18\\% & 0.90 \\
+		FeatureRNN              & 2 & 0.98 / 0.98 / 0.97 & 0.97 / 0.95 / 0.94\\% & --   \\
+		Quagga                  & 2 & \textbf{0.98 / 0.98 / 0.98} & \textbf{0.98 / 0.98 / 0.98}\\% & --   \\
 		\midrule
-		Jangada\cite{signature} & 5 & 0.82 / 0.85 / 0.85 & 0.90 / 0.92 / 0.91 & 0.98 \\
-		Zebra\cite{zones}       & 5 & 0.60 / 0.25 / 0.24 & 0.81 / 0.20 / 0.20 & 0.87 \\
-		FeatureRNN              & 5 & 0.92 / 0.75 / 0.75 & 0.90 / 0.60 / 0.60 & -- \\
-		Quagga                  & 5 & \textbf{0.93 / 0.93 / 0.93} & \textbf{0.95 / 0.95 / 0.95} & -- \\
+		Jangada\cite{signature} & 5 & 0.82 / 0.85 / 0.85 & 0.90 / 0.92 / 0.91\\% & 0.98 \\
+		Zebra\cite{zones}       & 5 & 0.60 / 0.25 / 0.24 & 0.81 / 0.20 / 0.20\\% & 0.87 \\
+		FeatureRNN              & 5 & 0.92 / 0.75 / 0.75 & 0.90 / 0.60 / 0.60\\% & -- \\
+		Quagga                  & 5 & \textbf{0.93 / 0.93 / 0.93} & \textbf{0.95 / 0.95 / 0.95}\\% & -- \\
 		\bottomrule	
 	\end{tabular*}
 \end{table}
@@ -786,19 +789,26 @@ Compared to the results when training and testing using emails from the same bas
 \end{filecontents*}
 % 	[(0, 'perturbation'), (1, 'prec-featrnn-asf-2'), (2, 'prec-featrnn-asf-5'), (3, 'prec-featrnn-enron-2'), (4, 'prec-featrnn-enron-5'), (5, 'prec-jangada-asf-2'), (6, 'prec-jangada-asf-5'), (7, 'prec-jangada-enron-2'), (8, 'prec-jangada-enron-5'), (9, 'prec-zebra-asf-2'), (10, 'prec-zebra-asf-5'), (11, 'prec-zebra-enron-2'), (12, 'prec-zebra-enron-5'), (13, 'rec-featrnn-asf-2'), (14, 'rec-featrnn-asf-5'), (15, 'rec-featrnn-enron-2'), (16, 'rec-featrnn-enron-5'), (17, 'rec-jangada-asf-2'), (18, 'rec-jangada-asf-5'), (19, 'rec-jangada-enron-2'), (20, 'rec-jangada-enron-5'), (21, 'rec-zebra-asf-2'), (22, 'rec-zebra-asf-5'), (23, 'rec-zebra-enron-2'), (24, 'rec-zebra-enron-5'), (25, 'f1-featrnn-asf-2'), (26, 'f1-featrnn-asf-5'), (27, 'f1-featrnn-enron-2'), (28, 'f1-featrnn-enron-5'), (29, 'f1-jangada-asf-2'), (30, 'f1-jangada-asf-5'), (31, 'f1-jangada-enron-2'), (32, 'f1-jangada-enron-5'), (33, 'f1-zebra-asf-2'), (34, 'f1-zebra-asf-5'), (35, 'f1-zebra-enron-2'), (36, 'f1-zebra-enron-5'), (37, 'acc-featrnn-asf-2'), (38, 'acc-featrnn-asf-5'), (39, 'acc-featrnn-enron-2'), (40, 'acc-featrnn-enron-5'), (41, 'acc-jangada-asf-2'), (42, 'acc-jangada-asf-5'), (43, 'acc-jangada-enron-2'), (44, 'acc-jangada-enron-5'), (45, 'acc-zebra-asf-2'), (46, 'acc-zebra-asf-5'), (47, 'acc-zebra-enron-2'), (48, 'acc-zebra-enron-5'), (49, 'wprec-featrnn-asf-2'), (50, 'wprec-featrnn-asf-5'), (51, 'wprec-featrnn-enron-2'), (52, 'wprec-featrnn-enron-5'), (53, 'wprec-jangada-asf-2'), (54, 'wprec-jangada-asf-5'), (55, 'wprec-jangada-enron-2'), (56, 'wprec-jangada-enron-5'), (57, 'wprec-zebra-asf-2'), (58, 'wprec-zebra-asf-5'), (59, 'wprec-zebra-enron-2'), (60, 'wprec-zebra-enron-5'), (61, 'wrec-featrnn-asf-2'), (62, 'wrec-featrnn-asf-5'), (63, 'wrec-featrnn-enron-2'), (64, 'wrec-featrnn-enron-5'), (65, 'wrec-jangada-asf-2'), (66, 'wrec-jangada-asf-5'), (67, 'wrec-jangada-enron-2'), (68, 'wrec-jangada-enron-5'), (69, 'wrec-zebra-asf-2'), (70, 'wrec-zebra-asf-5'), (71, 'wrec-zebra-enron-2'), (72, 'wrec-zebra-enron-5'), (73, 'wf1-featrnn-asf-2'), (74, 'wf1-featrnn-asf-5'), (75, 'wf1-featrnn-enron-2'), (76, 'wf1-featrnn-enron-5'), (77, 'wf1-jangada-asf-2'), (78, 'wf1-jangada-asf-5'), (79, 'wf1-jangada-enron-2'), (80, 'wf1-jangada-enron-5'), (81, 'wf1-zebra-asf-2'), (82, 'wf1-zebra-asf-5'), (83, 'wf1-zebra-enron-2'), (84, 'wf1-zebra-enron-5'), (85, 'wacc-featrnn-asf-2'), (86, 'wacc-featrnn-asf-5'), (87, 'wacc-featrnn-enron-2'), (88, 'wacc-featrnn-enron-5'), (89, 'wacc-jangada-asf-2'), (90, 'wacc-jangada-asf-5'), (91, 'wacc-jangada-enron-2'), (92, 'wacc-jangada-enron-5'), (93, 'wacc-zebra-asf-2'), (94, 'wacc-zebra-asf-5'), (95, 'wacc-zebra-enron-2'), (96, 'wacc-zebra-enron-5')]
 % [(0, 'perturbation'), (1, 'test--prec-asf-2'), (2, 'test--prec-asf-5'), (3, 'test--prec-enron-2'), (4, 'test--prec-enron-5'), (5, 'test-w-prec-asf-2'), (6, 'test-w-prec-asf-5'), (7, 'test-w-prec-enron-2'), (8, 'test-w-prec-enron-5'), (9, 'eval--prec-asf-2'), (10, 'eval--prec-asf-5'), (11, 'eval--prec-enron-2'), (12, 'eval--prec-enron-5'), (13, 'eval-w-prec-asf-2'), (14, 'eval-w-prec-asf-5'), (15, 'eval-w-prec-enron-2'), (16, 'eval-w-prec-enron-5'), (17, 'test--rec-asf-2'), (18, 'test--rec-asf-5'), (19, 'test--rec-enron-2'), (20, 'test--rec-enron-5'), (21, 'test-w-rec-asf-2'), (22, 'test-w-rec-asf-5'), (23, 'test-w-rec-enron-2'), (24, 'test-w-rec-enron-5'), (25, 'eval--rec-asf-2'), (26, 'eval--rec-asf-5'), (27, 'eval--rec-enron-2'), (28, 'eval--rec-enron-5'), (29, 'eval-w-rec-asf-2'), (30, 'eval-w-rec-asf-5'), (31, 'eval-w-rec-enron-2'), (32, 'eval-w-rec-enron-5'), (33, 'test--f1-asf-2'), (34, 'test--f1-asf-5'), (35, 'test--f1-enron-2'), (36, 'test--f1-enron-5'), (37, 'test-w-f1-asf-2'), (38, 'test-w-f1-asf-5'), (39, 'test-w-f1-enron-2'), (40, 'test-w-f1-enron-5'), (41, 'eval--f1-asf-2'), (42, 'eval--f1-asf-5'), (43, 'eval--f1-enron-2'), (44, 'eval--f1-enron-5'), (45, 'eval-w-f1-asf-2'), (46, 'eval-w-f1-asf-5'), (47, 'eval-w-f1-enron-2'), (48, 'eval-w-f1-enron-5'), (49, 'test--acc-asf-2'), (50, 'test--acc-asf-5'), (51, 'test--acc-enron-2'), (52, 'test--acc-enron-5'), (53, 'test-w-acc-asf-2'), (54, 'test-w-acc-asf-5'), (55, 'test-w-acc-enron-2'), (56, 'test-w-acc-enron-5'), (57, 'eval--acc-asf-2'), (58, 'eval--acc-asf-5'), (59, 'eval--acc-enron-2'), (60, 'eval--acc-enron-5'), (61, 'eval-w-acc-asf-2'), (62, 'eval-w-acc-asf-5'), (63, 'eval-w-acc-enron-2'), (64, 'eval-w-acc-enron-5')]
-\begin{figure}
+\begin{figure}[tb]
 	% jan, zeb, fea
 	% acc5: 44,48,40 | wacc5: 92,96,88 | acc2: 43,47,39, wacc2: 91,95,87 | f1_2: 31,35,27
 	% quagga: acc5: 52  | wacc5: 55 | acc2: 51 | wacc2: 56
+	{%
+		%/pgf/number format/.cd,fixed,precision=2, set thousands separator={}, 
+	%\pgfplotsset{trim axis left, trim axis right}
+	\pgfplotsset{x tick label style={font=\scriptsize}}
+	\pgfplotsset{ylabel near ticks, xlabel near ticks}
+	\pgfplotsset{every label/.append style={font=\scriptsize}}
+	\pgfplotsset{xlabel={Perturbation}, ylabel={Accuracy}, ymax=1.05}
+	\pgfplotsset{width=\textwidth, height=0.8\textwidth}
+	\pgfplotsset{/pgf/number format/.cd,fixed, fixed zerofill,precision=1}
 	\centering
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
-		\begin{tikzpicture}
-		\begin{axis}[width=0.98\textwidth, height=0.8\textwidth,
-		every tick label/.append style={font=\scriptsize},
-		every label/.append style={font=\scriptsize}, ylabel near ticks, xlabel near ticks,
-		mark options={solid,scale=0.7},legend style={at={(0.01,0.65)},anchor=north west},,
-		xlabel={Perturbation}, ylabel={Accuracy}]
+		%\subcaption{Two Zones}
+		\begin{tikzpicture} %
+		\begin{axis}[title=(a) Two Zones,legend style={at={(0.01,0.65)},anchor=north west},
+					 mark options={solid,scale=0.7}]
 		\addplot[dotted, color=black, mark=o] table[x index={0},y index={43}, col sep=comma] {perturbation.csv};
 		\addlegendentry{\tiny Jangada};
 		\addplot[dashed, color=black, mark=o] table[x index={0},y index={47}, col sep=comma] {perturbation.csv};
@@ -810,31 +820,29 @@ Compared to the results when training and testing using emails from the same bas
 		\end{axis}
 		\end{tikzpicture}
 		%\caption{Two Zone Model}
-	\end{subfigure}%
-	~ 
+	\end{subfigure}
+	~
 	\begin{subfigure}[t]{0.5\textwidth}
 		\centering
-		\begin{tikzpicture}
-		\begin{axis}[width=0.98\textwidth, height=0.8\textwidth,
-		mark options={solid,scale=0.7}, 
-		every tick label/.append style={font=\scriptsize},
-		every label/.append style={font=\scriptsize}, 
+		%\subcaption{Five Zones}
+		\begin{tikzpicture} %
+		\begin{axis}[title=(b) Five Zones,mark options={solid,scale=0.7}, 
 		legend style={at={(0.01,0.65)},anchor=north west},
-		yticklabel pos=right, ylabel near ticks, xlabel near ticks,
-		xlabel={Perturbation}, ylabel={Accuracy}]
+		yticklabel pos=right]
 		\addplot[dotted, color=black, mark=o] table[x index={0},y index={44}, col sep=comma] {perturbation.csv};
-		%\addlegendentry{\tiny Jangada};
+		\addlegendentry{\tiny Jangada};
 		\addplot[dashed, color=black, mark=o] table[x index={0},y index={48}, col sep=comma] {perturbation.csv};
-		%\addlegendentry{\tiny Zebra};
+		\addlegendentry{\tiny Zebra};
 		\addplot[dotted, color=black, mark=x] table[x index={0},y index={88}, col sep=comma] {perturbation.csv};
-		%\addlegendentry{\tiny RNN};
+		\addlegendentry{\tiny RNN};
 		\addplot[solid, color=black, mark=*] table[x index={0},y index={52}, col sep=comma] {quagga.csv};
-		%\addlegendentry{\tiny Quagga};
+		\addlegendentry{\tiny Quagga};
 		\end{axis}
 		\end{tikzpicture}
 		%\caption{Five Zone Model}
 	\end{subfigure}
-	\caption{Robustness against perturbation on two (left) and five zones (right) on the Enron test set}
+	}
+	\caption{Robustness against perturbation for the Enron test set}
 	\label{fig:perturbation}
 \end{figure}
 Our hypothesis is, that a model which learns meaningful features itself is more robust towards changes to the email text as hard coded rules responding to specific keywords or patterns.
@@ -853,9 +861,12 @@ In this work we presented a reliable and flexible system for finding the inheren
 In the first stage, the system uses a convolutional neural network to encode lines of an email which are used by a GRU-CRF to predict a sequence of zone types per line reaching accuracies of 98\%.
 Compared to similar models, we show significant improvement and especially seamless adaptation to other datasets as well as robustness against corrupted data.
 
-Research based on email data largely benefits from preprocessed text input, which helps to focus algorithms on relevant parts of an email like client headers containing meta-data such as sender, recipients or dates for social network analysis, or content based research, which can be focused on the actual message without irrelevant parts like signatures.
+Research based on email data can largely benefit from this system by pre-processing the text and focus downstream algorithms on relevant parts of an email like client headers or the actual text cleaned of irrelevant parts.
 
-In addition to our system, which can be used automatically pre-process large corpora, we provide a detailed annotation of a subset of the Enron corpus that can directly be used for building communication networks without further parsing including linked person aliases and, if present, contact details from email signatures.
+%Research based on email data largely benefits from preprocessed text input, which helps to focus algorithms on relevant parts of an email like client headers containing meta-data such as sender, recipients or dates for social network analysis, or content based research, which can be focused on the actual message without irrelevant parts like signatures.
+
+In addition to the Quagga system, we provide a detailed annotation of a subset of the Enron corpus that can directly be used for building communication networks without further parsing including linked person aliases and, if present, contact details from email signatures as well as the new ASF corpus.
+
 
 % novel clean dataset for email research on enron
 % flexible model to clean up large amounts of email data
